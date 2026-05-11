@@ -108,26 +108,70 @@ def extract_2zicon_items(soup, name):
     return items_found
 
 def scrape_sayostay(driver):
-    """さよステ用：先1年分巡回"""
+    """さよならステイチューン用：日付ズレと重複を厳密に排除"""
     name = "さよステ"
-    base = "https://sayostay.dspm.jp"
+    base_domain = "https://sayostay.dspm.jp"
+    base_url = f"{base_domain}/schedules/menu/18610"
     events = []
+    
+    # 実行時の日付を取得
     now = datetime.now()
+    
+    # 当月から先12ヶ月分（計13ヶ月）を巡回
     for i in range(0, 13):
+        # 1ヶ月ずつ加算して、その月の1日を開始日に指定
         target = now + timedelta(days=31 * i)
-        cal_url = f"{base}/schedules/menu/18610?start={target.year}-{str(target.month).zfill(2)}-01"
+        target_year = target.year
+        target_month = target.month
+        target_month_str = f"{target_year}-{str(target_month).zfill(2)}"
+        
+        # URLパラメータで直接その月を表示させる
+        cal_url = f"{base_url}?start={target_month_str}-01"
+        
         try:
-            print(f"{name} ({target.year}/{target.month}) 取得中...")
+            print(f"{name} ({target_month_str}) を取得中...")
             driver.get(cal_url)
-            time.sleep(6)
+            # FullCalendarの描画は重いため、少し長めに待機
+            time.sleep(7) 
+            
             soup = BeautifulSoup(driver.page_source, 'html.parser')
-            for day in soup.select('td.fc-daygrid-day'):
-                d = day.get('data-date')
-                if not d or not d.startswith(f"{target.year}-{str(target.month).zfill(2)}"): continue
-                for item in day.select('a.fc-daygrid-event'):
-                    title = item.select_one('.fc-event-title')
-                    events.append({"title": f"[{name}] {title.get_text(strip=True) if title else ''}", "start": d, "url": base + item.get('href'), "allDay": True})
-        except: continue
+            
+            # カレンダーの「日付マス」を1日ずつスキャン
+            days = soup.select('td.fc-daygrid-day')
+            for day in days:
+                # tdタグ自体が持つ data-date (YYYY-MM-DD) を取得
+                date_str = day.get('data-date') 
+                if not date_str:
+                    continue
+                
+                # 今アクセスしている「月」以外のマスのデータは無視（重複防止）
+                if not date_str.startswith(target_month_str):
+                    continue
+
+                # その日のマスの中にあるイベントリンクをすべて取得
+                event_items = day.select('a.fc-daygrid-event')
+                for item in event_items:
+                    href = item.get('href')
+                    if not href:
+                        continue
+                        
+                    full_url = base_domain + href if href.startswith('/') else href
+                    
+                    # タイトルの抽出
+                    title_el = item.select_one('.fc-event-title')
+                    title_text = title_el.get_text(strip=True) if title_el else ""
+                    
+                    # イベント情報を追加
+                    events.append({
+                        "title": f"[{name}] {title_text}",
+                        "start": date_str, # data-dateから取得した正確な日付
+                        "url": full_url,
+                        "allDay": True
+                    })
+        except Exception as e:
+            print(f"{name} {target_month_str} エラー: {e}")
+            continue
+            
     return events
 
 def scrape_memetokyo(driver):
