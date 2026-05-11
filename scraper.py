@@ -18,20 +18,25 @@ def setup_driver():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     return driver
 
-def parse_date(date_text):
-    """'2026.05.15' や '5/15' などの文字列から ISO形式 '2026-05-15' を抽出する"""
+def parse_date(text):
+    """テキストから日付(YYYY-MM-DD)を抽出する"""
     today = datetime.now()
-    # 数字を抽出
-    nums = re.findall(r'\d+', date_text)
-    if len(nums) >= 3: # YYYY MM DD
-        return f"{nums[0]}-{nums[1].zfill(2)}-{nums[2].zfill(2)}"
-    elif len(nums) == 2: # MM DD (年は今年と仮定)
-        return f"{today.year}-{nums[0].zfill(2)}-{nums[1].zfill(2)}"
+    # 2026.05.15 や 2026/05/15 などの形式を探す
+    match_full = re.search(r'(\d{4})[./-](\d{1,2})[./-](\d{1,2})', text)
+    if match_full:
+        return f"{match_full.group(1)}-{match_full.group(2).zfill(2)}-{match_full.group(3).zfill(2)}"
+    
+    # 05/15 や 5.15 などの形式を探す
+    match_short = re.search(r'(\d{1,2})[./](\d{1,2})', text)
+    if match_short:
+        return f"{today.year}-{match_short.group(1).zfill(2)}-{match_short.group(2).zfill(2)}"
+    
     return today.strftime('%Y-%m-%d')
 
 def scrape_all():
+    # グループ名と設定を修正
     groups = {
-        "ちゅむとて": {"url": "https://chumtoto.jp/schedule/", "selector": ".schedule_list_item, .event-item"},
+        "ChumToto": {"url": "https://chumtoto.jp/schedule/", "selector": ".schedule_list_item, .event-list-item"},
         "虹コン": {"url": "https://2zicon.tokyo/information/schedule/", "selector": ".schedule_list_item, .contents-list__item"},
         "さよステ": {"url": "https://sayostay.dspm.jp/schedules/menu/18610", "selector": ".schedule-list-item, .contents-list__item"},
         "きゅるして": {"url": "https://www.kyurushite.com/schedule/", "selector": ".schedule_list_item, .event-list__item"},
@@ -45,44 +50,40 @@ def scrape_all():
         try:
             print(f"Scraping {name}...")
             driver.get(info['url'])
-            time.sleep(6) # JS読み込み待ちを少し長めに
+            time.sleep(7) # 読み込み待ちを十分に確保
             
             soup = BeautifulSoup(driver.page_source, 'html.parser')
-            
-            # 各グループの共通的なリスト要素を探す
             items = soup.select(info['selector'])
             
-            # もしセレクタで見つからない場合は広めに探す
+            # セレクタで見つからない場合の予備（広めに検索）
             if not items:
                 items = soup.find_all(['li', 'article', 'div'], class_=re.compile(r'item|schedule|event', re.I))
 
             for item in items:
-                text = item.get_text(separator=' ', strip=True)
-                if not text or len(text) < 10: continue
+                raw_text = item.get_text(separator=' ', strip=True)
+                if not raw_text or len(raw_text) < 5: continue
                 
-                # 日付とタイトルを分離する簡易ロジック
-                # 多くのサイトはテキストの冒頭に日付がある
-                date_str = parse_date(text[:20]) 
-                title = text.replace('\n', ' ').strip()[:100] # 改行を消して100文字まで
+                date_str = parse_date(raw_text)
+                # 日付以降のテキストをタイトルとして抽出
+                clean_title = raw_text.replace('\n', ' ').strip()
                 
                 all_events.append({
-                    "title": f"[{name}] {title}",
+                    "title": f"[{name}] {clean_title[:60]}",
                     "start": date_str,
                     "url": info['url'],
-                    "allDay": True,
-                    "className": f"group-{name}" # CSSで色分け用
+                    "allDay": True
                 })
         except Exception as e:
             print(f"Error {name}: {e}")
 
     driver.quit()
     
-    # 重複削除（タイトルと日付が同じものを消す）
+    # 重複削除
     unique_events = list({(ev['title'], ev['start']): ev for ev in all_events}.values())
 
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(unique_events, f, ensure_ascii=False, indent=2)
-    print(f"Saved {len(unique_events)} events.")
+    print(f"Finished. Saved {len(unique_events)} events.")
 
 if __name__ == "__main__":
     scrape_all()
