@@ -16,39 +16,39 @@ def setup_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def scrape_chumtoto():
-    url = "https://chumtoto.jp/schedule/"
+    base_url = "https://chumtoto.jp/schedule/"
     driver = setup_driver()
     all_events = []
 
     try:
-        print("ChumTotoのスケジュールを取得中...")
-        driver.get(url)
-        # JavaScriptの描画を待機（少し長めに設定）
+        print("ChumTotoのスケジュールを取得中（個別URL抽出あり）...")
+        driver.get(base_url)
         time.sleep(8)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        
-        # カレンダーの「日（1日分）」を表すグリッド要素をすべて取得
         days = soup.select('.tribe-events-calendar-month__day')
         
         for day in days:
-            # 1. その日の日付(YYYY-MM-DD)を取得
+            # 日付の取得
             time_tag = day.select_one('time.tribe-events-calendar-month__day-date-daynum')
             if not time_tag or not time_tag.has_attr('datetime'):
                 continue
             date_str = time_tag['datetime']
             
-            # 2. その日の中にあるイベントをすべて取得
-            # 送っていただいたタグに合わせてセレクタを指定
-            event_titles = day.select('.tribe-events-calendar-month__multiday-event-hidden-title, .tribe-events-calendar-month__calendar-event-title')
+            # イベント要素の抽出
+            # aタグを基準に探し、その中のタイトルとhrefを取得する
+            event_links = day.select('a.tribe-events-calendar-month__multiday-event-hidden-link, a.tribe-events-calendar-month__calendar-event-title-link')
             
-            for ev in event_titles:
-                title = ev.get_text(strip=True)
-                if title:
+            for link in event_links:
+                href = link.get('href')
+                title_el = link.select_one('h3') or link # h3があればそれを、なければlink自身のテキスト
+                title = title_el.get_text(strip=True)
+                
+                if title and href:
                     all_events.append({
                         "title": f"[ChumToto] {title}",
                         "start": date_str,
-                        "url": url,
+                        "url": href, # ここを個別ページのURLに修正
                         "allDay": True
                     })
                     
@@ -60,10 +60,7 @@ def scrape_chumtoto():
     return all_events
 
 if __name__ == "__main__":
-    # 今はChumTotoのみ実行して精度を確認
     results = scrape_chumtoto()
-    
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
-    
-    print(f"成功！ {len(results)} 件のイベントを data.json に保存しました。")
+    print(f"完了！ {len(results)} 件のイベント（個別リンク付き）を保存しました。")
