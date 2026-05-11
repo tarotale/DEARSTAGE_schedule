@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSPM SCHEDULE - 2026.05</title>
+    <title>DSPM SCHEDULE - MANGER</title>
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #12121e 50%, #0a0a0f 100%);
@@ -35,8 +35,18 @@
             backdrop-filter: blur(12px);
         }
 
-        .header-top { font-size: 11px; letter-spacing: 4px; color: var(--text-muted); margin-bottom: 4px; }
-        .header-title { font-size: 22px; font-weight: 700; letter-spacing: 1px; margin-bottom: 14px; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .month-display { font-size: 11px; letter-spacing: 4px; color: var(--text-muted); text-transform: uppercase; }
+        
+        .nav-controls { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+        .current-month-title { font-size: 24px; font-weight: 700; letter-spacing: 1px; min-width: 160px; }
+        
+        .nav-btn {
+            background: rgba(255,255,255,0.1); border: none; color: #fff;
+            width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.2); }
 
         .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
         .filter-btn {
@@ -58,17 +68,17 @@
 
         .content { padding: 16px 16px 40px; max-width: 800px; margin: 0 auto; }
 
-        .date-section { margin-bottom: 24px; scroll-margin-top: 160px; /* スクロール時の余白 */ }
+        /* List View */
+        .date-section { margin-bottom: 24px; scroll-margin-top: 180px; }
         .date-header { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #a0a0c0; border-left: 3px solid #3a3a5c; padding-left: 10px; margin-bottom: 8px; }
         .date-header.today { color: #fff; border-left-color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
-
         .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; }
         .event-card:hover { transform: translateX(4px); }
         .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
         .event-title { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 3px; color: #fff; }
         .event-venue { font-size: 11px; color: #888; }
 
-        /* Group Colors */
+        /* Group Card Styles */
         .card-ChumToto { background: linear-gradient(135deg, rgba(255,107,157,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,107,157,0.25); border-left-color: var(--color-chumtoto); }
         .card-ChumToto .group-label { color: var(--color-chumtoto); }
         .card-虹コン { background: linear-gradient(135deg, rgba(123,97,255,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(123,97,255,0.25); border-left-color: var(--color-2zicon); }
@@ -80,35 +90,43 @@
         .card-meme { background: linear-gradient(135deg, rgba(255,75,110,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,75,110,0.25); border-left-color: var(--color-meme); }
         .card-meme .group-label { color: var(--color-meme); }
 
-        /* Calendar Styles */
+        /* Calendar View */
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 20px; }
         .calendar-weekday { text-align: center; font-size: 11px; color: #888; padding: 6px 0; font-weight: 600; }
         .calendar-day { min-height: 52px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); padding: 4px; cursor: pointer; position: relative; }
-        .calendar-day.empty { background: transparent; cursor: default; }
+        .calendar-day.empty { background: transparent; cursor: default; border: none; }
         .calendar-day.selected { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
         .calendar-day.is-today { border: 1.5px solid rgba(255,255,255,0.4); }
         .day-num { font-size: 12px; color: #ccc; text-align: center; margin-bottom: 4px; }
         .dot-container { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
         .dot { width: 6px; height: 6px; border-radius: 50%; }
 
-        #selected-day-info { margin-top: 20px; padding: 14px; background: rgba(255,255,255,0.04); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        #selected-day-events { margin-top: 20px; padding: 14px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="header-top">2026年 DSPM統合スケジュール</div>
-    <div class="header-title">📅 SCHEDULE</div>
+    <div class="header-top">
+        <div class="month-display" id="monthLabel">MAY 2026</div>
+        <div class="view-toggle">
+            <button class="toggle-btn active" id="listToggle">リスト</button>
+            <button class="toggle-btn" id="calendarToggle">カレンダー</button>
+        </div>
+    </div>
+    
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="changeMonth(-1)">◀</button>
+        <div class="current-month-title" id="currentMonthTitle">2026年 5月</div>
+        <button class="nav-btn" onclick="changeMonth(1)">▶</button>
+    </div>
+
     <div class="filter-group" id="filterGroup">
         <button class="filter-btn active" data-group="ChumToto">チャムトト</button>
         <button class="filter-btn active" data-group="虹コン">虹コン</button>
         <button class="filter-btn active" data-group="さよステ">さよステ</button>
         <button class="filter-btn active" data-group="きゅるして">きゅるして</button>
         <button class="filter-btn active" data-group="meme">ミーム</button>
-    </div>
-    <div class="view-toggle">
-        <button class="toggle-btn active" id="listToggle">リスト</button>
-        <button class="toggle-btn" id="calendarToggle">カレンダー</button>
     </div>
 </header>
 
@@ -118,11 +136,15 @@
     let allEvents = [];
     let viewMode = "list";
     let selectedDate = null;
+    
+    // 表示中の年月を管理
+    let displayDate = new Date(2026, 4, 1); // デフォルト 2026年5月 (JSの月は0始まり)
+    
     const activeGroups = new Set(["ChumToto", "虹コン", "さよステ", "きゅるして", "meme"]);
     const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+    const monthNamesEn = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
     const groupColors = { ChumToto: "#FF6B9D", "虹コン": "#7B61FF", "さよステ": "#00C9A7", "きゅるして": "#FFB800", meme: "#FF4B6E" };
 
-    // 今日の日付を取得 (YYYY-MM-DD)
     const getTodayStr = () => {
         const now = new Date();
         return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -131,14 +153,38 @@
     async function init() {
         const response = await fetch('./data.json?v=' + new Date().getTime());
         allEvents = await response.json();
-        render(true); // 初回レンダリング時はスクロールを実行
+        updateHeader();
+        render(true);
+    }
+
+    function changeMonth(delta) {
+        displayDate.setMonth(displayDate.getMonth() + delta);
+        selectedDate = null; // 月を変えたら選択を解除
+        updateHeader();
+        render(true);
+    }
+
+    function updateHeader() {
+        const y = displayDate.getFullYear();
+        const m = displayDate.getMonth();
+        document.getElementById('currentMonthTitle').innerText = `${y}年 ${m + 1}月`;
+        document.getElementById('monthLabel').innerText = `${monthNamesEn[m]} ${y}`;
     }
 
     function render(shouldScroll = false) {
         const display = document.getElementById('mainDisplay');
         display.innerHTML = "";
 
-        const filtered = allEvents.filter(ev => Array.from(activeGroups).some(g => ev.title.includes(g)));
+        const y = displayDate.getFullYear();
+        const m = displayDate.getMonth();
+        
+        // 表示中の月のイベントのみにフィルタリング
+        const filtered = allEvents.filter(ev => {
+            const evDate = new Date(ev.start);
+            const isSameMonth = evDate.getFullYear() === y && evDate.getMonth() === m;
+            const isGroupActive = Array.from(activeGroups).some(g => ev.title.includes(g));
+            return isSameMonth && isGroupActive;
+        });
 
         if (viewMode === "list") {
             renderList(filtered, display, shouldScroll);
@@ -157,11 +203,14 @@
         const todayStr = getTodayStr();
         let closestDate = null;
 
+        if (Object.keys(grouped).length === 0) {
+            container.innerHTML = '<div style="text-align:center; color:#555; margin-top:60px;">この月の予定はありません</div>';
+            return;
+        }
+
         for (const date in grouped) {
             const d = new Date(date);
             const isToday = (date === todayStr);
-            
-            // 今日、または今日以降で最も近い日付を特定
             if (!closestDate && date >= todayStr) closestDate = date;
 
             container.innerHTML += `
@@ -172,7 +221,6 @@
             `;
         }
 
-        // 今日以降の予定までスクロール
         if (shouldScroll && closestDate) {
             setTimeout(() => {
                 const target = document.getElementById(`date-${closestDate}`);
@@ -182,10 +230,10 @@
     }
 
     function renderCalendar(events, container) {
-        const now = new Date();
-        const year = 2026, month = 5;
-        const firstDay = new Date(year, month - 1, 1).getDay();
-        const daysInMonth = new Date(year, month, 0).getDate();
+        const y = displayDate.getFullYear();
+        const m = displayDate.getMonth();
+        const firstDay = new Date(y, m, 1).getDay();
+        const daysInMonth = new Date(y, m + 1, 0).getDate();
         const todayStr = getTodayStr();
         
         let html = '<div class="calendar-grid">';
@@ -193,7 +241,7 @@
         for(let i=0; i<firstDay; i++) html += '<div class="calendar-day empty"></div>';
         
         for(let d=1; d<=daysInMonth; d++) {
-            const dateKey = `${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+            const dateKey = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
             const dayEvents = events.filter(e => e.start === dateKey);
             const isSelected = selectedDate === dateKey;
             const isToday = (dateKey === todayStr);
@@ -221,7 +269,7 @@
     function renderSelectedDay(events) {
         const dayEvents = events.filter(e => e.start === selectedDate);
         const container = document.getElementById('selected-day-events');
-        if(!dayEvents.length) return;
+        if(!dayEvents.length) { container.innerHTML = ""; return; }
         const d = new Date(selectedDate);
         container.innerHTML = `
             <div id="selected-day-info">
