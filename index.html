@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDOL SCHEDULE MANAGER</title>
+    <title>IDOL SCHEDULE LIST</title>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --sidebar-width: 260px;
-            --primary-bg: #ffffff;
-            --secondary-bg: #f9fafb;
+            --primary-bg: #f9fafb;
+            --card-bg: #ffffff;
             --border-color: #e5e7eb;
             --text-main: #111827;
+            --text-muted: #6b7280;
             /* グループカラー */
             --color-chumtoto: #ff4757;
             --color-2zicon: #ffa502;
@@ -30,10 +31,9 @@
             color: var(--text-main);
         }
 
-        /* サイドバー */
         #sidebar {
             width: var(--sidebar-width);
-            background-color: var(--secondary-bg);
+            background-color: #ffffff;
             border-right: 1px solid var(--border-color);
             padding: 24px;
             display: flex;
@@ -42,46 +42,54 @@
             overflow-y: auto;
         }
 
-        h1 { font-size: 1.2rem; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
+        h1 { font-size: 1.1rem; font-weight: 700; margin: 0; color: #374151; letter-spacing: 0.05em; }
 
-        .filter-group { display: flex; flex-direction: column; gap: 12px; }
-        .filter-item { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; }
-        .filter-item input { width: 18px; height: 18px; cursor: pointer; }
+        .filter-group { display: flex; flex-direction: column; gap: 10px; }
+        .filter-item { 
+            display: flex; align-items: center; gap: 12px; 
+            cursor: pointer; font-size: 0.9rem; padding: 8px;
+            border-radius: 6px; transition: background 0.2s;
+        }
+        .filter-item:hover { background-color: #f3f4f6; }
+        .filter-item input { width: 16px; height: 16px; }
 
-        /* カレンダーエリア */
         #main-content {
             flex-grow: 1;
-            padding: 20px;
+            padding: 20px 40px;
             overflow-y: auto;
         }
 
         #calendar {
-            max-width: 1100px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* カレンダー自体のスタイル調整 */
-        .fc { --fc-border-color: var(--border-color); --fc-button-bg-color: #fff; --fc-button-text-color: #374151; --fc-button-border-color: var(--border-color); --fc-button-hover-bg-color: #f3f4f6; }
-        .fc-toolbar-title { font-size: 1.25rem !important; font-weight: 700; }
-        .fc-event { border: none !important; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; cursor: pointer; transition: opacity 0.2s; }
-        .fc-event:hover { opacity: 0.8; }
+        /* リスト表示のカスタムスタイル */
+        .fc-list-day-cushion { background-color: #f3f4f6 !important; font-weight: 700 !important; }
+        .fc-list-event { cursor: pointer !important; }
+        .fc-list-event:hover td { background-color: #f9fafb !important; }
+        
+        /* イベントバッジの調整 */
+        .fc-list-event-title { font-weight: 500; font-size: 0.95rem; }
+        .fc-list-event-dot { border-width: 5px !important; }
 
-        /* グループ別イベントカラー */
-        .event-chumtoto { background-color: var(--color-chumtoto) !important; }
-        .event-2zicon { background-color: var(--color-2zicon) !important; }
-        .event-sayostay { background-color: var(--color-sayostay) !important; }
-        .event-kyurushite { background-color: var(--color-kyurushite) !important; }
-        .event-meme { background-color: var(--color-meme) !important; }
+        /* グループごとのドット色 */
+        .event-chumtoto .fc-list-event-dot { border-color: var(--color-chumtoto) !important; }
+        .event-2zicon .fc-list-event-dot { border-color: var(--color-2zicon) !important; }
+        .event-sayostay .fc-list-event-dot { border-color: var(--color-sayostay) !important; }
+        .event-kyurushite .fc-list-event-dot { border-color: var(--color-kyurushite) !important; }
+        .event-meme .fc-list-event-dot { border-color: var(--color-meme) !important; }
 
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            #sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); box-sizing: border-box; }
+            #sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 15px; }
+            #main-content { padding: 10px; }
         }
     </style>
 </head>
 <body>
     <aside id="sidebar">
-        <h1>SCHEDULE</h1>
+        <h1>SCHEDULE FILTER</h1>
         <div class="filter-group">
             <label class="filter-item"><input type="checkbox" checked value="ChumToto"> <span style="color: var(--color-chumtoto)">●</span> ChumToto</label>
             <label class="filter-item"><input type="checkbox" checked value="虹コン"> <span style="color: var(--color-2zicon)">●</span> 虹コン</label>
@@ -98,15 +106,16 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar');
-            let allEvents = [];
 
             const calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
+                initialView: 'listMonth', // 最初からリスト形式で表示
                 locale: 'ja',
-                headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listMonth' },
+                height: 'auto',
+                headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+                noEventsContent: '表示できる予定がありません',
                 events: './data.json?v=' + new Date().getTime(),
+                
                 eventDataTransform: function(ev) {
-                    // クラス名付与ロジック
                     if (ev.title.includes('ChumToto')) ev.className = 'event-chumtoto';
                     if (ev.title.includes('虹コン')) ev.className = 'event-2zicon';
                     if (ev.title.includes('さよステ')) ev.className = 'event-sayostay';
@@ -114,6 +123,7 @@
                     if (ev.title.includes('meme')) ev.className = 'event-meme';
                     return ev;
                 },
+                
                 eventClick: function(info) {
                     if (info.event.url) {
                         window.open(info.event.url, '_blank');
@@ -124,11 +134,10 @@
 
             calendar.render();
 
-            // フィルタリング機能
+            // フィルタリング
             document.querySelectorAll('.filter-item input').forEach(checkbox => {
                 checkbox.addEventListener('change', () => {
                     const activeGroups = Array.from(document.querySelectorAll('.filter-item input:checked')).map(cb => cb.value);
-                    
                     calendar.getEvents().forEach(ev => {
                         const isVisible = activeGroups.some(group => ev.title.includes(group));
                         ev.setProp('display', isVisible ? 'auto' : 'none');
