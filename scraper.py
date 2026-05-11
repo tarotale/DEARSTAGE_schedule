@@ -41,28 +41,45 @@ def scrape_tribe_events(driver, name, url):
     return events
 
 def scrape_2zicon(driver):
-    """虹のコンキスタドール用"""
+    """虹のコンキスタドール用（全ページ巡回版）"""
     name = "虹コン"
-    url = "https://2zicon.tokyo/information/schedule/"
+    base_url = "https://2zicon.tokyo"
+    current_url = f"{base_url}/information/schedule/"
     events = []
-    try:
-        print(f"{name} を取得中...")
-        driver.get(url)
-        time.sleep(5)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        items = soup.select('.info__item')
-        for item in items:
-            link_tag = item.select_one('a.info__link')
-            date_tag = item.select_one('.info__date')
-            text_tag = item.select_one('.info__text')
-            if link_tag and date_tag and text_tag:
-                href = link_tag.get('href')
-                date_str = date_tag.get_text(strip=True).replace('.', '-')
-                title = text_tag.get_text(strip=True)
-                date_match = re.search(r'\d{4}-\d{2}-\d{2}', date_str)
-                if date_match:
-                    events.append({"title": f"[{name}] {title}", "start": date_match.group(), "url": href, "allDay": True})
-    except Exception as e: print(f"{name} エラー: {e}")
+    
+    while current_url:
+        try:
+            print(f"{name} を取得中: {current_url}")
+            driver.get(current_url)
+            time.sleep(5)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            
+            # スケジュール項目を抽出
+            items = soup.select('.info__item')
+            for item in items:
+                link_tag = item.select_one('a.info__link')
+                date_tag = item.select_one('.info__date')
+                text_tag = item.select_one('.info__text')
+                if link_tag and date_tag and text_tag:
+                    href = link_tag.get('href')
+                    date_str = date_tag.get_text(strip=True).replace('.', '-')
+                    title = text_tag.get_text(strip=True)
+                    date_match = re.search(r'\d{4}-\d{2}-\d{2}', date_str)
+                    if date_match:
+                        events.append({"title": f"[{name}] {title}", "start": date_match.group(), "url": href, "allDay": True})
+            
+            # 「次へ」ボタンがあるかチェック
+            next_btn = soup.select_one('a.pagi__btn--next')
+            if next_btn and next_btn.has_attr('href'):
+                href = next_btn.get('href')
+                current_url = base_url + href if href.startswith('/') else href
+            else:
+                current_url = None # ボタンがなければ終了
+                
+        except Exception as e:
+            print(f"{name} エラー: {e}")
+            break
+            
     return events
 
 def scrape_sayostay(driver):
@@ -82,7 +99,8 @@ def scrape_sayostay(driver):
             for item in day.select('a.fc-daygrid-event'):
                 h = item.get('href')
                 full_url = base + h if h.startswith('/') else h
-                title = item.select_one('.fc-event-title').get_text(strip=True)
+                title_el = item.select_one('.fc-event-title')
+                title = title_el.get_text(strip=True) if title_el else ""
                 events.append({"title": f"[{name}] {title}", "start": d, "url": full_url, "allDay": True})
         return events
     except Exception as e: print(f"{name} エラー: {e}"); return []
@@ -99,19 +117,17 @@ def scrape_memetokyo(driver):
         events = []
         items = soup.select('li.list-group-item')
         for item in items:
-            # 日付抽出 2026年 05月 02日 -> 2026-05-02
             time_tag = item.select_one('time')
             if not time_tag: continue
             raw_date = time_tag.get_text(strip=True)
             date_match = re.findall(r'\d+', raw_date)
             if len(date_match) < 3: continue
             date_str = f"{date_match[0]}-{date_match[1].zfill(2)}-{date_match[2].zfill(2)}"
-            
-            # 同日内の全イベントを取得
             for ev in item.select('a.tag-event, a.tag-live'):
                 h = ev.get('href')
                 full_url = base + h if h.startswith('/') else h
-                title = ev.select_one('.fc-event-inner').get_text(strip=True)
+                inner = ev.select_one('.fc-event-inner')
+                title = inner.get_text(strip=True) if inner else ""
                 events.append({"title": f"[{name}] {title}", "start": date_str, "url": full_url, "allDay": True})
         return events
     except Exception as e: print(f"{name} エラー: {e}"); return []
@@ -119,7 +135,6 @@ def scrape_memetokyo(driver):
 def main():
     driver = setup_driver()
     all_data = []
-    # 実行
     all_data.extend(scrape_tribe_events(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
     all_data.extend(scrape_tribe_events(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     all_data.extend(scrape_2zicon(driver))
