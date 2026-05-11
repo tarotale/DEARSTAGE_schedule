@@ -49,7 +49,6 @@
         .filter-btn.active[data-group="きゅるして"] { border-color: var(--color-kyurushite); background: color-mix(in srgb, var(--color-kyurushite), transparent 85%); color: var(--color-kyurushite); font-weight: 600; }
         .filter-btn.active[data-group="meme"] { border-color: var(--color-meme); background: color-mix(in srgb, var(--color-meme), transparent 85%); color: var(--color-meme); font-weight: 600; }
 
-        /* View Toggle */
         .view-toggle { display: flex; gap: 4px; }
         .toggle-btn {
             padding: 5px 14px; border-radius: 6px; border: none; background: transparent;
@@ -59,9 +58,10 @@
 
         .content { padding: 16px 16px 40px; max-width: 800px; margin: 0 auto; }
 
-        /* List View Styles */
-        .date-section { margin-bottom: 24px; }
+        .date-section { margin-bottom: 24px; scroll-margin-top: 160px; /* スクロール時の余白 */ }
         .date-header { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #a0a0c0; border-left: 3px solid #3a3a5c; padding-left: 10px; margin-bottom: 8px; }
+        .date-header.today { color: #fff; border-left-color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
+
         .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; }
         .event-card:hover { transform: translateX(4px); }
         .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
@@ -80,15 +80,13 @@
         .card-meme { background: linear-gradient(135deg, rgba(255,75,110,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,75,110,0.25); border-left-color: var(--color-meme); }
         .card-meme .group-label { color: var(--color-meme); }
 
-        /* Calendar View Styles */
+        /* Calendar Styles */
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 20px; }
-        .calendar-weekday { textAlign: center; font-size: 11px; color: #888; padding: 6px 0; font-weight: 600; text-align: center; }
-        .calendar-day {
-            min-height: 52px; border-radius: 6px; background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.04); padding: 4px; cursor: pointer; position: relative;
-        }
+        .calendar-weekday { text-align: center; font-size: 11px; color: #888; padding: 6px 0; font-weight: 600; }
+        .calendar-day { min-height: 52px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); padding: 4px; cursor: pointer; position: relative; }
         .calendar-day.empty { background: transparent; cursor: default; }
         .calendar-day.selected { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+        .calendar-day.is-today { border: 1.5px solid rgba(255,255,255,0.4); }
         .day-num { font-size: 12px; color: #ccc; text-align: center; margin-bottom: 4px; }
         .dot-container { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
         .dot { width: 6px; height: 6px; border-radius: 50%; }
@@ -114,8 +112,7 @@
     </div>
 </header>
 
-<div class="content" id="mainDisplay">
-    </div>
+<div class="content" id="mainDisplay"></div>
 
 <script>
     let allEvents = [];
@@ -125,50 +122,71 @@
     const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
     const groupColors = { ChumToto: "#FF6B9D", "虹コン": "#7B61FF", "さよステ": "#00C9A7", "きゅるして": "#FFB800", meme: "#FF4B6E" };
 
+    // 今日の日付を取得 (YYYY-MM-DD)
+    const getTodayStr = () => {
+        const now = new Date();
+        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    };
+
     async function init() {
         const response = await fetch('./data.json?v=' + new Date().getTime());
         allEvents = await response.json();
-        render();
+        render(true); // 初回レンダリング時はスクロールを実行
     }
 
-    function render() {
+    function render(shouldScroll = false) {
         const display = document.getElementById('mainDisplay');
         display.innerHTML = "";
 
-        const filtered = allEvents.filter(ev => {
-            const match = Array.from(activeGroups).some(g => ev.title.includes(g));
-            return match;
-        });
+        const filtered = allEvents.filter(ev => Array.from(activeGroups).some(g => ev.title.includes(g)));
 
         if (viewMode === "list") {
-            renderList(filtered, display);
+            renderList(filtered, display, shouldScroll);
         } else {
             renderCalendar(filtered, display);
         }
     }
 
-    function renderList(events, container) {
+    function renderList(events, container, shouldScroll) {
         const grouped = {};
         events.sort((a,b) => a.start.localeCompare(b.start)).forEach(ev => {
             if(!grouped[ev.start]) grouped[ev.start] = [];
             grouped[ev.start].push(ev);
         });
 
+        const todayStr = getTodayStr();
+        let closestDate = null;
+
         for (const date in grouped) {
             const d = new Date(date);
+            const isToday = (date === todayStr);
+            
+            // 今日、または今日以降で最も近い日付を特定
+            if (!closestDate && date >= todayStr) closestDate = date;
+
             container.innerHTML += `
-                <div class="date-section">
-                    <div class="date-header">${d.getMonth()+1}/${d.getDate()}（${dayNames[d.getDay()]}）</div>
+                <div class="date-section" id="date-${date}">
+                    <div class="date-header ${isToday ? 'today' : ''}">${d.getMonth()+1}/${d.getDate()}（${dayNames[d.getDay()]}）${isToday ? ' [TODAY]' : ''}</div>
                     ${grouped[date].map(ev => createEventCard(ev)).join('')}
                 </div>
             `;
         }
+
+        // 今日以降の予定までスクロール
+        if (shouldScroll && closestDate) {
+            setTimeout(() => {
+                const target = document.getElementById(`date-${closestDate}`);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
     }
 
     function renderCalendar(events, container) {
+        const now = new Date();
         const year = 2026, month = 5;
         const firstDay = new Date(year, month - 1, 1).getDay();
         const daysInMonth = new Date(year, month, 0).getDate();
+        const todayStr = getTodayStr();
         
         let html = '<div class="calendar-grid">';
         dayNames.forEach((d, i) => html += `<div class="calendar-weekday" style="color:${i==0?'#ff6b6b':i==6?'#6ba3ff':''}">${d}</div>`);
@@ -178,12 +196,11 @@
             const dateKey = `${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
             const dayEvents = events.filter(e => e.start === dateKey);
             const isSelected = selectedDate === dateKey;
-            
-            // Unique groups for dots
+            const isToday = (dateKey === todayStr);
             const uniqueGroups = [...new Set(dayEvents.map(e => getGroupKey(e.title)))];
             
             html += `
-                <div class="calendar-day ${isSelected?'selected':''}" onclick="selectDate('${dateKey}')">
+                <div class="calendar-day ${isSelected?'selected':''} ${isToday?'is-today':''}" onclick="selectDate('${dateKey}')">
                     <div class="day-num">${d}</div>
                     <div class="dot-container">
                         ${uniqueGroups.map(g => `<div class="dot" style="background:${groupColors[g]}"></div>`).join('')}
@@ -198,7 +215,7 @@
 
     function selectDate(date) {
         selectedDate = (selectedDate === date) ? null : date;
-        render();
+        render(false);
     }
 
     function renderSelectedDay(events) {
@@ -234,28 +251,27 @@
         `;
     }
 
-    // Controls
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const g = btn.dataset.group;
             activeGroups.has(g) ? activeGroups.delete(g) : activeGroups.add(g);
             btn.classList.toggle('active');
-            render();
+            render(false);
         });
     });
 
-    document.getElementById('listToggle').addEventListener('click', (e) => {
+    document.getElementById('listToggle').addEventListener('click', () => {
         viewMode = "list";
         document.getElementById('listToggle').classList.add('active');
         document.getElementById('calendarToggle').classList.remove('active');
-        render();
+        render(true);
     });
 
-    document.getElementById('calendarToggle').addEventListener('click', (e) => {
+    document.getElementById('calendarToggle').addEventListener('click', () => {
         viewMode = "calendar";
         document.getElementById('calendarToggle').classList.add('active');
         document.getElementById('listToggle').classList.remove('active');
-        render();
+        render(false);
     });
 
     init();
