@@ -3,148 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDOL SCHEDULE LIST</title>
+    <title>DSPM SCHEDULE - 2026.05</title>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sidebar-width: 260px;
-            --primary-bg: #f9fafb;
-            --card-bg: #ffffff;
-            --border-color: #e5e7eb;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-            /* グループカラー */
-            --color-chumtoto: #ff4757;
-            --color-2zicon: #ffa502;
-            --color-sayostay: #e84393;
-            --color-kyurushite: #1e90ff;
-            --color-meme: #2f3542;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #12121e 50%, #0a0a0f 100%);
+            --header-gradient: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --color-chumtoto: #FF6B9D;
+            --color-2zicon: #7B61FF;
+            --color-sayostay: #00C9A7;
+            --color-kyurushite: #FFB800;
+            --color-meme: #FF4B6E;
+            --text-main: #f0f0f8;
+            --text-muted: #7b7b9a;
         }
 
         body {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
             margin: 0;
-            display: flex;
-            height: 100vh;
-            background-color: var(--primary-bg);
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            background: var(--bg-gradient);
             color: var(--text-main);
+            min-height: 100vh;
         }
 
-        #sidebar {
-            width: var(--sidebar-width);
-            background-color: #ffffff;
-            border-right: 1px solid var(--border-color);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            overflow-y: auto;
+        /* Header */
+        header {
+            background: var(--header-gradient);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 20px 24px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
         }
 
-        h1 { font-size: 1.1rem; font-weight: 700; margin: 0; color: #374151; letter-spacing: 0.05em; }
+        .header-top { font-size: 11px; letter-spacing: 4px; color: var(--text-muted); margin-bottom: 4px; }
+        .header-title { font-size: 22px; font-weight: 700; letter-spacing: 1px; margin-bottom: 14px; }
 
-        .filter-group { display: flex; flex-direction: column; gap: 10px; }
-        .filter-item { 
-            display: flex; align-items: center; gap: 12px; 
-            cursor: pointer; font-size: 0.9rem; padding: 8px;
-            border-radius: 6px; transition: background 0.2s;
+        /* Group Filter Buttons */
+        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .filter-btn {
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            background: transparent;
+            color: #666;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 400;
         }
-        .filter-item:hover { background-color: #f3f4f6; }
-        .filter-item input { width: 16px; height: 16px; }
+        .filter-btn.active[data-group="ChumToto"] { border-color: var(--color-chumtoto); background: color-mix(in srgb, var(--color-chumtoto), transparent 85%); color: var(--color-chumtoto); font-weight: 600; }
+        .filter-btn.active[data-group="虹コン"] { border-color: var(--color-2zicon); background: color-mix(in srgb, var(--color-2zicon), transparent 85%); color: var(--color-2zicon); font-weight: 600; }
+        .filter-btn.active[data-group="さよステ"] { border-color: var(--color-sayostay); background: color-mix(in srgb, var(--color-sayostay), transparent 85%); color: var(--color-sayostay); font-weight: 600; }
+        .filter-btn.active[data-group="きゅるして"] { border-color: var(--color-kyurushite); background: color-mix(in srgb, var(--color-kyurushite), transparent 85%); color: var(--color-kyurushite); font-weight: 600; }
+        .filter-btn.active[data-group="meme"] { border-color: var(--color-meme); background: color-mix(in srgb, var(--color-meme), transparent 85%); color: var(--color-meme); font-weight: 600; }
 
-        #main-content {
-            flex-grow: 1;
-            padding: 20px 40px;
-            overflow-y: auto;
+        /* Main List Container */
+        .content { padding: 16px 16px 40px; max-width: 800px; margin: 0 auto; }
+
+        .date-section { margin-bottom: 24px; }
+        .date-header {
+            font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #a0a0c0;
+            border-left: 3px solid #3a3a5c; padding-left: 10px; margin-bottom: 8px;
         }
 
-        #calendar {
-            max-width: 800px;
-            margin: 0 auto;
+        .event-card {
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.2s;
         }
+        .event-card:hover { transform: translateX(4px); }
 
-        /* リスト表示のカスタムスタイル */
-        .fc-list-day-cushion { background-color: #f3f4f6 !important; font-weight: 700 !important; }
-        .fc-list-event { cursor: pointer !important; }
-        .fc-list-event:hover td { background-color: #f9fafb !important; }
+        .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
+        .event-title { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 3px; color: #fff; }
+        .event-venue { font-size: 11px; color: #888; }
+
+        /* Group-specific Card Styles */
+        .card-ChumToto { background: linear-gradient(135deg, rgba(255,107,157,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,107,157,0.25); border-left: 3px solid var(--color-chumtoto); }
+        .card-ChumToto .group-label { color: var(--color-chumtoto); }
         
-        /* イベントバッジの調整 */
-        .fc-list-event-title { font-weight: 500; font-size: 0.95rem; }
-        .fc-list-event-dot { border-width: 5px !important; }
+        .card-虹コン { background: linear-gradient(135deg, rgba(123,97,255,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(123,97,255,0.25); border-left: 3px solid var(--color-2zicon); }
+        .card-虹コン .group-label { color: var(--color-2zicon); }
 
-        /* グループごとのドット色 */
-        .event-chumtoto .fc-list-event-dot { border-color: var(--color-chumtoto) !important; }
-        .event-2zicon .fc-list-event-dot { border-color: var(--color-2zicon) !important; }
-        .event-sayostay .fc-list-event-dot { border-color: var(--color-sayostay) !important; }
-        .event-kyurushite .fc-list-event-dot { border-color: var(--color-kyurushite) !important; }
-        .event-meme .fc-list-event-dot { border-color: var(--color-meme) !important; }
+        .card-さよステ { background: linear-gradient(135deg, rgba(0,201,167,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(0,201,167,0.25); border-left: 3px solid var(--color-sayostay); }
+        .card-さよステ .group-label { color: var(--color-sayostay); }
 
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            #sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 15px; }
-            #main-content { padding: 10px; }
-        }
+        .card-きゅるして { background: linear-gradient(135deg, rgba(255,184,0,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,184,0,0.25); border-left: 3px solid var(--color-kyurushite); }
+        .card-きゅるして .group-label { color: var(--color-kyurushite); }
+
+        .card-meme { background: linear-gradient(135deg, rgba(255,75,110,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,75,110,0.25); border-left: 3px solid var(--color-meme); }
+        .card-meme .group-label { color: var(--color-meme); }
     </style>
 </head>
 <body>
-    <aside id="sidebar">
-        <h1>SCHEDULE FILTER</h1>
-        <div class="filter-group">
-            <label class="filter-item"><input type="checkbox" checked value="ChumToto"> <span style="color: var(--color-chumtoto)">●</span> ChumToto</label>
-            <label class="filter-item"><input type="checkbox" checked value="虹コン"> <span style="color: var(--color-2zicon)">●</span> 虹コン</label>
-            <label class="filter-item"><input type="checkbox" checked value="さよステ"> <span style="color: var(--color-sayostay)">●</span> さよステ</label>
-            <label class="filter-item"><input type="checkbox" checked value="きゅるして"> <span style="color: var(--color-kyurushite)">●</span> きゅるして</label>
-            <label class="filter-item"><input type="checkbox" checked value="meme"> <span style="color: var(--color-meme)">●</span> meme tokyo.</label>
-        </div>
-    </aside>
 
-    <main id="main-content">
-        <div id="calendar"></div>
-    </main>
+<header>
+    <div class="header-top">2026年 DSPM統合スケジュール</div>
+    <div class="header-title">📅 SCHEDULE</div>
+    <div class="filter-group" id="filterGroup">
+        <button class="filter-btn active" data-group="ChumToto">チャムトト</button>
+        <button class="filter-btn active" data-group="虹コン">虹コン</button>
+        <button class="filter-btn active" data-group="さよステ">さよステ</button>
+        <button class="filter-btn active" data-group="きゅるして">きゅるして</button>
+        <button class="filter-btn active" data-group="meme">ミーム</button>
+    </div>
+</header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const calendarEl = document.getElementById('calendar');
+<div class="content" id="eventList">
+    </div>
 
-            const calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'listMonth', // 最初からリスト形式で表示
-                locale: 'ja',
-                height: 'auto',
-                headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
-                noEventsContent: '表示できる予定がありません',
-                events: './data.json?v=' + new Date().getTime(),
-                
-                eventDataTransform: function(ev) {
-                    if (ev.title.includes('ChumToto')) ev.className = 'event-chumtoto';
-                    if (ev.title.includes('虹コン')) ev.className = 'event-2zicon';
-                    if (ev.title.includes('さよステ')) ev.className = 'event-sayostay';
-                    if (ev.title.includes('きゅるして')) ev.className = 'event-kyurushite';
-                    if (ev.title.includes('meme')) ev.className = 'event-meme';
-                    return ev;
-                },
-                
-                eventClick: function(info) {
-                    if (info.event.url) {
-                        window.open(info.event.url, '_blank');
-                        info.jsEvent.preventDefault();
-                    }
-                }
-            });
+<script>
+    let allEvents = [];
+    const activeGroups = new Set(["ChumToto", "虹コン", "さよステ", "きゅるして", "meme"]);
 
-            calendar.render();
+    async function init() {
+        try {
+            const response = await fetch('./data.json?v=' + new Date().getTime());
+            allEvents = await response.json();
+            renderEvents();
+        } catch (e) {
+            console.error("データの読み込みに失敗しました", e);
+            document.getElementById('eventList').innerHTML = "イベントが見つかりません。";
+        }
+    }
 
-            // フィルタリング
-            document.querySelectorAll('.filter-item input').forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const activeGroups = Array.from(document.querySelectorAll('.filter-item input:checked')).map(cb => cb.value);
-                    calendar.getEvents().forEach(ev => {
-                        const isVisible = activeGroups.some(group => ev.title.includes(group));
-                        ev.setProp('display', isVisible ? 'auto' : 'none');
-                    });
-                });
-            });
+    function renderEvents() {
+        const listEl = document.getElementById('eventList');
+        listEl.innerHTML = "";
+
+        // 日付順にソート
+        const sortedEvents = allEvents.filter(ev => {
+            return Array.from(activeGroups).some(g => ev.title.includes(g));
+        }).sort((a, b) => a.start.localeCompare(b.start));
+
+        // 日付ごとにグループ化
+        const grouped = {};
+        sortedEvents.forEach(ev => {
+            if (!grouped[ev.start]) grouped[ev.start] = [];
+            grouped[ev.start].push(ev);
         });
-    </script>
+
+        if (Object.keys(grouped).length === 0) {
+            listEl.innerHTML = '<div style="text-align:center; color:#555; margin-top:60px;">表示するイベントがありません</div>';
+            return;
+        }
+
+        for (const date in grouped) {
+            const dateObj = new Date(date);
+            const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+            const dateHeader = `${dateObj.getMonth()+1}/${dateObj.getDate()}（${dayNames[dateObj.getDay()]}）`;
+
+            let dateHtml = `<div class="date-section"><div class="date-header">${dateHeader}</div>`;
+            
+            grouped[date].forEach(ev => {
+                let groupKey = "meme";
+                if(ev.title.includes("ChumToto")) groupKey = "ChumToto";
+                else if(ev.title.includes("虹コン")) groupKey = "虹コン";
+                else if(ev.title.includes("さよステ")) groupKey = "さよステ";
+                else if(ev.title.includes("きゅるして")) groupKey = "きゅるして";
+
+                const displayTitle = ev.title.replace(/\[.*?\]\s*/, '');
+
+                dateHtml += `
+                    <a href="${ev.url}" class="event-card card-${groupKey}" target="_blank">
+                        <div class="group-label">${groupKey.toUpperCase()}</div>
+                        <div class="event-title">${displayTitle}</div>
+                        <div class="event-venue">📍 詳細を確認</div>
+                    </a>
+                `;
+            });
+            dateHtml += `</div>`;
+            listEl.innerHTML += dateHtml;
+        }
+    }
+
+    // フィルタボタンのイベント
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const group = btn.getAttribute('data-group');
+            if (activeGroups.has(group)) {
+                activeGroups.delete(group);
+                btn.classList.remove('active');
+            } else {
+                activeGroups.add(group);
+                btn.classList.add('active');
+            }
+            renderEvents();
+        });
+    });
+
+    init();
+</script>
 </body>
 </html>
