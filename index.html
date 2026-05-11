@@ -2,13 +2,21 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Idol Schedule Merger</title>
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <!-- FullCalendarのCDN -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
     <style>
-        body { font-family: sans-serif; margin: 20px; }
-        #calendar { max-width: 900px; margin: 0 auto; }
-        .fc-event { cursor: pointer; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 10px; background-color: #f8f9fa; }
+        #calendar { max-width: 1000px; margin: 0 auto; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .fc-header-toolbar { margin-bottom: 1.5em !important; }
+        /* グループごとの色分け（お好みで調整してください） */
+        .fc-event { border: none !important; color: white !important; padding: 2px 4px; font-size: 0.85em; }
+        .group-ChumToto { background-color: #ff4757 !important; }
+        .group-虹コン { background-color: #ffa502 !important; }
+        .group-さよステ { background-color: #e84393 !important; }
+        .group-きゅるして { background-color: #1e90ff !important; }
+        .group-meme { background-color: #2f3542 !important; }
     </style>
 </head>
 <body>
@@ -20,10 +28,34 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 locale: 'ja',
-                events: './data.json', // Pythonが生成したデータを読み込む
+                height: 'auto',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,listMonth'
+                },
+                buttonText: {
+                    today: '今日',
+                    month: '月',
+                    list: 'リスト'
+                },
+                // './data.json' にすることで、同じ階層のファイルを確実に読み込む
+                // キャッシュ回避のためにタイムスタンプを付与
+                events: './data.json?v=' + new Date().getTime(),
+                
+                eventDataTransform: function(eventData) {
+                    // グループ名に応じたクラス名を付与して色分け
+                    if (eventData.title.includes('ChumToto')) eventData.className = 'group-ChumToto';
+                    if (eventData.title.includes('虹コン')) eventData.className = 'group-虹コン';
+                    if (eventData.title.includes('さよステ')) eventData.className = 'group-さよステ';
+                    if (eventData.title.includes('きゅるして')) eventData.className = 'group-きゅるして';
+                    if (eventData.title.includes('meme')) eventData.className = 'group-meme';
+                    return eventData;
+                },
+                
                 eventClick: function(info) {
                     if (info.event.url) {
-                        window.open(info.event.url);
+                        window.open(info.event.url, '_blank');
                         info.jsEvent.preventDefault();
                     }
                 }
