@@ -75,13 +75,36 @@ def scrape_2zicon(driver):
     return events
 
 def extract_2zicon_items(soup, name):
+    """虹コンのページからイベント項目を抽出する共通関数"""
     items_found = []
-    for item in soup.select('.info__item'):
-        l, d, t = item.select_one('a.info__link'), item.select_one('.info__date'), item.select_one('.info__text')
-        if l and d and t:
-            date_match = re.search(r'\d{4}-\d{2}-\d{2}', d.get_text(strip=True).replace('.', '-'))
+    base_url = "https://2zicon.tokyo"
+    
+    items = soup.select('.info__item')
+    for item in items:
+        link_tag = item.select_one('a.info__link')
+        date_tag = item.select_one('.info__date')
+        text_tag = item.select_one('.info__text')
+        if link_tag and date_tag and text_tag:
+            href = link_tag.get('href')
+            date_str = date_tag.get_text(strip=True).replace('.', '-')
+            title = text_tag.get_text(strip=True)
+            
+            # URLの重複防止ロジック
+            # すでに http から始まっている場合はそのまま、そうでなければドメインを付与
+            if href.startswith('http'):
+                full_url = href
+            else:
+                # 先頭が / で始まっていない場合も考慮
+                full_url = base_url + (href if href.startswith('/') else '/' + href)
+            
+            date_match = re.search(r'\d{4}-\d{2}-\d{2}', date_str)
             if date_match:
-                items_found.append({"title": f"[{name}] {t.get_text(strip=True)}", "start": date_match.group(), "url": "https://2zicon.tokyo" + l.get('href'), "allDay": True})
+                items_found.append({
+                    "title": f"[{name}] {title}", 
+                    "start": date_match.group(), 
+                    "url": full_url, 
+                    "allDay": True
+                })
     return items_found
 
 def scrape_sayostay(driver):
