@@ -1,12 +1,16 @@
 name: Daily Scraper
+
 on:
   schedule:
-    - cron: '0 0 * * *' # 毎日日本時間午前9時に実行
-  workflow_dispatch: # 手動実行も可能
+    # 毎日 0時, 6時, 12時, 18時（UTC）に実行
+    # UTC（世界標準時）で指定するため、日本時間のマイナス9時間で設定します
+    - cron: '0 15,21,3,9 * * *'
+  workflow_dispatch: # 手動実行ボタンも残しておきます
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # ...以下の処理（Pythonのセットアップやスクリプト実行、コミット）はそのまま
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
