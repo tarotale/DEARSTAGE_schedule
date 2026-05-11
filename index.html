@@ -3,56 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idol Schedule Merger</title>
-    <!-- FullCalendarのCDN -->
+    <title>IDOL SCHEDULE MANAGER</title>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 10px; background-color: #f8f9fa; }
-        #calendar { max-width: 1000px; margin: 0 auto; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .fc-header-toolbar { margin-bottom: 1.5em !important; }
-        /* グループごとの色分け（お好みで調整してください） */
-        .fc-event { border: none !important; color: white !important; padding: 2px 4px; font-size: 0.85em; }
-        .group-ChumToto { background-color: #ff4757 !important; }
-        .group-虹コン { background-color: #ffa502 !important; }
-        .group-さよステ { background-color: #e84393 !important; }
-        .group-きゅるして { background-color: #1e90ff !important; }
-        .group-meme { background-color: #2f3542 !important; }
+        :root {
+            --sidebar-width: 260px;
+            --primary-bg: #ffffff;
+            --secondary-bg: #f9fafb;
+            --border-color: #e5e7eb;
+            --text-main: #111827;
+            /* グループカラー */
+            --color-chumtoto: #ff4757;
+            --color-2zicon: #ffa502;
+            --color-sayostay: #e84393;
+            --color-kyurushite: #1e90ff;
+            --color-meme: #2f3542;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+        }
+
+        /* サイドバー */
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--secondary-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        h1 { font-size: 1.2rem; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
+
+        .filter-group { display: flex; flex-direction: column; gap: 12px; }
+        .filter-item { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; }
+        .filter-item input { width: 18px; height: 18px; cursor: pointer; }
+
+        /* カレンダーエリア */
+        #main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        #calendar {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* カレンダー自体のスタイル調整 */
+        .fc { --fc-border-color: var(--border-color); --fc-button-bg-color: #fff; --fc-button-text-color: #374151; --fc-button-border-color: var(--border-color); --fc-button-hover-bg-color: #f3f4f6; }
+        .fc-toolbar-title { font-size: 1.25rem !important; font-weight: 700; }
+        .fc-event { border: none !important; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; cursor: pointer; transition: opacity 0.2s; }
+        .fc-event:hover { opacity: 0.8; }
+
+        /* グループ別イベントカラー */
+        .event-chumtoto { background-color: var(--color-chumtoto) !important; }
+        .event-2zicon { background-color: var(--color-2zicon) !important; }
+        .event-sayostay { background-color: var(--color-sayostay) !important; }
+        .event-kyurushite { background-color: var(--color-kyurushite) !important; }
+        .event-meme { background-color: var(--color-meme) !important; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            #sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); box-sizing: border-box; }
+        }
     </style>
 </head>
 <body>
-    <div id="calendar"></div>
+    <aside id="sidebar">
+        <h1>SCHEDULE</h1>
+        <div class="filter-group">
+            <label class="filter-item"><input type="checkbox" checked value="ChumToto"> <span style="color: var(--color-chumtoto)">●</span> ChumToto</label>
+            <label class="filter-item"><input type="checkbox" checked value="虹コン"> <span style="color: var(--color-2zicon)">●</span> 虹コン</label>
+            <label class="filter-item"><input type="checkbox" checked value="さよステ"> <span style="color: var(--color-sayostay)">●</span> さよステ</label>
+            <label class="filter-item"><input type="checkbox" checked value="きゅるして"> <span style="color: var(--color-kyurushite)">●</span> きゅるして</label>
+            <label class="filter-item"><input type="checkbox" checked value="meme"> <span style="color: var(--color-meme)">●</span> meme tokyo.</label>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <div id="calendar"></div>
+    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+            const calendarEl = document.getElementById('calendar');
+            let allEvents = [];
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 locale: 'ja',
-                height: 'auto',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,listMonth'
-                },
-                buttonText: {
-                    today: '今日',
-                    month: '月',
-                    list: 'リスト'
-                },
-                // './data.json' にすることで、同じ階層のファイルを確実に読み込む
-                // キャッシュ回避のためにタイムスタンプを付与
+                headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listMonth' },
                 events: './data.json?v=' + new Date().getTime(),
-                
-                eventDataTransform: function(eventData) {
-                    // グループ名に応じたクラス名を付与して色分け
-                    if (eventData.title.includes('ChumToto')) eventData.className = 'group-ChumToto';
-                    if (eventData.title.includes('虹コン')) eventData.className = 'group-虹コン';
-                    if (eventData.title.includes('さよステ')) eventData.className = 'group-さよステ';
-                    if (eventData.title.includes('きゅるして')) eventData.className = 'group-きゅるして';
-                    if (eventData.title.includes('meme')) eventData.className = 'group-meme';
-                    return eventData;
+                eventDataTransform: function(ev) {
+                    // クラス名付与ロジック
+                    if (ev.title.includes('ChumToto')) ev.className = 'event-chumtoto';
+                    if (ev.title.includes('虹コン')) ev.className = 'event-2zicon';
+                    if (ev.title.includes('さよステ')) ev.className = 'event-sayostay';
+                    if (ev.title.includes('きゅるして')) ev.className = 'event-kyurushite';
+                    if (ev.title.includes('meme')) ev.className = 'event-meme';
+                    return ev;
                 },
-                
                 eventClick: function(info) {
                     if (info.event.url) {
                         window.open(info.event.url, '_blank');
@@ -60,7 +121,20 @@
                     }
                 }
             });
+
             calendar.render();
+
+            // フィルタリング機能
+            document.querySelectorAll('.filter-item input').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const activeGroups = Array.from(document.querySelectorAll('.filter-item input:checked')).map(cb => cb.value);
+                    
+                    calendar.getEvents().forEach(ev => {
+                        const isVisible = activeGroups.some(group => ev.title.includes(group));
+                        ev.setProp('display', isVisible ? 'auto' : 'none');
+                    });
+                });
+            });
         });
     </script>
 </body>
