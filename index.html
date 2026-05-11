@@ -36,7 +36,8 @@
         }
 
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .month-display { font-size: 11px; letter-spacing: 4px; color: var(--text-muted); text-transform: uppercase; }
+        /* 左上の表示：今日の日付スタイル */
+        .today-display { font-size: 11px; letter-spacing: 2px; color: #fff; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--color-2zicon); padding-bottom: 2px; }
         
         .nav-controls { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
         .current-month-title { font-size: 24px; font-weight: 700; letter-spacing: 1px; min-width: 160px; }
@@ -108,7 +109,7 @@
 
 <header>
     <div class="header-top">
-        <div class="month-display" id="monthLabel">MAY 2026</div>
+        <div class="today-display" id="todayLabel">MAY 11, 2026</div>
         <div class="view-toggle">
             <button class="toggle-btn active" id="listToggle">リスト</button>
             <button class="toggle-btn" id="calendarToggle">カレンダー</button>
@@ -137,8 +138,9 @@
     let viewMode = "list";
     let selectedDate = null;
     
-    // 表示中の年月を管理
-    let displayDate = new Date(2026, 4, 1); // デフォルト 2026年5月 (JSの月は0始まり)
+    // 現在のシステム時刻に基づいて初期設定
+    const now = new Date();
+    let displayDate = new Date(now.getFullYear(), now.getMonth(), 1);
     
     const activeGroups = new Set(["ChumToto", "虹コン", "さよステ", "きゅるして", "meme"]);
     const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
@@ -146,11 +148,19 @@
     const groupColors = { ChumToto: "#FF6B9D", "虹コン": "#7B61FF", "さよステ": "#00C9A7", "きゅるして": "#FFB800", meme: "#FF4B6E" };
 
     const getTodayStr = () => {
-        const now = new Date();
-        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     };
 
+    // 左上の「当日日付」ラベルを更新
+    function updateTodayLabel() {
+        const d = new Date();
+        const label = `${monthNamesEn[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+        document.getElementById('todayLabel').innerText = label;
+    }
+
     async function init() {
+        updateTodayLabel();
         const response = await fetch('./data.json?v=' + new Date().getTime());
         allEvents = await response.json();
         updateHeader();
@@ -159,7 +169,7 @@
 
     function changeMonth(delta) {
         displayDate.setMonth(displayDate.getMonth() + delta);
-        selectedDate = null; // 月を変えたら選択を解除
+        selectedDate = null;
         updateHeader();
         render(true);
     }
@@ -168,7 +178,6 @@
         const y = displayDate.getFullYear();
         const m = displayDate.getMonth();
         document.getElementById('currentMonthTitle').innerText = `${y}年 ${m + 1}月`;
-        document.getElementById('monthLabel').innerText = `${monthNamesEn[m]} ${y}`;
     }
 
     function render(shouldScroll = false) {
@@ -178,7 +187,6 @@
         const y = displayDate.getFullYear();
         const m = displayDate.getMonth();
         
-        // 表示中の月のイベントのみにフィルタリング
         const filtered = allEvents.filter(ev => {
             const evDate = new Date(ev.start);
             const isSameMonth = evDate.getFullYear() === y && evDate.getMonth() === m;
@@ -224,7 +232,13 @@
         if (shouldScroll && closestDate) {
             setTimeout(() => {
                 const target = document.getElementById(`date-${closestDate}`);
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    window.scrollTo({
+                        top: target.offsetTop - headerHeight - 20,
+                        behavior: 'smooth'
+                    });
+                }
             }, 100);
         }
     }
