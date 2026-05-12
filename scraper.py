@@ -22,43 +22,40 @@ def setup_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def get_detail_info(driver, url):
-    """詳細ページから会場と時間を抽出する（エラー耐性強化版）"""
+    """詳細ページから会場と時間を抽出する（虹コン新構造・memeバグ修正対応）"""
     venue = "詳細を確認"
     time_info = ""
     try:
         driver.get(url)
-        # bodyタグが表示されるまで待つ（確実性重視）
         wait = WebDriverWait(driver, 10)
         wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
         time.sleep(2)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # 1. 構造化タグ（さよステ・memeの一部・Tribe系）
+        # 1. 構造化タグ優先（さよステ・meme・Tribe系共通）
         v_el = soup.select_one('.p-clubScheduleArticle__place__text span, .p-clubScheduleDetail__venue, .tribe-events-pro-venue__name, .tribe-venue')
         t_el = soup.select_one('.p-clubScheduleArticle__description__item, .p-clubScheduleDetail__time, .tribe-events-pro-full-date, .tribe-events-schedule')
         if v_el: venue = v_el.get_text(strip=True)
         if t_el: time_info = t_el.get_text(strip=True)
         
-        # 2. 本文テキスト解析（虹コン・meme直接書き）
-        content = soup.select_one('.article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description')
+        # 2. 本文テキスト解析（虹コン新構造 `common__article` 対応）
+        content = soup.select_one('.common__article, .article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description')
+        
         if content:
-            # 虹コン：見出しベース
-            h4_tags = soup.select('h4')
+            # 虹コン：h4見出し「日時」「場所」をチェック
+            h4_tags = content.select('h4')
             for h4 in h4_tags:
-                text = h4.get_text()
+                label = h4.get_text(strip=True)
                 p_next = h4.find_next_sibling('p')
                 if not p_next: continue
-                if "日時/場所" in text:
-                    lines = [ln.strip() for ln in p_next.get_text("\n").split("\n") if ln.strip()]
-                    if len(lines) >= 1: time_info = re.sub(r'^\d+/\d+\(.\)\s*', '', lines[0])
-                    if len(lines) >= 2: venue = lines[1]
-                elif "日時" in text:
-                    time_info = re.sub(r'^\d{4}年\d{1,2}月\d{1,2}日\(.\)\s*', '', p_next.get_text(strip=True))
-                elif "会場" in text:
+                
+                if "日時" in label:
+                    time_info = p_next.get_text(strip=True)
+                elif "場所" in label or "会場" in label:
                     venue = p_next.get_text(strip=True)
 
-            # meme：■記号ベース（30分バグ修正済み）
+            # meme：■記号ベース（30分バグ修正済み：re.subでコロン以降を保持）
             if venue == "詳細を確認" or not time_info:
                 for line in content.get_text("\n").split("\n"):
                     line = line.strip()
@@ -67,10 +64,12 @@ def get_detail_info(driver, url):
                     if "■時間" in line:
                         time_info = re.sub(r'^■時間[：:]\s*', '', line).strip()
 
-        # 最終手段：dateTime等から取得
+        # 3. 最終手段：dateTime等から取得
         if not time_info:
             dt_el = soup.select_one('.p-clubScheduleArticle__dateTime span, .article__date')
-            if dt_el: time_info = re.sub(r'^\d{4}[/.]\d{2}[/.]\d{2}\(.\)\s*', '', dt_el.get_text(strip=True))
+            if dt_el: 
+                # 日付部分を除去して時間のみ抽出を試みる
+                time_info = re.sub(r'^\d{4}[/.]\d{2}[/.]\d{2}\(.\)\s*', '', dt_el.get_text(strip=True))
 
     except Exception as e:
         print(f"Detail parse warning at {url}: {e}")
@@ -148,11 +147,13 @@ def scrape_2zicon(driver):
                 
                 title = text_el.get_text(strip=True)
                 f_url = base_url + link.get('href') if link.get('href').startswith('/') else link.get('href')
-                d_match = re.search(r'\d{4}-\d{2}-\d{2}', d_el.get_text(strip=True).replace('.', '-'))
+                # 虹コンの日付形式に対応
+                date_text = d_el.get_text(strip=True).replace('.', '-')
+                date_match = re.search(r'\d{4}-\d{2}-\d{2}', date_text)
                 
-                if d_match:
+                if date_match:
                     v, tm = get_detail_info(driver, f_url)
-                    events.append({"title": f"[{name}] {title}", "start": d_match.group(), "url": f_url, "venue": v, "time": tm, "allDay": True})
+                    events.append({"title": f"[{name}] {title}", "start": date_match.group(), "url": f_url, "venue": v, "time": tm, "allDay": True})
 
             next_btn = soup.select_one('a.pagi__btn--next')
             current_url = (base_url + next_btn.get('href')) if next_btn and next_btn.has_attr('href') else None
@@ -178,11 +179,12 @@ def scrape_2zicon(driver):
                 
                 title = text_el.get_text(strip=True)
                 f_url = base_url + link.get('href') if link.get('href').startswith('/') else link.get('href')
-                d_match = re.search(r'\d{4}-\d{2}-\d{2}', d_el.get_text(strip=True).replace('.', '-'))
+                date_text = d_el.get_text(strip=True).replace('.', '-')
+                date_match = re.search(r'\d{4}-\d{2}-\d{2}', date_text)
                 
-                if d_match:
+                if date_match:
                     v, tm = get_detail_info(driver, f_url)
-                    events.append({"title": f"[{name}] {title}", "start": d_match.group(), "url": f_url, "venue": v, "time": tm, "allDay": True})
+                    events.append({"title": f"[{name}] {title}", "start": date_match.group(), "url": f_url, "venue": v, "time": tm, "allDay": True})
         except Exception as e:
             print(f"{name} {target.year}/{target.month} エラー: {e}")
             continue
