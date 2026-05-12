@@ -21,31 +21,32 @@ def setup_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def get_detail_info(driver, url):
-    """詳細ページから会場と時間を抽出する（タイトルは一覧から引き継ぐため、ここでは補完のみ）"""
+    """詳細ページから会場と時間を抽出する（全グループ・全パターン対応版）"""
     venue = "詳細を確認"
     time_info = ""
     try:
         driver.get(url)
-        # 記事内容または特定のクラスが出るまで待機
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".article__content, .body, .p-clubScheduleArticle, .tribe-events-single-event-description, .c-clubWysiwyg")))
+        # 各種タイトル・本文要素のいずれかが出るまで待機
+        wait = WebDriverWait(driver, 10)
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".article__content, .body, .p-clubScheduleArticle, .tribe-events-single-event-description, .c-clubWysiwyg")))
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # --- DSPM系 (さよステ/meme) / Tribe系 ---
+        # 1. 構造化タグ（さよステ・memeの一部・Tribe系）から取得
         v_el = soup.select_one('.p-clubScheduleArticle__place__text span, .p-clubScheduleDetail__venue, .tribe-events-pro-venue__name')
         t_el = soup.select_one('.p-clubScheduleArticle__description__item, .p-clubScheduleDetail__time, .tribe-events-pro-full-date')
         if v_el: venue = v_el.get_text(strip=True)
         if t_el: time_info = t_el.get_text(strip=True)
         
-        # dateTimeからの時間抽出（さよステ等）
+        # dateTimeしかない場合のフォールバック（さよステ等）
         if not time_info:
             dt_el = soup.select_one('.p-clubScheduleArticle__dateTime span')
             if dt_el: time_info = re.sub(r'^\d{4}/\d{2}/\d{2}\(.\)\s*', '', dt_el.get_text(strip=True))
 
-        # --- 虹コン / 本文直接書きパターン ---
-        content = soup.select_one('.article__content, .body, .c-clubWysiwyg')
+        # 2. 本文テキスト解析（虹コン・meme直接書き）
+        content = soup.select_one('.article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description')
         if content:
-            # 見出しタグをチェック
+            # 虹コン：見出し(h4)ベース
             h4_tags = soup.select('h4')
             for h4 in h4_tags:
                 h4_text = h4.get_text()
@@ -60,13 +61,14 @@ def get_detail_info(driver, url):
                 elif "会場" in h4_text:
                     venue = p_next.get_text(strip=True)
 
-            # meme等の「■」書き込みパターン
+            # meme：■記号ベース（30分バグ修正済み：正規表現でキーワードだけ消す）
             if venue == "詳細を確認" or not time_info:
                 for line in content.get_text("\n").split("\n"):
+                    line = line.strip()
                     if "■場所" in line or "■会場" in line:
-                        venue = line.split("：")[-1].split(":")[-1].strip()
+                        venue = re.sub(r'^■(場所|会場)[：:]\s*', '', line).strip()
                     if "■時間" in line:
-                        time_info = line.split("：")[-1].split(":")[-1].strip()
+                        time_info = re.sub(r'^■時間[：:]\s*', '', line).strip()
 
     except Exception as e:
         print(f"Detail parse error at {url}: {e}")
@@ -74,26 +76,40 @@ def get_detail_info(driver, url):
     return venue, time_info
 
 def scrape_tribe(driver, name, url):
+    """ChumToto / きゅるして巡回ロジック"""
     events = []
     try:
+        print(f"{name} 一覧取得開始...")
         driver.get(url)
         WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".tribe-events-calendar-month__day")))
-        time.sleep(5)
+        time.sleep(5) # カレンダー描画待ち
+        
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        for day in soup.select('.tribe-events-calendar-month__day'):
-            dt = day.select_one('time').get('datetime') if day.select_one('time') else None
-            if not dt: continue
+        links_data = []
+        days = soup.select('.tribe-events-calendar-month__day')
+        for day in days:
+            time_tag = day.select_one('time')
+            if not time_tag or not time_tag.has_attr('datetime'): continue
+            dt = time_tag.get('datetime')
             for a in day.select('a'):
-                if a.get('href') and ("event-title-link" in str(a.get('class')) or "event-link" in str(a.get('class'))):
+                href = a.get('href')
+                if href and ("event-title-link" in str(a.get('class')) or "event-link" in str(a.get('class'))):
                     title = a.get_text(strip=True)
-                    v, tm = get_detail_info(driver, a.get('href'))
-                    events.append({"title": f"[{name}] {title}", "start": dt, "url": a.get('href'), "venue": v, "time": tm, "allDay": True})
-                    driver.back() # 一覧に戻る
-                    time.sleep(2)
-    except: pass
+                    if title:
+                        links_data.append({"url": href, "date": dt, "title": title})
+
+        unique_links = {l['url']: l for l in links_data}.values()
+        print(f"-> {name}: {len(unique_links)}件解析")
+
+        for item in unique_links:
+            v, tm = get_detail_info(driver, item['url'])
+            events.append({"title": f"[{name}] {item['title']}", "start": item['date'], "url": item['url'], "venue": v, "time": tm, "allDay": True})
+    except Exception as e:
+        print(f"Error in scrape_tribe ({name}): {e}")
     return events
 
 def scrape_2zicon(driver):
+    """虹コン：1年分巡回"""
     name = "虹コン"
     base = "https://2zicon.tokyo"
     events = []
@@ -108,7 +124,7 @@ def scrape_2zicon(driver):
             text_el = it.select_one('.info__text')
             if not link or not text_el: continue
             
-            title = text_el.get_text(strip=True) # 一覧からタイトルを取得
+            title = text_el.get_text(strip=True) # タイトルをここで確保
             f_url = link.get('href') if link.get('href').startswith('http') else base + link.get('href')
             d_txt = it.select_one('.info__date').get_text()
             d_match = re.search(r'\d{4}.\d{2}.\d{2}', d_txt.replace('.', '-'))
@@ -118,6 +134,7 @@ def scrape_2zicon(driver):
     return events
 
 def scrape_dspm(driver, name, base_url, menu_path):
+    """さよステ / meme 巡回"""
     events = []
     now = datetime.now()
     for i in range(0, 13):
@@ -125,10 +142,11 @@ def scrape_dspm(driver, name, base_url, menu_path):
         t_m = f"{target.year}-{str(target.month).zfill(2)}"
         u = f"{base_url}{menu_path}?start={t_m}-01" if "schedules" in menu_path else f"{base_url}{menu_path}/{target.year}/{target.month}"
         driver.get(u)
-        time.sleep(5)
+        time.sleep(6)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
+        
         items = []
-        if "vertical_calendar" in menu_path: # meme
+        if "vertical_calendar" in menu_path: # memeパターン
             for li in soup.select('li.list-group-item'):
                 t_tag, inner = li.select_one('time'), li.select_one('.fc-event-inner')
                 if not t_tag or not inner: continue
@@ -138,7 +156,7 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 ds = f"{dm[0]}-{dm[1].zfill(2)}-{dm[2].zfill(2)}"
                 for a in li.select('a.tag-event, a.tag-live'):
                     items.append({"url": base_url + a.get('href'), "date": ds, "title": title})
-        else: # sayostay
+        else: # sayostayパターン (重複防止処理)
             for td in soup.select('td.fc-daygrid-day'):
                 ds = td.get('data-date')
                 if not ds or not ds.startswith(t_m): continue
@@ -154,12 +172,17 @@ def scrape_dspm(driver, name, base_url, menu_path):
 def main():
     driver = setup_driver()
     all_data = []
+    
+    # 5グループ実行
     all_data.extend(scrape_tribe(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
     all_data.extend(scrape_tribe(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     all_data.extend(scrape_2zicon(driver))
     all_data.extend(scrape_dspm(driver, "さよステ", "https://sayostay.dspm.jp", "/schedules/menu/18610"))
     all_data.extend(scrape_dspm(driver, "meme", "https://www.memetokyo.com", "/vertical_calendar"))
+    
     driver.quit()
+    
+    # 重複排除
     unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(unique_events, f, ensure_ascii=False, indent=2)
