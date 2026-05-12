@@ -248,4 +248,13 @@ def main():
     
     driver.quit()
     
-    # 全データから重複（タイトルと日付
+    # 全データから重複（タイトルと日付が完全に一致するもの）を排除
+    unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
+    
+    with open('data.json', 'w', encoding='utf-8') as f:
+        json.dump(unique_events, f, ensure_ascii=False, indent=2)
+        
+    print(f"全工程完了。合計 {len(unique_events)} 件のデータを保存しました。")
+
+if __name__ == "__main__":
+    main()
