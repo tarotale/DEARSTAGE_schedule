@@ -124,7 +124,7 @@
     "start": "2026-05-02",
     "url": "https://www.kyurushite.com/event/704/",
     "venue": "幕張イベントホール",
-    "time": "2026.05.02-2026.05.03",
+    "time": "開場1600 開演1700",
     "allDay": true
   },
   {
@@ -132,7 +132,7 @@
     "start": "2026-05-03",
     "url": "https://www.kyurushite.com/event/704/",
     "venue": "幕張イベントホール",
-    "time": "2026.05.02-2026.05.03",
+    "time": "開場1600 開演1700",
     "allDay": true
   },
   {
@@ -156,7 +156,7 @@
     "start": "2026-05-23",
     "url": "https://www.kyurushite.com/event/662/",
     "venue": "都内某所",
-    "time": "2026.05.23",
+    "time": "1200〜1800前後",
     "allDay": true
   },
   {
@@ -164,7 +164,7 @@
     "start": "2026-05-29",
     "url": "https://www.kyurushite.com/event/742/",
     "venue": "EX THEATER ROPPONGI",
-    "time": "2026.05.29",
+    "time": "開場1700 開演1800",
     "allDay": true
   },
   {
@@ -172,7 +172,7 @@
     "start": "2026-05-31",
     "url": "https://www.kyurushite.com/event/687/",
     "venue": "Zepp DiverCity（TOKYO）",
-    "time": "2026.05.31",
+    "time": "＜1 部＞1000/1100＜2 部＞1630/1730きゅるりんってしてみて は＜2 部＞『SUPER LIVE 豪華共演者によるオムニバスライブ』に出演！",
     "allDay": true
   },
   {
@@ -188,7 +188,7 @@
     "start": "2026-06-13",
     "url": "https://www.kyurushite.com/event/612/",
     "venue": "COMTEC PORTBASE(名古屋)",
-    "time": "2026.06.13",
+    "time": "開場1545/開演1630",
     "allDay": true
   },
   {
@@ -196,15 +196,15 @@
     "start": "2026-06-20",
     "url": "https://www.kyurushite.com/event/825/",
     "venue": "神戸国際会館",
-    "time": "2026.06.20",
+    "time": "開場1600 開演1700",
     "allDay": true
   },
   {
     "title": "[きゅるして] 島村嬉唄生誕祭  Welcome to a rocking live show! ～忘れられない夜にしてあげる♡〜",
     "start": "2026-06-24",
     "url": "https://www.kyurushite.com/event/715/",
-    "venue": "Spotify O-EAST",
-    "time": "2026.06.24",
+    "venue": "＜②後日配送でのお受け取り＞※推奨詳細は後日ご案内いたします。",
+    "time": "開場1730 開演1830",
     "allDay": true
   },
   {
@@ -236,7 +236,7 @@
     "start": "2026-05-02",
     "url": "https://2zicon.tokyo/information/gwdspmshizuoka/",
     "venue": "ARTIE/LIVLIV",
-    "time": "5/2(土)OPEN 1800 / START 1830",
+    "time": "",
     "allDay": true
   },
   {
@@ -244,7 +244,7 @@
     "start": "2026-05-02",
     "url": "https://2zicon.tokyo/information/gameonshizuoka/",
     "venue": "ARTIE",
-    "time": "5/2(土)OPEN 1130 / START 1200",
+    "time": "",
     "allDay": true
   },
   {
@@ -324,7 +324,7 @@
     "start": "2026-05-13",
     "url": "https://2zicon.tokyo/information/calling-soul-4/",
     "venue": "六行会ホール〒140-0001 東京都品川区北品川2-32-3",
-    "time": "2026 年 5 月 13 日（水）〜5 月 17 日（日）",
+    "time": "",
     "allDay": true
   },
   {
@@ -452,7 +452,7 @@
     "start": "2026-05-31",
     "url": "https://2zicon.tokyo/information/jam-2026-day2/",
     "venue": "Zepp DiverCity(TOKYO)",
-    "time": "2026年5月31日(日)Day2＜1 部＞1000/1100 ＜2 部＞1630/1730※虹のコンキスタドールの出演は2部のみになります",
+    "time": "",
     "allDay": true
   },
   {
@@ -460,7 +460,7 @@
     "start": "2026-06-01",
     "url": "https://2zicon.tokyo/information/soundstockvol-12/",
     "venue": "Spotify O-EAST",
-    "time": "2026年6月1日(月)OPEN 1400 START 1430",
+    "time": "",
     "allDay": true
   },
   {
@@ -516,7 +516,7 @@
     "start": "2026-07-02",
     "url": "https://2zicon.tokyo/information/stage_rose/",
     "venue": "六行会ホール〒140-0001 東京都品川区北品川2-32-3",
-    "time": "2026年7月2日(木)～7月12日(日)",
+    "time": "",
     "allDay": true
   },
   {
@@ -524,7 +524,7 @@
     "start": "2026-07-04",
     "url": "https://2zicon.tokyo/information/natsuzome2026/",
     "venue": "幕張海浜公園Gブロック特設会場",
-    "time": "7/4(土)・7/5(日) OPEN 900 / START 1000※出演日は後日お知らせします",
+    "time": "",
     "allDay": true
   },
   {
@@ -556,7 +556,7 @@
     "start": "2026-08-10",
     "url": "https://2zicon.tokyo/information/0810neo/",
     "venue": "Spotify O-EAST / Spotify O-WEST / Spotify O-nest / Spotify O-Crest / duo MUSIC EXCHANGE / clubasia / WOMB LIVE / SHIBUYA RING / SHIBUYA DESEO / Veats Shibuya / SHIBUYA VIDENT / GRIT at Shibuya",
-    "time": "2026年8月10日(月)OPEN 1100 START 1130（予定）",
+    "time": "",
     "allDay": true
   },
   {
@@ -564,7 +564,7 @@
     "start": "2026-09-02",
     "url": "https://2zicon.tokyo/information/littlearmoryst/",
     "venue": "六行会ホール〒140-0001 東京都品川区北品川2-32-3",
-    "time": "9 月 2 日（水）～6 日（日）",
+    "time": "",
     "allDay": true
   },
   {
@@ -572,7 +572,7 @@
     "start": "2026-11-03",
     "url": "https://2zicon.tokyo/information/garafes20261103/",
     "venue": "Shibuya LOVEZ",
-    "time": "2026年11月3日(火・祝)時間の詳細につきましては後日発表いたします。",
+    "time": "",
     "allDay": true
   },
   {
