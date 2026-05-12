@@ -22,7 +22,7 @@ def setup_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def get_detail_info(driver, url):
-    """詳細ページから会場と時間を抽出する（5グループすべての特殊構造に対応）"""
+    """詳細ページから会場と時間を抽出する（きゅるしての時間取得バグ修正版）"""
     venue = "詳細を確認"
     time_info = ""
     try:
@@ -33,52 +33,49 @@ def get_detail_info(driver, url):
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # 1. 構造化タグ優先（さよステ・Tribe系専用クラス）
+        # 1. 構造化タグ優先
         v_el = soup.select_one('.p-clubScheduleArticle__place__text span, .p-clubScheduleDetail__venue, .tribe-events-pro-venue__name, .tribe-venue')
         t_el = soup.select_one('.p-clubScheduleArticle__description__item, .p-clubScheduleDetail__time, .tribe-events-pro-full-date, .tribe-events-schedule')
         if v_el: venue = v_el.get_text(strip=True)
         if t_el: time_info = t_el.get_text(strip=True)
         
-        # 2. 本文テキスト解析（虹コン・meme・ChumToto・きゅるして）
+        # 2. 本文テキスト解析
         content = soup.select_one('.common__article, .article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description, .p-clubScheduleArticle__description')
         
         if content:
             # --- パターンA: 見出し(h4, strong)と内容が分かれている ---
-            # 虹コンやきゅるしてに多い
             for tag in content.find_all(['h4', 'strong']):
                 label = tag.get_text(strip=True)
+                
                 # 直後のテキスト、または次のタグを取得
                 data = ""
                 if tag.next_sibling and isinstance(tag.next_sibling, str):
                     data = tag.next_sibling.strip()
                 
-                # 次のpタグやspanタグもチェック
                 if not data or data in ["：", ":"]:
                     next_el = tag.find_next(['p', 'span'])
                     if next_el: data = next_el.get_text(strip=True)
 
-                if "日時" in label or "日程" in label or "時間" in label:
-                    if not time_info or time_info == "":
-                        time_info = data.replace("：", "").replace(":", "").strip()
+                # --- きゅるして対策: 「日程」は無視し、「時間」を優先的に取得 ---
+                if "時間" in label or "公演時間" in label:
+                    time_info = data.replace("：", "").replace(":", "").strip()
+                elif ("日時" in label) and not time_info: # 時間がまだ取れていない場合のみ日時をチェック
+                    time_info = data.replace("：", "").replace(":", "").strip()
                 elif "場所" in label or "会場" in label:
-                    if venue == "詳細を確認":
-                        venue = data.replace("：", "").replace(":", "").strip()
+                    venue = data.replace("：", "").replace(":", "").strip()
 
-            # --- パターンB: 1つのタグ内に改行区切りで書かれている ---
-            # ChumTotoやmemeに多い
-            if venue == "詳細を確認" or not time_info:
+            # --- パターンB: 1つのタグ内に改行区切りで書かれている（ChumTotoやmemeなど） ---
+            if venue == "詳細を確認" or not time_info or time_info == "":
                 lines = [line.strip() for line in content.get_text("\n").split("\n") if line.strip()]
                 for line in lines:
-                    # 会場の抽出（正規表現で「項目：内容」を分離）
                     if any(k in line for k in ["■場所", "■会場", "会場：", "会場:", "場所：", "場所:"]):
                         res = re.sub(r'^(■場所|■会場|会場|場所)[：:]\s*', '', line).strip()
                         if res: venue = res
-                    # 時間の抽出
                     if any(k in line for k in ["■時間", "時間：", "時間:", "公演時間"]):
                         res = re.sub(r'^(■時間|公演時間|時間)[：:]\s*', '', line).strip()
                         if res: time_info = res
 
-        # 3. 最終フォールバック：dateTime等
+        # 3. 最終フォールバック
         if not time_info:
             dt_el = soup.select_one('.p-clubScheduleArticle__dateTime span, .article__date')
             if dt_el: 
