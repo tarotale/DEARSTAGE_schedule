@@ -3,340 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSPM SCHEDULE - MANGER</title>
+    <title>DEARSTAGE Schedule Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #12121e 50%, #0a0a0f 100%);
-            --header-gradient: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            --color-chumtoto: #FF6B9D;
-            --color-2zicon: #7B61FF;
-            --color-sayostay: #00C9A7;
-            --color-kyurushite: #FFB800;
-            --color-meme: #FF4B6E;
-            --text-main: #f0f0f8;
-            --text-muted: #7b7b9a;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333;
+            --text-muted: #666;
+            --nijicon: #ff3e7e;
+            --sayostay: #4da6ff;
+            --meme: #9d4dff;
+            --chumtoto: #ff9f43;
+            --kyurushite: #1dd1a1;
         }
 
         body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
             margin: 0;
-            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
-            background: var(--bg-gradient);
+            padding: 20px;
             color: var(--text-main);
-            min-height: 100vh;
         }
 
         header {
-            background: var(--header-gradient);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 20px 24px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        /* 左上の表示：今日の日付スタイル */
-        .today-display { font-size: 11px; letter-spacing: 2px; color: #fff; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--color-2zicon); padding-bottom: 2px; }
+        h1 {
+            font-size: 1.5rem;
+            color: #444;
+        }
+
+        #calendar {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* カレンダー内のイベント表示 */
+        .fc-event {
+            border: none !important;
+            padding: 2px 4px;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+
+        /* リスト表示（カード型） */
+        .event-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            display: block;
+            text-decoration: none;
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 6px solid #ccc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .group-label {
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .event-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .event-detail-item {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 3px;
+        }
+
+        /* グループ別カラー設定 */
+        .card-nijicon { border-left-color: var(--nijicon); }
+        .card-nijicon .group-label { color: var(--nijicon); }
         
-        .nav-controls { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
-        .current-month-title { font-size: 24px; font-weight: 700; letter-spacing: 1px; min-width: 160px; }
-        
-        .nav-btn {
-            background: rgba(255,255,255,0.1); border: none; color: #fff;
-            width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        .card-sayostay { border-left-color: var(--sayostay); }
+        .card-sayostay .group-label { color: var(--sayostay); }
+
+        .card-meme { border-left-color: var(--meme); }
+        .card-meme .group-label { color: var(--meme); }
+
+        .card-chumtoto { border-left-color: var(--chumtoto); }
+        .card-chumtoto .group-label { color: var(--chumtoto); }
+
+        .card-kyurushite { border-left-color: var(--kyurushite); }
+        .card-kyurushite .group-label { color: var(--kyurushite); }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .fc-header-toolbar { flex-direction: column; gap: 10px; }
         }
-        .nav-btn:hover { background: rgba(255,255,255,0.2); }
-
-        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-        .filter-btn {
-            padding: 4px 12px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.15);
-            background: transparent; color: #666; font-size: 12px; cursor: pointer; transition: all 0.2s;
-        }
-        .filter-btn.active[data-group="ChumToto"] { border-color: var(--color-chumtoto); background: color-mix(in srgb, var(--color-chumtoto), transparent 85%); color: var(--color-chumtoto); font-weight: 600; }
-        .filter-btn.active[data-group="虹コン"] { border-color: var(--color-2zicon); background: color-mix(in srgb, var(--color-2zicon), transparent 85%); color: var(--color-2zicon); font-weight: 600; }
-        .filter-btn.active[data-group="さよステ"] { border-color: var(--color-sayostay); background: color-mix(in srgb, var(--color-sayostay), transparent 85%); color: var(--color-sayostay); font-weight: 600; }
-        .filter-btn.active[data-group="きゅるして"] { border-color: var(--color-kyurushite); background: color-mix(in srgb, var(--color-kyurushite), transparent 85%); color: var(--color-kyurushite); font-weight: 600; }
-        .filter-btn.active[data-group="meme"] { border-color: var(--color-meme); background: color-mix(in srgb, var(--color-meme), transparent 85%); color: var(--color-meme); font-weight: 600; }
-
-        .view-toggle { display: flex; gap: 4px; }
-        .toggle-btn {
-            padding: 5px 14px; border-radius: 6px; border: none; background: transparent;
-            color: #666; font-size: 12px; cursor: pointer;
-        }
-        .toggle-btn.active { background: rgba(255,255,255,0.15); color: #fff; }
-
-        .content { padding: 16px 16px 40px; max-width: 800px; margin: 0 auto; }
-
-        /* List View */
-        .date-section { margin-bottom: 24px; scroll-margin-top: 180px; }
-        .date-header { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #a0a0c0; border-left: 3px solid #3a3a5c; padding-left: 10px; margin-bottom: 8px; }
-        .date-header.today { color: #fff; border-left-color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
-        .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; }
-        .event-card:hover { transform: translateX(4px); }
-        .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
-        .event-title { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 3px; color: #fff; }
-        .event-venue { font-size: 11px; color: #888; }
-
-        /* Group Card Styles */
-        .card-ChumToto { background: linear-gradient(135deg, rgba(255,107,157,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,107,157,0.25); border-left-color: var(--color-chumtoto); }
-        .card-ChumToto .group-label { color: var(--color-chumtoto); }
-        .card-虹コン { background: linear-gradient(135deg, rgba(123,97,255,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(123,97,255,0.25); border-left-color: var(--color-2zicon); }
-        .card-虹コン .group-label { color: var(--color-2zicon); }
-        .card-さよステ { background: linear-gradient(135deg, rgba(0,201,167,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(0,201,167,0.25); border-left-color: var(--color-sayostay); }
-        .card-さよステ .group-label { color: var(--color-sayostay); }
-        .card-きゅるして { background: linear-gradient(135deg, rgba(255,184,0,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,184,0,0.25); border-left-color: var(--color-kyurushite); }
-        .card-きゅるして .group-label { color: var(--color-kyurushite); }
-        .card-meme { background: linear-gradient(135deg, rgba(255,75,110,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,75,110,0.25); border-left-color: var(--color-meme); }
-        .card-meme .group-label { color: var(--color-meme); }
-
-        /* Calendar View */
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 20px; }
-        .calendar-weekday { text-align: center; font-size: 11px; color: #888; padding: 6px 0; font-weight: 600; }
-        .calendar-day { min-height: 52px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); padding: 4px; cursor: pointer; position: relative; }
-        .calendar-day.empty { background: transparent; cursor: default; border: none; }
-        .calendar-day.selected { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
-        .calendar-day.is-today { border: 1.5px solid rgba(255,255,255,0.4); }
-        .day-num { font-size: 12px; color: #ccc; text-align: center; margin-bottom: 4px; }
-        .dot-container { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
-        .dot { width: 6px; height: 6px; border-radius: 50%; }
-
-        #selected-day-events { margin-top: 20px; padding: 14px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="header-top">
-        <div class="today-display" id="todayLabel">MAY 11, 2026</div>
-        <div class="view-toggle">
-            <button class="toggle-btn active" id="listToggle">リスト</button>
-            <button class="toggle-btn" id="calendarToggle">カレンダー</button>
-        </div>
-    </div>
-    
-    <div class="nav-controls">
-        <button class="nav-btn" onclick="changeMonth(-1)">◀</button>
-        <div class="current-month-title" id="currentMonthTitle">2026年 5月</div>
-        <button class="nav-btn" onclick="changeMonth(1)">▶</button>
-    </div>
-
-    <div class="filter-group" id="filterGroup">
-        <button class="filter-btn active" data-group="ChumToto">チャムトト</button>
-        <button class="filter-btn active" data-group="虹コン">虹コン</button>
-        <button class="filter-btn active" data-group="さよステ">さよステ</button>
-        <button class="filter-btn active" data-group="きゅるして">きゅるして</button>
-        <button class="filter-btn active" data-group="meme">ミーム</button>
-    </div>
+    <h1>DEARSTAGE Schedule</h1>
+    <p style="font-size: 0.8rem; color: #888;">Updated 4 times a day</p>
 </header>
 
-<div class="content" id="mainDisplay"></div>
+<div id="calendar"></div>
 
+<div class="event-list" id="event-list">
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <script>
-    let allEvents = [];
-    let viewMode = "list";
-    let selectedDate = null;
-    
-    // 現在のシステム時刻に基づいて初期設定
-    const now = new Date();
-    let displayDate = new Date(now.getFullYear(), now.getMonth(), 1);
-    
-    const activeGroups = new Set(["ChumToto", "虹コン", "さよステ", "きゅるして", "meme"]);
-    const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
-    const monthNamesEn = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
-    const groupColors = { ChumToto: "#FF6B9D", "虹コン": "#7B61FF", "さよステ": "#00C9A7", "きゅるして": "#FFB800", meme: "#FF4B6E" };
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const listEl = document.getElementById('event-list');
 
-    const getTodayStr = () => {
-        const d = new Date();
-        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-    };
-
-    // 左上の「当日日付」ラベルを更新
-    function updateTodayLabel() {
-        const d = new Date();
-        const label = `${monthNamesEn[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-        document.getElementById('todayLabel').innerText = label;
-    }
-
-    async function init() {
-        updateTodayLabel();
-        const response = await fetch('./data.json?v=' + new Date().getTime());
-        allEvents = await response.json();
-        updateHeader();
-        render(true);
-    }
-
-    function changeMonth(delta) {
-        displayDate.setMonth(displayDate.getMonth() + delta);
-        selectedDate = null;
-        updateHeader();
-        render(true);
-    }
-
-    function updateHeader() {
-        const y = displayDate.getFullYear();
-        const m = displayDate.getMonth();
-        document.getElementById('currentMonthTitle').innerText = `${y}年 ${m + 1}月`;
-    }
-
-    function render(shouldScroll = false) {
-        const display = document.getElementById('mainDisplay');
-        display.innerHTML = "";
-
-        const y = displayDate.getFullYear();
-        const m = displayDate.getMonth();
-        
-        const filtered = allEvents.filter(ev => {
-            const evDate = new Date(ev.start);
-            const isSameMonth = evDate.getFullYear() === y && evDate.getMonth() === m;
-            const isGroupActive = Array.from(activeGroups).some(g => ev.title.includes(g));
-            return isSameMonth && isGroupActive;
-        });
-
-        if (viewMode === "list") {
-            renderList(filtered, display, shouldScroll);
-        } else {
-            renderCalendar(filtered, display);
-        }
-    }
-
-    function renderList(events, container, shouldScroll) {
-        const grouped = {};
-        events.sort((a,b) => a.start.localeCompare(b.start)).forEach(ev => {
-            if(!grouped[ev.start]) grouped[ev.start] = [];
-            grouped[ev.start].push(ev);
-        });
-
-        const todayStr = getTodayStr();
-        let closestDate = null;
-
-        if (Object.keys(grouped).length === 0) {
-            container.innerHTML = '<div style="text-align:center; color:#555; margin-top:60px;">この月の予定はありません</div>';
-            return;
+        // グループ判定用関数
+        function getGroupKey(title) {
+            if (title.includes('虹コン')) return 'nijicon';
+            if (title.includes('さよステ')) return 'sayostay';
+            if (title.includes('meme')) return 'meme';
+            if (title.includes('ChumToto')) return 'chumtoto';
+            if (title.includes('きゅるして')) return 'kyurushite';
+            return 'default';
         }
 
-        for (const date in grouped) {
-            const d = new Date(date);
-            const isToday = (date === todayStr);
-            if (!closestDate && date >= todayStr) closestDate = date;
-
-            container.innerHTML += `
-                <div class="date-section" id="date-${date}">
-                    <div class="date-header ${isToday ? 'today' : ''}">${d.getMonth()+1}/${d.getDate()}（${dayNames[d.getDay()]}）${isToday ? ' [TODAY]' : ''}</div>
-                    ${grouped[date].map(ev => createEventCard(ev)).join('')}
-                </div>
-            `;
-        }
-
-        if (shouldScroll && closestDate) {
-            setTimeout(() => {
-                const target = document.getElementById(`date-${closestDate}`);
-                if (target) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    window.scrollTo({
-                        top: target.offsetTop - headerHeight - 20,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100);
-        }
-    }
-
-    function renderCalendar(events, container) {
-        const y = displayDate.getFullYear();
-        const m = displayDate.getMonth();
-        const firstDay = new Date(y, m, 1).getDay();
-        const daysInMonth = new Date(y, m + 1, 0).getDate();
-        const todayStr = getTodayStr();
-        
-        let html = '<div class="calendar-grid">';
-        dayNames.forEach((d, i) => html += `<div class="calendar-weekday" style="color:${i==0?'#ff6b6b':i==6?'#6ba3ff':''}">${d}</div>`);
-        for(let i=0; i<firstDay; i++) html += '<div class="calendar-day empty"></div>';
-        
-        for(let d=1; d<=daysInMonth; d++) {
-            const dateKey = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-            const dayEvents = events.filter(e => e.start === dateKey);
-            const isSelected = selectedDate === dateKey;
-            const isToday = (dateKey === todayStr);
-            const uniqueGroups = [...new Set(dayEvents.map(e => getGroupKey(e.title)))];
+        // カードのHTML生成
+        function createEventCard(ev) {
+            const gKey = getGroupKey(ev.title);
+            // タイトルから[グループ名]を除去
+            const displayTitle = ev.title.replace(/\[.*?\]\s*/, '');
             
-            html += `
-                <div class="calendar-day ${isSelected?'selected':''} ${isToday?'is-today':''}" onclick="selectDate('${dateKey}')">
-                    <div class="day-num">${d}</div>
-                    <div class="dot-container">
-                        ${uniqueGroups.map(g => `<div class="dot" style="background:${groupColors[g]}"></div>`).join('')}
+            // 会場と時間の表示用パーツ
+            const timeHTML = ev.time ? `<div class="event-detail-item">⏰ ${ev.time}</div>` : '';
+            const venueHTML = ev.venue ? `<div class="event-detail-item">📍 ${ev.venue}</div>` : '';
+
+            return `
+                <a href="${ev.url}" class="event-card card-${gKey}" target="_blank">
+                    <div class="group-label">${gKey === 'nijicon' ? '虹のコンキスタドール' : gKey.toUpperCase()}</div>
+                    <div class="event-title">${displayTitle}</div>
+                    ${timeHTML}
+                    ${venueHTML}
+                    <div class="event-detail-item" style="margin-top:8px; font-size:0.75rem; opacity:0.7;">
+                        🗓 ${ev.start}
                     </div>
-                </div>
+                </a>
             `;
         }
-        html += '</div><div id="selected-day-events"></div>';
-        container.innerHTML = html;
-        if(selectedDate) renderSelectedDay(events);
-    }
 
-    function selectDate(date) {
-        selectedDate = (selectedDate === date) ? null : date;
-        render(false);
-    }
+        // JSON読み込みと反映
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // 日付順にソート
+                data.sort((a, b) => new Date(a.start) - new Date(b.start));
 
-    function renderSelectedDay(events) {
-        const dayEvents = events.filter(e => e.start === selectedDate);
-        const container = document.getElementById('selected-day-events');
-        if(!dayEvents.length) { container.innerHTML = ""; return; }
-        const d = new Date(selectedDate);
-        container.innerHTML = `
-            <div id="selected-day-info">
-                <div class="date-header" style="margin-bottom:12px">${d.getMonth()+1}/${d.getDate()}（${dayNames[d.getDay()]}）</div>
-                ${dayEvents.map(ev => createEventCard(ev)).join('')}
-            </div>
-        `;
-    }
+                // カレンダー設定
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    locale: 'ja',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,listMonth'
+                    },
+                    events: data.map(ev => ({
+                        title: ev.title,
+                        start: ev.start,
+                        url: ev.url,
+                        color: getEventColor(ev.title)
+                    })),
+                    eventClick: function(info) {
+                        info.jsEvent.preventDefault();
+                        window.open(info.event.url, '_blank');
+                    }
+                });
+                calendar.render();
 
-    function getGroupKey(title) {
-        if(title.includes("ChumToto")) return "ChumToto";
-        if(title.includes("虹コン")) return "虹コン";
-        if(title.includes("さよステ")) return "さよステ";
-        if(title.includes("きゅるして")) return "きゅるして";
-        return "meme";
-    }
+                // リスト（今日以降の予定）の描画
+                const today = new Date().toISOString().split('T')[0];
+                const upcoming = data.filter(ev => ev.start >= today);
+                
+                listEl.innerHTML = upcoming.map(ev => createEventCard(ev)).join('');
+            });
 
-    function createEventCard(ev) {
-        const gKey = getGroupKey(ev.title);
-        const displayTitle = ev.title.replace(/\[.*?\]\s*/, '');
-        return `
-            <a href="${ev.url}" class="event-card card-${gKey}" target="_blank">
-                <div class="group-label">${gKey.toUpperCase()}</div>
-                <div class="event-title">${displayTitle}</div>
-                <div class="event-venue">📍 詳細を確認</div>
-            </a>
-        `;
-    }
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const g = btn.dataset.group;
-            activeGroups.has(g) ? activeGroups.delete(g) : activeGroups.add(g);
-            btn.classList.toggle('active');
-            render(false);
-        });
+        function getEventColor(title) {
+            const key = getGroupKey(title);
+            const colors = {
+                nijicon: '#ff3e7e',
+                sayostay: '#4da6ff',
+                meme: '#9d4dff',
+                chumtoto: '#ff9f43',
+                kyurushite: '#1dd1a1'
+            };
+            return colors[key] || '#ccc';
+        }
     });
-
-    document.getElementById('listToggle').addEventListener('click', () => {
-        viewMode = "list";
-        document.getElementById('listToggle').classList.add('active');
-        document.getElementById('calendarToggle').classList.remove('active');
-        render(true);
-    });
-
-    document.getElementById('calendarToggle').addEventListener('click', () => {
-        viewMode = "calendar";
-        document.getElementById('calendarToggle').classList.add('active');
-        document.getElementById('listToggle').classList.remove('active');
-        render(false);
-    });
-
-    init();
 </script>
+
 </body>
 </html>
