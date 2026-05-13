@@ -15,6 +15,7 @@
             --color-meme: #FF4B6E;
             --text-main: #f0f0f8;
             --text-muted: #7b7b9a;
+            --color-new: #ff4b6e; /* 新着用の強調色 */
         }
 
         body {
@@ -66,14 +67,48 @@
         }
         .toggle-btn.active { background: rgba(255,255,255,0.15); color: #fff; }
 
+        /* --- 新着バナーのスタイル --- */
+        #newArrivalBanner {
+            display: none;
+            background: linear-gradient(90deg, rgba(123,97,255,0.2) 0%, rgba(255,75,110,0.2) 100%);
+            border: 1px solid rgba(123,97,255,0.5);
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(123,97,255,0.2);
+        }
+        #newCount { color: var(--color-meme); font-size: 18px; margin: 0 4px; }
+
         .content { padding: 16px 16px 40px; max-width: 800px; margin: 0 auto; }
 
         .date-section { margin-bottom: 24px; scroll-margin-top: 180px; }
         .date-header { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #a0a0c0; border-left: 3px solid #3a3a5c; padding-left: 10px; margin-bottom: 8px; }
         .date-header.today { color: #fff; border-left-color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
-        .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; }
+        .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; position: relative; overflow: hidden; }
         .event-card:hover { transform: translateX(4px); }
-        .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
+        .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; display: flex; align-items: center; }
+        
+        /* --- NEWバッジのスタイル --- */
+        .new-badge {
+            background: var(--color-new);
+            color: #fff;
+            font-size: 9px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 75, 110, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 75, 110, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 75, 110, 0); }
+        }
+
         .event-title { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 5px; color: #fff; }
         .event-info { font-size: 11px; color: #999; margin-top: 2px; }
 
@@ -127,7 +162,13 @@
     </div>
 </header>
 
-<div class="content" id="mainDisplay"></div>
+<div class="content">
+    <div id="newArrivalBanner">
+        ✨ <span id="newCount">0</span> 件の新着スケジュールが追加されました！
+    </div>
+    
+    <div id="mainDisplay"></div>
+</div>
 
 <script>
     let allEvents = [];
@@ -177,12 +218,32 @@
         const y = displayDate.getFullYear();
         const m = displayDate.getMonth();
         
+        // --- 新着カウント処理 ---
+        const nowTime = new Date();
+        const twentyFourHoursAgo = new Date(nowTime.getTime() - (24 * 60 * 60 * 1000));
+        let newCount = 0;
+
         const filtered = allEvents.filter(ev => {
             const evDate = new Date(ev.start);
             const isSameMonth = evDate.getFullYear() === y && evDate.getMonth() === m;
             const groupMatch = Array.from(activeGroups).some(g => ev.title.includes(g));
+            
+            // フィルタ条件に関わらず、全データから24時間以内の新着をカウント
+            if (groupMatch && ev.added_at && new Date(ev.added_at) > twentyFourHoursAgo) {
+                newCount++;
+            }
+            
             return isSameMonth && groupMatch;
         });
+
+        // 新着バナーの表示制御
+        const banner = document.getElementById('newArrivalBanner');
+        if (newCount > 0) {
+            banner.style.display = 'block';
+            document.getElementById('newCount').innerText = newCount;
+        } else {
+            banner.style.display = 'none';
+        }
 
         if (viewMode === "list") {
             renderList(filtered, display, shouldScroll);
@@ -290,9 +351,19 @@
         const displayTitle = ev.title.replace(/\[.*?\]\s*/, '');
         const timeInfo = ev.time ? `<div class="event-info">⏰ ${ev.time}</div>` : '';
         const venueInfo = `<div class="event-info">📍 ${ev.venue || '詳細を確認'}</div>`;
+        
+        // --- 新着バッジ判定 ---
+        const nowTime = new Date();
+        const twentyFourHoursAgo = new Date(nowTime.getTime() - (24 * 60 * 60 * 1000));
+        const isNew = ev.added_at && new Date(ev.added_at) > twentyFourHoursAgo;
+        const newBadge = isNew ? `<span class="new-badge">NEW</span>` : '';
+
         return `
             <a href="${ev.url}" class="event-card card-${gKey}" target="_blank">
-                <div class="group-label">${gKey.toUpperCase()}</div>
+                <div class="group-label">
+                    ${gKey.toUpperCase()}
+                    ${newBadge}
+                </div>
                 <div class="event-title">${displayTitle}</div>
                 ${timeInfo}
                 ${venueInfo}
