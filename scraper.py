@@ -201,16 +201,48 @@ def scrape_dspm(driver, name, base_url, menu_path):
 def main():
     driver = setup_driver()
     all_data = []
+    
+    # 各グループのスクレイピング（ここは変更なし）
     all_data.extend(scrape_tribe(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
     all_data.extend(scrape_tribe(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     all_data.extend(scrape_2zicon(driver))
     all_data.extend(scrape_dspm(driver, "さよステ", "https://sayostay.dspm.jp", "/schedules/menu/18610"))
     all_data.extend(scrape_dspm(driver, "meme", "https://www.memetokyo.com", "/vertical_calendar"))
+    
     driver.quit()
+
+    # 1. 重複排除
     unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
+
+    # 2. 【ここから追加】前回保存したデータを読み込んで比較する
+    old_data_dict = {}
+    if os.path.exists('data.json'):
+        try:
+            with open('data.json', 'r', encoding='utf-8') as f:
+                old_list = json.load(f)
+                # タイトルと日付をキーにして、既存の追加日時(added_at)を保持する
+                old_data_dict = {(ev['title'], ev['start']): ev.get('added_at') for ev in old_list}
+        except Exception as e:
+            print(f"前回のデータ読み込みに失敗しました: {e}")
+
+    # 3. 現在の時刻を取得
+    current_now = datetime.now().isoformat()
+
+    # 4. 各イベントに追加日時を付与
+    for ev in unique_events:
+        key = (ev['title'], ev['start'])
+        if key in old_data_dict and old_data_dict[key]:
+            # すでに知っているイベントなら、前回の追加日時を維持
+            ev['added_at'] = old_data_dict[key]
+        else:
+            # 新しく見つけたイベントなら、今の時間をセット
+            ev['added_at'] = current_now
+
+    # 5. 保存
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(unique_events, f, ensure_ascii=False, indent=2)
-    print(f"全工程完了。合計 {len(unique_events)} 件")
+
+    print(f"全工程完了。合計 {len(unique_events)} 件（内、新着チェック完了）")
 
 if __name__ == "__main__":
     main()
