@@ -7,7 +7,7 @@
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #12121e 50%, #0a0a0f 100%);
-            --header-gradient: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --header-gradient: linear-gradient(180deg, #1a1a2e 0%, rgba(22, 33, 62, 0.95) 100%);
             --color-chumtoto: #FF6B9D;
             --color-2zicon: #7B61FF;
             --color-sayostay: #00C9A7;
@@ -15,7 +15,7 @@
             --color-meme: #FF4B6E;
             --text-main: #f0f0f8;
             --text-muted: #7b7b9a;
-            --color-new: #ff4b6e; /* 新着用の強調色 */
+            --color-new: #ff4b6e;
         }
 
         body {
@@ -29,7 +29,7 @@
         header {
             background: var(--header-gradient);
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 20px 24px 16px;
+            padding: 16px 20px 12px;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -39,20 +39,35 @@
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .today-display { font-size: 11px; letter-spacing: 2px; color: #fff; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--color-2zicon); padding-bottom: 2px; }
         
-        .nav-controls { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
-        .current-month-title { font-size: 24px; font-weight: 700; letter-spacing: 1px; min-width: 160px; }
+        .nav-controls { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+        .current-month-title { font-size: 22px; font-weight: 700; letter-spacing: 1px; min-width: 140px; }
         
         .nav-btn {
             background: rgba(255,255,255,0.1); border: none; color: #fff;
-            width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+            width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
             display: flex; align-items: center; justify-content: center; transition: 0.2s;
         }
         .nav-btn:hover { background: rgba(255,255,255,0.2); }
 
-        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        /* --- ヘッダー内の新着表示エリア --- */
+        #newArrivalSection {
+            display: none;
+            background: rgba(255, 75, 110, 0.15);
+            border: 1px solid rgba(255, 75, 110, 0.3);
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+        .new-label { color: var(--color-new); font-weight: 800; margin-right: 6px; }
+        .new-detail-item { color: #fff; display: inline-block; margin-right: 8px; }
+        .new-group-tag { font-size: 9px; opacity: 0.8; margin-left: 2px; }
+
+        .filter-group { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
         .filter-btn {
-            padding: 4px 12px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.15);
-            background: transparent; color: #666; font-size: 12px; cursor: pointer; transition: all 0.2s;
+            padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);
+            background: transparent; color: #777; font-size: 11px; cursor: pointer; transition: all 0.2s;
         }
         .filter-btn.active[data-group="ChumToto"] { border-color: var(--color-chumtoto); background: color-mix(in srgb, var(--color-chumtoto), transparent 85%); color: var(--color-chumtoto); font-weight: 600; }
         .filter-btn.active[data-group="虹コン"] { border-color: var(--color-2zicon); background: color-mix(in srgb, var(--color-2zicon), transparent 85%); color: var(--color-2zicon); font-weight: 600; }
@@ -62,56 +77,31 @@
 
         .view-toggle { display: flex; gap: 4px; }
         .toggle-btn {
-            padding: 5px 14px; border-radius: 6px; border: none; background: transparent;
-            color: #666; font-size: 12px; cursor: pointer;
+            padding: 4px 12px; border-radius: 6px; border: none; background: transparent;
+            color: #666; font-size: 11px; cursor: pointer;
         }
         .toggle-btn.active { background: rgba(255,255,255,0.15); color: #fff; }
 
-        /* --- 新着バナーのスタイル --- */
-        #newArrivalBanner {
-            display: none;
-            background: linear-gradient(90deg, rgba(123,97,255,0.2) 0%, rgba(255,75,110,0.2) 100%);
-            border: 1px solid rgba(123,97,255,0.5);
-            color: #fff;
-            padding: 12px;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            box-shadow: 0 0 15px rgba(123,97,255,0.2);
-        }
-        #newCount { color: var(--color-meme); font-size: 18px; margin: 0 4px; }
-
         .content { padding: 16px 16px 40px; max-width: 800px; margin: 0 auto; }
 
-        .date-section { margin-bottom: 24px; scroll-margin-top: 180px; }
+        /* リスト・カレンダーの共通スタイル */
+        .date-section { margin-bottom: 24px; scroll-margin-top: 200px; }
         .date-header { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #a0a0c0; border-left: 3px solid #3a3a5c; padding-left: 10px; margin-bottom: 8px; }
         .date-header.today { color: #fff; border-left-color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
-        .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; position: relative; overflow: hidden; }
+        .event-card { border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; text-decoration: none; display: block; transition: transform 0.2s; border-left: 3px solid transparent; position: relative; }
         .event-card:hover { transform: translateX(4px); }
         .group-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; display: flex; align-items: center; }
         
-        /* --- NEWバッジのスタイル --- */
         .new-badge {
-            background: var(--color-new);
-            color: #fff;
-            font-size: 9px;
-            padding: 1px 6px;
-            border-radius: 4px;
-            margin-left: 8px;
-            vertical-align: middle;
-            animation: pulse-red 2s infinite;
+            background: var(--color-new); color: #fff; font-size: 9px; padding: 1px 5px; border-radius: 4px; margin-left: 6px;
+            animation: pulse-red 2.5s infinite;
         }
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(255, 75, 110, 0.7); }
-            70% { box-shadow: 0 0 0 6px rgba(255, 75, 110, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 75, 110, 0); }
-        }
+        @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
         .event-title { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 5px; color: #fff; }
         .event-info { font-size: 11px; color: #999; margin-top: 2px; }
 
+        /* 各グループカラー設定 */
         .card-ChumToto { background: linear-gradient(135deg, rgba(255,107,157,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,107,157,0.25); border-left-color: var(--color-chumtoto); }
         .card-ChumToto .group-label { color: var(--color-chumtoto); }
         .card-虹コン { background: linear-gradient(135deg, rgba(123,97,255,0.1) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(123,97,255,0.25); border-left-color: var(--color-2zicon); }
@@ -124,14 +114,14 @@
         .card-meme .group-label { color: var(--color-meme); }
 
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 20px; }
-        .calendar-weekday { text-align: center; font-size: 11px; color: #888; padding: 6px 0; font-weight: 600; }
+        .calendar-weekday { text-align: center; font-size: 10px; color: #888; padding: 6px 0; font-weight: 600; }
         .calendar-day { min-height: 52px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); padding: 4px; cursor: pointer; position: relative; }
         .calendar-day.empty { background: transparent; cursor: default; border: none; }
         .calendar-day.selected { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
         .calendar-day.is-today { border: 1.5px solid rgba(255,255,255,0.4); }
-        .day-num { font-size: 12px; color: #ccc; text-align: center; margin-bottom: 4px; }
+        .day-num { font-size: 11px; color: #ccc; text-align: center; margin-bottom: 4px; }
         .dot-container { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
-        .dot { width: 6px; height: 6px; border-radius: 50%; }
+        .dot { width: 5px; height: 5px; border-radius: 50%; }
 
         #selected-day-events { margin-top: 20px; padding: 14px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
     </style>
@@ -140,7 +130,7 @@
 
 <header>
     <div class="header-top">
-        <div class="today-display" id="todayLabel">MAY 11, 2026</div>
+        <div class="today-display" id="todayLabel">--- --, ----</div>
         <div class="view-toggle">
             <button class="toggle-btn active" id="listToggle">リスト</button>
             <button class="toggle-btn" id="calendarToggle">カレンダー</button>
@@ -149,8 +139,13 @@
     
     <div class="nav-controls">
         <button class="nav-btn" onclick="changeMonth(-1)">◀</button>
-        <div class="current-month-title" id="currentMonthTitle">2026年 5月</div>
+        <div class="current-month-title" id="currentMonthTitle">----年 --月</div>
         <button class="nav-btn" onclick="changeMonth(1)">▶</button>
+    </div>
+
+    <div id="newArrivalSection">
+        <span class="new-label">NEW ARRIVAL</span>
+        <span id="newArrivalContent"></span>
     </div>
 
     <div class="filter-group" id="filterGroup">
@@ -162,13 +157,7 @@
     </div>
 </header>
 
-<div class="content">
-    <div id="newArrivalBanner">
-        ✨ <span id="newCount">0</span> 件の新着スケジュールが追加されました！
-    </div>
-    
-    <div id="mainDisplay"></div>
-</div>
+<div class="content" id="mainDisplay"></div>
 
 <script>
     let allEvents = [];
@@ -218,32 +207,46 @@
         const y = displayDate.getFullYear();
         const m = displayDate.getMonth();
         
-        // --- 新着カウント処理 ---
-        const nowTime = new Date();
-        const twentyFourHoursAgo = new Date(nowTime.getTime() - (24 * 60 * 60 * 1000));
-        let newCount = 0;
+        // --- 新着データの抽出とサマリー作成 ---
+        const twentyFourHoursAgo = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
+        const newEventsSummary = {}; // { "05/14": Set(["虹コン", "ChumToto"]) }
+        let totalNewCount = 0;
 
-        const filtered = allEvents.filter(ev => {
-            const evDate = new Date(ev.start);
-            const isSameMonth = evDate.getFullYear() === y && evDate.getMonth() === m;
-            const groupMatch = Array.from(activeGroups).some(g => ev.title.includes(g));
-            
-            // フィルタ条件に関わらず、全データから24時間以内の新着をカウント
-            if (groupMatch && ev.added_at && new Date(ev.added_at) > twentyFourHoursAgo) {
-                newCount++;
+        allEvents.forEach(ev => {
+            if (ev.added_at && new Date(ev.added_at) > twentyFourHoursAgo) {
+                const group = getGroupKey(ev.title);
+                if (activeGroups.has(group)) {
+                    totalNewCount++;
+                    const d = new Date(ev.start);
+                    const dateKey = `${d.getMonth()+1}/${d.getDate()}`;
+                    if (!newEventsSummary[dateKey]) newEventsSummary[dateKey] = new Set();
+                    newEventsSummary[dateKey].add(group);
+                }
             }
-            
-            return isSameMonth && groupMatch;
         });
 
-        // 新着バナーの表示制御
-        const banner = document.getElementById('newArrivalBanner');
-        if (newCount > 0) {
+        // ヘッダーの新着表示を更新
+        const banner = document.getElementById('newArrivalSection');
+        const content = document.getElementById('newArrivalContent');
+        if (totalNewCount > 0) {
             banner.style.display = 'block';
-            document.getElementById('newCount').innerText = newCount;
+            content.innerHTML = Object.keys(newEventsSummary)
+                .sort((a,b) => a.localeCompare(b))
+                .map(date => {
+                    const groups = Array.from(newEventsSummary[date]).join(', ');
+                    return `<span class="new-detail-item">${date}<span class="new-group-tag">(${groups})</span></span>`;
+                }).join('');
         } else {
             banner.style.display = 'none';
         }
+
+        // 月次フィルタ
+        const filtered = allEvents.filter(ev => {
+            const evDate = new Date(ev.start);
+            const isSameMonth = evDate.getFullYear() === y && evDate.getMonth() === m;
+            const groupMatch = activeGroups.has(getGroupKey(ev.title));
+            return isSameMonth && groupMatch;
+        });
 
         if (viewMode === "list") {
             renderList(filtered, display, shouldScroll);
@@ -352,18 +355,13 @@
         const timeInfo = ev.time ? `<div class="event-info">⏰ ${ev.time}</div>` : '';
         const venueInfo = `<div class="event-info">📍 ${ev.venue || '詳細を確認'}</div>`;
         
-        // --- 新着バッジ判定 ---
-        const nowTime = new Date();
-        const twentyFourHoursAgo = new Date(nowTime.getTime() - (24 * 60 * 60 * 1000));
+        const twentyFourHoursAgo = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
         const isNew = ev.added_at && new Date(ev.added_at) > twentyFourHoursAgo;
         const newBadge = isNew ? `<span class="new-badge">NEW</span>` : '';
 
         return `
             <a href="${ev.url}" class="event-card card-${gKey}" target="_blank">
-                <div class="group-label">
-                    ${gKey.toUpperCase()}
-                    ${newBadge}
-                </div>
+                <div class="group-label">${gKey.toUpperCase()} ${newBadge}</div>
                 <div class="event-title">${displayTitle}</div>
                 ${timeInfo}
                 ${venueInfo}
