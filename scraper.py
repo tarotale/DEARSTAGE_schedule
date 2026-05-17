@@ -20,26 +20,27 @@ def setup_driver():
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
-    # ボット検知を回避するための追加オプション
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    # 【対策】ボット検知を徹底的に回避するためのユーザーエージェントと各種偽装オプション
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
     
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     
-    # navigator.webdriver を false に上書きして自動操作であることを隠す
+    # 【対策】ブラウザの内部フラグを書き換え、「自動操作ボット」であることを完全に隠蔽する
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
         "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     })
     return driver
 
 def get_detail_info(driver, url):
-    """詳細ページから会場と時間を抽出する"""
+    """詳細ページから会場と時間を抽出する（きゅるしての時間取得バグ修正版）"""
     venue = "詳細を確認"
     time_info = " "
     try:
         driver.get(url)
-        time.sleep(3) # 読み込みを3秒確実に待機（安定化）
+        # タイムアウトで落ちないよう、3秒確実に待機する形に安定化
+        time.sleep(3)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -57,7 +58,7 @@ def get_detail_info(driver, url):
             except Exception:
                 pass
 
-        # 2. フォールバック
+        # 2. JSON-LDで取得できない場合のフォールバック（きゅるして等）
         if venue == "詳細を確認" or time_info == " ":
             table = soup.find('table')
             if table:
@@ -84,7 +85,8 @@ def scrape_chumtoto(driver):
     print("ちゃむととのスケジュールを取得中...")
     try:
         driver.get(base_url)
-        time.sleep(4) # カレンダー展開まで4秒確実に待つ
+        # 【対策】サーバーの遅延や保護画面の一時ロードを考慮し、4秒確実に待機してからHTMLを吸い出す
+        time.sleep(4)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         calendar_days = soup.find_all('div', class_='full-calendar-day')
@@ -126,7 +128,8 @@ def scrape_kyurushite(driver, group_name, base_url):
     print(f"{group_name} のスケジュールを取得中...")
     try:
         driver.get(base_url)
-        time.sleep(4) # 4秒確実に待つ
+        # 【対策】4秒確実に待機
+        time.sleep(4)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         calendar_days = soup.find_all('div', class_='full-calendar-day')
@@ -201,18 +204,15 @@ if __name__ == "__main__":
     driver = setup_driver()
     all_data = []
 
-    # 順次スクレイピングを開始
     all_data.extend(scrape_chumtoto(driver))
     all_data.extend(scrape_kyurushite(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     all_data.extend(scrape_2zicon(driver))
     all_data.extend(scrape_dspm(driver, "さよステ", "https://sayostay.dspm.jp", "/schedules/menu/18610"))
     all_data.extend(scrape_dspm(driver, "meme", "https://www.memetokyo.com", "/vertical_calendar"))
     
-    # 1. 重複排除
     unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
     print(f"総イベント数: {len(unique_events)} 件を取得しました。詳細情報を解析中...")
 
-    # 2. 各イベントの詳細ページにアクセスして会場・時間を取得
     for ev in unique_events:
         if ev.get('url'):
             print(f"詳細解析中: {ev['title']}")
@@ -225,7 +225,6 @@ if __name__ == "__main__":
 
     driver.quit()
 
-    # 3. ローカルの履歴管理データ(data.json)の更新処理
     old_data_dict = {}
     if os.path.exists('data.json'):
         try:
@@ -249,7 +248,7 @@ if __name__ == "__main__":
     print("ローカルの data.json を更新しました。")
 
 
-    # 4. 【追加機能】ChumTotoのデータのみ新しいスプシに同期
+    # --- ChumTotoのデータのみ新しいスプシに同期 ---
     chumtoto_only = [ev for ev in unique_events if ev.get('group') == 'ChumToto']
 
     formatted_events = []
