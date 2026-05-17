@@ -3,7 +3,6 @@ import json
 import time
 import re
 from datetime import datetime, timedelta
-import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -19,261 +18,231 @@ def setup_driver():
     options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    # 【対策】ボット検知を徹底的に回避するためのユーザーエージェントと各種偽装オプション
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
-    options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    options.add_experimental_option('useAutomationExtension', False)
-    
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    
-    # 【対策】ブラウザの内部フラグを書き換え、「自動操作ボット」であることを完全に隠蔽する
-    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-    })
-    return driver
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def get_detail_info(driver, url):
     """詳細ページから会場と時間を抽出する（きゅるしての時間取得バグ修正版）"""
     venue = "詳細を確認"
-    time_info = " "
+    time_info = ""
     try:
         driver.get(url)
-        # タイムアウトで落ちないよう、3秒確実に待機する形に安定化
-        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        time.sleep(2)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # 1. 構造化データの抽出 (JSON-LD)
-        json_ld = soup.find('script', type='application/ld+json')
-        if json_ld:
-            try:
-                data = json.loads(json_ld.string)
-                if isinstance(data, dict):
-                    if 'location' in data and 'name' in data['location']:
-                        venue = data['location']['name']
-                    if 'startDate' in data:
-                        dt = datetime.fromisoformat(data['startDate'].replace('Z', '+00:00'))
-                        time_info = dt.strftime('%H:%M~')
-            except Exception:
-                pass
+        # 1. 構造化タグ優先
+        v_el = soup.select_one('.p-clubScheduleArticle__place__text span, .p-clubScheduleDetail__venue, .tribe-events-pro-venue__name, .tribe-venue')
+        t_el = soup.select_one('.p-clubScheduleArticle__description__item, .p-clubScheduleDetail__time, .tribe-events-pro-full-date, .tribe-events-schedule')
+        if v_el: venue = v_el.get_text(strip=True)
+        if t_el: time_info = t_el.get_text(strip=True)
+        
+        # 2. 本文テキスト解析
+        content = soup.select_one('.common__article, .article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description, .p-clubScheduleArticle__description')
+        
+        if content:
+            # --- パターンA: 見出し(h4, strong)と内容が分かれている ---
+            for tag in content.find_all(['h4', 'strong']):
+                label = tag.get_text(strip=True)
+                
+                # 直後のテキスト、または次のタグを取得
+                data = ""
+                if tag.next_sibling and isinstance(tag.next_sibling, str):
+                    data = tag.next_sibling.strip()
+                
+                if not data or data in ["：", ":"]:
+                    next_el = tag.find_next(['p', 'span'])
+                    if next_el: data = next_el.get_text(strip=True)
 
-        # 2. JSON-LDで取得できない場合のフォールバック（きゅるして等）
-        if venue == "詳細を確認" or time_info == " ":
-            table = soup.find('table')
-            if table:
-                for row in table.find_all('tr'):
-                    th = row.find('th')
-                    td = row.find('td')
-                    if th and td:
-                        th_text = th.get_text(strip=True)
-                        td_text = td.get_text(strip=True)
-                        if "会場" in th_text:
-                            venue = td_text
-                        elif "時間" in th_text or "開場" in th_text:
-                            time_info = td_text
+                # --- きゅるして対策: 「日程」は無視し、「時間」を優先的に取得 ---
+                if "時間" in label or "公演時間" in label:
+                    time_info = data.replace("：", "").replace(":", "").strip()
+                elif ("日時" in label) and not time_info: # 時間がまだ取れていない場合のみ日時をチェック
+                    time_info = data.replace("：", "").replace(":", "").strip()
+                elif "場所" in label or "会場" in label:
+                    venue = data.replace("：", "").replace(":", "").strip()
+
+            # --- パターンB: 1つのタグ内に改行区切りで書かれている（ChumTotoやmemeなど） ---
+            if venue == "詳細を確認" or not time_info or time_info == "":
+                lines = [line.strip() for line in content.get_text("\n").split("\n") if line.strip()]
+                for line in lines:
+                    if any(k in line for k in ["■場所", "■会場", "会場：", "会場:", "場所：", "場所:"]):
+                        res = re.sub(r'^(■場所|■会場|会場|場所)[：:]\s*', '', line).strip()
+                        if res: venue = res
+                    if any(k in line for k in ["■時間", "時間：", "時間:", "公演時間"]):
+                        res = re.sub(r'^(■時間|公演時間|時間)[：:]\s*', '', line).strip()
+                        if res: time_info = res
+
+        # 3. 最終フォールバック
+        if not time_info:
+            dt_el = soup.select_one('.p-clubScheduleArticle__dateTime span, .article__date')
+            if dt_el: 
+                time_info = re.sub(r'^\d{4}[/.]\d{2}[/.]\d{2}\(.\)\s*', '', dt_el.get_text(strip=True))
+
     except Exception as e:
-        print(f"詳細ページの取得失敗: {url} -> {e}")
+        print(f"Detail parse warning at {url}: {e}")
     
     return venue, time_info
 
-# --- 各グループのスクレイピングロジック ---
-def scrape_chumtoto(driver):
-    """ちゃむととのスケジュールスクレイピング"""
+def scrape_tribe(driver, name, url):
+    """ChumToto / きゅるして：一覧からURLを抜いて詳細解析"""
     events = []
-    base_url = "https://chumtoto.jp/schedule/"
-    print("ちゃむととのスケジュールを取得中...")
-    try:
-        driver.get(base_url)
-        # 【対策】サーバーの遅延や保護画面の一時ロードを考慮し、4秒確実に待機してからHTMLを吸い出す
-        time.sleep(4)
-        
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        calendar_days = soup.find_all('div', class_='full-calendar-day')
-        
-        for day_div in calendar_days:
-            date_class = day_div.get('class', [])
-            date_str = None
-            for c in date_class:
-                if re.match(r'^\d{4}-\d{2}-\d{2}$', c):
-                    date_str = c
-                    break
-            
-            if not date_str:
-                continue
-                
-            event_items = day_div.find_all('div', class_='full-calendar-item')
-            for item in event_items:
-                link_tag = item.find('a')
-                if link_tag:
-                    title = link_tag.get_text(strip=True)
-                    url = link_tag.get('href')
-                    
-                    if any(e['title'] == title and e['start'] == date_str for e in events):
-                        continue
-                        
-                    events.append({
-                        "title": f"【ちゃむ】{title}",
-                        "start": date_str,
-                        "url": url,
-                        "group": "ChumToto"
-                    })
-    except Exception as e:
-        print(f"ちゃむととの取得エラー: {e}")
-    return events
-
-def scrape_kyurushite(driver, group_name, base_url):
-    """きゅるして / にじコン 等の共通系スケジュールスクレイピング"""
-    events = []
-    print(f"{group_name} のスケジュールを取得中...")
-    try:
-        driver.get(base_url)
-        # 【対策】4秒確実に待機
-        time.sleep(4)
-        
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        calendar_days = soup.find_all('div', class_='full-calendar-day')
-        
-        for day_div in calendar_days:
-            date_class = day_div.get('class', [])
-            date_str = None
-            for c in date_class:
-                if re.match(r'^\d{4}-\d{2}-\d{2}$', c):
-                    date_str = c
-                    break
-            
-            if not date_str:
-                continue
-                
-            event_items = day_div.find_all('div', class_='full-calendar-item')
-            for item in event_items:
-                link_tag = item.find('a')
-                if link_tag:
-                    title = link_tag.get_text(strip=True)
-                    url = link_tag.get('href')
-                    events.append({
-                        "title": f"【{group_name}】{title}",
-                        "start": date_str,
-                        "url": url,
-                        "group": group_name
-                    })
-    except Exception as e:
-        print(f"{group_name} の取得エラー: {e}")
+    current_url = url
+    while current_url:
+        try:
+            print(f"{name} 取得中: {current_url}")
+            driver.get(current_url)
+            time.sleep(8)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            days = soup.select('.tribe-events-calendar-month__day')
+            links_to_crawl = []
+            for day in days:
+                time_tag = day.select_one('time.tribe-events-calendar-month__day-date-daynum')
+                if not time_tag or not time_tag.has_attr('datetime'): continue
+                date_str = time_tag['datetime']
+                event_links = day.select('a.tribe-events-calendar-month__multiday-event-hidden-link, a.tribe-events-calendar-month__calendar-event-title-link')
+                for link in event_links:
+                    href = link.get('href')
+                    title_el = link.select_one('h3') or link
+                    title = title_el.get_text(strip=True)
+                    if title and href:
+                        links_to_crawl.append({"title": title, "url": href, "date": date_str})
+            for item in links_to_crawl:
+                v, tm = get_detail_info(driver, item['url'])
+                events.append({"title": f"[{name}] {item['title']}", "start": item['date'], "url": item['url'], "venue": v, "time": tm, "allDay": True})
+            next_link = soup.select_one('a.tribe-events-c-top-bar__nav-link--next, a.tribe-common-c-btn-icon--caret-right')
+            current_url = next_link.get('href') if next_link and next_link.has_attr('href') else None
+        except: break
     return events
 
 def scrape_2zicon(driver):
-    """虹コンのスケジュールスクレイピング"""
-    return scrape_kyurushite(driver, "虹コン", "https://2zicon.tokyo/schedule/")
-
-def scrape_dspm(driver, group_name, domain, path):
-    """DSPM系（さよステ / meme）のスケジュールスクレイピング"""
+    """虹コン：当月全ページ + 先12ヶ月巡回"""
+    name = "虹コン"
+    base_url = "https://2zicon.tokyo"
     events = []
-    print(f"{group_name} のスケジュールを取得中...")
-    try:
-        driver.get(domain + path)
-        time.sleep(4)
-        
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        
-        if "vertical_calendar" in path:
-            items = soup.find_all('div', class_='event-item')
-        else:
-            links = soup.find_all('a', href=re.compile(r'/schedules/\d+'))
-            for link in links:
-                title_elem = link.find(class_='title')
-                date_elem = link.find(class_='date')
-                if title_elem and date_elem:
-                    title = title_elem.get_text(strip=True)
-                    date_raw = date_elem.get_text(strip=True)
-                    date_match = re.search(r'(\d{4})\.(\d{2})\.(\d{2})', date_raw)
-                    if date_match:
-                        date_str = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}"
-                        events.append({
-                            "title": f"【{group_name}】{title}",
-                            "start": date_str,
-                            "url": domain + link.get('href'),
-                            "group": group_name
-                        })
-    except Exception as e:
-        print(f"{group_name} の取得エラー: {e}")
+    now = datetime.now()
+    current_url = f"{base_url}/information/schedule/"
+    while current_url:
+        try:
+            driver.get(current_url)
+            time.sleep(3)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            for it in soup.select('.info__item'):
+                link = it.select_one('a.info__link')
+                text_el = it.select_one('.info__text')
+                d_el = it.select_one('.info__date')
+                if not link or not text_el or not d_el: continue
+                title = text_el.get_text(strip=True)
+                f_url = base_url + link.get('href') if link.get('href').startswith('/') else link.get('href')
+                d_match = re.search(r'\d{4}-\d{2}-\d{2}', d_el.get_text(strip=True).replace('.', '-'))
+                if d_match:
+                    v, tm = get_detail_info(driver, f_url)
+                    events.append({"title": f"[{name}] {title}", "start": d_match.group(), "url": f_url, "venue": v, "time": tm, "allDay": True})
+            next_btn = soup.select_one('a.pagi__btn--next')
+            current_url = (base_url + next_btn.get('href')) if next_btn and next_btn.has_attr('href') else None
+        except: break
+    for i in range(1, 13):
+        target = now + timedelta(days=31 * i)
+        cal_url = f"{base_url}/information/schedule?getYear={target.year}&getMonth={target.month}"
+        try:
+            driver.get(cal_url)
+            time.sleep(3)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            for it in soup.select('.info__item'):
+                link, text_el, d_el = it.select_one('a.info__link'), it.select_one('.info__text'), it.select_one('.info__date')
+                if not link or not text_el or not d_el: continue
+                title = text_el.get_text(strip=True)
+                f_url = base_url + link.get('href') if link.get('href').startswith('/') else link.get('href')
+                d_match = re.search(r'\d{4}-\d{2}-\d{2}', d_el.get_text(strip=True).replace('.', '-'))
+                if d_match:
+                    v, tm = get_detail_info(driver, f_url)
+                    events.append({"title": f"[{name}] {title}", "start": d_match.group(), "url": f_url, "venue": v, "time": tm, "allDay": True})
+        except: continue
     return events
 
+def scrape_dspm(driver, name, base_url, menu_path):
+    """さよステ / meme：先12ヶ月巡回"""
+    events = []
+    now = datetime.now()
+    for i in range(0, 13):
+        target = now + timedelta(days=31 * i)
+        t_m = f"{target.year}-{str(target.month).zfill(2)}"
+        u = f"{base_url}{menu_path}?start={t_m}-01" if "schedules" in menu_path else f"{base_url}{menu_path}/{target.year}/{target.month}"
+        try:
+            driver.get(u)
+            time.sleep(6)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            items = []
+            if "vertical_calendar" in menu_path: # meme
+                for li in soup.select('li.list-group-item'):
+                    t_tag, inner = li.select_one('time'), li.select_one('.fc-event-inner')
+                    if not t_tag or not inner: continue
+                    title = inner.get_text(strip=True)
+                    dm = re.findall(r'\d+', t_tag.get_text())
+                    if len(dm)<3: continue
+                    ds = f"{dm[0]}-{dm[1].zfill(2)}-{dm[2].zfill(2)}"
+                    for a in li.select('a.tag-event, a.tag-live'):
+                        items.append({"url": base_url + a.get('href'), "date": ds, "title": title})
+            else: # sayostay
+                for td in soup.select('td.fc-daygrid-day'):
+                    ds = td.get('data-date')
+                    if not ds or not ds.startswith(t_m): continue
+                    for a in td.select('a.fc-daygrid-event'):
+                        t_el = a.select_one('.fc-event-title')
+                        items.append({"url": base_url + a.get('href'), "date": ds, "title": t_el.get_text(strip=True) if t_el else ""})
+            for it in items:
+                v, tm = get_detail_info(driver, it['url'])
+                events.append({"title": f"[{name}] {it['title']}", "start": it['date'], "url": it['url'], "venue": v, "time": tm, "allDay": True})
+        except: continue
+    return events
 
-# --- メイン実行処理 ---
-if __name__ == "__main__":
+def main():
     driver = setup_driver()
     all_data = []
-
-    all_data.extend(scrape_chumtoto(driver))
-    all_data.extend(scrape_kyurushite(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
+    
+    # 各グループのスクレイピング（ここは変更なし）
+    all_data.extend(scrape_tribe(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
+    all_data.extend(scrape_tribe(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     all_data.extend(scrape_2zicon(driver))
     all_data.extend(scrape_dspm(driver, "さよステ", "https://sayostay.dspm.jp", "/schedules/menu/18610"))
     all_data.extend(scrape_dspm(driver, "meme", "https://www.memetokyo.com", "/vertical_calendar"))
     
-    unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
-    print(f"総イベント数: {len(unique_events)} 件を取得しました。詳細情報を解析中...")
-
-    for ev in unique_events:
-        if ev.get('url'):
-            print(f"詳細解析中: {ev['title']}")
-            venue, time_info = get_detail_info(driver, ev['url'])
-            ev['venue'] = venue
-            ev['time_info'] = time_info
-        else:
-            ev['venue'] = "詳細を確認"
-            ev['time_info'] = ""
-
     driver.quit()
 
+    # 1. 重複排除
+    unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
+
+    # 2. 【ここから追加】前回保存したデータを読み込んで比較する
     old_data_dict = {}
     if os.path.exists('data.json'):
         try:
             with open('data.json', 'r', encoding='utf-8') as f:
                 old_list = json.load(f)
+                # タイトルと日付をキーにして、既存の追加日時(added_at)を保持する
                 old_data_dict = {(ev['title'], ev['start']): ev.get('added_at') for ev in old_list}
         except Exception as e:
             print(f"前回のデータ読み込みに失敗しました: {e}")
 
+    # 3. 現在の時刻を取得
     current_now = datetime.now().isoformat()
 
+    # 4. 各イベントに追加日時を付与
     for ev in unique_events:
         key = (ev['title'], ev['start'])
-        if key in old_data_dict:
+        if key in old_data_dict and old_data_dict[key]:
+            # すでに知っているイベントなら、前回の追加日時を維持
             ev['added_at'] = old_data_dict[key]
         else:
+            # 新しく見つけたイベントなら、今の時間をセット
             ev['added_at'] = current_now
 
+    # 5. 保存
     with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(unique_events, f, ensure_ascii=False, indent=4)
-    print("ローカルの data.json を更新しました。")
+        json.dump(unique_events, f, ensure_ascii=False, indent=2)
 
+    print(f"全工程完了。合計 {len(unique_events)} 件（内、新着チェック完了）")
 
-    # --- ChumTotoのデータのみ新しいスプシに同期 ---
-    chumtoto_only = [ev for ev in unique_events if ev.get('group') == 'ChumToto']
-
-    formatted_events = []
-    for ev in chumtoto_only:
-        date_str = ev['start'].split('T')[0] if 'T' in ev['start'] else ev['start']
-        formatted_events.append({
-            "date": date_str,
-            "title": ev['title'].replace('【ちゃむ】', ''),
-            "venue": ev.get('venue', '詳細を確認'),
-            "time": ev.get('time_info', ''),
-            "url": ev.get('url', '')
-        })
-
-    GAS_URL = "https://script.google.com/macros/s/AKfycbxTpsaay81w4DDRfjfui7pfmnlc4aDaOPJx_fy4Shf275gpnyUZ9R-ObhAWQOMVOwyP/exec"
-
-    payload = {
-        "action": "sync_schedule",
-        "events": formatted_events
-    }
-
-    print(f"GoogleスプレッドシートへChumTotoの公式スケジュール（計 {len(formatted_events)} 件）を同期中...")
-    try:
-        response = requests.post(GAS_URL, json=payload, headers={'Content-Type': 'text/plain'})
-        print("スプシ同期結果:", response.text)
-    except Exception as e:
-        print(f"スプレッドシートへのデータ送信中にエラーが発生しました: {e}")
-
-    print("すべての工程が正常に終了しました！")
+if __name__ == "__main__":
+    main()
