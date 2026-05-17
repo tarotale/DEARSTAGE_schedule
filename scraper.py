@@ -3,7 +3,7 @@ import json
 import time
 import re
 from datetime import datetime, timedelta
-import requests  # スプシ同期用のライブラリ
+import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -19,18 +19,27 @@ def setup_driver():
     options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    # ボット検知を回避するための追加オプション
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+    
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
+    # navigator.webdriver を false に上書きして自動操作であることを隠す
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    })
+    return driver
 
 def get_detail_info(driver, url):
-    """詳細ページから会場と時間を抽出する（きゅるしての時間取得バグ修正版）"""
+    """詳細ページから会場と時間を抽出する"""
     venue = "詳細を確認"
     time_info = " "
     try:
         driver.get(url)
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-        time.sleep(2)
+        time.sleep(3) # 読み込みを3秒確実に待機（安定化）
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -48,9 +57,8 @@ def get_detail_info(driver, url):
             except Exception:
                 pass
 
-        # 2. JSON-LDで取得できない場合のフォールバック（きゅるして等）
+        # 2. フォールバック
         if venue == "詳細を確認" or time_info == " ":
-            # テーブル要素の探索
             table = soup.find('table')
             if table:
                 for row in table.find_all('tr'):
@@ -76,8 +84,7 @@ def scrape_chumtoto(driver):
     print("ちゃむととのスケジュールを取得中...")
     try:
         driver.get(base_url)
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.CLASS_NAME, "full-calendar-day")))
+        time.sleep(4) # カレンダー展開まで4秒確実に待つ
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         calendar_days = soup.find_all('div', class_='full-calendar-day')
@@ -100,7 +107,6 @@ def scrape_chumtoto(driver):
                     title = link_tag.get_text(strip=True)
                     url = link_tag.get('href')
                     
-                    # 既に同じ日時のイベントがあればスキップ
                     if any(e['title'] == title and e['start'] == date_str for e in events):
                         continue
                         
@@ -120,8 +126,7 @@ def scrape_kyurushite(driver, group_name, base_url):
     print(f"{group_name} のスケジュールを取得中...")
     try:
         driver.get(base_url)
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.CLASS_NAME, "full-calendar-day")))
+        time.sleep(4) # 4秒確実に待つ
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         calendar_days = soup.find_all('div', class_='full-calendar-day')
@@ -163,9 +168,7 @@ def scrape_dspm(driver, group_name, domain, path):
     print(f"{group_name} のスケジュールを取得中...")
     try:
         driver.get(domain + path)
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-        time.sleep(3)
+        time.sleep(4)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         
@@ -246,28 +249,20 @@ if __name__ == "__main__":
     print("ローカルの data.json を更新しました。")
 
 
-    # ========================================================
     # 4. 【追加機能】ChumTotoのデータのみ新しいスプシに同期
-    # ========================================================
-    
-    # ChumTotoのデータだけをフィルタリング抽出
     chumtoto_only = [ev for ev in unique_events if ev.get('group') == 'ChumToto']
 
-    # GASが要求する配列形式オブジェクトに成形
     formatted_events = []
     for ev in chumtoto_only:
-        # 日付部分 (YYYY-MM-DD) のみを綺麗に抽出
         date_str = ev['start'].split('T')[0] if 'T' in ev['start'] else ev['start']
-        
         formatted_events.append({
             "date": date_str,
-            "title": ev['title'].replace('【ちゃむ】', ''),  # カレンダー表示用にプレフィックスを除去してスッキリ化
+            "title": ev['title'].replace('【ちゃむ】', ''),
             "venue": ev.get('venue', '詳細を確認'),
             "time": ev.get('time_info', ''),
             "url": ev.get('url', '')
         })
 
-    # あなたの新しいGASウェブアプリURL
     GAS_URL = "https://script.google.com/macros/s/AKfycbxTpsaay81w4DDRfjfui7pfmnlc4aDaOPJx_fy4Shf275gpnyUZ9R-ObhAWQOMVOwyP/exec"
 
     payload = {
