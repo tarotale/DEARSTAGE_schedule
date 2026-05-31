@@ -1,113 +1,5 @@
 [
   {
-    "title": "[ChumToto] 【イベント開催】江本夏渚イベント「秋うまれ夏渚そだち2026 ぜんぶ♡編」＠秋葉原ディアステージ",
-    "start": "2026-04-28",
-    "url": "https://chumtoto.jp/event/1653/",
-    "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-    "time": "OPEN 18:00 CLOSE 22:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【ライブ出演】マンスリーナビゲーターGIRLS LIVE＠J-SQUARE SHINAGAWA",
-    "start": "2026-04-29",
-    "url": "https://chumtoto.jp/event/1573/",
-    "venue": "J-SQUARE SHINAGAWA",
-    "time": "開場13:00／開演13:30",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【ライブ出演】sound stock Vol.11＠LIQUIDROOM",
-    "start": "2026-05-03",
-    "url": "https://chumtoto.jp/event/1643/",
-    "venue": "LIQUIDROOM",
-    "time": "開場16:30 / 開演17:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【イベント出演】「歌舞伎町 UP GATE↑↑2026」＠新宿・歌舞伎町エリア",
-    "start": "2026-05-05",
-    "url": "https://chumtoto.jp/event/1612/",
-    "venue": "Zepp Shinjuku(TOKYO)／APEXIA／新宿 LOFT／SHINJUKU WALLY／新宿 MARZ／Zirco Tokyo／新宿 DHNoA／新宿 Biske／シアターマーキュリー新宿／新宿 motion／歌舞伎町タワーステージ",
-    "time": "開場 12:00/ 開演 13:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【イベント出演】女性限定イベント「Dear Doll Tea Party the1st drop by #DSPMロリィタ部」＠MOSKA by Ginger Garden",
-    "start": "2026-05-09",
-    "url": "https://chumtoto.jp/event/1722/",
-    "venue": "MOSKA by Ginger Garden",
-    "time": "イベント時間：<1部>OPEN 16:30 / START 16:45 ＜2部＞OPEN 18:25 / START 18:40",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【イベント開催】ChumToto イベント「まるっと、ちゃむタイム」＠秋葉原ディアステージ",
-    "start": "2026-05-10",
-    "url": "https://chumtoto.jp/event/1658/",
-    "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-    "time": "1部 OPEN 13:30 CLOSE 16:00 2部 OPEN 17:00 CLOSE 21:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【ライブ出演】女性限定ライブ「Girls place to be. vol.2」＠シティホール&ギャラリー五反田",
-    "start": "2026-05-11",
-    "url": "https://chumtoto.jp/event/1666/",
-    "venue": "シティホール&ギャラリー五反田",
-    "time": "開場16:30 / 開演17:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【ライブ出演】TIF ASIA TOUR 2026 in TOKYO＠白金高輪SELENE b2",
-    "start": "2026-05-16",
-    "url": "https://chumtoto.jp/event/1688/",
-    "venue": "白金高輪SELENE b2",
-    "time": "開場11:30 / 開演12:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【ライブ出演】#DSPMLIVE NEXT＠高円寺HIGH",
-    "start": "2026-05-21",
-    "url": "https://chumtoto.jp/event/1717/",
-    "venue": "高円寺HIGH",
-    "time": "開場18:30 / 開演19:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【イベント出演】「Shimokitazawa SOUND CRUISING 2026」＠下北沢エリア",
-    "start": "2026-05-23",
-    "url": "https://chumtoto.jp/event/1767/",
-    "venue": "シャングリラ / CLUB251 / 440 / BASEMENTBAR / THREE / SHELTER / LIVEHOLIC / DaisyBar / SPREAD / MOSAiC",
-    "time": "開場/開演 DAY 11:00/12:00　NIGHT 23:00/23:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【イベント開催】宮原梓イベント「星の見えない街でただひとつの星〜になりたい〜」＠秋葉原ディアステージ",
-    "start": "2026-05-26",
-    "url": "https://chumtoto.jp/event/1802/",
-    "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-    "time": "OPEN 18:00 CLOSE 22:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[ChumToto] 【ライブ出演】Hide and Seek＠新宿MARZ",
-    "start": "2026-05-30",
-    "url": "https://chumtoto.jp/event/1773/",
-    "venue": "新宿MARZ",
-    "time": "開場 17:00 / 開演17:30",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
     "title": "[ChumToto] 【イベント開催】柏葉れん/詩之宮かこ イベント「茶む☆にゃんにゃん晩餐会」@静岡ディアステージ",
     "start": "2026-06-06",
     "url": "https://chumtoto.jp/event/1797/",
@@ -212,69 +104,6 @@
     "url": "https://chumtoto.jp/event/1817/",
     "venue": "東京ドリームパーク（SGCホール有明、ドリームテラス）、TFTホール",
     "time": "開場10:00 / 開演11:00",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] 「Kyururin Heavenly 〜全部ありふれない軌跡〜」2DAYS",
-    "start": "2026-05-02",
-    "url": "https://www.kyurushite.com/event/704/",
-    "venue": "幕張イベントホール",
-    "time": "開場1600 開演1700",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] 「Kyururin Heavenly 〜全部ありふれない軌跡〜」2DAYS",
-    "start": "2026-05-03",
-    "url": "https://www.kyurushite.com/event/704/",
-    "venue": "幕張イベントホール",
-    "time": "開場1600 開演1700",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] 『きゅるりんってしてみて 5th Anniversary Photobook カワイイ・リアリズム』発売記念イベント",
-    "start": "2026-05-09",
-    "url": "https://www.kyurushite.com/event/631/",
-    "venue": "東京‐渋谷 HMV&BOOKS SHIBUYA 5F イベントスペース",
-    "time": "2026.05.09",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] 「きゅるりんってしてみて 5th Anniversary Photobook カワイイ・リアリズム」発売記念インターネットサイン会",
-    "start": "2026-05-16",
-    "url": "https://www.kyurushite.com/event/639/",
-    "venue": "詳細を確認",
-    "time": "2026.05.16",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] ハニーシナモン × 逃げ水あむ コラボイベント",
-    "start": "2026-05-23",
-    "url": "https://www.kyurushite.com/event/662/",
-    "venue": "都内某所",
-    "time": "1200〜1800前後",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] #DSPMLIVE presents Sweet & Bitter Land Supported by 月光ドリル",
-    "start": "2026-05-29",
-    "url": "https://www.kyurushite.com/event/742/",
-    "venue": "EX THEATER ROPPONGI",
-    "time": "開場1700 開演1800",
-    "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
-  },
-  {
-    "title": "[きゅるして] @JAM 2026",
-    "start": "2026-05-31",
-    "url": "https://www.kyurushite.com/event/687/",
-    "venue": "Zepp DiverCity（TOKYO）",
-    "time": "＜1 部＞1000/1100＜2 部＞1630/1730きゅるりんってしてみて は＜2 部＞『SUPER LIVE 豪華共演者によるオムニバスライブ』に出演！",
     "allDay": true,
     "added_at": "2026-05-17T05:20:35.107639"
   },
@@ -630,13 +459,13 @@
     "added_at": "2026-05-17T05:20:35.107639"
   },
   {
-    "title": "[虹コン] 虹のコンキスタドール 12th Anniversary LIVE",
+    "title": "[虹コン] 虹のコンキスタドール 12th Anniversary LIVE「ニューレジェンドインサマー！」",
     "start": "2026-07-14",
     "url": "https://2zicon.tokyo/information/nijicon_12thlive/",
     "venue": "⽇本⻘年館ホール",
     "time": "2026/7/14(火)OPEN 1800 / START 1900",
     "allDay": true,
-    "added_at": "2026-05-17T05:20:35.107639"
+    "added_at": "2026-05-31T16:16:15.933771"
   },
   {
     "title": "[虹コン] 10年目記念で有明に引っ越しだよ！六本木アイドルフェスティバル2026",
@@ -664,6 +493,15 @@
     "time": "",
     "allDay": true,
     "added_at": "2026-05-17T05:20:35.107639"
+  },
+  {
+    "title": "[虹コン] @JAM EXPO 2026 supported by UP-T",
+    "start": "2026-08-29",
+    "url": "https://2zicon.tokyo/information/jam-expo-2026/",
+    "venue": "横浜アリーナ",
+    "time": "8 月 29 日(土)、30 日(日)※虹のコンキスタドールの出演日は未定です",
+    "allDay": true,
+    "added_at": "2026-05-31T16:16:15.933771"
   },
   {
     "title": "[虹コン] リトルアーモリー THE STAGE ―銃声は、遠雷に重なる―",
