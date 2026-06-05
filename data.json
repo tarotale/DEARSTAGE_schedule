@@ -45,6 +45,15 @@
     "added_at": "2026-05-20T12:00:32.639370"
   },
   {
+    "title": "[ChumToto] 【イベント出演】『iCON DOLL LOUNGE 2026 ～ SUMMER COLLECTION ～ 』イベント連動ラフォーレ原宿POP UP SHOP＠ラフォーレ原宿",
+    "start": "2026-06-18",
+    "url": "https://chumtoto.jp/event/1904/",
+    "venue": "ラフォーレ原宿5F MAKE THE STAGE内",
+    "time": "2026.06.18",
+    "allDay": true,
+    "added_at": "2026-06-05T12:15:55.709353"
+  },
+  {
     "title": "[ChumToto] 【ツアー開催】「☆ちゃむわーるど拡張ツアー2026☆– だってキミの最強パートナーだから –＜大阪公演＞」＠梅田BANGBOO",
     "start": "2026-06-20",
     "url": "https://chumtoto.jp/event/1732/",
@@ -151,6 +160,15 @@
     "time": "2026.07.21",
     "allDay": true,
     "added_at": "2026-05-18T12:40:09.213200"
+  },
+  {
+    "title": "[きゅるして] 10年目記念で有明に引っ越しだよ！六本木アイドルフェスティバル2026",
+    "start": "2026-07-25",
+    "url": "https://www.kyurushite.com/event/866/",
+    "venue": "東京ドリームパーク（SGCホール有明、ドリームテラス）、TFTホール",
+    "time": "開場1000 開演1100",
+    "allDay": true,
+    "added_at": "2026-06-05T12:15:55.709353"
   },
   {
     "title": "[きゅるして] TOKYO IDOL FESTIVAL 2026 Tシャツ着用者限定ステージ",
@@ -324,6 +342,15 @@
     "added_at": "2026-05-17T05:20:35.107639"
   },
   {
+    "title": "[虹コン] 「#DSPMLIVE 千夜一夜の天蚕」",
+    "start": "2026-07-27",
+    "url": "https://2zicon.tokyo/information/0727_dspm/",
+    "venue": "STAR PINE’S CAFEhttps//mandala.gr.jp/SPC/access/",
+    "time": "2026/07/27(月)OPEN 1830 / START 1900",
+    "allDay": true,
+    "added_at": "2026-06-05T12:15:55.709353"
+  },
+  {
     "title": "[虹コン] TIF2026",
     "start": "2026-07-31",
     "url": "https://2zicon.tokyo/information/tif2026nizicon/",
@@ -424,19 +451,10 @@
   },
   {
     "title": "[さよステ] #さとりモンスター 全国下北化計画ツアー2026",
-    "start": "2026-06-20",
-    "url": "https://sayostay.dspm.jp/schedules/99440?r=tgxr00",
-    "venue": "下北沢SHELTER",
-    "time": "2026/06/21(Sun)",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[さよステ] #さとりモンスター 全国下北化計画ツアー2026",
     "start": "2026-06-21",
-    "url": "https://sayostay.dspm.jp/schedules/99440?r=tgxr00",
+    "url": "https://sayostay.dspm.jp/schedules/99440?r=tgylk1",
     "venue": "下北沢SHELTER",
-    "time": "2026/06/21(Sun)",
+    "time": "OPEN 10:30 / START 11:00",
     "allDay": true,
     "added_at": "2026-06-01T08:41:58.050759"
   },
@@ -565,6 +583,15 @@
     "time": "1部 17:00~18:30 / 2部 19:00~20:30",
     "allDay": true,
     "added_at": "2026-06-01T08:41:58.050759"
+  },
+  {
+    "title": "[meme] 7/19(日)ミームトーキョー新体制お披露⽬ライブ 開催決定！",
+    "start": "2026-07-19",
+    "url": "https://www.memetokyo.com/contents/1080283",
+    "venue": "代官山UNIT",
+    "time": "開場 16:30/開演 17:30",
+    "allDay": true,
+    "added_at": "2026-06-05T12:15:55.709353"
   },
   {
     "title": "[meme] 8/10(月)NEO JAPONISM主催フェス「NEO KASSEN2026」出演決定！",
