@@ -409,7 +409,7 @@
     "start": "2026-10-17",
     "url": "https://www.kyurushite.com/event/994/",
     "venue": "詳細を確認",
-    "time": "2026.10.17",
+    "time": "",
     "allDay": true,
     "added_at": "2026-06-20T07:11:16.164062"
   },
@@ -772,6 +772,15 @@
     "time": "OPEN 18:30 / START 19:00",
     "allDay": true,
     "added_at": "2026-06-10T22:59:20.205186"
+  },
+  {
+    "title": "[さよステ] 萌波あかり 1on1トーク",
+    "start": "2026-06-26",
+    "url": "https://sayostay.dspm.jp/schedules/113192?r=th8mo1",
+    "venue": "詳細を確認",
+    "time": "2026/06/26(Fri) 21:00 -",
+    "allDay": true,
+    "added_at": "2026-06-25T11:50:11.460057"
   },
   {
     "title": "[さよステ] #DSPM UNIT LIVE EXTRA",
