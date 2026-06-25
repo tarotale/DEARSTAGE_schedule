@@ -409,7 +409,7 @@
     "start": "2026-10-17",
     "url": "https://www.kyurushite.com/event/994/",
     "venue": "詳細を確認",
-    "time": "",
+    "time": "2026.10.17",
     "allDay": true,
     "added_at": "2026-06-20T07:11:16.164062"
   },
@@ -781,6 +781,15 @@
     "time": "2026/06/26(Fri) 21:00 -",
     "allDay": true,
     "added_at": "2026-06-25T11:50:11.460057"
+  },
+  {
+    "title": "[さよステ] 城谷美温1on1トーク",
+    "start": "2026-06-27",
+    "url": "https://sayostay.dspm.jp/schedules/113228?r=th9v41",
+    "venue": "詳細を確認",
+    "time": "2026/06/27(Sat) 13:00 -",
+    "allDay": true,
+    "added_at": "2026-06-25T17:21:57.503027"
   },
   {
     "title": "[さよステ] #DSPM UNIT LIVE EXTRA",
