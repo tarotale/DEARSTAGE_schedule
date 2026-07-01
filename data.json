@@ -315,114 +315,6 @@
     "added_at": "2026-06-11T18:20:11.705021"
   },
   {
-    "title": "[虹コン] sound stock Vol.12",
-    "start": "2026-06-01",
-    "url": "https://2zicon.tokyo/information/soundstockvol-12/",
-    "venue": "Spotify O-EAST",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] ミクチャ『@JAM THE WORLD』（川端）",
-    "start": "2026-06-01",
-    "url": "https://2zicon.tokyo/information/mixch-3/",
-    "venue": "詳細を確認",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 伊藤舞依生誕イベント2026「18さい！#まいにまかセロリ ～まだまだシャキッと成長ちゅう♡～」",
-    "start": "2026-06-03",
-    "url": "https://2zicon.tokyo/information/itobd_2026/",
-    "venue": "高円寺HIGH",
-    "time": "6/3(水)1830 開場 / 1900 開演",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 渋谷クロスFM『虹コンのコレってラジオだったよね？』（石浜・尾林・青山）",
-    "start": "2026-06-03",
-    "url": "https://2zicon.tokyo/information/crossfm_koreraji-2/",
-    "venue": "詳細を確認",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 金曜日の石浜芽衣",
-    "start": "2026-06-05",
-    "url": "https://2zicon.tokyo/information/fri_ishihama/",
-    "venue": "秋葉原ディアステージ",
-    "time": "2026/6/5(金) 1800",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 尾林結花 4周年！in 秋葉原ディアステージ",
-    "start": "2026-06-09",
-    "url": "https://2zicon.tokyo/information/obayasi_4th/",
-    "venue": "秋葉原ディアステージ",
-    "time": "2026/6/9(火) 1800",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 虹のコンキスタドール Spring Tour 2026 長野公演＠CLUB JUNK BOX",
-    "start": "2026-06-12",
-    "url": "https://2zicon.tokyo/information/spring-tour-2026-nagano/",
-    "venue": "詳細を確認",
-    "time": "6/12(金)  Open 1800 / Start 1900長野・CLUB JUNK BOX",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 虹のコンキスタドール Spring Tour 2026 金沢公演＠REDSUN",
-    "start": "2026-06-13",
-    "url": "https://2zicon.tokyo/information/spring-tour-2026-kanazawa/",
-    "venue": "詳細を確認",
-    "time": "6/13(土)  Open 1530 / Start 1600金沢・REDSUN",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 栗原舞優生誕イベント2026栗原舞優絶対アイドル宣言2026🎀 〜まゆちゃんとにこにこパーティー🍰〜",
-    "start": "2026-06-25",
-    "url": "https://2zicon.tokyo/information/kuriharabd_2026/",
-    "venue": "SPACE ODD",
-    "time": "6/25(木)1800 開場 / 1830 開演",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] UP-T presents HERO SONIC 2026",
-    "start": "2026-06-27",
-    "url": "https://2zicon.tokyo/information/hero-sonic-2026/",
-    "venue": "横浜 赤レンガパーク",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 虹のコンキスタドールフリーライブ in 汐留シオサイト",
-    "start": "2026-06-28",
-    "url": "https://2zicon.tokyo/information/260521shiodome/",
-    "venue": "汐留シオサイトhttps//www.sio-site.or.jp/",
-    "time": "2026年6月28日(日) ①1200~ ②1530~",
-    "allDay": true,
-    "added_at": "2026-06-01T08:41:58.050759"
-  },
-  {
-    "title": "[虹コン] 火曜日の栗原舞優〜絶対アイドル宣言2026❣️後夜祭🎂〜",
-    "start": "2026-06-30",
-    "url": "https://2zicon.tokyo/information/koyasai_kurihara/",
-    "venue": "秋葉原ディアステージ",
-    "time": "2026/6/30(火) 1800",
-    "allDay": true,
-    "added_at": "2026-06-03T13:24:19.728856"
-  },
-  {
     "title": "[虹コン] 女王ステ不滅部隊編『Rose』",
     "start": "2026-07-02",
     "url": "https://2zicon.tokyo/information/stage_rose/",
@@ -549,6 +441,15 @@
     "added_at": "2026-05-31T16:16:15.933771"
   },
   {
+    "title": "[虹コン] リトルアーモリー THE STAGE ―銃声は、遠雷に重なる―",
+    "start": "2026-09-02",
+    "url": "https://2zicon.tokyo/information/littlearmoryst/",
+    "venue": "六行会ホール〒140-0001 東京都品川区北品川2-32-3",
+    "time": "",
+    "allDay": true,
+    "added_at": "2026-07-01T07:19:04.201565"
+  },
+  {
     "title": "[虹コン] ガラフェス ～渋谷 文化的衝撃センセーション 秋の新作発表会～",
     "start": "2026-11-03",
     "url": "https://2zicon.tokyo/information/garafes20261103/",
@@ -556,141 +457,6 @@
     "time": "",
     "allDay": true,
     "added_at": "2026-06-30T07:06:43.386105"
-  },
-  {
-    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー 「さよめるモ！」",
-    "start": "2026-06-03",
-    "url": "https://sayostay.dspm.jp/schedules/105922?r=tg1vs1",
-    "venue": "大塚Hearts＋",
-    "time": "OPEN 18:30 / START 19:00",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] INFINITY LIVE presents 『ASTRO CIRCLE 2026』",
-    "start": "2026-06-05",
-    "url": "https://sayostay.dspm.jp/schedules/107061?r=tg5z00",
-    "venue": "詳細を確認",
-    "time": "2026/06/06(Sat)",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] Catmint Party",
-    "start": "2026-06-07",
-    "url": "https://sayostay.dspm.jp/schedules/107811?r=tg97o1",
-    "venue": "秋葉原 CLUB GOODMAN",
-    "time": "OPEN 17:30 / START 18:00",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー 「君回り♡STAYTUNEDTRAIN♡」 〜 旅のお相手はおさよちゃん 〜",
-    "start": "2026-06-13",
-    "url": "https://sayostay.dspm.jp/schedules/97261?r=tgkdr1",
-    "venue": "東京キネマ倶楽部",
-    "time": "OPEN 18:00 / START 18:45",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] 【根岸かのん】『大桃子サンライズ生誕2026』ゲスト出演",
-    "start": "2026-06-14",
-    "url": "https://sayostay.dspm.jp/schedules/107058?r=tgm0s1",
-    "venue": "SHIBUYA REX",
-    "time": "OPEN 14:30 / START 16:00",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] #DSPMLIVE presents「CONNECT LIVE」",
-    "start": "2026-06-16",
-    "url": "https://sayostay.dspm.jp/schedules/108729?r=tgpx21",
-    "venue": "アニメイトシアター",
-    "time": "OPEN 18:00 / START 18:30",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] 根岸かのん1on1トーク",
-    "start": "2026-06-17",
-    "url": "https://sayostay.dspm.jp/schedules/111983?r=tgryo1",
-    "venue": "詳細を確認",
-    "time": "2026/06/17(Wed) 21:00 -",
-    "allDay": true,
-    "added_at": "2026-06-16T08:54:30.742910"
-  },
-  {
-    "title": "[さよステ] 城谷美温1on1トーク",
-    "start": "2026-06-19",
-    "url": "https://sayostay.dspm.jp/schedules/112248?r=tgvmm1",
-    "venue": "詳細を確認",
-    "time": "2026/06/19(Fri) 20:30 -",
-    "allDay": true,
-    "added_at": "2026-06-17T17:59:05.297738"
-  },
-  {
-    "title": "[さよステ] #さとりモンスター 全国下北化計画ツアー2026",
-    "start": "2026-06-21",
-    "url": "https://sayostay.dspm.jp/schedules/99440?r=tgylk1",
-    "venue": "下北沢SHELTER",
-    "time": "OPEN 10:30 / START 11:00",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー品川駅編",
-    "start": "2026-06-22",
-    "url": "https://sayostay.dspm.jp/schedules/107655?r=th12g1",
-    "venue": "J‐SQUARE SHINAGAWA",
-    "time": "OPEN 18:30 / START 19:00",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] 萌波あかり 1on1トーク",
-    "start": "2026-06-26",
-    "url": "https://sayostay.dspm.jp/schedules/113192?r=th8mo1",
-    "venue": "詳細を確認",
-    "time": "2026/06/26(Fri) 21:00 -",
-    "allDay": true,
-    "added_at": "2026-06-25T11:50:11.460057"
-  },
-  {
-    "title": "[さよステ] 城谷美温1on1トーク",
-    "start": "2026-06-27",
-    "url": "https://sayostay.dspm.jp/schedules/113228?r=th9v41",
-    "venue": "詳細を確認",
-    "time": "2026/06/27(Sat) 13:00 -",
-    "allDay": true,
-    "added_at": "2026-06-25T17:21:57.503027"
-  },
-  {
-    "title": "[さよステ] 根岸かのん1on1トーク",
-    "start": "2026-06-27",
-    "url": "https://sayostay.dspm.jp/schedules/113297?r=thahc1",
-    "venue": "詳細を確認",
-    "time": "2026/06/27(Sat) 21:00 -",
-    "allDay": true,
-    "added_at": "2026-06-26T11:55:14.892724"
-  },
-  {
-    "title": "[さよステ] #DSPM UNIT LIVE EXTRA",
-    "start": "2026-06-28",
-    "url": "https://sayostay.dspm.jp/schedules/108003?r=thbps1",
-    "venue": "SHIBUYA DIVE",
-    "time": "OPEN 12:30 / START 13:00",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[さよステ] 【ミクチャ生放送ゲスト】「@ JAM THE WORLD」",
-    "start": "2026-06-29",
-    "url": "https://sayostay.dspm.jp/schedules/113469?r=the6o1",
-    "venue": "詳細を確認",
-    "time": "2026/06/29(Mon) 21:00 -",
-    "allDay": true,
-    "added_at": "2026-06-28T07:12:37.964827"
   },
   {
     "title": "[さよステ] 脱却",
@@ -747,94 +513,85 @@
     "added_at": "2026-06-10T22:59:20.205186"
   },
   {
-    "title": "[meme] 5/31(日)~6/8(月)MITSUKI個展「満ち欠け vol.3」の開催が決定！",
-    "start": "2026-06-07",
-    "url": "https://www.memetokyo.com/contents/1079923",
-    "venue": "GARRET udagawa",
-    "time": "開場 17:30/開演 18:00",
+    "title": "[さよステ] Creora",
+    "start": "2026-07-15",
+    "url": "https://sayostay.dspm.jp/schedules/113320?r=ti7gdd",
+    "venue": "WOMB LIVE",
+    "time": "OPEN 16:00 / START 16:20",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/12(金)校庭カメラガールフュンフ Debut event \"The Next Episode\" At WOMBLIVE 出演決定！",
-    "start": "2026-06-12",
-    "url": "https://www.memetokyo.com/contents/1073173",
-    "venue": "WOMBLIVE",
-    "time": "開場 17:00/開演 18:00",
+    "title": "[さよステ] 山手線ほぼ一周ツアー 〜新宿編 〜さよステとわちゃわちゃ！歌って踊って笑わせまSHOW！",
+    "start": "2026-07-19",
+    "url": "https://sayostay.dspm.jp/schedules/112682?r=tif0d1",
+    "venue": "LOFT/PLUS ONE",
+    "time": "OPEN 17:30 / START 18:15",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/13(土)SOLI生誕イベント「SOLI.exe」開催決定！",
-    "start": "2026-06-13",
-    "url": "https://www.memetokyo.com/contents/1071627",
-    "venue": "CHIC HALL SHIBUYA",
-    "time": "開場 18:00/開演 18:30",
+    "title": "[さよステ] #さとりモンスター 全国下北化計画ツアー2026",
+    "start": "2026-07-19",
+    "url": "https://sayostay.dspm.jp/schedules/99441?r=tifgc0",
+    "venue": "F.A.D横浜",
+    "time": "2026/07/20(Mon)",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/14(日) のいねねメイド♡出張しチャイナ♡ in 静岡〜♡開催決定！",
-    "start": "2026-06-14",
-    "url": "https://www.memetokyo.com/contents/1074954",
-    "venue": "静岡ディアステージ",
-    "time": "",
+    "title": "[さよステ] 10年目記念で有明に引っ越しだよ！  六本木アイドルフェスティバル2026",
+    "start": "2026-07-24",
+    "url": "https://sayostay.dspm.jp/schedules/112519?r=tiopo0",
+    "venue": "東京ドリームパーク（SGCホール有明、ドリームテラス）、TFTホール",
+    "time": "OPEN 10:00 / START 11:00",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/19(金)「NENE/MITSUKIおでかけツアー　in 秋葉原ディアステージ」開催決定！",
-    "start": "2026-06-19",
-    "url": "https://www.memetokyo.com/contents/1069071",
-    "venue": "秋葉原ディアステージ",
-    "time": "",
+    "title": "[さよステ] ゆループ",
+    "start": "2026-07-25",
+    "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
+    "venue": "下北沢複数会場",
+    "time": "2026/07/26(Sun)",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/21(日)MEW生誕イベント「いいみゅだな。」開催決定！",
-    "start": "2026-06-21",
-    "url": "https://www.memetokyo.com/contents/1074255",
-    "venue": "高円寺HIGH",
-    "time": "開場 18:00/開演 18:30",
+    "title": "[さよステ] ゆループ",
+    "start": "2026-07-26",
+    "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
+    "venue": "下北沢複数会場",
+    "time": "2026/07/26(Sun)",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/22(月)gallery&barくらげにてMEW生誕バーイベント開催決定！",
-    "start": "2026-06-22",
-    "url": "https://www.memetokyo.com/contents/1081815",
-    "venue": "gallery&barくらげ(東京都新宿区早稲田鶴巻町533-17)",
-    "time": "1部 17:00~19:00 / 2部 19:30~21:30",
+    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー「萌え萌えきゅん♡キラステビルディング！」",
+    "start": "2026-07-27",
+    "url": "https://sayostay.dspm.jp/schedules/112085?r=titue1",
+    "venue": "Twinbox AKIHABARA",
+    "time": "OPEN 18:00 / START 18:30",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] ミームトーキョー×GEKIROCK CLOTHINGコラボ企画第2弾が決定！",
-    "start": "2026-06-23",
-    "url": "https://www.memetokyo.com/contents/1074402",
-    "venue": "GEKIROCK CLOTHING渋谷店",
-    "time": "開催時間：申込者へ個別でメールにてご案内致します。 (営業時間12:00〜20:00)",
+    "title": "[さよステ] TOKYO IDOL FESTIVAL 2026  supported by にしたんクリニック",
+    "start": "2026-07-30",
+    "url": "https://sayostay.dspm.jp/schedules/111013?r=tizto0",
+    "venue": "詳細を確認",
+    "time": "2026/07/31(Fri) - 2026/08/02(Sun)",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[meme] 6/28(日)ミームトーキョーONE MAN LIVE「MEMETIC ECLIPSE」 開催決定！",
-    "start": "2026-06-28",
-    "url": "https://www.memetokyo.com/contents/1069672",
-    "venue": "浅草花劇場",
-    "time": "開場 17:00/開演 18:00",
+    "title": "[さよステ] TOKYO IDOL FESTIVAL 2026  supported by にしたんクリニック",
+    "start": "2026-08-02",
+    "url": "https://sayostay.dspm.jp/schedules/111013?r=tizto0",
+    "venue": "詳細を確認",
+    "time": "2026/07/31(Fri) - 2026/08/02(Sun)",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
-  },
-  {
-    "title": "[meme] 6/29(月) 「NENE/MITSUKI おでかけツアー in gallery&barくらげ」開催決定！",
-    "start": "2026-06-29",
-    "url": "https://www.memetokyo.com/contents/1069086",
-    "venue": "gallery&barくらげ(東京都新宿区早稲田鶴巻町533-17)",
-    "time": "1部 17:00~18:30 / 2部 19:00~20:30",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-01T07:19:04.201565"
   },
   {
     "title": "[meme] 7/12(日)gallery&barくらげにてSAEフリマ＆バーイベント開催決定！",
