@@ -558,13 +558,13 @@
     "added_at": "2026-06-10T22:59:20.205186"
   },
   {
-    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー  おさよちゃんと汐りんの 「恋するアニはわ♡ふぇす」",
-    "start": "2026-07-11",
-    "url": "https://sayostay.dspm.jp/schedules/111251?r=ti07q1",
-    "venue": "池袋w:ike329",
-    "time": "OPEN 18:00 / START 18:30",
+    "title": "[さよステ] イベント予定",
+    "start": "2026-07-10",
+    "url": "https://sayostay.dspm.jp/schedules/115418?r=thysc0",
+    "venue": "詳細を確認",
+    "time": "2026/07/11(Sat)",
     "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
+    "added_at": "2026-07-13T12:10:28.703338"
   },
   {
     "title": "[さよステ] SPARK 2026 渋谷納涼祭",
@@ -574,6 +574,15 @@
     "time": "OPEN　TBA / START TBA",
     "allDay": true,
     "added_at": "2026-07-02T16:58:11.938939"
+  },
+  {
+    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー  おさよちゃんと汐りんの 「恋するアニはわ♡ふぇす」",
+    "start": "2026-07-11",
+    "url": "https://sayostay.dspm.jp/schedules/111251?r=ti07q1",
+    "venue": "池袋w:ike329",
+    "time": "OPEN 18:00 / START 18:30",
+    "allDay": true,
+    "added_at": "2026-06-10T22:59:20.205186"
   },
   {
     "title": "[さよステ] SPARK 2026 渋谷納涼祭",
@@ -658,19 +667,19 @@
   },
   {
     "title": "[さよステ] TOKYO IDOL FESTIVAL 2026  supported by にしたんクリニック",
-    "start": "2026-07-30",
-    "url": "https://sayostay.dspm.jp/schedules/111013?r=tizto0",
+    "start": "2026-07-31",
+    "url": "https://sayostay.dspm.jp/schedules/111013?r=tj1oc0",
     "venue": "詳細を確認",
-    "time": "2026/07/31(Fri) - 2026/08/02(Sun)",
+    "time": "2026/08/01(Sat) - 2026/08/02(Sun)",
     "allDay": true,
-    "added_at": "2026-07-01T07:19:04.201565"
+    "added_at": "2026-07-13T12:10:28.703338"
   },
   {
     "title": "[さよステ] TOKYO IDOL FESTIVAL 2026  supported by にしたんクリニック",
     "start": "2026-08-02",
-    "url": "https://sayostay.dspm.jp/schedules/111013?r=tizto0",
+    "url": "https://sayostay.dspm.jp/schedules/111013?r=tj1oc0",
     "venue": "詳細を確認",
-    "time": "2026/07/31(Fri) - 2026/08/02(Sun)",
+    "time": "2026/08/01(Sat) - 2026/08/02(Sun)",
     "allDay": true,
     "added_at": "2026-07-01T07:19:04.201565"
   },
@@ -781,6 +790,15 @@
     "time": "開場 18:00/開演 19:00",
     "allDay": true,
     "added_at": "2026-07-02T11:41:58.325315"
+  },
+  {
+    "title": "[meme] 8/24(月)「#DSPMLIVE EXTRA」に出演決定！",
+    "start": "2026-08-24",
+    "url": "https://www.memetokyo.com/contents/1090310",
+    "venue": "高円寺HIGH",
+    "time": "開場 18:00/開演 18:30",
+    "allDay": true,
+    "added_at": "2026-07-13T12:10:28.703338"
   },
   {
     "title": "[meme] 8/29(土),8/30(日) 「@JAM EXPO 2026 supported by UP-T」に出演決定！",
