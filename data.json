@@ -99,6 +99,15 @@
     "added_at": "2026-06-14T11:38:56.146416"
   },
   {
+    "title": "[ChumToto] 【ライブ出演】お盆だよ！六本木アイドルフェスティバル＠六本木ヒルズアリーナ",
+    "start": "2026-08-15",
+    "url": "https://chumtoto.jp/event/2101/",
+    "venue": "六本木ヒルズアリーナ",
+    "time": "開場13:15 / 開演14:00",
+    "allDay": true,
+    "added_at": "2026-07-17T10:55:35.661097"
+  },
+  {
     "title": "[ChumToto] 【ライブ開催】柏葉れん生誕ライブ「偏♡気儘」＠SPACE ODD",
     "start": "2026-09-15",
     "url": "https://chumtoto.jp/event/2084/",
@@ -504,6 +513,15 @@
     "added_at": "2026-05-17T05:20:35.107639"
   },
   {
+    "title": "[虹コン] お盆だよ！六本木アイドルフェスティバル",
+    "start": "2026-08-15",
+    "url": "https://2zicon.tokyo/information/obondayo_26/",
+    "venue": "六本木ヒルズアリーナ〒106-6108 東京都港区六本木6-10-1",
+    "time": "2026年8月15日（土）開場1315／開演1400",
+    "allDay": true,
+    "added_at": "2026-07-17T10:55:35.661097"
+  },
+  {
     "title": "[虹コン] ディアステージ研究生定期ライブvol.3「虹コン先輩、研究させてください！」",
     "start": "2026-08-19",
     "url": "https://2zicon.tokyo/information/dskenkyusei/",
@@ -594,13 +612,13 @@
     "added_at": "2026-06-10T22:59:20.205186"
   },
   {
-    "title": "[さよステ] イベント予定",
-    "start": "2026-07-10",
-    "url": "https://sayostay.dspm.jp/schedules/115418?r=thysc0",
-    "venue": "詳細を確認",
-    "time": "2026/07/11(Sat)",
+    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー  おさよちゃんと汐りんの 「恋するアニはわ♡ふぇす」",
+    "start": "2026-07-11",
+    "url": "https://sayostay.dspm.jp/schedules/111251?r=ti07q1",
+    "venue": "池袋w:ike329",
+    "time": "OPEN 18:00 / START 18:30",
     "allDay": true,
-    "added_at": "2026-07-13T12:10:28.703338"
+    "added_at": "2026-06-10T22:59:20.205186"
   },
   {
     "title": "[さよステ] SPARK 2026 渋谷納涼祭",
@@ -610,15 +628,6 @@
     "time": "OPEN　TBA / START TBA",
     "allDay": true,
     "added_at": "2026-07-02T16:58:11.938939"
-  },
-  {
-    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー  おさよちゃんと汐りんの 「恋するアニはわ♡ふぇす」",
-    "start": "2026-07-11",
-    "url": "https://sayostay.dspm.jp/schedules/111251?r=ti07q1",
-    "venue": "池袋w:ike329",
-    "time": "OPEN 18:00 / START 18:30",
-    "allDay": true,
-    "added_at": "2026-06-10T22:59:20.205186"
   },
   {
     "title": "[さよステ] SPARK 2026 渋谷納涼祭",
@@ -666,13 +675,13 @@
     "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[さよステ] #さとりモンスター 全国下北化計画ツアー2026",
-    "start": "2026-07-19",
-    "url": "https://sayostay.dspm.jp/schedules/99441?r=tifgc0",
+    "title": "[さよステ] 全国下北化計画ツアー2026 横浜編 DAY 18",
+    "start": "2026-07-20",
+    "url": "https://sayostay.dspm.jp/schedules/99441?r=tigafd",
     "venue": "F.A.D横浜",
-    "time": "2026/07/20(Mon)",
+    "time": "2026/07/20(Mon) 10:50 -",
     "allDay": true,
-    "added_at": "2026-07-01T07:19:04.201565"
+    "added_at": "2026-07-17T10:55:35.661097"
   },
   {
     "title": "[さよステ] 10年目記念で有明に引っ越しだよ！  六本木アイドルフェスティバル2026",
@@ -680,24 +689,6 @@
     "url": "https://sayostay.dspm.jp/schedules/112519?r=tiopo0",
     "venue": "東京ドリームパーク（SGCホール有明、ドリームテラス）、TFTホール",
     "time": "OPEN 10:00 / START 11:00",
-    "allDay": true,
-    "added_at": "2026-07-01T07:19:04.201565"
-  },
-  {
-    "title": "[さよステ] ゆループ",
-    "start": "2026-07-25",
-    "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
-    "venue": "下北沢複数会場",
-    "time": "2026/07/26(Sun)",
-    "allDay": true,
-    "added_at": "2026-07-01T07:19:04.201565"
-  },
-  {
-    "title": "[さよステ] ゆループ",
-    "start": "2026-07-26",
-    "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
-    "venue": "下北沢複数会場",
-    "time": "2026/07/26(Sun)",
     "allDay": true,
     "added_at": "2026-07-01T07:19:04.201565"
   },
@@ -729,13 +720,13 @@
     "added_at": "2026-07-01T07:19:04.201565"
   },
   {
-    "title": "[さよステ] イベント予定",
-    "start": "2026-08-07",
-    "url": "https://sayostay.dspm.jp/schedules/114133?r=tjen00",
-    "venue": "詳細を確認",
-    "time": "2026/08/08(Sat)",
+    "title": "[さよステ] 8月5日は『タクシーの日』タッくん感謝デー2026",
+    "start": "2026-08-08",
+    "url": "https://sayostay.dspm.jp/schedules/114133?r=tjfkc1",
+    "venue": "ベルサール秋葉原 1F 屋内外イベントスペース",
+    "time": "2026/08/08(Sat) 12:00 -",
     "allDay": true,
-    "added_at": "2026-07-02T11:41:58.325315"
+    "added_at": "2026-07-17T10:55:35.661097"
   },
   {
     "title": "[さよステ] イベント予定",
