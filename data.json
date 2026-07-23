@@ -3,8 +3,8 @@
     "title": "[ChumToto] 【イベント開催】ChumToto フリーライブ「Good Nightのまえに」＠J‐SQUARE SHINAGAWA",
     "start": "2026-07-04",
     "url": "https://chumtoto.jp/event/1939/",
-    "venue": "詳細を確認",
-    "time": "",
+    "venue": "J‐SQUARE SHINAGAWA",
+    "time": "撮影時間：約20秒",
     "allDay": true,
     "added_at": "2026-06-13T16:22:47.160974"
   },
@@ -48,8 +48,8 @@
     "title": "[ChumToto] 【ライブ出演】「10年目記念で有明に引っ越しだよ！六本木アイドルフェスティバル2026」＠東京ドリームパーク",
     "start": "2026-07-26",
     "url": "https://chumtoto.jp/event/1817/",
-    "venue": "詳細を確認",
-    "time": "",
+    "venue": "東京ドリームパーク（SGCホール有明、ドリームテラス）、TFTホール",
+    "time": "開場10:00 / 開演11:00",
     "allDay": true,
     "added_at": "2026-05-17T05:20:35.107639"
   },
@@ -142,6 +142,24 @@
     "time": "後日お知らせします",
     "allDay": true,
     "added_at": "2026-07-18T05:34:57.334766"
+  },
+  {
+    "title": "[ChumToto] 【ライブ開催】女性限定イベント「ちゃーむず♡リミテッド Vol.2〜Girls’ちゃむタイム〜」＠高円寺HIGH",
+    "start": "2026-09-06",
+    "url": "https://chumtoto.jp/event/2157/",
+    "venue": "高円寺HIGH",
+    "time": "開場13:00 / 開演13:30",
+    "allDay": true,
+    "added_at": "2026-07-23T11:18:20.399516"
+  },
+  {
+    "title": "[ChumToto] 【ライブ開催】男性限定イベント「ちゃーむず♡リミテッド Vol.2〜Boys’ちゃむタイム〜」＠高円寺HIGH",
+    "start": "2026-09-06",
+    "url": "https://chumtoto.jp/event/2161/",
+    "venue": "高円寺HIGH",
+    "time": "開場16:30 / 開演17:00",
+    "allDay": true,
+    "added_at": "2026-07-23T11:18:20.399516"
   },
   {
     "title": "[ChumToto] 【ライブ開催】柏葉れん生誕ライブ「偏♡気儘」＠SPACE ODD",
@@ -907,6 +925,15 @@
     "time": "開場 18:00/開演 19:00",
     "allDay": true,
     "added_at": "2026-07-02T11:41:58.325315"
+  },
+  {
+    "title": "[meme] 8/16(日)愛宮歌梨アイドル10周年記念イベント「Aimiya Karin 10th Anniversary Night☆!!!」にMEWが出演決定！",
+    "start": "2026-08-16",
+    "url": "https://www.memetokyo.com/contents/1094739",
+    "venue": "秋葉原ディアステージ",
+    "time": "OPEN 17:00 /CLOSE 22:00",
+    "allDay": true,
+    "added_at": "2026-07-23T11:18:20.399516"
   },
   {
     "title": "[meme] 8/24(月)「#DSPMLIVE EXTRA」に出演決定！",
