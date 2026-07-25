@@ -823,7 +823,7 @@
     "start": "2026-07-25",
     "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
     "venue": "下北沢複数会場",
-    "time": "2026/07/26(Sun)",
+    "time": "11:00よりMOSAiCにて全券種リストバンド交換開始",
     "allDay": true,
     "added_at": "2026-07-17T16:24:31.079656"
   },
@@ -832,7 +832,7 @@
     "start": "2026-07-26",
     "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
     "venue": "下北沢複数会場",
-    "time": "2026/07/26(Sun)",
+    "time": "11:00よりMOSAiCにて全券種リストバンド交換開始",
     "allDay": true,
     "added_at": "2026-07-17T16:24:31.079656"
   },
@@ -988,6 +988,15 @@
     "time": "OPEN 17:00 /CLOSE 22:00",
     "allDay": true,
     "added_at": "2026-07-23T11:18:20.399516"
+  },
+  {
+    "title": "[meme] 8/19(水)さよならステイチューン山手線ほぼ一周ツアー 田町編「STAY TUNED ALIVE！」に出演決定！",
+    "start": "2026-08-19",
+    "url": "https://www.memetokyo.com/contents/1095200",
+    "venue": "白金高輪SELENE b2",
+    "time": "OPEN 17:30 / START 18:00",
+    "allDay": true,
+    "added_at": "2026-07-25T16:14:26.400750"
   },
   {
     "title": "[meme] 8/24(月)「#DSPMLIVE EXTRA」に出演決定！",
