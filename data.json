@@ -702,24 +702,6 @@
     "added_at": "2026-05-31T16:16:15.933771"
   },
   {
-    "title": "[虹コン] リトルアーモリー THE STAGE ―銃声は、遠雷に重なる―",
-    "start": "2026-09-02",
-    "url": "https://2zicon.tokyo/information/littlearmoryst/",
-    "venue": "六行会ホール〒140-0001 東京都品川区北品川2-32-3",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-07-01T07:19:04.201565"
-  },
-  {
-    "title": "[虹コン] 虹コンとゆく！撮り旅修学旅行 in 北の大地 稚内 Supported by ANA あきんど",
-    "start": "2026-09-11",
-    "url": "https://2zicon.tokyo/information/wakkanai_tour26/",
-    "venue": "北海道・稚内",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-07-16T11:07:35.730175"
-  },
-  {
     "title": "[虹コン] かがやきフェス2026",
     "start": "2026-10-03",
     "url": "https://2zicon.tokyo/information/kagayakifes2026/",
@@ -727,6 +709,15 @@
     "time": "2026年10月3日(土)、4日(日）開場 1030 / 開演 1100 リストバンド交換930(予定)※虹のコンキスタドールの出演日は未定です",
     "allDay": true,
     "added_at": "2026-07-30T11:18:21.341437"
+  },
+  {
+    "title": "[虹コン] ガラフェス ～渋谷 文化的衝撃センセーション 秋の新作発表会～",
+    "start": "2026-11-03",
+    "url": "https://2zicon.tokyo/information/garafes20261103/",
+    "venue": "Shibuya LOVEZ",
+    "time": "",
+    "allDay": true,
+    "added_at": "2026-07-31T06:22:41.510687"
   },
   {
     "title": "[さよステ] 脱却",
