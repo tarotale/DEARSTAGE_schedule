@@ -11,8 +11,105 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
+
+# --- Google Calendar API 用モジュール ---
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
+
+# ==========================================
+# Google カレンダー連携設定
+# ==========================================
+SCOPES = ['https://www.googleapis.com/auth/calendar']
+# サービスアカウント鍵ファイルのパス（ローカルでは credentials.json、環境変数があればそれを優先）
+SERVICE_ACCOUNT_FILE = os.getenv('GOOGLE_APPLICATION_CREDENTIALS', 'credentials.json')
+
+# ★ここをご自身の Google カレンダー ID に変更してください
+CALENDAR_ID = 'YOUR_CALENDAR_ID@group.calendar.google.com'
+
+# 同期対象とするグループの接頭辞
+TARGET_GROUPS = ["[ChumToto]", "[さよステ]"]
+
+
+def get_calendar_service():
+    """Google Calendar API の接続を確立する"""
+    creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    return build('calendar', 'v3', credentials=creds)
+
+
+def sync_selected_events_to_gcal(events):
+    """[ChumToto] と [さよステ] のみを Google カレンダーに追加（重複防止付き）"""
+    # 1. ChumToto と さよステ だけを抽出
+    target_events = [
+        ev for ev in events 
+        if any(ev['title'].startswith(prefix) for prefix in TARGET_GROUPS)
+    ]
+    
+    if not target_events:
+        print("[Google Calendar] 対象となるイベント（ChumToto / さよステ）はありませんでした。")
+        return
+
+    print(f"[Google Calendar] 同期対象イベント: {len(target_events)} 件")
+    
+    try:
+        service = get_calendar_service()
+    except Exception as e:
+        print(f"[Google Calendar] API認証エラー: {e}")
+        return
+
+    # 2. 直近30日〜未来1年の既存予定を取得（2重登録を防ぐため）
+    now = datetime.utcnow()
+    time_min = (now - timedelta(days=30)).isoformat() + 'Z'
+    
+    try:
+        existing_events_res = service.events().list(
+            calendarId=CALENDAR_ID,
+            timeMin=time_min,
+            singleEvents=True
+        ).execute()
+        existing_events = existing_events_res.get('items', [])
+    except Exception as e:
+        print(f"[Google Calendar] 既存イベント取得エラー: {e}")
+        return
+
+    # (タイトル, 開始日) で作成済みの予定を記憶
+    existing_keys = set()
+    for item in existing_events:
+        start_date = item.get('start', {}).get('date') or item.get('start', {}).get('dateTime', '')[:10]
+        existing_keys.add((item.get('summary'), start_date))
+
+    # 3. 未登録のものだけを Google カレンダーに追加
+    added_count = 0
+    for ev in target_events:
+        key = (ev['title'], ev['start'])
+        if key in existing_keys:
+            continue  # 既に登録済みの場合はスキップ
+
+        # 詳細情報の組み立て
+        description_lines = []
+        if ev.get('venue'): description_lines.append(f"会場: {ev['venue']}")
+        if ev.get('time'):  description_lines.append(f"時間: {ev['time']}")
+        if ev.get('url'):   description_lines.append(f"詳細URL: {ev['url']}")
+        
+        description_text = "\n".join(description_lines)
+
+        event_body = {
+            'summary': ev['title'],
+            'location': ev.get('venue', ''),
+            'description': description_text,
+            'start': {'date': ev['start']},  # YYYY-MM-DD
+            'end': {'date': ev['start']},
+        }
+
+        try:
+            service.events().insert(calendarId=CALENDAR_ID, body=event_body).execute()
+            print(f"[Google Calendar] 登録完了: {ev['title']} ({ev['start']})")
+            added_count += 1
+            time.sleep(0.5)  # API レート制限回避のための調整
+        except Exception as e:
+            print(f"[Google Calendar] 登録失敗 ({ev['title']}): {e}")
+
+    print(f"[Google Calendar] 同期完了: {added_count} 件の新規予定を追加しました。")
+
 
 # --- 共通セットアップ ---
 def setup_driver():
@@ -23,8 +120,9 @@ def setup_driver():
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
+
 def get_detail_info(driver, url):
-    """詳細ページから会場と時間を抽出する（きゅるしての時間取得バグ修正版）"""
+    """詳細ページから会場と時間を抽出する"""
     venue = "詳細を確認"
     time_info = ""
     try:
@@ -45,11 +143,10 @@ def get_detail_info(driver, url):
         content = soup.select_one('.common__article, .article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description, .p-clubScheduleArticle__description')
         
         if content:
-            # --- パターンA: 見出し(h4, strong)と内容が分かれている ---
+            # パターンA: 見出し(h4, strong)と内容が分かれている
             for tag in content.find_all(['h4', 'strong']):
                 label = tag.get_text(strip=True)
                 
-                # 直後のテキスト、または次のタグを取得
                 data = ""
                 if tag.next_sibling and isinstance(tag.next_sibling, str):
                     data = tag.next_sibling.strip()
@@ -58,15 +155,14 @@ def get_detail_info(driver, url):
                     next_el = tag.find_next(['p', 'span'])
                     if next_el: data = next_el.get_text(strip=True)
 
-                # --- きゅるして対策: 「日程」は無視し、「時間」を優先的に取得 ---
                 if "時間" in label or "公演時間" in label:
                     time_info = data.replace("：", "").replace(":", "").strip()
-                elif ("日時" in label) and not time_info: # 時間がまだ取れていない場合のみ日時をチェック
+                elif ("日時" in label) and not time_info:
                     time_info = data.replace("：", "").replace(":", "").strip()
                 elif "場所" in label or "会場" in label:
                     venue = data.replace("：", "").replace(":", "").strip()
 
-            # --- パターンB: 1つのタグ内に改行区切りで書かれている（ChumTotoやmemeなど） ---
+            # パターンB: 1つのタグ内に改行区切りで書かれている
             if venue == "詳細を確認" or not time_info or time_info == "":
                 lines = [line.strip() for line in content.get_text("\n").split("\n") if line.strip()]
                 for line in lines:
@@ -87,6 +183,7 @@ def get_detail_info(driver, url):
         print(f"Detail parse warning at {url}: {e}")
     
     return venue, time_info
+
 
 def scrape_tribe(driver, name, url):
     """ChumToto / きゅるして：一覧からURLを抜いて詳細解析"""
@@ -118,6 +215,7 @@ def scrape_tribe(driver, name, url):
             current_url = next_link.get('href') if next_link and next_link.has_attr('href') else None
         except: break
     return events
+
 
 def scrape_2zicon(driver):
     """虹コン：当月全ページ + 先12ヶ月巡回"""
@@ -164,6 +262,7 @@ def scrape_2zicon(driver):
         except: continue
     return events
 
+
 def scrape_dspm(driver, name, base_url, menu_path):
     """さよステ / meme：先12ヶ月巡回"""
     events = []
@@ -200,11 +299,12 @@ def scrape_dspm(driver, name, base_url, menu_path):
         except: continue
     return events
 
+
 def main():
     driver = setup_driver()
     all_data = []
     
-    # 各グループのスクレイピング（ここは変更なし）
+    # 各グループのスクレイピング
     all_data.extend(scrape_tribe(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
     all_data.extend(scrape_tribe(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     all_data.extend(scrape_2zicon(driver))
@@ -216,35 +316,39 @@ def main():
     # 1. 重複排除
     unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
 
-    # 2. 【ここから追加】前回保存したデータを読み込んで比較する
+    # 2. 前回保存したデータ（data.json）を読み込んで比較する
     old_data_dict = {}
     if os.path.exists('data.json'):
         try:
             with open('data.json', 'r', encoding='utf-8') as f:
                 old_list = json.load(f)
-                # タイトルと日付をキーにして、既存の追加日時(added_at)を保持する
+                # (タイトル, 開始日) をキーにして既存の added_at を記憶
                 old_data_dict = {(ev['title'], ev['start']): ev.get('added_at') for ev in old_list}
         except Exception as e:
             print(f"前回のデータ読み込みに失敗しました: {e}")
 
-    # 3. 現在の時刻を取得
+    # 3. 現在時刻を取得（ISOフォーマット）
     current_now = datetime.now().isoformat()
 
-    # 4. 各イベントに追加日時を付与
+    # 4. 各イベントに追加日時（added_at）を設定
     for ev in unique_events:
         key = (ev['title'], ev['start'])
         if key in old_data_dict and old_data_dict[key]:
-            # すでに知っているイベントなら、前回の追加日時を維持
+            # 既存イベントは前回の added_at を保持
             ev['added_at'] = old_data_dict[key]
         else:
-            # 新しく見つけたイベントなら、今の時間をセット
+            # 新規追加イベントには現在の時刻を割り当て
             ev['added_at'] = current_now
 
-    # 5. 保存
+    # 5. data.json へ保存（Webアプリ用）
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(unique_events, f, ensure_ascii=False, indent=2)
 
-    print(f"全工程完了。合計 {len(unique_events)} 件（内、新着チェック完了）")
+    print(f"全工程完了。合計 {len(unique_events)} 件（Webアプリ用 json 保存完了）")
+
+    # 6. ChumToto と さよステ のみを Google カレンダーへ連携
+    sync_selected_events_to_gcal(unique_events)
+
 
 if __name__ == "__main__":
     main()
