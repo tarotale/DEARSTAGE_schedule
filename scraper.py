@@ -24,7 +24,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = os.getenv('GOOGLE_APPLICATION_CREDENTIALS', 'credentials.json')
 
 # ★ここをご自身の Google カレンダー ID に変更してください
-CALENDAR_ID = 'YOUR_CALENDAR_ID@group.calendar.google.com'
+CALENDAR_ID = 'chumtoto.calendar@gmail.com'
 
 # 同期対象とするグループの接頭辞
 TARGET_GROUPS = ["[ChumToto]", "[さよステ]"]
