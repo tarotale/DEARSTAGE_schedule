@@ -356,69 +356,74 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 print(f"Scrape meme error: {e}")
                 continue
     else:
-        # さよならステイチューン (FullCalendar) 用の強力クリック巡回ロジック
-        start_url = f"{base_url}{menu_path}"
-        try:
-            print(f"[{name}] カレンダー読み込み開始: {start_url}")
-            driver.get(start_url)
-            time.sleep(5)
-
-            for month_step in range(12):
+        # さよならステイチューン用：年月指定URLを直接生成して12ヶ月分巡回
+        now = datetime.now()
+        for month_step in range(12):
+            # 当月から12ヶ月先までの年月を計算
+            target_date = now + timedelta(days=31 * month_step)
+            # URLパラメータで年月を直接指定（あるいはベースURLアクセス）
+            target_url = f"{base_url}{menu_path}?year={target_date.year}&month={target_date.month}"
+            
+            try:
+                print(f"[{name}] 取得中 ({target_date.year}年{target_date.month}月): {target_url}")
+                driver.get(target_url)
+                time.sleep(3)
+                
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
-                items = []
-
+                
+                # 1. カレンダーセル (fc-daygrid-day) からの抽出
                 for td in soup.select('td.fc-daygrid-day'):
                     ds = td.get('data-date')
                     if not ds: continue
-                    for a in td.select('a.fc-daygrid-event'):
-                        t_el = a.select_one('.fc-event-title')
+                    for a in td.select('a.fc-daygrid-event, a.fc-event'):
+                        t_el = a.select_one('.fc-event-title') or a
                         href = a.get('href')
                         if href:
                             f_url = base_url + href if href.startswith('/') else href
-                            items.append({
+                            v, tm, exact_date = get_detail_info(driver, f_url)
+                            final_start = exact_date if exact_date else ds
+                            
+                            events.append({
+                                "group": name,
+                                "date": final_start,
+                                "start": final_start,
+                                "title": f"[{name}] {t_el.get_text(strip=True)}", 
+                                "venue": v, 
+                                "time": tm, 
                                 "url": f_url, 
-                                "date": ds, 
-                                "title": t_el.get_text(strip=True) if t_el else ""
+                                "allDay": True
                             })
 
-                for it in items:
-                    v, tm, exact_date = get_detail_info(driver, it['url'])
-                    final_start = exact_date if exact_date else it['date']
-                    events.append({
-                        "group": name,
-                        "date": final_start,
-                        "start": final_start,
-                        "title": f"[{name}] {it['title']}", 
-                        "venue": v, 
-                        "time": tm, 
-                        "url": it['url'], 
-                        "allDay": True
-                    })
+                # 2. カレンダー下にリスト表示がある場合のバックアップ抽出
+                for li in soup.select('.p-schedule__item, .schedule-list__item, .list-group-item'):
+                    a_tag = li.select_one('a')
+                    if not a_tag or not a_tag.get('href'): continue
+                    
+                    href = a_tag.get('href')
+                    f_url = base_url + href if href.startswith('/') else href
+                    
+                    # すでにカレンダーから取得済みのURLは重複追加しない
+                    if any(e['url'] == f_url for e in events):
+                        continue
 
-                # 次月ボタンクリック（JS直接発火）
-                if month_step < 11:
-                    try:
-                        click_script = """
-                        var btn = document.querySelector('button.fc-next-button, button[aria-label="next"]');
-                        if (btn) {
-                            btn.scrollIntoView();
-                            btn.click();
-                            return true;
-                        }
-                        return false;
-                        """
-                        success = driver.execute_script(click_script)
-                        if success:
-                            time.sleep(4)  # 遷移描画待ち
-                        else:
-                            print(f"[{name}] 次月ボタン要素がJSで見つかりませんでした ({month_step + 1}ヶ月目)")
-                            break
-                    except Exception as btn_err:
-                        print(f"[{name}] 次月ボタンクリック失敗 ({month_step + 1}ヶ月目): {btn_err}")
-                        break
+                    title_text = a_tag.get_text(strip=True)
+                    v, tm, exact_date = get_detail_info(driver, f_url)
+                    
+                    if exact_date:
+                        events.append({
+                            "group": name,
+                            "date": exact_date,
+                            "start": exact_date,
+                            "title": f"[{name}] {title_text}", 
+                            "venue": v, 
+                            "time": tm, 
+                            "url": f_url, 
+                            "allDay": True
+                        })
 
-        except Exception as e:
-            print(f"Scrape sayostay error: {e}")
+            except Exception as e:
+                print(f"[{name}] 取得エラー ({target_date.year}/{target_date.month}): {e}")
+                continue
 
     return events
 
