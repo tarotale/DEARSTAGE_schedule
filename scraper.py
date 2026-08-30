@@ -37,7 +37,7 @@ def sync_selected_events_to_gcal(events):
     ]
     
     if not target_events:
-        print("[Google Calendar] 対象となるイベント（ChumToto / さよステ）はありませんでした。")
+        print("[Google Calendar] 対象となるイベントはありませんでした。")
         return
 
     print(f"[Google Calendar] 同期対象イベント: {len(target_events)} 件")
@@ -48,28 +48,37 @@ def sync_selected_events_to_gcal(events):
         print(f"[Google Calendar] API認証エラー: {e}")
         return
 
-    now = datetime.utcnow()
-    time_min = (now - timedelta(days=30)).isoformat() + 'Z'
-    
+    # 既存イベント取得（重複排除の精度向上のため全件検索）
+    existing_keys = set()
     try:
-        existing_events_res = service.events().list(
-            calendarId=CALENDAR_ID,
-            timeMin=time_min,
-            singleEvents=True
-        ).execute()
-        existing_events = existing_events_res.get('items', [])
+        page_token = None
+        while True:
+            existing_events_res = service.events().list(
+                calendarId=CALENDAR_ID,
+                singleEvents=True,
+                pageToken=page_token
+            ).execute()
+            
+            for item in existing_events_res.get('items', []):
+                start_date = item.get('start', {}).get('date') or item.get('start', {}).get('dateTime', '')[:10]
+                summary = item.get('summary', '').strip()
+                if summary and start_date:
+                    existing_keys.add((summary, start_date))
+            
+            page_token = existing_events_res.get('nextPageToken')
+            if not page_token:
+                break
     except Exception as e:
         print(f"[Google Calendar] 既存イベント取得エラー: {e}")
         return
 
-    existing_keys = set()
-    for item in existing_events:
-        start_date = item.get('start', {}).get('date') or item.get('start', {}).get('dateTime', '')[:10]
-        existing_keys.add((item.get('summary'), start_date))
-
     added_count = 0
     for ev in target_events:
-        key = (ev['title'], ev['start'])
+        clean_title = ev['title'].strip()
+        start_date = ev['start'].strip()
+        key = (clean_title, start_date)
+
+        # 既存キーと完全一致する場合はスキップ
         if key in existing_keys:
             continue
 
@@ -81,20 +90,21 @@ def sync_selected_events_to_gcal(events):
         description_text = "\n".join(description_lines)
 
         event_body = {
-            'summary': ev['title'],
+            'summary': clean_title,
             'location': ev.get('venue', ''),
             'description': description_text,
-            'start': {'date': ev['start']},
-            'end': {'date': ev['start']},
+            'start': {'date': start_date},
+            'end': {'date': start_date},
         }
 
         try:
             service.events().insert(calendarId=CALENDAR_ID, body=event_body).execute()
-            print(f"[Google Calendar] 登録完了: {ev['title']} ({ev['start']})")
+            print(f"[Google Calendar] 登録完了: {clean_title} ({start_date})")
+            existing_keys.add(key)  # ループ内での連続追加防止
             added_count += 1
-            time.sleep(0.5)
+            time.sleep(0.3)
         except Exception as e:
-            print(f"[Google Calendar] 登録失敗 ({ev['title']}): {e}")
+            print(f"[Google Calendar] 登録失敗 ({clean_title}): {e}")
 
     print(f"[Google Calendar] 同期完了: {added_count} 件の新規予定を追加しました。")
 
@@ -124,7 +134,7 @@ def get_detail_info(driver, url):
         driver.get(url)
         wait = WebDriverWait(driver, 10)
         wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-        time.sleep(2)
+        time.sleep(1.5)
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -138,7 +148,6 @@ def get_detail_info(driver, url):
         content = soup.select_one('.common__article, .article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description, .p-clubScheduleArticle__description')
         
         if content:
-            # パターンA: 見出しと内容が分かれている場合
             for tag in content.find_all(['h4', 'strong']):
                 label = tag.get_text(strip=True)
                 data = ""
@@ -155,7 +164,6 @@ def get_detail_info(driver, url):
                 elif "場所" in label or "会場" in label:
                     venue = data.replace("：", "").replace(":", "").strip()
 
-            # パターンB: 改行区切りのテキスト解析
             if venue == "詳細を確認" or not time_info:
                 lines = [line.strip() for line in content.get_text("\n").split("\n") if line.strip()]
                 for line in lines:
@@ -166,7 +174,7 @@ def get_detail_info(driver, url):
                         res = re.sub(r'^(■時間|公演時間|時間)[：:]\s*', '', line).strip()
                         if res: time_info = res
 
-        # 3. 日付の精密抽出（日付ズレ防止用のフォールバック）
+        # 3. 日付の精密抽出
         full_text = soup.get_text()
         d_match = re.search(r'(\d{4})[/.-](\d{1,2})[/.-](\d{1,2})', full_text)
         if d_match:
@@ -184,7 +192,7 @@ def get_detail_info(driver, url):
 
 
 def scrape_tribe_v2(driver, group_name, url):
-    """提示された確実版ロジックをトレースした共通スクレイピング関数（ChumToto・きゅるして対応）"""
+    """Tribe Events系共通スクレイピング関数（ChumToto / きゅるして）"""
     events = []
     current_url = url
     while current_url:
@@ -211,7 +219,6 @@ def scrape_tribe_v2(driver, group_name, url):
             
             for item in links_to_crawl:
                 v, tm, exact_date = get_detail_info(driver, item['url'])
-                
                 clean_title = (
                     item['title']
                     .replace('【ちゃむ】', '')
@@ -311,18 +318,18 @@ def scrape_2zicon(driver):
 
 
 def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme：次月ボタンクリック遷移による12ヶ月分確実取得（修正版）"""
+    """さよステ / meme：巡回ロジック"""
     events = []
     
     if "vertical_calendar" in menu_path:
-        # meme tokyo 用（URL直接遷移）
+        # meme tokyo 用
         now = datetime.now()
         for i in range(0, 12):
             target = now + timedelta(days=31 * i)
             u = f"{base_url}{menu_path}/{target.year}/{target.month}"
             try:
                 driver.get(u)
-                time.sleep(4)
+                time.sleep(3)
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
                 for li in soup.select('li.list-group-item'):
                     t_tag, inner = li.select_one('time'), li.select_one('.fc-event-inner')
@@ -349,7 +356,7 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 print(f"Scrape meme error: {e}")
                 continue
     else:
-        # さよならステイチューン (FullCalendar) 用のクリック巡回ロジック
+        # さよならステイチューン (FullCalendar) 用の強力クリック巡回ロジック
         start_url = f"{base_url}{menu_path}"
         try:
             print(f"[{name}] カレンダー読み込み開始: {start_url}")
@@ -357,7 +364,6 @@ def scrape_dspm(driver, name, base_url, menu_path):
             time.sleep(5)
 
             for month_step in range(12):
-                # 画面上に描画されたイベントを取得
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
                 items = []
 
@@ -389,31 +395,26 @@ def scrape_dspm(driver, name, base_url, menu_path):
                         "allDay": True
                     })
 
-                # 次月ボタンクリック処理（複数セレクタを順次試行 + WebDriverWait）
+                # 次月ボタンクリック（JS直接発火）
                 if month_step < 11:
-                    clicked = False
-                    # 試行するセレクタリスト
-                    selectors = [
-                        "button.fc-next-button",
-                        ".fc-next-button",
-                        "button[aria-label='next']"
-                    ]
-                    
-                    for sel in selectors:
-                        try:
-                            # 5秒間要素の出現を待機
-                            next_btn = WebDriverWait(driver, 5).until(
-                                EC.element_to_be_clickable((By.CSS_SELECTOR, sel))
-                            )
-                            driver.execute_script("arguments[0].click();", next_btn)
-                            clicked = True
-                            time.sleep(4)  # カレンダー更新待ち
+                    try:
+                        click_script = """
+                        var btn = document.querySelector('button.fc-next-button, button[aria-label="next"]');
+                        if (btn) {
+                            btn.scrollIntoView();
+                            btn.click();
+                            return true;
+                        }
+                        return false;
+                        """
+                        success = driver.execute_script(click_script)
+                        if success:
+                            time.sleep(4)  # 遷移描画待ち
+                        else:
+                            print(f"[{name}] 次月ボタン要素がJSで見つかりませんでした ({month_step + 1}ヶ月目)")
                             break
-                        except Exception:
-                            continue
-
-                    if not clicked:
-                        print(f"[{name}] 次月ボタンが見つからないかクリックできませんでした ({month_step + 1}ヶ月目)")
+                    except Exception as btn_err:
+                        print(f"[{name}] 次月ボタンクリック失敗 ({month_step + 1}ヶ月目): {btn_err}")
                         break
 
         except Exception as e:
@@ -426,27 +427,26 @@ def main():
     driver = setup_driver()
     all_data = []
     
-    # 確実版ロジックをトレースしたスクレイピング実行
+    # 1. ChumToto & きゅるりんってしてみても
     all_data.extend(scrape_tribe_v2(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
     all_data.extend(scrape_tribe_v2(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
     
-    # その他グループ
+    # 2. その他グループ
     all_data.extend(scrape_2zicon(driver))
     all_data.extend(scrape_dspm(driver, "さよステ", "https://sayostay.dspm.jp", "/schedules/menu/18610"))
     all_data.extend(scrape_dspm(driver, "meme", "https://www.memetokyo.com", "/vertical_calendar"))
     
     driver.quit()
 
-    # 1. 重複排除
+    # 重複排除
     unique_events = list({(ev['title'], ev['start']): ev for ev in all_data}.values())
 
-    # 2. 前回データの比較と added_at の保持
+    # 前回データの比較と added_at の保持
     old_data_dict = {}
     if os.path.exists('data.json'):
         try:
             with open('data.json', 'r', encoding='utf-8') as f:
                 old_list = json.load(f)
-                # payload形式・平坦形式の両方に対応
                 items = old_list.get('events', []) if isinstance(old_list, dict) else old_list
                 old_data_dict = {(ev['title'], ev['start']): ev.get('added_at') for ev in items}
         except Exception as e:
@@ -461,7 +461,7 @@ def main():
         else:
             ev['added_at'] = current_now
 
-    # 3. JSON保存 (GAS・フロント統合ペイロード形式)
+    # JSON保存 (GAS・フロント統合ペイロード形式)
     payload = {
         "action": "sync_schedule",
         "events": unique_events
@@ -472,7 +472,7 @@ def main():
 
     print(f"全工程完了。合計 {len(unique_events)} 件保存完了。")
 
-    # 4. カレンダー同期
+    # カレンダー同期
     sync_selected_events_to_gcal(unique_events)
 
 
