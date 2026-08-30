@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
@@ -357,62 +358,64 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 print(f"Scrape meme error: {e}")
                 continue
     else:
-        # さよならステイチューン用：内部API直接取得（画面描画に依存しない）
-        now = datetime.now()
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": f"{base_url}{menu_path}"
-        }
+        # さよならステイチューン用：ActionChains物理クリックによる12ヶ月巡回
+        target_url = f"{base_url}{menu_path}"
+        try:
+            print(f"[{name}] カレンダー読み込み開始: {target_url}")
+            driver.get(target_url)
+            time.sleep(5)
 
-        for month_step in range(12):
-            # 月の初日と最終日を計算
-            # 例: 2026-08-01 ~ 2026-08-31
-            year = now.year + (now.month + month_step - 1) // 12
-            month = (now.month + month_step - 1) % 12 + 1
-            
-            start_str = f"{year}-{month:02d}-01"
-            # 簡易的に翌月1日の直前までを計算
-            next_m = month % 12 + 1
-            next_y = year + (1 if next_m == 1 else 0)
-            end_str = f"{next_y}-{next_m:02d}-01"
-
-            # FullCalendarの内部データ取得エンドポイント
-            api_url = f"{base_url}/schedules/events?start={start_str}&end={end_str}"
-            
-            try:
-                print(f"[{name}] API直接取得中 ({year}年{month}月): {api_url}")
-                res = requests.get(api_url, headers=headers, timeout=10)
+            for month_step in range(12):
+                soup = BeautifulSoup(driver.page_source, 'html.parser')
                 
-                if res.status_code == 200:
-                    data = res.json()
-                    for item in data:
-                        title = item.get('title', '')
-                        start_raw = item.get('start', '')[:10]  # YYYY-MM-DD
-                        href = item.get('url', '')
+                # カレンダーの各日付セルを全走査
+                for td in soup.select('td.fc-daygrid-day'):
+                    ds = td.get('data-date')
+                    if not ds:
+                        continue
                         
+                    for a in td.select('a.fc-daygrid-event, a.fc-event'):
+                        href = a.get('href')
                         if not href:
                             continue
                             
                         f_url = base_url + href if href.startswith('/') else href
                         
-                        # 詳細ページから会場・時間の補完
+                        if any(e['url'] == f_url for e in events):
+                            continue
+                            
+                        title_el = a.select_one('.fc-event-title')
+                        title_text = title_el.get_text(strip=True) if title_el else a.get_text(strip=True)
+                        
                         v, tm, exact_date = get_detail_info(driver, f_url)
-                        final_start = exact_date if exact_date else start_raw
+                        final_start = exact_date if exact_date else ds
 
                         events.append({
                             "group": name,
                             "date": final_start,
                             "start": final_start,
-                            "title": f"[{name}] {title}", 
+                            "title": f"[{name}] {title_text}", 
                             "venue": v, 
                             "time": tm, 
                             "url": f_url, 
                             "allDay": True
                         })
-                else:
-                    print(f"[{name}] APIレスポンスエラー ステータスコード: {res.status_code}")
-            except Exception as e:
-                print(f"[{name}] API取得例外 ({year}/{month}): {e}")
+
+                # 11回分（向こう11ヶ月分）「次月ボタン」をActionChainsで物理クリックして遷移
+                if month_step < 11:
+                    try:
+                        wait = WebDriverWait(driver, 10)
+                        next_btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.fc-next-button")))
+                        
+                        actions = ActionChains(driver)
+                        actions.move_to_element(next_btn).click().perform()
+                        time.sleep(4)  # Ajax描画待ち
+                    except Exception as btn_err:
+                        print(f"[{name}] 次月ボタンクリック失敗 ({month_step + 1}ヶ月目): {btn_err}")
+                        break
+
+        except Exception as e:
+            print(f"[{name}] スパム取得例外: {e}")
 
     return events
 
