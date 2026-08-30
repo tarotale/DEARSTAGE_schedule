@@ -2,6 +2,7 @@ import os
 import json
 import time
 import re
+import requests
 from datetime import datetime, timedelta
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -318,11 +319,11 @@ def scrape_2zicon(driver):
 
 
 def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme：巡回ロジック"""
+    """さよステ / meme スケジュール取得"""
     events = []
     
     if "vertical_calendar" in menu_path:
-        # meme tokyo 用
+        # meme tokyo 用 (従来通り)
         now = datetime.now()
         for i in range(0, 12):
             target = now + timedelta(days=31 * i)
@@ -356,74 +357,62 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 print(f"Scrape meme error: {e}")
                 continue
     else:
-        # さよならステイチューン用：年月指定URLを直接生成して12ヶ月分巡回
+        # さよならステイチューン用：内部API直接取得（画面描画に依存しない）
         now = datetime.now()
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Referer": f"{base_url}{menu_path}"
+        }
+
         for month_step in range(12):
-            # 当月から12ヶ月先までの年月を計算
-            target_date = now + timedelta(days=31 * month_step)
-            # URLパラメータで年月を直接指定（あるいはベースURLアクセス）
-            target_url = f"{base_url}{menu_path}?year={target_date.year}&month={target_date.month}"
+            # 月の初日と最終日を計算
+            # 例: 2026-08-01 ~ 2026-08-31
+            year = now.year + (now.month + month_step - 1) // 12
+            month = (now.month + month_step - 1) % 12 + 1
+            
+            start_str = f"{year}-{month:02d}-01"
+            # 簡易的に翌月1日の直前までを計算
+            next_m = month % 12 + 1
+            next_y = year + (1 if next_m == 1 else 0)
+            end_str = f"{next_y}-{next_m:02d}-01"
+
+            # FullCalendarの内部データ取得エンドポイント
+            api_url = f"{base_url}/schedules/events?start={start_str}&end={end_str}"
             
             try:
-                print(f"[{name}] 取得中 ({target_date.year}年{target_date.month}月): {target_url}")
-                driver.get(target_url)
-                time.sleep(3)
+                print(f"[{name}] API直接取得中 ({year}年{month}月): {api_url}")
+                res = requests.get(api_url, headers=headers, timeout=10)
                 
-                soup = BeautifulSoup(driver.page_source, 'html.parser')
-                
-                # 1. カレンダーセル (fc-daygrid-day) からの抽出
-                for td in soup.select('td.fc-daygrid-day'):
-                    ds = td.get('data-date')
-                    if not ds: continue
-                    for a in td.select('a.fc-daygrid-event, a.fc-event'):
-                        t_el = a.select_one('.fc-event-title') or a
-                        href = a.get('href')
-                        if href:
-                            f_url = base_url + href if href.startswith('/') else href
-                            v, tm, exact_date = get_detail_info(driver, f_url)
-                            final_start = exact_date if exact_date else ds
+                if res.status_code == 200:
+                    data = res.json()
+                    for item in data:
+                        title = item.get('title', '')
+                        start_raw = item.get('start', '')[:10]  # YYYY-MM-DD
+                        href = item.get('url', '')
+                        
+                        if not href:
+                            continue
                             
-                            events.append({
-                                "group": name,
-                                "date": final_start,
-                                "start": final_start,
-                                "title": f"[{name}] {t_el.get_text(strip=True)}", 
-                                "venue": v, 
-                                "time": tm, 
-                                "url": f_url, 
-                                "allDay": True
-                            })
+                        f_url = base_url + href if href.startswith('/') else href
+                        
+                        # 詳細ページから会場・時間の補完
+                        v, tm, exact_date = get_detail_info(driver, f_url)
+                        final_start = exact_date if exact_date else start_raw
 
-                # 2. カレンダー下にリスト表示がある場合のバックアップ抽出
-                for li in soup.select('.p-schedule__item, .schedule-list__item, .list-group-item'):
-                    a_tag = li.select_one('a')
-                    if not a_tag or not a_tag.get('href'): continue
-                    
-                    href = a_tag.get('href')
-                    f_url = base_url + href if href.startswith('/') else href
-                    
-                    # すでにカレンダーから取得済みのURLは重複追加しない
-                    if any(e['url'] == f_url for e in events):
-                        continue
-
-                    title_text = a_tag.get_text(strip=True)
-                    v, tm, exact_date = get_detail_info(driver, f_url)
-                    
-                    if exact_date:
                         events.append({
                             "group": name,
-                            "date": exact_date,
-                            "start": exact_date,
-                            "title": f"[{name}] {title_text}", 
+                            "date": final_start,
+                            "start": final_start,
+                            "title": f"[{name}] {title}", 
                             "venue": v, 
                             "time": tm, 
                             "url": f_url, 
                             "allDay": True
                         })
-
+                else:
+                    print(f"[{name}] APIレスポンスエラー ステータスコード: {res.status_code}")
             except Exception as e:
-                print(f"[{name}] 取得エラー ({target_date.year}/{target_date.month}): {e}")
-                continue
+                print(f"[{name}] API取得例外 ({year}/{month}): {e}")
 
     return events
 
