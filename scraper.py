@@ -311,11 +311,11 @@ def scrape_2zicon(driver):
 
 
 def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme：次月ボタンクリック遷移による12ヶ月分確実に取得する修正"""
+    """さよステ / meme：次月ボタンクリック遷移による12ヶ月分確実取得（修正版）"""
     events = []
     
     if "vertical_calendar" in menu_path:
-        # meme tokyo (従来通り URL 遷移で問題なし)
+        # meme tokyo 用（URL直接遷移）
         now = datetime.now()
         for i in range(0, 12):
             target = now + timedelta(days=31 * i)
@@ -389,14 +389,31 @@ def scrape_dspm(driver, name, base_url, menu_path):
                         "allDay": True
                     })
 
-                # 次月ボタン（.fc-next-button）を探してクリック
+                # 次月ボタンクリック処理（複数セレクタを順次試行 + WebDriverWait）
                 if month_step < 11:
-                    try:
-                        next_btn = driver.find_element(By.CSS_SELECTOR, 'button.fc-next-button, .fc-next-button')
-                        driver.execute_script("arguments[0].click();", next_btn)
-                        time.sleep(4)  # カレンダー切り替えの描画待ち
-                    except Exception as btn_err:
-                        print(f"[{name}] 次月ボタンが見つからないかクリックできませんでした ({month_step + 1}ヶ月目): {btn_err}")
+                    clicked = False
+                    # 試行するセレクタリスト
+                    selectors = [
+                        "button.fc-next-button",
+                        ".fc-next-button",
+                        "button[aria-label='next']"
+                    ]
+                    
+                    for sel in selectors:
+                        try:
+                            # 5秒間要素の出現を待機
+                            next_btn = WebDriverWait(driver, 5).until(
+                                EC.element_to_be_clickable((By.CSS_SELECTOR, sel))
+                            )
+                            driver.execute_script("arguments[0].click();", next_btn)
+                            clicked = True
+                            time.sleep(4)  # カレンダー更新待ち
+                            break
+                        except Exception:
+                            continue
+
+                    if not clicked:
+                        print(f"[{name}] 次月ボタンが見つからないかクリックできませんでした ({month_step + 1}ヶ月目)")
                         break
 
         except Exception as e:
