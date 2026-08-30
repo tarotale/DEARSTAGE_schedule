@@ -985,7 +985,7 @@
     "start": "2026-08-24",
     "url": "https://sayostay.dspm.jp/schedules/119818?r=tk9um1",
     "venue": "詳細を確認",
-    "time": "2026/08/24(Mon) 20:30 -",
+    "time": "",
     "allDay": true,
     "added_at": "2026-08-20T15:40:52.809958"
   },
@@ -993,8 +993,8 @@
     "title": "[さよステ] こぐまカリー3夜連続「トーキョーログ」",
     "start": "2026-08-25",
     "url": "https://sayostay.dspm.jp/schedules/118560?r=tkbj9d",
-    "venue": "渋谷近未来会館",
-    "time": "OPEN 18:20 / START 18:50",
+    "venue": "詳細を確認",
+    "time": "",
     "allDay": true,
     "added_at": "2026-08-10T10:24:15.741814"
   },
@@ -1015,6 +1015,24 @@
     "time": "2026/08/29(Sat) - 2026/08/30(Sun)",
     "allDay": true,
     "added_at": "2026-08-01T06:03:10.407814"
+  },
+  {
+    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【五反田駅】",
+    "start": "2026-09-01",
+    "url": "https://sayostay.dspm.jp/schedules/114125?r=tkoxo0",
+    "venue": "GOTANDA G2",
+    "time": "OPEN 18:00 START 18:30",
+    "allDay": true,
+    "added_at": "2026-08-30T15:32:07.895820"
+  },
+  {
+    "title": "[さよステ] VILLAGE VANGUARD　FES　vol.1~vias JAM~ day2! in横浜ワールドポーターズ",
+    "start": "2026-09-02",
+    "url": "https://sayostay.dspm.jp/schedules/119390?r=tkqsc0",
+    "venue": "詳細を確認",
+    "time": "2026/09/03(Thu)",
+    "allDay": true,
+    "added_at": "2026-08-30T15:32:07.895820"
   },
   {
     "title": "[meme] 音無あふ主催イベント 『おとなしくなんてだめですわ！』 Vol.2 にSOLIの出演が決定！",
