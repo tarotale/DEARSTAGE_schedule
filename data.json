@@ -810,18 +810,18 @@
     "added_at": "2026-08-23T09:36:08.450411"
   },
   {
+    "title": "[虹コン] 木曜日の隈本茉莉奈",
+    "start": "2026-09-24",
+    "url": "https://2zicon.tokyo/information/thu_kumamoto/",
+    "venue": "秋葉原ディアステージ",
+    "time": "2026年9月24日(木)",
+    "allDay": true,
+    "added_at": "2026-08-30T14:55:33.932021"
+  },
+  {
     "title": "[虹コン] ミクチャ『@JAM THE WORLD』（川端）",
     "start": "2026-09-28",
     "url": "https://2zicon.tokyo/information/%e3%83%9f%e3%82%af%e3%83%81%e3%83%a3%e3%80%8ejam-the-world%e3%80%8f%ef%bc%88%e5%b7%9d%e7%ab%af%ef%bc%89-6/",
-    "venue": "詳細を確認",
-    "time": "",
-    "allDay": true,
-    "added_at": "2026-08-23T09:36:08.450411"
-  },
-  {
-    "title": "[虹コン] FMFUJI『「GIRLS♥GIRLS♥GIRLS =FULL BOOST=」虹コンの征服ちゅうずでぃ』（的場・川端・一宮）",
-    "start": "2026-09-29",
-    "url": "https://2zicon.tokyo/information/fmfuji%e3%80%8e%e3%80%8cgirls%e2%99%a5girls%e2%99%a5girls-full-boost%e3%80%8d%e8%99%b9%e3%82%b3%e3%83%b3%e3%81%ae%e5%be%81%e6%9c%8d%e3%81%a1%e3%82%85%e3%81%86%e3%81%9a%e3%81%a7%e3%81%83%e3%80%8f-6/",
     "venue": "詳細を確認",
     "time": "",
     "allDay": true,
@@ -1017,24 +1017,6 @@
     "added_at": "2026-08-01T06:03:10.407814"
   },
   {
-    "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【五反田駅】",
-    "start": "2026-09-01",
-    "url": "https://sayostay.dspm.jp/schedules/114125?r=tkoxo0",
-    "venue": "GOTANDA G2",
-    "time": "OPEN 18:00 START 18:30",
-    "allDay": true,
-    "added_at": "2026-08-01T06:03:10.407814"
-  },
-  {
-    "title": "[さよステ] VILLAGE VANGUARD　FES　vol.1~vias JAM~ day2! in横浜ワールドポーターズ",
-    "start": "2026-09-02",
-    "url": "https://sayostay.dspm.jp/schedules/119390?r=tkqsc0",
-    "venue": "詳細を確認",
-    "time": "2026/09/03(Thu)",
-    "allDay": true,
-    "added_at": "2026-08-23T03:58:53.000205"
-  },
-  {
     "title": "[meme] 音無あふ主催イベント 『おとなしくなんてだめですわ！』 Vol.2 にSOLIの出演が決定！",
     "start": "2026-08-02",
     "url": "https://www.memetokyo.com/contents/1088300",
@@ -1186,6 +1168,15 @@
     "time": "OPEN18:00/START18:30",
     "allDay": true,
     "added_at": "2026-08-26T16:27:38.088522"
+  },
+  {
+    "title": "[meme] 9/30(水)「非公式メモリー」ラストリリースイベント〜秋の収穫祭〜 開催決定！",
+    "start": "2026-09-30",
+    "url": "https://www.memetokyo.com/contents/1105940",
+    "venue": "CHIC HALL SHIBUYA",
+    "time": "開場 18:30開演 19:00",
+    "allDay": true,
+    "added_at": "2026-08-30T14:55:33.932021"
   },
   {
     "title": "[meme] 10/17(土)「#DSPMLIVE」出演決定！",
