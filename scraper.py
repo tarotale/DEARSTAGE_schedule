@@ -320,18 +320,15 @@ def scrape_2zicon(driver):
 
 
 def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme：URLパラメータによる先12ヶ月巡回（ボタンクリック不要で極めて安定）"""
+    """さよステ / meme：URLパラメータによる先12ヶ月巡回"""
     events = []
-    seen_urls = set()  # 重複詳細解析を防ぐためのキャッシュ
+    seen_urls = set()
     now = datetime.now()
 
     for i in range(0, 13):
-        # 1ヶ月ずつ加算
         target = now + timedelta(days=31 * i)
         t_m = f"{target.year}-{str(target.month).zfill(2)}"
         
-        # schedules の場合は URL query (?start=YYYY-MM-01) で指定
-        # vertical_calendar (meme) の場合は パス (/YYYY/MM) で指定
         if "schedules" in menu_path:
             u = f"{base_url}{menu_path}?start={t_m}-01"
         else:
@@ -340,7 +337,7 @@ def scrape_dspm(driver, name, base_url, menu_path):
         try:
             print(f"[{name}] {target.year}年{target.month}月 取得中: {u}")
             driver.get(u)
-            time.sleep(5)  # JSの動的描画を待機
+            time.sleep(5)
 
             soup = BeautifulSoup(driver.page_source, 'html.parser')
             items = []
@@ -364,7 +361,6 @@ def scrape_dspm(driver, name, base_url, menu_path):
             else:  # さよならステイチューン
                 for td in soup.select('td.fc-daygrid-day'):
                     ds = td.get('data-date')
-                    # 該当月以外のマス（前月/次月の薄い日付）をスキップ
                     if not ds or not ds.startswith(t_m):
                         continue
                     
@@ -378,17 +374,25 @@ def scrape_dspm(driver, name, base_url, menu_path):
                         title_text = t_el.get_text(strip=True) if t_el else a.get_text(strip=True)
                         items.append({"url": f_url, "date": ds, "title": title_text})
 
-            # 検出したイベントの詳細ページへアクセス
             month_count = 0
             for it in items:
                 if it['url'] in seen_urls:
                     continue
                 seen_urls.add(it['url'])
 
-                v, tm = get_detail_info(driver, it['url'])
+                # --- 戻り値の数のズレを安全に吸収 ---
+                detail_res = get_detail_info(driver, it['url'])
+                if len(detail_res) == 3:
+                    v, tm, exact_date = detail_res
+                else:
+                    v, tm = detail_res
+                    exact_date = None
+
+                final_start = exact_date if exact_date else it['date']
+
                 events.append({
                     "title": f"[{name}] {it['title']}",
-                    "start": it['date'],
+                    "start": final_start,
                     "url": it['url'],
                     "venue": v,
                     "time": tm,
