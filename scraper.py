@@ -320,24 +320,48 @@ def scrape_2zicon(driver):
 
 
 def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme：URLパラメータによる先12ヶ月巡回"""
+    """さよステ / meme：実ブラウザ上の操作（翌月ボタンクリック）による先12ヶ月巡回"""
     events = []
     seen_urls = set()
-    now = datetime.now()
+    
+    # 初回アクセス
+    initial_url = f"{base_url}{menu_path}"
+    print(f"[{name}] 初期ページへアクセス: {initial_url}")
+    try:
+        driver.get(initial_url)
+        time.sleep(5)
+    except Exception as e:
+        print(f"[{name}] 初期アクセス失敗: {e}")
+        return events
 
+    # 当月を含めて先12ヶ月分（計13ヶ月）を巡回
     for i in range(0, 13):
-        target = now + timedelta(days=31 * i)
-        t_m = f"{target.year}-{str(target.month).zfill(2)}"
-        
-        if "schedules" in menu_path:
-            u = f"{base_url}{menu_path}?start={t_m}-01"
-        else:
-            u = f"{base_url}{menu_path}/{target.year}/{target.month}"
-
         try:
-            print(f"[{name}] {target.year}年{target.month}月 取得中: {u}")
-            driver.get(u)
-            time.sleep(5)
+            # 2ヶ月目以降は画面上の「翌月(＞)」ボタンをクリックして遷移させる
+            if i > 0:
+                if "vertical_calendar" in menu_path:
+                    # meme tokyo用の翌月ボタン（状況に合わせて調整）
+                    next_btn = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.CSS_SELECTOR, ".fc-next-button, a.next"))
+                    )
+                else:
+                    # さよならステイチューン用のFullCalendar翌月ボタン
+                    next_btn = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.CSS_SELECTOR, ".fc-next-button"))
+                    )
+                
+                next_btn.click()
+                # 描画待ち
+                time.sleep(3)
+
+            # 現在表示中の年月をタイトルから取得（ログ確認用）
+            try:
+                title_el = driver.find_element(By.CSS_SELECTOR, ".fc-toolbar-title")
+                current_title = title_el.text.strip()
+            except Exception:
+                current_title = f"{i}ヶ月後"
+
+            print(f"[{name}] 取得中 ({i+1}/13): {current_title}")
 
             soup = BeautifulSoup(driver.page_source, 'html.parser')
             items = []
@@ -361,7 +385,7 @@ def scrape_dspm(driver, name, base_url, menu_path):
             else:  # さよならステイチューン
                 for td in soup.select('td.fc-daygrid-day'):
                     ds = td.get('data-date')
-                    if not ds or not ds.startswith(t_m):
+                    if not ds:
                         continue
                     
                     for a in td.select('a.fc-daygrid-event, a.fc-event'):
@@ -380,7 +404,6 @@ def scrape_dspm(driver, name, base_url, menu_path):
                     continue
                 seen_urls.add(it['url'])
 
-                # --- 戻り値の数のズレを安全に吸収 ---
                 detail_res = get_detail_info(driver, it['url'])
                 if len(detail_res) == 3:
                     v, tm, exact_date = detail_res
@@ -400,10 +423,14 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 })
                 month_count += 1
 
-            print(f"[{name}] {target.year}年{target.month}月: {month_count}件 取得完了")
+                # 詳細ページを取得した後に元のカレンダーページへ戻る
+                driver.back()
+                time.sleep(2)
+
+            print(f"[{name}] {current_title}: {month_count}件 取得完了")
 
         except Exception as e:
-            print(f"[{name}] {t_m} 取得警告: {e}")
+            print(f"[{name}] 巡回中エラー ({i}ヶ月目): {e}")
             continue
 
     return events
