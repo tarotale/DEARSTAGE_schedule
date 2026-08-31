@@ -320,104 +320,87 @@ def scrape_2zicon(driver):
 
 
 def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme スケジュール取得"""
+    """さよステ / meme：URLパラメータによる先12ヶ月巡回（ボタンクリック不要で極めて安定）"""
     events = []
-    
-    if "vertical_calendar" in menu_path:
-        # meme tokyo 用
-        now = datetime.now()
-        for i in range(0, 12):
-            target = now + timedelta(days=31 * i)
+    seen_urls = set()  # 重複詳細解析を防ぐためのキャッシュ
+    now = datetime.now()
+
+    for i in range(0, 13):
+        # 1ヶ月ずつ加算
+        target = now + timedelta(days=31 * i)
+        t_m = f"{target.year}-{str(target.month).zfill(2)}"
+        
+        # schedules の場合は URL query (?start=YYYY-MM-01) で指定
+        # vertical_calendar (meme) の場合は パス (/YYYY/MM) で指定
+        if "schedules" in menu_path:
+            u = f"{base_url}{menu_path}?start={t_m}-01"
+        else:
             u = f"{base_url}{menu_path}/{target.year}/{target.month}"
-            try:
-                driver.get(u)
-                time.sleep(3)
-                soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+        try:
+            print(f"[{name}] {target.year}年{target.month}月 取得中: {u}")
+            driver.get(u)
+            time.sleep(5)  # JSの動的描画を待機
+
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            items = []
+
+            if "vertical_calendar" in menu_path:  # meme tokyo
                 for li in soup.select('li.list-group-item'):
                     t_tag, inner = li.select_one('time'), li.select_one('.fc-event-inner')
-                    if not t_tag or not inner: continue
+                    if not t_tag or not inner:
+                        continue
                     title = inner.get_text(strip=True)
                     dm = re.findall(r'\d+', t_tag.get_text())
-                    if len(dm) < 3: continue
-                    ds = f"{dm[0]}-{int(dm[1]):02d}-{int(dm[2]):02d}"
+                    if len(dm) < 3:
+                        continue
+                    ds = f"{dm[0]}-{dm[1].zfill(2)}-{dm[2].zfill(2)}"
                     for a in li.select('a.tag-event, a.tag-live'):
-                        f_url = base_url + a.get('href') if a.get('href').startswith('/') else a.get('href')
-                        v, tm, exact_date = get_detail_info(driver, f_url)
-                        final_start = exact_date if exact_date else ds
-                        events.append({
-                            "group": name,
-                            "date": final_start,
-                            "start": final_start,
-                            "title": f"[{name}] {title}", 
-                            "venue": v, 
-                            "time": tm, 
-                            "url": f_url, 
-                            "allDay": True
-                        })
-            except Exception as e:
-                print(f"Scrape meme error: {e}")
-                continue
-    else:
-        # さよならステイチューン用（JavaScript直接実行クリック方式）
-        target_url = f"{base_url}{menu_path}"
-        try:
-            print(f"[{name}] カレンダー読み込み開始: {target_url}")
-            driver.get(target_url)
-            time.sleep(5)
+                        href = a.get('href')
+                        if href:
+                            f_url = base_url + href if href.startswith('/') else href
+                            items.append({"url": f_url, "date": ds, "title": title})
 
-            for month_step in range(12):
-                soup = BeautifulSoup(driver.page_source, 'html.parser')
-                
-                # カレンダーの各日付セルを全走査
+            else:  # さよならステイチューン
                 for td in soup.select('td.fc-daygrid-day'):
                     ds = td.get('data-date')
-                    if not ds:
+                    # 該当月以外のマス（前月/次月の薄い日付）をスキップ
+                    if not ds or not ds.startswith(t_m):
                         continue
-                        
+                    
                     for a in td.select('a.fc-daygrid-event, a.fc-event'):
                         href = a.get('href')
                         if not href:
                             continue
-                            
                         f_url = base_url + href if href.startswith('/') else href
                         
-                        if any(e['url'] == f_url for e in events):
-                            continue
-                            
-                        title_el = a.select_one('.fc-event-title')
-                        title_text = title_el.get_text(strip=True) if title_el else a.get_text(strip=True)
-                        
-                        v, tm, exact_date = get_detail_info(driver, f_url)
-                        final_start = exact_date if exact_date else ds
+                        t_el = a.select_one('.fc-event-title')
+                        title_text = t_el.get_text(strip=True) if t_el else a.get_text(strip=True)
+                        items.append({"url": f_url, "date": ds, "title": title_text})
 
-                        events.append({
-                            "group": name,
-                            "date": final_start,
-                            "start": final_start,
-                            "title": f"[{name}] {title_text}", 
-                            "venue": v, 
-                            "time": tm, 
-                            "url": f_url, 
-                            "allDay": True
-                        })
+            # 検出したイベントの詳細ページへアクセス
+            month_count = 0
+            for it in items:
+                if it['url'] in seen_urls:
+                    continue
+                seen_urls.add(it['url'])
 
-                # 11回分（向こう11ヶ月分）「次月ボタン」をJavaScriptで確実にクリック
-                if month_step < 11:
-                    try:
-                        wait = WebDriverWait(driver, 10)
-                        next_btn = wait.until(
-                            EC.presence_of_element_located((By.CSS_SELECTOR, "button.fc-next-button, .fc-next-button"))
-                        )
-                        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", next_btn)
-                        time.sleep(1)
-                        driver.execute_script("arguments[0].click();", next_btn)
-                        time.sleep(3.5)  # Ajax描画待ち
-                    except Exception as btn_err:
-                        print(f"[{name}] 次月ボタンクリック失敗 ({month_step + 1}ヶ月目): {btn_err}")
-                        break
+                v, tm = get_detail_info(driver, it['url'])
+                events.append({
+                    "title": f"[{name}] {it['title']}",
+                    "start": it['date'],
+                    "url": it['url'],
+                    "venue": v,
+                    "time": tm,
+                    "allDay": True
+                })
+                month_count += 1
+
+            print(f"[{name}] {target.year}年{target.month}月: {month_count}件 取得完了")
 
         except Exception as e:
-            print(f"[{name}] スパム取得例外: {e}")
+            print(f"[{name}] {t_m} 取得警告: {e}")
+            continue
 
     return events
 
