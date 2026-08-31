@@ -25,11 +25,11 @@ jobs:
         run: |
           python -c "import os, json; json.dump(json.loads(os.environ['GCP_CREDENTIALS']), open('credentials.json', 'w'))"
 
-      # Ubuntu 24.04 互換の Xvfb パッケージ構成（libgconf-2-4 を除外）
+      # Ubuntu 24.04 互換の Xvfb パッケージ構成 ＋ 日本語フォント追加
       - name: Install System Dependencies & Xvfb
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb libxi6 libgbm1
+          sudo apt-get install -y xvfb libxi6 libgbm1 fonts-takao-gothic fonts-ipafont-gothic
 
       - name: Install dependencies
         run: |
