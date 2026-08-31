@@ -18,25 +18,25 @@ jobs:
         with:
           python-version: '3.10'
 
-      # ★ 修正: Python を使って Secret から credentials.json を安全に書き出す
+      # Python を使って Secret から credentials.json を安全に書き出す
       - name: Create credentials.json
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
         run: |
           python -c "import os, json; json.dump(json.loads(os.environ['GCP_CREDENTIALS']), open('credentials.json', 'w'))"
 
-      # ★ 追加: 実画面描画に必要な Xvfb (仮想ディスプレイ) パッケージ群のインストール
+      # Ubuntu 24.04 互換の Xvfb パッケージ構成（libgconf-2-4 を除外）
       - name: Install System Dependencies & Xvfb
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb libxi6 libgconf-2-4
+          sudo apt-get install -y xvfb libxi6 libgbm1
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install selenium beautifulsoup4 webdriver-manager google-api-python-client google-auth
 
-      # ★ 修正: Xvfb の仮想画面（1920x1080）上で scraper.py を実行
+      # Xvfb の仮想画面（1920x1080）上で scraper.py を実行
       - name: Run Scraper
         run: |
           xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python scraper.py
