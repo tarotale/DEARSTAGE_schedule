@@ -615,6 +615,18 @@
     },
     {
       "group": "きゅるして",
+      "date": "2026-11-07",
+      "start": "2026-11-07",
+      "title": "[きゅるして] LARME FES’26",
+      "clean_title": "LARME FES’26",
+      "venue": "※特典会の実施はございません",
+      "time": "2026.11.07",
+      "url": "https://www.kyurushite.com/event/1214/",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "group": "きゅるして",
       "date": "2026-11-14",
       "start": "2026-11-14",
       "title": "[きゅるして] 『しゅーぱーきゅるりんコア 〜カワイイ・リアリズム宣言〜』",
@@ -903,6 +915,42 @@
       "added_at": "2026-08-30T18:10:07.830793"
     },
     {
+      "title": "[さよステ] ゆループ",
+      "start": "2026-07-26",
+      "url": "https://sayostay.dspm.jp/schedules/110456?r=tiqkc0",
+      "venue": "下北沢複数会場",
+      "time": "11:00よりMOSAiCにて全券種リストバンド交換開始",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー「萌え萌えきゅん♡キラステビルディング！」",
+      "start": "2026-07-27",
+      "url": "https://sayostay.dspm.jp/schedules/112085?r=titue1",
+      "venue": "Twinbox AKIHABARA",
+      "time": "OPEN 18:00 / START 18:30",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] 城谷美温1on1トーク",
+      "start": "2026-07-29",
+      "url": "https://sayostay.dspm.jp/schedules/117110?r=tixqo1",
+      "venue": "詳細を確認",
+      "time": "2026/07/29(Wed) 21:00 -",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] 萌波あかり 1on1トーク",
+      "start": "2026-07-29",
+      "url": "https://sayostay.dspm.jp/schedules/117111?r=tixs21",
+      "venue": "詳細を確認",
+      "time": "2026/07/29(Wed) 21:30 -",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
       "title": "[さよステ] TOKYO IDOL FESTIVAL 2026  supported by にしたんクリニック",
       "start": "2026-08-01",
       "url": "https://sayostay.dspm.jp/schedules/111013?r=tj1oc0",
@@ -1020,6 +1068,177 @@
       "added_at": "2026-08-31T08:09:53.007338"
     },
     {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【五反田駅】",
+      "start": "2026-09-02",
+      "url": "https://sayostay.dspm.jp/schedules/114125?r=tkoxo0",
+      "venue": "GOTANDA G2",
+      "time": "OPEN 18:00 START 18:30",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] VILLAGE VANGUARD　FES　vol.1~vias JAM~ day2! in横浜ワールドポーターズ",
+      "start": "2026-09-03",
+      "url": "https://sayostay.dspm.jp/schedules/119390?r=tkqsc0",
+      "venue": "詳細を確認",
+      "time": "2026/09/03(Thu)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【巣鴨】",
+      "start": "2026-09-10",
+      "url": "https://sayostay.dspm.jp/schedules/114126?r=tl3r00",
+      "venue": "獅子王",
+      "time": "OPEN 18:00 / START 18:30",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] AMASAKU アニメ語り部 第3回 ~夏アニメはいいぞ~に城谷美温が出演",
+      "start": "2026-09-11",
+      "url": "https://sayostay.dspm.jp/schedules/118843?r=tl72g1",
+      "venue": "A Talk Club WOOFER",
+      "time": "OPEN 19:00 / START 19:30",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] オレンジプロジェクトSP　Live マジカル・ステイチューン",
+      "start": "2026-09-12",
+      "url": "https://sayostay.dspm.jp/schedules/119029?r=tl8hu1",
+      "venue": "i-MEDIA シアターNEXT1",
+      "time": "OPEN 13:30 / START 14:00",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【新宿駅】「WELCOME TO NAKAYOSHI PARTY！｣",
+      "start": "2026-09-14",
+      "url": "https://sayostay.dspm.jp/schedules/114127?r=tlb5o0",
+      "venue": "新宿MARZ",
+      "time": "OPEN 18:00/START 18:30",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] INFINITY LIVE TOUR 2026 『ASTROMIRAGE - TOUR FINAL CIRCUIT -』",
+      "start": "2026-09-20",
+      "url": "https://sayostay.dspm.jp/schedules/119750?r=tln481",
+      "venue": "下北沢4会場周遊",
+      "time": "OPEN 11:00 / START 11:30 (予定)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] 城谷美温生誕2026「♡みおりんまじかるくらぶ♡」",
+      "start": "2026-09-23",
+      "url": "https://sayostay.dspm.jp/schedules/118986?r=tlrto0",
+      "venue": "高円寺HIGH",
+      "time": "OPEN 12:00 / START 12:30",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【代々木駅】",
+      "start": "2026-09-26",
+      "url": "https://sayostay.dspm.jp/schedules/114128?r=tlxdo0",
+      "venue": "詳細を確認",
+      "time": "2026/09/26(Sat)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【秋葉原駅】",
+      "start": "2026-10-10",
+      "url": "https://sayostay.dspm.jp/schedules/114129?r=tmnb00",
+      "venue": "詳細を確認",
+      "time": "2026/10/10(Sat)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] 『さとモンFES 2026 おいでよ愉快ななかまたち 今年は2会場だよ！』",
+      "start": "2026-10-12",
+      "url": "https://sayostay.dspm.jp/schedules/120059?r=tmrwa1",
+      "venue": "duo MUSIC EXCHANGE × spotfiy O-CREST 2会場",
+      "time": "開場11:00 / 開演11:30(予定)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] イベント予定",
+      "start": "2026-10-13",
+      "url": "https://sayostay.dspm.jp/schedules/114144?r=tmsv00",
+      "venue": "詳細を確認",
+      "time": "2026/10/13(Tue)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] #DSPMLIVE",
+      "start": "2026-10-17",
+      "url": "https://sayostay.dspm.jp/schedules/119191?r=tn1701",
+      "venue": "浅草花劇場",
+      "time": "OPEN 11:30 / START 12:00",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【新橋駅】",
+      "start": "2026-10-18",
+      "url": "https://sayostay.dspm.jp/schedules/114131?r=tn24c0",
+      "venue": "詳細を確認",
+      "time": "2026/10/18(Sun)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] DEARSTAGE SHOWCASE 2026 AUTUMNsupported by JAタウン",
+      "start": "2026-10-22",
+      "url": "https://sayostay.dspm.jp/schedules/119807?r=tn9j00",
+      "venue": "Spotify O-EAST",
+      "time": "2026/10/22(Thu)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] イベント予定",
+      "start": "2026-10-25",
+      "url": "https://sayostay.dspm.jp/schedules/114145?r=tnf300",
+      "venue": "詳細を確認",
+      "time": "2026/10/25(Sun)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] 雨模様のソラリス presents「Festival in the Rain 2026」",
+      "start": "2026-10-25",
+      "url": "https://sayostay.dspm.jp/schedules/119918?r=tnf300",
+      "venue": "詳細を確認",
+      "time": "2026/10/25(Sun)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー 〜FINAL〜 @ LIQUIDROOM",
+      "start": "2026-10-27",
+      "url": "https://sayostay.dspm.jp/schedules/111558?r=tnk6c1",
+      "venue": "LIQUIDROOM",
+      "time": "OPEN 17:00 / START 18:00",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
+      "title": "[さよステ] イベント予定",
+      "start": "2026-11-03",
+      "url": "https://sayostay.dspm.jp/schedules/114146?r=tnvr00",
+      "venue": "詳細を確認",
+      "time": "2026/11/03(Tue)",
+      "allDay": true,
+      "added_at": "2026-08-31T09:31:45.351424"
+    },
+    {
       "title": "[meme] 音無あふ主催イベント 『おとなしくなんてだめですわ！』 Vol.2 にSOLIの出演が決定！",
       "start": "2026-08-02",
       "url": "https://www.memetokyo.com/contents/1088300",
@@ -1106,42 +1325,6 @@
       "url": "https://www.memetokyo.com/contents/1089580",
       "venue": "横浜アリーナ(神奈川県横浜市港北区新横浜３－１０)",
       "time": "",
-      "allDay": true,
-      "added_at": "2026-08-31T08:09:53.007338"
-    },
-    {
-      "title": "[meme] 10/17(土)「#DSPMLIVE」出演決定！",
-      "start": "2026-10-17",
-      "url": "https://www.memetokyo.com/contents/1101881",
-      "venue": "浅草花劇場",
-      "time": "OPEN 11:30/ START 12:00",
-      "allDay": true,
-      "added_at": "2026-08-31T08:09:53.007338"
-    },
-    {
-      "title": "[meme] 10/22(木)「DEARSTAGE SHOWCASE 2026 AUTUMN supported by JAタウン」に出演決定！",
-      "start": "2026-10-22",
-      "url": "https://www.memetokyo.com/contents/1102949",
-      "venue": "Spotify O-EAST",
-      "time": "開場 17:00/開演 18:00",
-      "allDay": true,
-      "added_at": "2026-08-31T08:09:53.007338"
-    },
-    {
-      "title": "[meme] 雨模様のソラリス presents「Festival in the Rain 2026」 出演決定！",
-      "start": "2026-10-25",
-      "url": "https://www.memetokyo.com/contents/1103012",
-      "venue": "下北沢シャングリラ / 下北沢MOSAiC / Flowers Loft / ADRIFT / WAVER",
-      "time": "リストバンド交換10:30〜(予定) / START 11:00",
-      "allDay": true,
-      "added_at": "2026-08-31T08:09:53.007338"
-    },
-    {
-      "title": "[meme] 2027/2/27(土)「MIX TOKYO DJ PARTY \"NEO”」出演決定！",
-      "start": "2027-02-27",
-      "url": "https://www.memetokyo.com/contents/1099568",
-      "venue": "新宿歌舞伎町タワー3F namco TOKYO/ZEROTOKYO",
-      "time": "OPEN 18:00/ START 19:00",
       "allDay": true,
       "added_at": "2026-08-31T08:09:53.007338"
     }
