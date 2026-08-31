@@ -2,7 +2,6 @@ import os
 import json
 import time
 import re
-import requests
 from datetime import datetime, timedelta
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -10,7 +9,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
@@ -102,7 +100,7 @@ def sync_selected_events_to_gcal(events):
         try:
             service.events().insert(calendarId=CALENDAR_ID, body=event_body).execute()
             print(f"[Google Calendar] 登録完了: {clean_title} ({start_date})")
-            existing_keys.add(key)  # ループ内での連続追加防止
+            existing_keys.add(key)
             added_count += 1
             time.sleep(0.3)
         except Exception as e:
@@ -116,6 +114,8 @@ def setup_driver():
     options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    # 仮想環境での描画崩れ・画面外判定を防ぐため解像度を指定
+    options.add_argument('--window-size=1920,1080')
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -324,7 +324,7 @@ def scrape_dspm(driver, name, base_url, menu_path):
     events = []
     
     if "vertical_calendar" in menu_path:
-        # meme tokyo 用 (従来通り)
+        # meme tokyo 用
         now = datetime.now()
         for i in range(0, 12):
             target = now + timedelta(days=31 * i)
@@ -358,7 +358,7 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 print(f"Scrape meme error: {e}")
                 continue
     else:
-        # さよならステイチューン用：ActionChains物理クリックによる12ヶ月巡回
+        # さよならステイチューン用（JavaScript直接実行クリック方式）
         target_url = f"{base_url}{menu_path}"
         try:
             print(f"[{name}] カレンダー読み込み開始: {target_url}")
@@ -401,15 +401,17 @@ def scrape_dspm(driver, name, base_url, menu_path):
                             "allDay": True
                         })
 
-                # 11回分（向こう11ヶ月分）「次月ボタン」をActionChainsで物理クリックして遷移
+                # 11回分（向こう11ヶ月分）「次月ボタン」をJavaScriptで確実にクリック
                 if month_step < 11:
                     try:
                         wait = WebDriverWait(driver, 10)
-                        next_btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.fc-next-button")))
-                        
-                        actions = ActionChains(driver)
-                        actions.move_to_element(next_btn).click().perform()
-                        time.sleep(4)  # Ajax描画待ち
+                        next_btn = wait.until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "button.fc-next-button, .fc-next-button"))
+                        )
+                        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", next_btn)
+                        time.sleep(1)
+                        driver.execute_script("arguments[0].click();", next_btn)
+                        time.sleep(3.5)  # Ajax描画待ち
                     except Exception as btn_err:
                         print(f"[{name}] 次月ボタンクリック失敗 ({month_step + 1}ヶ月目): {btn_err}")
                         break
@@ -458,7 +460,7 @@ def main():
         else:
             ev['added_at'] = current_now
 
-    # JSON保存 (GAS・フロント統合ペイロード形式)
+    # JSON保存
     payload = {
         "action": "sync_schedule",
         "events": unique_events
