@@ -22,6 +22,8 @@ from googleapiclient.discovery import build
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = os.getenv('GOOGLE_APPLICATION_CREDENTIALS', 'credentials.json')
 CALENDAR_ID = 'chumtoto.calendar@gmail.com'
+
+# カレンダーに同期したいグループのみを指定
 TARGET_GROUPS = ["[ChumToto]", "[さよステ]"]
 
 
@@ -40,7 +42,7 @@ def sync_selected_events_to_gcal(events):
         print("[Google Calendar] 対象となるイベントはありませんでした。")
         return
 
-    print(f"[Google Calendar] 同期対象イベント: {len(target_events)} 件")
+    print(f"[Google Calendar] 同期対象イベント ({', '.join(TARGET_GROUPS)}): {len(target_events)} 件")
     
     try:
         service = get_calendar_service()
@@ -48,7 +50,7 @@ def sync_selected_events_to_gcal(events):
         print(f"[Google Calendar] API認証エラー: {e}")
         return
 
-    # 既存イベント取得（重複排除の精度向上のため全件検索）
+    # 既存イベント取得（重複排除）
     existing_keys = set()
     try:
         page_token = None
@@ -78,7 +80,6 @@ def sync_selected_events_to_gcal(events):
         start_date = ev['start'].strip()
         key = (clean_title, start_date)
 
-        # 既存キーと完全一致する場合はスキップ
         if key in existing_keys:
             continue
 
@@ -111,10 +112,8 @@ def sync_selected_events_to_gcal(events):
 
 def setup_driver():
     options = Options()
-    # options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    # 仮想環境での描画崩れ・画面外判定を防ぐため解像度を指定
     options.add_argument('--window-size=1920,1080')
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
@@ -140,13 +139,11 @@ def get_detail_info(driver, url):
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # 1. 構造化タグ優先
         v_el = soup.select_one('.p-clubScheduleArticle__place__text span, .p-clubScheduleDetail__venue, .tribe-events-pro-venue__name, .tribe-venue')
         t_el = soup.select_one('.p-clubScheduleArticle__description__item, .p-clubScheduleDetail__time, .tribe-events-pro-full-date, .tribe-events-schedule')
         if v_el: venue = v_el.get_text(strip=True)
         if t_el: time_info = t_el.get_text(strip=True)
         
-        # 2. 本文テキスト解析
         content = soup.select_one('.common__article, .article__content, .body, .c-clubWysiwyg, .tribe-events-single-event-description, .p-clubScheduleArticle__description')
         
         if content:
@@ -176,7 +173,6 @@ def get_detail_info(driver, url):
                         res = re.sub(r'^(■時間|公演時間|時間)[：:]\s*', '', line).strip()
                         if res: time_info = res
 
-        # 3. 日付の精密抽出
         full_text = soup.get_text()
         d_match = re.search(r'(\d{4})[/.-](\d{1,2})[/.-](\d{1,2})', full_text)
         if d_match:
@@ -319,12 +315,14 @@ def scrape_2zicon(driver):
     return events
 
 
-def scrape_dspm(driver, name, base_url, menu_path):
-    """さよステ / meme：実ブラウザ上の操作（翌月ボタンクリック）による先12ヶ月巡回"""
+def scrape_sayostay(driver):
+    """さよステ専用：実ブラウザ上の画面操作（翌月ボタンクリック）による巡回"""
+    name = "さよステ"
+    base_url = "https://sayostay.dspm.jp"
+    menu_path = "/schedules/menu/18610"
     events = []
     seen_urls = set()
-    
-    # 初回アクセス
+
     initial_url = f"{base_url}{menu_path}"
     print(f"[{name}] 初期ページへアクセス: {initial_url}")
     try:
@@ -334,27 +332,15 @@ def scrape_dspm(driver, name, base_url, menu_path):
         print(f"[{name}] 初期アクセス失敗: {e}")
         return events
 
-    # 当月を含めて先12ヶ月分（計13ヶ月）を巡回
     for i in range(0, 13):
         try:
-            # 2ヶ月目以降は画面上の「翌月(＞)」ボタンをクリックして遷移させる
             if i > 0:
-                if "vertical_calendar" in menu_path:
-                    # meme tokyo用の翌月ボタン（状況に合わせて調整）
-                    next_btn = WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.CSS_SELECTOR, ".fc-next-button, a.next"))
-                    )
-                else:
-                    # さよならステイチューン用のFullCalendar翌月ボタン
-                    next_btn = WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.CSS_SELECTOR, ".fc-next-button"))
-                    )
-                
+                next_btn = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, ".fc-next-button"))
+                )
                 next_btn.click()
-                # 描画待ち
                 time.sleep(3)
 
-            # 現在表示中の年月をタイトルから取得（ログ確認用）
             try:
                 title_el = driver.find_element(By.CSS_SELECTOR, ".fc-toolbar-title")
                 current_title = title_el.text.strip()
@@ -366,51 +352,25 @@ def scrape_dspm(driver, name, base_url, menu_path):
             soup = BeautifulSoup(driver.page_source, 'html.parser')
             items = []
 
-            if "vertical_calendar" in menu_path:  # meme tokyo
-                for li in soup.select('li.list-group-item'):
-                    t_tag, inner = li.select_one('time'), li.select_one('.fc-event-inner')
-                    if not t_tag or not inner:
-                        continue
-                    title = inner.get_text(strip=True)
-                    dm = re.findall(r'\d+', t_tag.get_text())
-                    if len(dm) < 3:
-                        continue
-                    ds = f"{dm[0]}-{dm[1].zfill(2)}-{dm[2].zfill(2)}"
-                    for a in li.select('a.tag-event, a.tag-live'):
-                        href = a.get('href')
-                        if href:
-                            f_url = base_url + href if href.startswith('/') else href
-                            items.append({"url": f_url, "date": ds, "title": title})
-
-            else:  # さよならステイチューン
-                for td in soup.select('td.fc-daygrid-day'):
-                    ds = td.get('data-date')
-                    if not ds:
-                        continue
+            for td in soup.select('td.fc-daygrid-day'):
+                ds = td.get('data-date')
+                if not ds: continue
+                
+                for a in td.select('a.fc-daygrid-event, a.fc-event'):
+                    href = a.get('href')
+                    if not href: continue
+                    f_url = base_url + href if href.startswith('/') else href
                     
-                    for a in td.select('a.fc-daygrid-event, a.fc-event'):
-                        href = a.get('href')
-                        if not href:
-                            continue
-                        f_url = base_url + href if href.startswith('/') else href
-                        
-                        t_el = a.select_one('.fc-event-title')
-                        title_text = t_el.get_text(strip=True) if t_el else a.get_text(strip=True)
-                        items.append({"url": f_url, "date": ds, "title": title_text})
+                    t_el = a.select_one('.fc-event-title')
+                    title_text = t_el.get_text(strip=True) if t_el else a.get_text(strip=True)
+                    items.append({"url": f_url, "date": ds, "title": title_text})
 
             month_count = 0
             for it in items:
-                if it['url'] in seen_urls:
-                    continue
+                if it['url'] in seen_urls: continue
                 seen_urls.add(it['url'])
 
-                detail_res = get_detail_info(driver, it['url'])
-                if len(detail_res) == 3:
-                    v, tm, exact_date = detail_res
-                else:
-                    v, tm = detail_res
-                    exact_date = None
-
+                v, tm, exact_date = get_detail_info(driver, it['url'])
                 final_start = exact_date if exact_date else it['date']
 
                 events.append({
@@ -423,7 +383,6 @@ def scrape_dspm(driver, name, base_url, menu_path):
                 })
                 month_count += 1
 
-                # 詳細ページを取得した後に元のカレンダーページへ戻る
                 driver.back()
                 time.sleep(2)
 
@@ -436,18 +395,76 @@ def scrape_dspm(driver, name, base_url, menu_path):
     return events
 
 
+def scrape_meme(driver):
+    """meme tokyo専用：URLパラメータ指定による先12ヶ月巡回"""
+    name = "meme"
+    base_url = "https://www.memetokyo.com"
+    events = []
+    seen_urls = set()
+    now = datetime.now()
+
+    for i in range(0, 13):
+        target = now + timedelta(days=31 * i)
+        u = f"{base_url}/vertical_calendar/{target.year}/{target.month}"
+
+        try:
+            print(f"[{name}] 取得中 ({i+1}/13): {target.year}年{target.month}月 ({u})")
+            driver.get(u)
+            time.sleep(4)
+
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            items = []
+
+            for li in soup.select('li.list-group-item'):
+                t_tag, inner = li.select_one('time'), li.select_one('.fc-event-inner')
+                if not t_tag or not inner: continue
+                title = inner.get_text(strip=True)
+                dm = re.findall(r'\d+', t_tag.get_text())
+                if len(dm) < 3: continue
+                ds = f"{dm[0]}-{dm[1].zfill(2)}-{dm[2].zfill(2)}"
+                for a in li.select('a.tag-event, a.tag-live'):
+                    href = a.get('href')
+                    if href:
+                        f_url = base_url + href if href.startswith('/') else href
+                        items.append({"url": f_url, "date": ds, "title": title})
+
+            month_count = 0
+            for it in items:
+                if it['url'] in seen_urls: continue
+                seen_urls.add(it['url'])
+
+                v, tm, exact_date = get_detail_info(driver, it['url'])
+                final_start = exact_date if exact_date else it['date']
+
+                events.append({
+                    "title": f"[{name}] {it['title']}",
+                    "start": final_start,
+                    "url": it['url'],
+                    "venue": v,
+                    "time": tm,
+                    "allDay": True
+                })
+                month_count += 1
+
+            print(f"[{name}] {target.year}年{target.month}月: {month_count}件 取得完了")
+
+        except Exception as e:
+            print(f"[{name}] 巡回中エラー ({target.year}年{target.month}月): {e}")
+            continue
+
+    return events
+
+
 def main():
     driver = setup_driver()
     all_data = []
     
-    # 1. ChumToto & きゅるりんってしてみても
+    # 各グループのスクレイピングを実行
     all_data.extend(scrape_tribe_v2(driver, "ChumToto", "https://chumtoto.jp/schedule/"))
     all_data.extend(scrape_tribe_v2(driver, "きゅるして", "https://www.kyurushite.com/schedule/"))
-    
-    # 2. その他グループ
     all_data.extend(scrape_2zicon(driver))
-    all_data.extend(scrape_dspm(driver, "さよステ", "https://sayostay.dspm.jp", "/schedules/menu/18610"))
-    all_data.extend(scrape_dspm(driver, "meme", "https://www.memetokyo.com", "/vertical_calendar"))
+    all_data.extend(scrape_sayostay(driver))
+    all_data.extend(scrape_meme(driver))
     
     driver.quit()
 
@@ -474,7 +491,7 @@ def main():
         else:
             ev['added_at'] = current_now
 
-    # JSON保存
+    # 全データのJSON保存（フロント表示用）
     payload = {
         "action": "sync_schedule",
         "events": unique_events
@@ -485,7 +502,7 @@ def main():
 
     print(f"全工程完了。合計 {len(unique_events)} 件保存完了。")
 
-    # カレンダー同期
+    # 指定グループ（ChumToto・さよステ）のみGoogleカレンダー同期
     sync_selected_events_to_gcal(unique_events)
 
 
