@@ -111,7 +111,7 @@ def sync_selected_events_to_gcal(events):
 
 def setup_driver():
     options = Options()
-    options.add_argument('--headless=new')
+    # options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     # 仮想環境での描画崩れ・画面外判定を防ぐため解像度を指定
