@@ -39,6 +39,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-09-12",
+      "start": "2026-09-12",
+      "title": "[ChumToto] 【ライブ出演】ChumToto「眠り、眠ら、眠れスト。」リリースイベント＠ららぽーと新三郷",
+      "clean_title": "【ライブ出演】ChumToto「眠り、眠ら、眠れスト。」リリースイベント＠ららぽーと新三郷",
+      "venue": "■会場は商業施設内となります。イベントに参加されないお客様も多数おられます。どうぞご留意願います。",
+      "time": "2026.09.12",
+      "url": "https://chumtoto.jp/event/2323/",
+      "allDay": true,
+      "added_at": "2026-09-01T08:26:11.710726"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-09-15",
       "start": "2026-09-15",
       "title": "[ChumToto] 【ライブ開催】柏葉れん生誕ライブ「偏♡気儘」＠SPACE ODD",
@@ -84,6 +96,18 @@
       "url": "https://chumtoto.jp/event/2308/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "ChumToto",
+      "date": "2026-09-30",
+      "start": "2026-09-30",
+      "title": "[ChumToto] 【イベント開催】柏葉れん/宮原梓イベント「Gothic✝iDOL」＠秋葉原ディアステージ",
+      "clean_title": "【イベント開催】柏葉れん/宮原梓イベント「Gothic✝iDOL」＠秋葉原ディアステージ",
+      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
+      "time": "OPEN 18:00 CLOSE 22:00",
+      "url": "https://chumtoto.jp/event/2328/",
+      "allDay": true,
+      "added_at": "2026-09-01T08:26:11.710726"
     },
     {
       "group": "ChumToto",
