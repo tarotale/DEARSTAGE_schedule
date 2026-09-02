@@ -255,6 +255,18 @@
     },
     {
       "group": "きゅるして",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[きゅるして] あむはアイドル6ねんせい！〜これは夢か現実か？♡〜",
+      "clean_title": "あむはアイドル6ねんせい！〜これは夢か現実か？♡〜",
+      "venue": "豊洲PIT",
+      "time": "開場1600 開演1700",
+      "url": "https://www.kyurushite.com/event/1221/",
+      "allDay": true,
+      "added_at": "2026-09-02T13:22:49.954072"
+    },
+    {
+      "group": "きゅるして",
       "date": "2026-10-17",
       "start": "2026-10-17",
       "title": "[きゅるして] NEW EP「Secret Heaven」発売記念リリースイベント@東京",
@@ -512,6 +524,17 @@
       "url": "https://2zicon.tokyo/information/thu_kumamoto/",
       "allDay": true,
       "added_at": "2026-09-01T00:30:53.094216"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-09-02",
+      "start": "2026-09-02",
+      "title": "[虹コン] はまふぇす後夜祭 ～おまたせ♡心斎橋♡～",
+      "venue": "心斎橋ディアステージ",
+      "time": "9/27(日)1部　開場1330/開演14002部　開場1630/開演1700ミニライブ＆特典会あり",
+      "url": "https://2zicon.tokyo/information/hamafes_osaka/",
+      "allDay": true,
+      "added_at": "2026-09-02T13:22:49.954072"
     },
     {
       "group": "虹コン",
