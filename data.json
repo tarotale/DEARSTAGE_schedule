@@ -63,6 +63,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-09-18",
+      "start": "2026-09-18",
+      "title": "[ChumToto] 【イベント開催】ChumToto「眠り、眠ら、眠れスト。」リリースイベント リミスタビンゴ大会&オンラインサイン会",
+      "clean_title": "【イベント開催】ChumToto「眠り、眠ら、眠れスト。」リリースイベント リミスタビンゴ大会&オンラインサイン会",
+      "venue": "詳細を確認",
+      "time": "2026.09.18",
+      "url": "https://chumtoto.jp/event/2363/",
+      "allDay": true,
+      "added_at": "2026-09-11T13:23:15.468813"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-09-22",
       "start": "2026-09-22",
       "title": "[ChumToto] 【ライブ出演】「SPARK 2026 in YAMANAKAKO」＠山中湖交流プラザきらら",
@@ -96,6 +108,18 @@
       "url": "https://chumtoto.jp/event/2308/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "ChumToto",
+      "date": "2026-09-29",
+      "start": "2026-09-29",
+      "title": "[ChumToto] 【イベント開催】ChumToto「眠り、眠ら、眠れスト。」リリースイベント オンラインサイン会",
+      "clean_title": "【イベント開催】ChumToto「眠り、眠ら、眠れスト。」リリースイベント オンラインサイン会",
+      "venue": "詳細を確認",
+      "time": "2026.09.29",
+      "url": "https://chumtoto.jp/event/2366/",
+      "allDay": true,
+      "added_at": "2026-09-11T13:23:15.468813"
     },
     {
       "group": "ChumToto",
@@ -175,8 +199,8 @@
       "start": "2026-09-06",
       "title": "[きゅるして] ASUTO MUSIC PARK 2026",
       "clean_title": "ASUTO MUSIC PARK 2026",
-      "venue": "※特典会の実施はございません",
-      "time": "2026.09.06",
+      "venue": "詳細を確認",
+      "time": "",
       "url": "https://www.kyurushite.com/event/1055/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
@@ -189,7 +213,7 @@
       "clean_title": "「推忍♡きゅるりん決起集会！」@パシフィコ横浜",
       "venue": "パシフィコ横浜 国立大ホール",
       "time": "開場1600 / 開演1700",
-      "url": "https://www.kyurushite.com/event/1228/",
+      "url": "https://www.kyurushite.com/event/1259/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
     },
