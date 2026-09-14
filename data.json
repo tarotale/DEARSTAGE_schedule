@@ -161,13 +161,13 @@
       "group": "ChumToto",
       "date": "2026-10-11",
       "start": "2026-10-11",
-      "title": "[ChumToto] 【イベント開催】ChumTotoミニライブ＆特典会イベント「まるっと、ちゃむタイム」at秋葉原ディアステージ",
-      "clean_title": "【イベント開催】ChumTotoミニライブ＆特典会イベント「まるっと、ちゃむタイム」at秋葉原ディアステージ",
+      "title": "[ChumToto] 【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム」at秋葉原ディアステージ",
+      "clean_title": "【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム」at秋葉原ディアステージ",
       "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
       "time": "＜1部＞OPEN 17:00 ＜2部＞OPEN 19:00",
       "url": "https://chumtoto.jp/event/2374/",
       "allDay": true,
-      "added_at": "2026-09-13T18:04:11.064368"
+      "added_at": "2026-09-14T08:42:39.007844"
     },
     {
       "group": "ChumToto",
@@ -343,7 +343,7 @@
       "start": "2026-10-24",
       "title": "[きゅるして] キャロフェス",
       "clean_title": "キャロフェス",
-      "venue": "チケット【優先入場（スタンディング）】¥11,000（税込・整理番号付き）【一般（スタンディング）】¥7,700（税込・整理番号付き）※いずれのチケットも入場時に別途1ドリンク代が必要です",
+      "venue": "出演（50音順）AVAM / きゅるりんってしてみて / NANIMONO / わーすた",
       "time": "2026.10.24",
       "url": "https://www.kyurushite.com/event/1251/",
       "allDay": true,
@@ -790,6 +790,15 @@
       "time": "OPEN 18:00/START 18:30",
       "allDay": true,
       "added_at": "2026-09-09T23:04:00.432000"
+    },
+    {
+      "title": "[さよステ] 根岸かのん1on1トーク",
+      "start": "2026-09-15",
+      "url": "https://sayostay.dspm.jp/schedules/122785?r=tlemo1",
+      "venue": "詳細を確認",
+      "time": "2026/09/15(Tue) 21:00 -",
+      "allDay": true,
+      "added_at": "2026-09-14T08:42:39.007844"
     },
     {
       "title": "[さよステ] INFINITY LIVE TOUR 2026 『ASTROMIRAGE - TOUR FINAL CIRCUIT -』",
