@@ -161,13 +161,25 @@
       "group": "ChumToto",
       "date": "2026-10-11",
       "start": "2026-10-11",
-      "title": "[ChumToto] 【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム」at秋葉原ディアステージ",
-      "clean_title": "【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム」at秋葉原ディアステージ",
+      "title": "[ChumToto] 【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム-NEW AREA-」at秋葉原ディアステージ",
+      "clean_title": "【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム-NEW AREA-」at秋葉原ディアステージ",
       "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
       "time": "＜1部＞OPEN 17:00 ＜2部＞OPEN 19:00",
       "url": "https://chumtoto.jp/event/2374/",
       "allDay": true,
-      "added_at": "2026-09-14T08:42:39.007844"
+      "added_at": "2026-09-14T15:48:23.811997"
+    },
+    {
+      "group": "ChumToto",
+      "date": "2026-10-18",
+      "start": "2026-10-18",
+      "title": "[ChumToto] 【イベント出演】「新潟産業大学第38回 紅葉祭」＠新潟産業大学講堂",
+      "clean_title": "【イベント出演】「新潟産業大学第38回 紅葉祭」＠新潟産業大学講堂",
+      "venue": "新潟産業大学講堂",
+      "time": "13:45入場開始/14:15開演",
+      "url": "https://chumtoto.jp/event/2384/",
+      "allDay": true,
+      "added_at": "2026-09-14T15:48:23.811997"
     },
     {
       "group": "ChumToto",
@@ -192,6 +204,18 @@
       "url": "https://chumtoto.jp/event/2067/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "ChumToto",
+      "date": "2026-11-03",
+      "start": "2026-11-03",
+      "title": "[ChumToto] 【ライブ出演】＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」＠秋葉原エリア",
+      "clean_title": "【ライブ出演】＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」＠秋葉原エリア",
+      "venue": "秋葉原エリア",
+      "time": "開場10:45 / 開演11:30",
+      "url": "https://chumtoto.jp/event/2380/",
+      "allDay": true,
+      "added_at": "2026-09-14T15:48:23.811997"
     },
     {
       "group": "ChumToto",
@@ -675,6 +699,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-09-14",
+      "start": "2026-09-14",
+      "title": "[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 前編",
+      "venue": "アニメイトシアター",
+      "time": "10/15(木)開場1800/開演1830",
+      "url": "https://2zicon.tokyo/information/screen-2026-10-15/",
+      "allDay": true,
+      "added_at": "2026-09-14T15:48:23.811997"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-03",
       "start": "2026-09-03",
       "title": "[虹コン] 尾林結花生誕イベント「おばやしのおまつり2026〜キミにあげちゃう誕生日♡〜」",
@@ -683,6 +718,17 @@
       "url": "https://2zicon.tokyo/information/obayashibd_2026/",
       "allDay": true,
       "added_at": "2026-09-03T13:23:43.378053"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-09-14",
+      "start": "2026-09-14",
+      "title": "[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 後編",
+      "venue": "アニメイトシアター",
+      "time": "10/21(水)開場1800/開演1830",
+      "url": "https://2zicon.tokyo/information/screen-2026-10-21/",
+      "allDay": true,
+      "added_at": "2026-09-14T15:48:23.811997"
     },
     {
       "group": "虹コン",
@@ -1078,6 +1124,15 @@
       "time": "開場 15:00/開演 15:20",
       "allDay": true,
       "added_at": "2026-09-09T23:04:00.432000"
+    },
+    {
+      "title": "[meme] 11/3(火祝)＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」に出演決定！",
+      "start": "2026-11-03",
+      "url": "https://www.memetokyo.com/contents/1110021",
+      "venue": "神田明神ホール・P.A.R.M.S秋葉原店・TwinBox AKIHABARA・TwinBox GARAGE・秋葉原ZEST・アキバステラキューブ・COSMIC LAB・ANTHEM AKIBA",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-09-14T15:48:23.811997"
     },
     {
       "title": "[meme] 2027/2/27(土)「MIX TOKYO DJ PARTY \"NEO”」出演決定！",
