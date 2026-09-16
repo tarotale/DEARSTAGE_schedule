@@ -387,6 +387,18 @@
     },
     {
       "group": "きゅるして",
+      "date": "2026-11-05",
+      "start": "2026-11-05",
+      "title": "[きゅるして] きゅるにじすたんだーど",
+      "clean_title": "きゅるにじすたんだーど",
+      "venue": "出演（50音順）きゅるりんってしてみて / 虹のコンキスタドール / わーすた",
+      "time": "2026.11.05",
+      "url": "https://www.kyurushite.com/event/1274/",
+      "allDay": true,
+      "added_at": "2026-09-16T14:11:50.590769"
+    },
+    {
+      "group": "きゅるして",
       "date": "2026-11-07",
       "start": "2026-11-07",
       "title": "[きゅるして] LARME FES’26",
@@ -655,6 +667,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-09-16",
+      "start": "2026-09-16",
+      "title": "[虹コン] 9/30(水)ニコニコチャンネル「宮本佳林のボカロ部」に栗原舞優がゲスト出演！",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/vocalo-0930/",
+      "allDay": true,
+      "added_at": "2026-09-16T14:11:50.590769"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-08-18",
       "start": "2026-08-18",
       "title": "[虹コン] かがやきフェス2026",
@@ -762,6 +785,17 @@
       "url": "https://2zicon.tokyo/information/garafes20261103/",
       "allDay": true,
       "added_at": "2026-08-31T06:27:02.947853"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-09-16",
+      "start": "2026-09-16",
+      "title": "[虹コン] 11/5(木)「きゅるにじすたんだーど」",
+      "venue": "Zepp DiverCity(TOKYO)",
+      "time": "2026/11/5(木)開場1800 / 開演1900",
+      "url": "https://2zicon.tokyo/information/kyuru2zistandard/",
+      "allDay": true,
+      "added_at": "2026-09-16T14:11:50.590769"
     },
     {
       "group": "虹コン",
@@ -901,6 +935,15 @@
       "time": "OPEN 18:30 / START 19:00",
       "allDay": true,
       "added_at": "2026-09-09T23:04:00.432000"
+    },
+    {
+      "title": "[さよステ] はなみゅかりっこー 〜やっぱ大好きしか出てこない〜",
+      "start": "2026-10-04",
+      "url": "https://sayostay.dspm.jp/schedules/123248?r=tmc700",
+      "venue": "心斎橋ディアステージ",
+      "time": "2026/10/04(Sun)",
+      "allDay": true,
+      "added_at": "2026-09-16T14:11:50.590769"
     },
     {
       "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【秋葉原駅】",
@@ -1081,6 +1124,15 @@
       "time": "開場 18:30開演 19:00",
       "allDay": true,
       "added_at": "2026-09-09T23:04:00.432000"
+    },
+    {
+      "title": "[meme] 10/4(日)「はなみゅかりっこー 〜やっぱ大好きしか出てこない〜」にMEWが出演決定！",
+      "start": "2026-10-04",
+      "url": "https://www.memetokyo.com/contents/1110711",
+      "venue": "心斎橋ディアステージ",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-09-16T14:11:50.590769"
     },
     {
       "title": "[meme] 10/12(月・祝) AFTERS Presents「CAKES & ALE」出演決定！",
