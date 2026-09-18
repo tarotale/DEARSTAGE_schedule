@@ -223,8 +223,8 @@
       "start": "2026-11-22",
       "title": "[ChumToto] 【ライブ出演】「マンスリーナビゲーターGIRLS LIVE」@J-SQUARE SHINAGAWA",
       "clean_title": "【ライブ出演】「マンスリーナビゲーターGIRLS LIVE」@J-SQUARE SHINAGAWA",
-      "venue": "詳細を確認",
-      "time": "",
+      "venue": "J-SQUARE品川",
+      "time": "OPEN/ START　12:00/12:30",
       "url": "https://chumtoto.jp/event/2283/",
       "allDay": true,
       "added_at": "2026-08-31T20:47:22.607675"
@@ -235,8 +235,8 @@
       "start": "2026-09-06",
       "title": "[きゅるして] ASUTO MUSIC PARK 2026",
       "clean_title": "ASUTO MUSIC PARK 2026",
-      "venue": "詳細を確認",
-      "time": "",
+      "venue": "※特典会の実施はございません",
+      "time": "2026.09.06",
       "url": "https://www.kyurushite.com/event/1055/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
@@ -247,8 +247,8 @@
       "start": "2026-09-19",
       "title": "[きゅるして] 「推忍♡きゅるりん決起集会！」@パシフィコ横浜",
       "clean_title": "「推忍♡きゅるりん決起集会！」@パシフィコ横浜",
-      "venue": "詳細を確認",
-      "time": "",
+      "venue": "パシフィコ横浜 国立大ホール",
+      "time": "開場1600 / 開演1700",
       "url": "https://www.kyurushite.com/event/1259/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
@@ -259,8 +259,8 @@
       "start": "2026-09-22",
       "title": "[きゅるして] NEW EP「Secret Heaven」発売記念リリースイベント@北海道",
       "clean_title": "NEW EP「Secret Heaven」発売記念リリースイベント@北海道",
-      "venue": "詳細を確認",
-      "time": "",
+      "venue": "SAPPORO CULTURE FARM／凹場 anaBa（北海道）",
+      "time": "2026.09.22",
       "url": "https://www.kyurushite.com/event/996/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
@@ -283,8 +283,8 @@
       "start": "2026-09-25",
       "title": "[きゅるして] Malymoon×PECHE「Utopia Parade」",
       "clean_title": "Malymoon×PECHE「Utopia Parade」",
-      "venue": "詳細を確認",
-      "time": "",
+      "venue": "恵比寿ガーデンホール",
+      "time": "開場 1730/開演 1830",
       "url": "https://www.kyurushite.com/event/954/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
@@ -719,6 +719,17 @@
       "url": "https://2zicon.tokyo/information/tokyo-girls-girls/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-09-18",
+      "start": "2026-09-18",
+      "title": "[虹コン] あむはアイドル6ねんせい！〜これは夢か現実か？♡〜（栗原舞優）",
+      "venue": "豊洲PIT（〒135-0061 東京都江東区豊洲6-1-23）",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/mayu_amu6th/",
+      "allDay": true,
+      "added_at": "2026-09-18T13:33:39.997047"
     },
     {
       "group": "虹コン",
