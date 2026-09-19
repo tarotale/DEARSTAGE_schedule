@@ -423,6 +423,18 @@
     },
     {
       "group": "きゅるして",
+      "date": "2026-11-15",
+      "start": "2026-11-15",
+      "title": "[きゅるして] Kアリーナ公演 後日大特典会",
+      "clean_title": "Kアリーナ公演 後日大特典会",
+      "venue": "有明セントラルタワーホール＆カンファレンス ホールA",
+      "time": "2026.11.15",
+      "url": "https://www.kyurushite.com/event/1301/",
+      "allDay": true,
+      "added_at": "2026-09-19T13:01:29.511077"
+    },
+    {
+      "group": "きゅるして",
       "date": "2026-11-23",
       "start": "2026-11-23",
       "title": "[きゅるして] ちかっぱ祭2026",
@@ -975,15 +987,6 @@
       "added_at": "2026-09-17T18:58:59.022098"
     },
     {
-      "title": "[さよステ] イベント予定",
-      "start": "2026-10-13",
-      "url": "https://sayostay.dspm.jp/schedules/114144?r=tmsv00",
-      "venue": "詳細を確認",
-      "time": "2026/10/13(Tue)",
-      "allDay": true,
-      "added_at": "2026-09-17T18:58:59.022098"
-    },
-    {
       "title": "[さよステ] #DSPMLIVE",
       "start": "2026-10-17",
       "url": "https://sayostay.dspm.jp/schedules/119191?r=tn1701",
@@ -1016,15 +1019,6 @@
       "url": "https://sayostay.dspm.jp/schedules/122480?r=tnd8c0",
       "venue": "高田馬場 CLUB PHASE",
       "time": "OPEN 17:00 / START 17:30",
-      "allDay": true,
-      "added_at": "2026-09-17T18:58:59.022098"
-    },
-    {
-      "title": "[さよステ] イベント予定",
-      "start": "2026-10-25",
-      "url": "https://sayostay.dspm.jp/schedules/114145?r=tnf300",
-      "venue": "詳細を確認",
-      "time": "2026/10/25(Sun)",
       "allDay": true,
       "added_at": "2026-09-17T18:58:59.022098"
     },
