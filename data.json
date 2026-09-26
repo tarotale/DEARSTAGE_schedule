@@ -195,6 +195,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-10-13",
+      "start": "2026-10-13",
+      "title": "[ChumToto] 【イベント開催】柏葉れんイベント『柏葉生誕後夜祭♡』＠秋葉原ディアステージ",
+      "clean_title": "【イベント開催】柏葉れんイベント『柏葉生誕後夜祭♡』＠秋葉原ディアステージ",
+      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
+      "time": "OPEN 18:00 CLOSE 22:00",
+      "url": "https://chumtoto.jp/event/2417/",
+      "allDay": true,
+      "added_at": "2026-09-26T13:48:09.871849"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-10-18",
       "start": "2026-10-18",
       "title": "[ChumToto] 【イベント出演】「新潟産業大学第38回 紅葉祭」＠新潟産業大学講堂",
@@ -228,6 +240,18 @@
       "url": "https://chumtoto.jp/event/2067/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "ChumToto",
+      "date": "2026-10-29",
+      "start": "2026-10-29",
+      "title": "[ChumToto] 【イベント開催】宮原梓イベント『ピピピ⋯☆脳内占拠ちゅう!!』＠秋葉原ディアステージ",
+      "clean_title": "【イベント開催】宮原梓イベント『ピピピ⋯☆脳内占拠ちゅう!!』＠秋葉原ディアステージ",
+      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
+      "time": "OPEN 18:00 CLOSE 22:00",
+      "url": "https://chumtoto.jp/event/2419/",
+      "allDay": true,
+      "added_at": "2026-09-26T13:48:09.871849"
     },
     {
       "group": "ChumToto",
@@ -372,6 +396,18 @@
       "url": "https://www.kyurushite.com/event/1221/",
       "allDay": true,
       "added_at": "2026-09-23T23:35:25.687858"
+    },
+    {
+      "group": "きゅるして",
+      "date": "2026-10-12",
+      "start": "2026-10-12",
+      "title": "[きゅるして] 逃げ水あむ生誕衣装チェキ会",
+      "clean_title": "逃げ水あむ生誕衣装チェキ会",
+      "venue": "有明セントラルタワーホール＆カンファレンス ホールA",
+      "time": "2026.10.12",
+      "url": "https://www.kyurushite.com/event/1320/",
+      "allDay": true,
+      "added_at": "2026-09-26T13:48:09.871849"
     },
     {
       "group": "きゅるして",
@@ -1048,6 +1084,15 @@
       "time": "OPEN 11:30 / START 11:50",
       "allDay": true,
       "added_at": "2026-09-17T18:58:59.022098"
+    },
+    {
+      "title": "[さよステ] 萌波あかり 1on1トーク",
+      "start": "2026-09-29",
+      "url": "https://sayostay.dspm.jp/schedules/124213?r=tm4k01",
+      "venue": "詳細を確認",
+      "time": "2026/09/29(Tue) 21:00 -",
+      "allDay": true,
+      "added_at": "2026-09-26T13:48:09.871849"
     },
     {
       "title": "[さよステ] さとりモンスター BATTLE MONSTER 『GREEN APPLE』",
