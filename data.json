@@ -343,7 +343,7 @@
       "start": "2026-09-29",
       "title": "[きゅるして] BEEEEM FES Vol.11 DX SP",
       "clean_title": "BEEEEM FES Vol.11 DX SP",
-      "venue": "※特典会を実施予定です",
+      "venue": "※特典会を実施予定です。特典券（チェキ撮影券）の販売情報詳細はこちら",
       "time": "2026.09.29",
       "url": "https://www.kyurushite.com/event/1187/",
       "allDay": true,
@@ -492,6 +492,18 @@
       "url": "https://www.kyurushite.com/event/1156/",
       "allDay": true,
       "added_at": "2026-09-23T23:35:25.687858"
+    },
+    {
+      "group": "きゅるして",
+      "date": "2026-12-24",
+      "start": "2026-12-24",
+      "title": "[きゅるして] Idol Xmas Fes 2026",
+      "clean_title": "Idol Xmas Fes 2026",
+      "venue": "出演（50音順）AVAM/きゅるりんってしてみて/私立恵比寿中学/虹のコンキスタドール/PassCode/ファントムシータ/yosugala/わーすた/@onefive",
+      "time": "2026.12.24",
+      "url": "https://www.kyurushite.com/event/1285/",
+      "allDay": true,
+      "added_at": "2026-09-26T08:29:14.843555"
     },
     {
       "group": "虹コン",
