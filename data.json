@@ -829,6 +829,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-09-27",
+      "start": "2026-09-27",
+      "title": "[虹コン] 水曜日の一宮ゆい",
+      "venue": "秋葉原ディアステージ",
+      "time": "2026年10月14日(水)",
+      "url": "https://2zicon.tokyo/information/wed_ichimiya/",
+      "allDay": true,
+      "added_at": "2026-09-27T09:07:07.521539"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-14",
       "start": "2026-09-14",
       "title": "[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 前編",
@@ -1372,15 +1383,6 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-09-14T15:48:23.811997"
-    },
-    {
-      "title": "[meme] 2027/2/27(土)「MIX TOKYO DJ PARTY \"NEO”」出演決定！",
-      "start": "2027-02-27",
-      "url": "https://www.memetokyo.com/contents/1099568",
-      "venue": "新宿歌舞伎町タワー3F namco TOKYO/ZEROTOKYO",
-      "time": "OPEN 18:00/ START 19:00",
-      "allDay": true,
-      "added_at": "2026-09-09T23:04:00.432000"
     }
   ]
 }
