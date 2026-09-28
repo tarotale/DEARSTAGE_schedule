@@ -931,7 +931,7 @@
       "date": "2026-09-22",
       "start": "2026-09-22",
       "title": "[虹コン] にゃんぽこらフェス！vol.3",
-      "venue": "",
+      "venue": "品川ステラボール開場1000開演1030※変更の可能性あり",
       "time": "11/21(土)・22(日)※出演日は後日お知らせいたします。",
       "url": "https://2zicon.tokyo/information/nyanpokora_03/",
       "allDay": true,
@@ -1277,13 +1277,13 @@
       "added_at": "2026-09-09T23:04:00.432000"
     },
     {
-      "title": "[meme] 9/30(水)「非公式メモリー」ラストリリースイベント〜秋の収穫祭〜 開催決定！",
+      "title": "[meme] 9/28(月)〜10/2(金)TBSテレビ「全力アピール アダムシアター」出演決定！",
       "start": "2026-09-30",
       "url": "https://www.memetokyo.com/contents/1105940",
       "venue": "CHIC HALL SHIBUYA",
       "time": "開場 18:30開演 19:00",
       "allDay": true,
-      "added_at": "2026-09-09T23:04:00.432000"
+      "added_at": "2026-09-28T09:32:03.194666"
     },
     {
       "title": "[meme] 10/4(日)「はなみゅかりっこー 〜やっぱ大好きしか出てこない〜」にMEWが出演決定！",
@@ -1374,6 +1374,15 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-09-22T14:04:03.855080"
+    },
+    {
+      "title": "[meme] 10/31(土)「東京激ロックDJパーティー EDGE-CRUSHER Vol.207」SOLIの出演決定！",
+      "start": "2026-10-31",
+      "url": "https://www.memetokyo.com/contents/1113872",
+      "venue": "渋谷clubasia",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-09-28T09:32:03.194666"
     },
     {
       "title": "[meme] 11/3(火祝)＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」に出演決定！",
