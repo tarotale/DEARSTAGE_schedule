@@ -906,39 +906,6 @@
     },
     {
       "group": "虹コン",
-      "date": "2026-05-07",
-      "start": "2026-05-07",
-      "title": "[虹コン] ガラフェス ～渋谷 文化的衝撃センセーション 秋の新作発表会～",
-      "venue": "Shibuya LOVEZ",
-      "time": "",
-      "url": "https://2zicon.tokyo/information/garafes20261103/",
-      "allDay": true,
-      "added_at": "2026-08-31T06:27:02.947853"
-    },
-    {
-      "group": "虹コン",
-      "date": "2026-09-16",
-      "start": "2026-09-16",
-      "title": "[虹コン] 11/5(木)「きゅるにじすたんだーど」",
-      "venue": "Zepp DiverCity(TOKYO)",
-      "time": "2026/11/5(木)開場1800 / 開演1900",
-      "url": "https://2zicon.tokyo/information/kyuru2zistandard/",
-      "allDay": true,
-      "added_at": "2026-09-16T14:11:50.590769"
-    },
-    {
-      "group": "虹コン",
-      "date": "2026-09-22",
-      "start": "2026-09-22",
-      "title": "[虹コン] にゃんぽこらフェス！vol.3",
-      "venue": "品川ステラボール開場1000開演1030※変更の可能性あり",
-      "time": "11/21(土)・22(日)※出演日は後日お知らせいたします。",
-      "url": "https://2zicon.tokyo/information/nyanpokora_03/",
-      "allDay": true,
-      "added_at": "2026-09-21T23:59:14.889824"
-    },
-    {
-      "group": "虹コン",
       "date": "2026-07-14",
       "start": "2026-07-14",
       "title": "[虹コン] 虹のコンキスタドール ONE-MAN LIVE",
@@ -1385,13 +1352,13 @@
       "added_at": "2026-09-28T09:32:03.194666"
     },
     {
-      "title": "[meme] 11/3(火祝)＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」に出演決定！",
-      "start": "2026-11-03",
-      "url": "https://www.memetokyo.com/contents/1110021",
-      "venue": "神田明神ホール・P.A.R.M.S秋葉原店・TwinBox AKIHABARA・TwinBox GARAGE・秋葉原ZEST・アキバステラキューブ・COSMIC LAB・ANTHEM AKIBA",
-      "time": "",
+      "title": "[meme] 2027/2/27(土)「MIX TOKYO DJ PARTY \"NEO”」出演決定！",
+      "start": "2027-02-27",
+      "url": "https://www.memetokyo.com/contents/1099568",
+      "venue": "新宿歌舞伎町タワー3F namco TOKYO/ZEROTOKYO",
+      "time": "OPEN 18:00/ START 19:00",
       "allDay": true,
-      "added_at": "2026-09-14T15:48:23.811997"
+      "added_at": "2026-09-30T00:14:26.545138"
     }
   ]
 }
