@@ -550,6 +550,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-01",
+      "start": "2026-10-01",
+      "title": "[虹コン] まとフェス2026",
+      "venue": "浅草花劇場https//www.hanayashiki-kagekijo.com/access/",
+      "time": "12/8(火)1745 開場 / 1830 開演",
+      "url": "https://2zicon.tokyo/information/matobabd_2026/",
+      "allDay": true,
+      "added_at": "2026-10-01T09:53:33.852022"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-07-14",
       "start": "2026-07-14",
       "title": "[虹コン] 虹のコンキスタドール ONE-MAN LIVE",
@@ -652,6 +663,15 @@
       "time": "2026/10/18(Sun)",
       "allDay": true,
       "added_at": "2026-09-17T18:58:59.022098"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-10-20",
+      "url": "https://sayostay.dspm.jp/schedules/125029?r=tn5to0",
+      "venue": "詳細を確認",
+      "time": "2026/10/20(Tue)",
+      "allDay": true,
+      "added_at": "2026-10-01T09:53:33.852022"
     },
     {
       "title": "[さよステ] DEARSTAGE SHOWCASE 2026 AUTUMNsupported by JAタウン",
