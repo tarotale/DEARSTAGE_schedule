@@ -2,186 +2,6 @@
   "action": "sync_schedule",
   "events": [
     {
-      "group": "ChumToto",
-      "date": "2026-09-29",
-      "start": "2026-09-29",
-      "title": "[ChumToto] 【イベント開催】ChumToto「眠り、眠ら、眠れスト。」リリースイベント オンラインサイン会",
-      "clean_title": "【イベント開催】ChumToto「眠り、眠ら、眠れスト。」リリースイベント オンラインサイン会",
-      "venue": "詳細を確認",
-      "time": "2026.09.29",
-      "url": "https://chumtoto.jp/event/2366/",
-      "allDay": true,
-      "added_at": "2026-09-11T13:23:15.468813"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-09-30",
-      "start": "2026-09-30",
-      "title": "[ChumToto] 【イベント開催】柏葉れん/宮原梓イベント「Gothic✝iDOL」＠秋葉原ディアステージ",
-      "clean_title": "【イベント開催】柏葉れん/宮原梓イベント「Gothic✝iDOL」＠秋葉原ディアステージ",
-      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-      "time": "OPEN 18:00 CLOSE 22:00",
-      "url": "https://chumtoto.jp/event/2328/",
-      "allDay": true,
-      "added_at": "2026-09-01T08:26:11.710726"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-03",
-      "start": "2026-10-03",
-      "title": "[ChumToto] 【イベント開催】綾瀬志希/瀬﨑くるみ イベント『ちきたむとくるみんのドキドキ！？ワクワク！？♡静岡来店イベンChu-☆』＠静岡ディアステージ",
-      "clean_title": "【イベント開催】綾瀬志希/瀬﨑くるみ イベント『ちきたむとくるみんのドキドキ！？ワクワク！？♡静岡来店イベンChu-☆』＠静岡ディアステージ",
-      "venue": "静岡ディアステージ (〒420-0032 静岡県静岡市葵区両替町２丁目４−９ フィエスタ両替町 ３F)",
-      "time": "OPEN 10:45 START 11:00",
-      "url": "https://chumtoto.jp/event/2402/",
-      "allDay": true,
-      "added_at": "2026-09-24T08:18:11.744480"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-04",
-      "start": "2026-10-04",
-      "title": "[ChumToto] 【ライブ出演】YOKOSO SHIZUOKA SP DAY2＠ARTIE/LIVLIV",
-      "clean_title": "【ライブ出演】YOKOSO SHIZUOKA SP DAY2＠ARTIE/LIVLIV",
-      "venue": "ARTIE/LIVLIV",
-      "time": "OPEN/ START　11:30/12:15",
-      "url": "https://chumtoto.jp/event/2136/",
-      "allDay": true,
-      "added_at": "2026-08-30T18:10:07.830793"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-04",
-      "start": "2026-10-04",
-      "title": "[ChumToto] 【イベント出演】「しずおか大好き怪談 in しずおか大好きまつり」@Bolo",
-      "clean_title": "【イベント出演】「しずおか大好き怪談 in しずおか大好きまつり」@Bolo",
-      "venue": "Bolo",
-      "time": "OPEN/ START　15:00/15:30",
-      "url": "https://chumtoto.jp/event/2297/",
-      "allDay": true,
-      "added_at": "2026-09-07T14:55:47.645677"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-07",
-      "start": "2026-10-07",
-      "title": "[ChumToto] 【ライブ出演】衛星とカラテアPresents「超 明星現象 2026」＠Shibuya LOVEZ他 渋谷エリア全14会場",
-      "clean_title": "【ライブ出演】衛星とカラテアPresents「超 明星現象 2026」＠Shibuya LOVEZ他 渋谷エリア全14会場",
-      "venue": "Shibuya LOVEZ他 渋谷エリア全14会場",
-      "time": "後日お知らせ",
-      "url": "https://chumtoto.jp/event/2394/",
-      "allDay": true,
-      "added_at": "2026-09-24T08:18:11.744480"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-11",
-      "start": "2026-10-11",
-      "title": "[ChumToto] 【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム-NEW AREA-」at秋葉原ディアステージ",
-      "clean_title": "【イベント開催】ChumTotoライブ＆特典会イベント「まるっと、ちゃむタイム-NEW AREA-」at秋葉原ディアステージ",
-      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-      "time": "＜1部＞OPEN 17:00 ＜2部＞OPEN 19:00",
-      "url": "https://chumtoto.jp/event/2374/",
-      "allDay": true,
-      "added_at": "2026-09-14T15:48:23.811997"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-13",
-      "start": "2026-10-13",
-      "title": "[ChumToto] 【イベント開催】柏葉れんイベント『柏葉生誕後夜祭♡』＠秋葉原ディアステージ",
-      "clean_title": "【イベント開催】柏葉れんイベント『柏葉生誕後夜祭♡』＠秋葉原ディアステージ",
-      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-      "time": "OPEN 18:00 CLOSE 22:00",
-      "url": "https://chumtoto.jp/event/2417/",
-      "allDay": true,
-      "added_at": "2026-09-26T13:48:09.871849"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-18",
-      "start": "2026-10-18",
-      "title": "[ChumToto] 【イベント出演】「新潟産業大学第38回 紅葉祭」＠新潟産業大学講堂",
-      "clean_title": "【イベント出演】「新潟産業大学第38回 紅葉祭」＠新潟産業大学講堂",
-      "venue": "新潟産業大学講堂",
-      "time": "13:45入場開始/14:15開演",
-      "url": "https://chumtoto.jp/event/2384/",
-      "allDay": true,
-      "added_at": "2026-09-14T15:48:23.811997"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-22",
-      "start": "2026-10-22",
-      "title": "[ChumToto] 【ライブ出演】「DEARSTAGE SHOWCASE 2026 AUTUMN supported by JAタウン」＠Spotify O-EAST",
-      "clean_title": "【ライブ出演】「DEARSTAGE SHOWCASE 2026 AUTUMN supported by JAタウン」＠Spotify O-EAST",
-      "venue": "Spotify O-EAST",
-      "time": "OPEN/ START　17:00/18:00",
-      "url": "https://chumtoto.jp/event/2270/",
-      "allDay": true,
-      "added_at": "2026-08-30T18:10:07.830793"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-25",
-      "start": "2026-10-25",
-      "title": "[ChumToto] 【ライブ開催】ChumTotoワンマンライブ「ちゃむわーるど -NEW AREA-」",
-      "clean_title": "【ライブ開催】ChumTotoワンマンライブ「ちゃむわーるど -NEW AREA-」",
-      "venue": "harevutai",
-      "time": "開場16:15 / 開演17:00",
-      "url": "https://chumtoto.jp/event/2067/",
-      "allDay": true,
-      "added_at": "2026-08-30T18:10:07.830793"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-10-29",
-      "start": "2026-10-29",
-      "title": "[ChumToto] 【イベント開催】宮原梓イベント『ピピピ⋯☆脳内占拠ちゅう!!』＠秋葉原ディアステージ",
-      "clean_title": "【イベント開催】宮原梓イベント『ピピピ⋯☆脳内占拠ちゅう!!』＠秋葉原ディアステージ",
-      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
-      "time": "OPEN 18:00 CLOSE 22:00",
-      "url": "https://chumtoto.jp/event/2419/",
-      "allDay": true,
-      "added_at": "2026-09-26T13:48:09.871849"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-11-03",
-      "start": "2026-11-03",
-      "title": "[ChumToto] 【ライブ出演】＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」＠秋葉原エリア",
-      "clean_title": "【ライブ出演】＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」＠秋葉原エリア",
-      "venue": "秋葉原エリア",
-      "time": "開場10:45 / 開演11:30",
-      "url": "https://chumtoto.jp/event/2380/",
-      "allDay": true,
-      "added_at": "2026-09-14T15:48:23.811997"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-11-13",
-      "start": "2026-11-13",
-      "title": "[ChumToto] 【ライブ開催】ChumToto 2MAN LIVE 『ごあいちゃむ – ChumToto × DEARSTAGE研究生 – 』@アニメイトシアター",
-      "clean_title": "【ライブ開催】ChumToto 2MAN LIVE 『ごあいちゃむ – ChumToto × DEARSTAGE研究生 – 』@アニメイトシアター",
-      "venue": "アニメイトシアター",
-      "time": "開場18:15 / 開演19:00",
-      "url": "https://chumtoto.jp/event/2412/",
-      "allDay": true,
-      "added_at": "2026-09-24T08:18:11.744480"
-    },
-    {
-      "group": "ChumToto",
-      "date": "2026-11-22",
-      "start": "2026-11-22",
-      "title": "[ChumToto] 【ライブ出演】「マンスリーナビゲーターGIRLS LIVE」@J-SQUARE SHINAGAWA",
-      "clean_title": "【ライブ出演】「マンスリーナビゲーターGIRLS LIVE」@J-SQUARE SHINAGAWA",
-      "venue": "J-SQUARE品川",
-      "time": "OPEN/ START　12:00/12:30",
-      "url": "https://chumtoto.jp/event/2283/",
-      "allDay": true,
-      "added_at": "2026-08-31T20:47:22.607675"
-    },
-    {
       "group": "きゅるして",
       "date": "2026-09-29",
       "start": "2026-09-29",
@@ -348,6 +168,18 @@
       "url": "https://www.kyurushite.com/event/1156/",
       "allDay": true,
       "added_at": "2026-09-23T23:35:25.687858"
+    },
+    {
+      "group": "きゅるして",
+      "date": "2026-12-08",
+      "start": "2026-12-08",
+      "title": "[きゅるして] まとフェス2026",
+      "clean_title": "まとフェス2026",
+      "venue": "※特典会を実施予定です",
+      "time": "2026.12.08",
+      "url": "https://www.kyurushite.com/event/1351/",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
     },
     {
       "group": "きゅるして",
@@ -710,6 +542,33 @@
       "added_at": "2026-09-17T18:58:59.022098"
     },
     {
+      "title": "[さよステ] HALLOWEEN KAWAII FANATIC vol.2 Supported by #DSPMLIVE",
+      "start": "2026-10-29",
+      "url": "https://sayostay.dspm.jp/schedules/125084?r=tnnuz1",
+      "venue": "浅草花劇場",
+      "time": "OPEN 17:45 / START 18:15",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] GAME ON！SHIZUOKA #3",
+      "start": "2026-10-31",
+      "url": "https://sayostay.dspm.jp/schedules/125087?r=tnr2y1",
+      "venue": "ARTIE/LIVLIV",
+      "time": "OPEN 11:30/START 12:00",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] #DSPMLIVE in SHIZUOKA",
+      "start": "2026-10-31",
+      "url": "https://sayostay.dspm.jp/schedules/125086?r=tnrl01",
+      "venue": "ARTIE/LIVLIV",
+      "time": "OPEN/START 18:00",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
       "title": "[さよステ] ＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」",
       "start": "2026-11-03",
       "url": "https://sayostay.dspm.jp/schedules/114146?r=tnvr00",
@@ -717,6 +576,60 @@
       "time": "OPEN 10:45 / START 11:30",
       "allDay": true,
       "added_at": "2026-09-17T18:58:59.022098"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-08",
+      "url": "https://sayostay.dspm.jp/schedules/125094?r=to50c0",
+      "venue": "詳細を確認",
+      "time": "2026/11/08(Sun)",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-15",
+      "url": "https://sayostay.dspm.jp/schedules/125088?r=tohz00",
+      "venue": "詳細を確認",
+      "time": "2026/11/15(Sun)",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-20",
+      "url": "https://sayostay.dspm.jp/schedules/125093?r=tor8c0",
+      "venue": "詳細を確認",
+      "time": "2026/11/20(Fri)",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-22",
+      "url": "https://sayostay.dspm.jp/schedules/125092?r=touxo0",
+      "venue": "詳細を確認",
+      "time": "2026/11/22(Sun)",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] ライブ予定＠沖縄",
+      "start": "2026-11-28",
+      "url": "https://sayostay.dspm.jp/schedules/125089?r=tp61o0",
+      "venue": "詳細を確認",
+      "time": "2026/11/28(Sat) - 2026/11/29(Sun)",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
+    },
+    {
+      "title": "[さよステ] イベント予定＠鹿児島",
+      "start": "2026-12-05",
+      "url": "https://sayostay.dspm.jp/schedules/125035?r=tpj0c0",
+      "venue": "詳細を確認",
+      "time": "2026/12/05(Sat) - 2026/12/06(Sun)",
+      "allDay": true,
+      "added_at": "2026-10-01T20:14:06.917451"
     },
     {
       "title": "[meme] 10/4(日)「はなみゅかりっこー 〜やっぱ大好きしか出てこない〜」にMEWが出演決定！",
