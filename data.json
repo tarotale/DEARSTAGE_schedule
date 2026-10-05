@@ -508,6 +508,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-05",
+      "start": "2026-10-05",
+      "title": "[虹コン] 10/20(火)「火曜日の石浜芽衣」開催",
+      "venue": "秋葉原ディアステージ",
+      "time": "2026年10月20日(火)",
+      "url": "https://2zicon.tokyo/information/tue_ishihama/",
+      "allDay": true,
+      "added_at": "2026-10-05T10:09:35.627657"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-14",
       "start": "2026-09-14",
       "title": "[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 後編",
@@ -664,6 +675,15 @@
       "added_at": "2026-09-17T18:58:59.022098"
     },
     {
+      "title": "[さよステ] 城谷美温1on1トーク",
+      "start": "2026-10-08",
+      "url": "https://sayostay.dspm.jp/schedules/125624?r=tml6m1",
+      "venue": "詳細を確認",
+      "time": "2026/10/08(Thu) 20:30 -",
+      "allDay": true,
+      "added_at": "2026-10-05T10:09:35.627657"
+    },
+    {
       "title": "[さよステ] さよならステイチューン山手線ほぼ一周ツアー【秋葉原駅】「ディアステージ駅へようこそ✩.*˚」",
       "start": "2026-10-10",
       "url": "https://sayostay.dspm.jp/schedules/114129?r=tmnb00",
@@ -700,13 +720,13 @@
       "added_at": "2026-09-17T18:58:59.022098"
     },
     {
-      "title": "[さよステ] ライブ予定",
+      "title": "[さよステ] 絶対少女物語vol.3",
       "start": "2026-10-20",
       "url": "https://sayostay.dspm.jp/schedules/125029?r=tn5to0",
-      "venue": "詳細を確認",
-      "time": "2026/10/20(Tue)",
+      "venue": "大塚FUTURE:",
+      "time": "OPEN 15:00/START 15:20",
       "allDay": true,
-      "added_at": "2026-10-01T09:53:33.852022"
+      "added_at": "2026-10-05T10:09:35.627657"
     },
     {
       "title": "[さよステ] DEARSTAGE SHOWCASE 2026 AUTUMNsupported by JAタウン",
@@ -860,6 +880,15 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-09-22T14:04:03.855080"
+    },
+    {
+      "title": "[meme] 10/11(日)LOVE CHANT 主催イベント「らぶちゃんと！vol.2」にMelToxinが出演決定！",
+      "start": "2026-10-11",
+      "url": "https://www.memetokyo.com/contents/1116392",
+      "venue": "Zirco TOKYO",
+      "time": "開場 11:30 開演 12:00",
+      "allDay": true,
+      "added_at": "2026-10-05T10:09:35.627657"
     },
     {
       "title": "[meme] 10/12(月・祝) AFTERS Presents「CAKES & ALE」出演決定！",
