@@ -351,6 +351,18 @@
     },
     {
       "group": "きゅるして",
+      "date": "2026-11-21",
+      "start": "2026-11-21",
+      "title": "[きゅるして] 京都大学学園祭「11月祭」Special Live",
+      "clean_title": "京都大学学園祭「11月祭」Special Live",
+      "venue": "開演",
+      "time": "2026.11.21",
+      "url": "https://www.kyurushite.com/event/1351/",
+      "allDay": true,
+      "added_at": "2026-10-08T20:39:03.748529"
+    },
+    {
+      "group": "きゅるして",
       "date": "2026-11-23",
       "start": "2026-11-23",
       "title": "[きゅるして] ちかっぱ祭2026",
@@ -375,15 +387,15 @@
     },
     {
       "group": "きゅるして",
-      "date": "2026-12-08",
-      "start": "2026-12-08",
-      "title": "[きゅるして] まとフェス2026",
-      "clean_title": "まとフェス2026",
-      "venue": "※特典会を実施予定です",
-      "time": "2026.12.08",
-      "url": "https://www.kyurushite.com/event/1351/",
+      "date": "2026-12-19",
+      "start": "2026-12-19",
+      "title": "[きゅるして] TIF ASIA TOUR 2026 台北公演",
+      "clean_title": "TIF ASIA TOUR 2026 台北公演",
+      "venue": "時藝劇場",
+      "time": "2026.12.19",
+      "url": "https://www.kyurushite.com/event/1373/",
       "allDay": true,
-      "added_at": "2026-10-01T20:14:06.917451"
+      "added_at": "2026-10-08T20:39:03.748529"
     },
     {
       "group": "きゅるして",
@@ -393,7 +405,7 @@
       "clean_title": "Idol Xmas Fes 2026",
       "venue": "出演（50音順）AVAM/きゅるりんってしてみて/私立恵比寿中学/虹のコンキスタドール/PassCode/ファントムシータ/yosugala/わーすた/@onefive",
       "time": "2026.12.24",
-      "url": "https://www.kyurushite.com/event/1285/",
+      "url": "https://www.kyurushite.com/event/1368/",
       "allDay": true,
       "added_at": "2026-09-26T08:29:14.843555"
     },
@@ -517,6 +529,17 @@
       "url": "https://2zicon.tokyo/information/ap261018/",
       "allDay": true,
       "added_at": "2026-09-15T14:19:26.883413"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-08",
+      "start": "2026-10-08",
+      "title": "[虹コン] FUN-FARE！ Vol.3",
+      "venue": "corner house(台北)",
+      "time": "12/18(金)OPEN 1700／START 1730",
+      "url": "https://2zicon.tokyo/information/funfarevol3/",
+      "allDay": true,
+      "added_at": "2026-10-08T20:39:03.748529"
     },
     {
       "group": "虹コン",
@@ -1075,11 +1098,20 @@
     {
       "title": "[meme] 12/12(土) ミームトーキョー ONE-MAN LIVE TOUR『非公式メモリー「予期せぬ記憶が発生しました**」』韓国・ソウル公演 開催！",
       "start": "2026-12-12",
-      "url": "https://www.memetokyo.com/contents/1114893",
-      "venue": "詳細を確認",
-      "time": "",
+      "url": "https://www.memetokyo.com/contents/1117195",
+      "venue": "SETi LIVE HALL",
+      "time": "開場 12:00/開演 12:30",
       "allDay": true,
       "added_at": "2026-09-30T19:58:22.133395"
+    },
+    {
+      "title": "[meme] 12/13(日) 非公式メモリー展 in SEOUL ＆ FAN MEETING 開催！",
+      "start": "2026-12-13",
+      "url": "https://www.memetokyo.com/contents/1117198",
+      "venue": "■会場",
+      "time": "■時間",
+      "allDay": true,
+      "added_at": "2026-10-08T20:39:03.748529"
     },
     {
       "title": "[meme] 12/27(日) ミームトーキョー ONE-MAN LIVE TOUR『非公式メモリー「予期せぬ記憶が発生しました**」』大阪公演 開催！",
