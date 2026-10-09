@@ -488,6 +488,28 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[虹コン] ミクチャ『@JAM THE WORLD』（川端）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/mixch-14/",
+      "allDay": true,
+      "added_at": "2026-10-09T10:12:32.864307"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[虹コン] FMFUJI『「GIRLS♥GIRLS♥GIRLS =FULL BOOST=」虹コンの征服ちゅうずでぃ』（的場・川端・一宮）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/fmfuji-11-2/",
+      "allDay": true,
+      "added_at": "2026-10-09T10:12:32.864307"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-27",
       "start": "2026-09-27",
       "title": "[虹コン] 水曜日の一宮ゆい",
@@ -496,6 +518,17 @@
       "url": "https://2zicon.tokyo/information/wed_ichimiya/",
       "allDay": true,
       "added_at": "2026-09-27T09:07:07.521539"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[虹コン] LIVE配信「キミと虹コン【245mm】」（栗原・都月）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/245mm-1014/",
+      "allDay": true,
+      "added_at": "2026-10-09T10:12:32.864307"
     },
     {
       "group": "虹コン",
@@ -529,17 +562,6 @@
       "url": "https://2zicon.tokyo/information/ap261018/",
       "allDay": true,
       "added_at": "2026-09-15T14:19:26.883413"
-    },
-    {
-      "group": "虹コン",
-      "date": "2026-10-08",
-      "start": "2026-10-08",
-      "title": "[虹コン] FUN-FARE！ Vol.3",
-      "venue": "corner house(台北)",
-      "time": "12/18(金)OPEN 1700／START 1730",
-      "url": "https://2zicon.tokyo/information/funfarevol3/",
-      "allDay": true,
-      "added_at": "2026-10-08T20:39:03.748529"
     },
     {
       "group": "虹コン",
@@ -631,6 +653,28 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[虹コン] LIVE配信「キミと虹コン【245mm】」（一宮・伊藤）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/245mm-1104/",
+      "allDay": true,
+      "added_at": "2026-10-09T10:12:32.864307"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[虹コン] 渋谷クロスFM『虹コンのコレってラジオだったよね？』（石浜・尾林・青山）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/%e6%b8%8b%e8%b0%b7%e3%82%af%e3%83%ad%e3%82%b9fm%e3%80%8e%e8%99%b9%e3%82%b3%e3%83%b3%e3%81%ae%e3%82%b3%e3%83%ac%e3%81%a3%e3%81%a6%e3%83%a9%e3%82%b8%e3%82%aa%e3%81%a0%e3%81%a3%e3%81%9f%e3%82%88%e3%81%ad/",
+      "allDay": true,
+      "added_at": "2026-10-09T10:12:32.864307"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-16",
       "start": "2026-09-16",
       "title": "[虹コン] 11/5(木)「きゅるにじすたんだーど」",
@@ -650,6 +694,17 @@
       "url": "https://2zicon.tokyo/information/tsurikomachi/",
       "allDay": true,
       "added_at": "2026-10-01T00:28:50.356318"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-09",
+      "start": "2026-10-09",
+      "title": "[虹コン] 文化放送 QloveR『虹のコンキスタドール やればできる子育成計画 ！』",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/qlover-6/",
+      "allDay": true,
+      "added_at": "2026-10-09T10:12:32.864307"
     },
     {
       "group": "虹コン",
@@ -694,6 +749,17 @@
       "url": "https://2zicon.tokyo/information/261210_zepp/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-08",
+      "start": "2026-10-08",
+      "title": "[虹コン] FUN-FARE！ Vol.3",
+      "venue": "時藝劇場",
+      "time": "12/19(土)OPEN 1100 START 1130",
+      "url": "https://2zicon.tokyo/information/fun-farevol-3/",
+      "allDay": true,
+      "added_at": "2026-10-08T20:39:03.748529"
     },
     {
       "group": "虹コン",
