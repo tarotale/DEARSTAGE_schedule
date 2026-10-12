@@ -147,6 +147,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-10-31",
+      "start": "2026-10-31",
+      "title": "[ChumToto] 【ライブ出演】「IDOL HALLOWEEN JAPAN 2026 Supported by Malymoon」＠埼⽟スタジアム2002 野外特設会場",
+      "clean_title": "【ライブ出演】「IDOL HALLOWEEN JAPAN 2026 Supported by Malymoon」＠埼⽟スタジアム2002 野外特設会場",
+      "venue": "埼⽟スタジアム2002 野外特設会場",
+      "time": "開場0:00 / 開演0:00",
+      "url": "https://chumtoto.jp/event/2450/",
+      "allDay": true,
+      "added_at": "2026-10-12T10:23:08.671510"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-11-03",
       "start": "2026-11-03",
       "title": "[ChumToto] 【ライブ出演】＠JAM×アイドル横丁presents「秋葉原アイドルサーキットvol.6」＠秋葉原エリア",
@@ -639,6 +651,17 @@
       "url": "https://2zicon.tokyo/information/festivalintherain-2026/",
       "allDay": true,
       "added_at": "2026-10-10T19:16:59.431320"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-12",
+      "start": "2026-10-12",
+      "title": "[虹コン] 火曜日の虹コン予科生",
+      "venue": "秋葉原ディアステージ",
+      "time": "2026年10月27日(火)",
+      "url": "https://2zicon.tokyo/information/tue_yokasei/",
+      "allDay": true,
+      "added_at": "2026-10-12T10:23:08.671510"
     },
     {
       "group": "虹コン",
