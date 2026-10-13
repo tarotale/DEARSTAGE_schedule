@@ -742,6 +742,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-13",
+      "start": "2026-10-13",
+      "title": "[虹コン] 11/8(日)虹のコンキスタドールフリーライブ in 横浜ワールドポーターズ開催",
+      "venue": "横浜ワールドポーターズRoof Top World（7F屋上）",
+      "time": "2026年11月8日(日) ①1330〜②1630〜",
+      "url": "https://2zicon.tokyo/information/261108ywp/",
+      "allDay": true,
+      "added_at": "2026-10-13T10:16:06.594564"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-10-09",
       "start": "2026-10-09",
       "title": "[虹コン] 文化放送 QloveR『虹のコンキスタドール やればできる子育成計画 ！』",
@@ -753,6 +764,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-13",
+      "start": "2026-10-13",
+      "title": "[虹コン] 11/21(土)虹のコンキスタドールフリーライブ in アリオ橋本店開催",
+      "venue": "アリオ橋本",
+      "time": "2026年11月21日(土) ①1330〜②1630〜",
+      "url": "https://2zicon.tokyo/information/261121hashimoto/",
+      "allDay": true,
+      "added_at": "2026-10-13T10:16:06.594564"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-22",
       "start": "2026-09-22",
       "title": "[虹コン] にゃんぽこらフェス！vol.3",
@@ -761,6 +783,28 @@
       "url": "https://2zicon.tokyo/information/nyanpokora_03/",
       "allDay": true,
       "added_at": "2026-10-01T00:28:50.356318"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-13",
+      "start": "2026-10-13",
+      "title": "[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催",
+      "venue": "大阪・南港ATC 海辺のステージ",
+      "time": "2026年11月28日(土) 1400〜",
+      "url": "https://2zicon.tokyo/information/261128osaka/",
+      "allDay": true,
+      "added_at": "2026-10-13T10:16:06.594564"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-13",
+      "start": "2026-10-13",
+      "title": "[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催",
+      "venue": "汐留シオサイト地下歩道",
+      "time": "2026年12月6日(日) 1500〜",
+      "url": "https://2zicon.tokyo/information/261206shiodome/",
+      "allDay": true,
+      "added_at": "2026-10-13T10:16:06.594564"
     },
     {
       "group": "虹コン",
@@ -794,6 +838,17 @@
       "url": "https://2zicon.tokyo/information/261210_zepp/",
       "allDay": true,
       "added_at": "2026-08-30T18:10:07.830793"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-13",
+      "start": "2026-10-13",
+      "title": "[虹コン] 11/13(日)虹のコンキスタドールフリーライブ in タワーレコード錦糸町パルコ店開催",
+      "venue": "タワーレコード錦糸町パルコ店",
+      "time": "2026年12月13日(日) 1800〜",
+      "url": "https://2zicon.tokyo/information/261113kinshicho/",
+      "allDay": true,
+      "added_at": "2026-10-13T10:16:06.594564"
     },
     {
       "group": "虹コン",
@@ -1140,15 +1195,6 @@
       "url": "https://www.memetokyo.com/contents/1103012",
       "venue": "■会場周辺において近隣住民並びに周囲の迷惑になるような行為はご遠慮下さい。",
       "time": "■出演者の変更、キャンセル、公演時間の変更による払い戻しはございません。 払い戻しは公演中止の場合のみいたします。",
-      "allDay": true,
-      "added_at": "2026-09-09T23:04:00.432000"
-    },
-    {
-      "title": "[meme] 10/26(月)「アイドルミラーボールpremium vol.4」出演決定！",
-      "start": "2026-10-26",
-      "url": "https://www.memetokyo.com/contents/1106729",
-      "venue": "SHIBUYA WWWX",
-      "time": "開場 15:00/開演 15:20",
       "allDay": true,
       "added_at": "2026-09-09T23:04:00.432000"
     },
