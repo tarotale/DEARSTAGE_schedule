@@ -1047,6 +1047,15 @@
     },
     {
       "title": "[さよステ] ライブ予定",
+      "start": "2026-11-05",
+      "url": "https://sayostay.dspm.jp/schedules/126565?r=tnzgc0",
+      "venue": "詳細を確認",
+      "time": "2026/11/05(Thu)",
+      "allDay": true,
+      "added_at": "2026-10-13T20:40:49.700238"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
       "start": "2026-11-08",
       "url": "https://sayostay.dspm.jp/schedules/125094?r=to50c0",
       "venue": "詳細を確認",
@@ -1197,6 +1206,15 @@
       "time": "■出演者の変更、キャンセル、公演時間の変更による払い戻しはございません。 払い戻しは公演中止の場合のみいたします。",
       "allDay": true,
       "added_at": "2026-09-09T23:04:00.432000"
+    },
+    {
+      "title": "[meme] 10/26(月)「アイドルミラーボールpremium vol.4」出演決定！",
+      "start": "2026-10-26",
+      "url": "https://www.memetokyo.com/contents/1106729",
+      "venue": "SHIBUYA WWWX",
+      "time": "開場 14:40/開演 15:00",
+      "allDay": true,
+      "added_at": "2026-10-13T20:40:49.700238"
     },
     {
       "title": "[meme] 10/29(木)「HALLOWEEN KAWAII FANATIC vol.2 Supported by #DSPMLIVE」に出演決定！",
