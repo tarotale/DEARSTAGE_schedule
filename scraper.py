@@ -17,14 +17,14 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
 # ==========================================
-# Google カレンダー連携設定
+# 設定
 # ==========================================
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = os.getenv('GOOGLE_APPLICATION_CREDENTIALS', 'credentials.json')
 CALENDAR_ID = 'chumtoto.calendar@gmail.com'
 
-# カレンダーに同期したいグループのみを指定
-TARGET_GROUPS = ["[ChumToto]", "[さよステ]"]
+# 1. Googleカレンダーに同期したいグループ（ChumToto・さよステ）
+TARGET_GMS_GROUPS = ["[ChumToto]", "[さよステ]"]
 
 
 def get_calendar_service():
@@ -35,14 +35,14 @@ def get_calendar_service():
 def sync_selected_events_to_gcal(events):
     target_events = [
         ev for ev in events 
-        if any(ev['title'].startswith(prefix) for prefix in TARGET_GROUPS)
+        if any(ev['title'].startswith(prefix) for prefix in TARGET_GMS_GROUPS)
     ]
     
     if not target_events:
         print("[Google Calendar] 対象となるイベントはありませんでした。")
         return
 
-    print(f"[Google Calendar] 同期対象イベント ({', '.join(TARGET_GROUPS)}): {len(target_events)} 件")
+    print(f"[Google Calendar] 同期対象イベント ({', '.join(TARGET_GMS_GROUPS)}): {len(target_events)} 件")
     
     try:
         service = get_calendar_service()
@@ -96,6 +96,11 @@ def sync_selected_events_to_gcal(events):
             'description': description_text,
             'start': {'date': start_date},
             'end': {'date': start_date},
+            # 通知（リマインダー）を無効化
+            'reminders': {
+                'useDefault': False,
+                'overrides': []
+            }
         }
 
         try:
@@ -108,6 +113,65 @@ def sync_selected_events_to_gcal(events):
             print(f"[Google Calendar] 登録失敗 ({clean_title}): {e}")
 
     print(f"[Google Calendar] 同期完了: {added_count} 件の新規予定を追加しました。")
+
+
+def export_to_ics(events, target_prefixes, filename):
+    """指定したグループのイベントだけを抽出して個別の .ics ファイルを生成する関数"""
+    target_events = [
+        ev for ev in events 
+        if any(ev['title'].startswith(prefix) for prefix in target_prefixes)
+    ]
+
+    if not target_events:
+        print(f"[ICS Export] 対象となるイベントはありませんでした（{', '.join(target_prefixes)}）。")
+        return
+
+    ics_lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Idol Schedule Scraper//JP",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH"
+    ]
+
+    for ev in target_events:
+        title = ev.get('title', '').replace(',', '\\,').replace(';', '\\;')
+        start_date = ev.get('start', '').replace('-', '')
+        if not start_date:
+            continue
+        
+        try:
+            dt_start = datetime.strptime(ev.get('start'), '%Y-%m-%d')
+            dt_end = dt_start + timedelta(days=1)
+            end_date = dt_end.strftime('%Y%m%d')
+        except Exception:
+            end_date = start_date
+
+        venue = ev.get('venue', '')
+        url = ev.get('url', '')
+        time_info = ev.get('time', '')
+        
+        desc_parts = []
+        if venue: desc_parts.append(f"会場: {venue}")
+        if time_info: desc_parts.append(f"時間: {time_info}")
+        if url: desc_parts.append(f"詳細URL: {url}")
+        description = "\\n".join(desc_parts)
+
+        ics_lines.extend([
+            "BEGIN:VEVENT",
+            f"SUMMARY:{title}",
+            f"DTSTART;VALUE=DATE:{start_date}",
+            f"DTEND;VALUE=DATE:{end_date}",
+            f"LOCATION:{venue}",
+            f"DESCRIPTION:{description}",
+            "END:VEVENT"
+        ])
+
+    ics_lines.append("END:VCALENDAR")
+
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write("\r\n".join(ics_lines))
+    print(f"[ICS Export] {filename} の出力が完了しました（対象: {', '.join(target_prefixes)} / 全 {len(target_events)} 件）")
 
 
 def setup_driver():
@@ -398,14 +462,14 @@ def scrape_sayostay(driver):
 def scrape_meme(driver):
     """meme tokyo専用：URLパラメータ指定による先12ヶ月巡回"""
     name = "meme"
-    base_url = "https://www.memetokyo.com"
+    base_url = "www.memetokyo.com"
     events = []
     seen_urls = set()
     now = datetime.now()
 
     for i in range(0, 13):
         target = now + timedelta(days=31 * i)
-        u = f"{base_url}/vertical_calendar/{target.year}/{target.month}"
+        u = f"https://{base_url}/vertical_calendar/{target.year}/{target.month}"
 
         try:
             print(f"[{name}] 取得中 ({i+1}/13): {target.year}年{target.month}月 ({u})")
@@ -425,7 +489,7 @@ def scrape_meme(driver):
                 for a in li.select('a.tag-event, a.tag-live'):
                     href = a.get('href')
                     if href:
-                        f_url = base_url + href if href.startswith('/') else href
+                        f_url = f"https://{base_url}{href}" if href.startswith('/') else href
                         items.append({"url": f_url, "date": ds, "title": title})
 
             month_count = 0
@@ -502,7 +566,11 @@ def main():
 
     print(f"全工程完了。合計 {len(unique_events)} 件保存完了。")
 
-    # 指定グループ（ChumToto・さよステ）のみGoogleカレンダー同期
+    # 1. 友達配布用：ChumToto用 と 虹コン用の .ics ファイルをそれぞれ別々に出力
+    export_to_ics(unique_events, ["[ChumToto]"], "chumtoto.ics")
+    export_to_ics(unique_events, ["[虹コン]"], "2zicon.ics")
+
+    # 2. Googleカレンダー同期：ChumToto と さよステ のみ同期（通知オフ設定適用済み）
     sync_selected_events_to_gcal(unique_events)
 
 
