@@ -102,6 +102,13 @@ LOCATION:秋葉原エリア
 DESCRIPTION:会場: 秋葉原エリア\n時間: 開場10:45 / 開演11:30\n詳細URL: https://chumtoto.jp/event/2380/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ出演】「IDOL CAPSULE vol.2」＠club asia
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+LOCATION:club asia
+DESCRIPTION:会場: club asia\n時間: 開場/ 開演　17:00/17:40\n詳細URL: https://chumtoto.jp/event/2462/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【ライブ開催】ChumToto 2MAN LIVE 『ごあいちゃむ – ChumToto × DEARSTAGE研究生 – 』@アニメイトシアター
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
