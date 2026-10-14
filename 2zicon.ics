@@ -1,0 +1,300 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Idol Schedule Scraper//JP
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:[虹コン] かがやきフェス2026
+DTSTART;VALUE=DATE:20260818
+DTEND;VALUE=DATE:20260819
+LOCATION:金沢歌劇座Eight HallREDSUN金沢AZ金沢GOLD CREEKダブル金沢石川県教育会館ホール片町きらら
+DESCRIPTION:会場: 金沢歌劇座Eight HallREDSUN金沢AZ金沢GOLD CREEKダブル金沢石川県教育会館ホール片町きらら\n時間: 2026年10月3日(土)、4日(日）開場 1030 / 開演 1100 リストバンド交換930(予定)※虹のコンキスタドールの出演日は4日となります。\n詳細URL: https://2zicon.tokyo/information/kagayakifes2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] しずおか大好き LIVE in しずおか大好きまつり
+DTSTART;VALUE=DATE:20260822
+DTEND;VALUE=DATE:20260823
+LOCATION:LIVE ROXY SHIZUOKAOPEN 1230/START 1300
+DESCRIPTION:会場: LIVE ROXY SHIZUOKAOPEN 1230/START 1300\n詳細URL: https://2zicon.tokyo/information/shizuokalove2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] しずおか大好き LIVE in しずおか大好きまつり(川端優・青山詩・伊藤舞依・八木遥叶・前嶋杏乃・都月しより)
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+LOCATION:LIVE ROXY SHIZUOKA
+DESCRIPTION:会場: LIVE ROXY SHIZUOKA\n時間: 10/3(土)開場1230/開演1300\n詳細URL: https://2zicon.tokyo/information/shizuokalove/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] TOKYO GIRLS GIRLS
+DTSTART;VALUE=DATE:20260812
+DTEND;VALUE=DATE:20260813
+LOCATION:Shibuya LOVEZ〒150-0042 東京都渋谷区宇田川町９−５https//shibuyalovez.jp/access/
+DESCRIPTION:会場: Shibuya LOVEZ〒150-0042 東京都渋谷区宇田川町９−５https//shibuyalovez.jp/access/\n時間: 2026/10/6(火)開場1100 / 開演1120\n詳細URL: https://2zicon.tokyo/information/tokyo-girls-girls/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 文化放送 QloveR『虹のコンキスタドール やればできる子育成計画 ！』
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/qlover-4/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] あむはアイドル6ねんせい！〜これは夢か現実か？♡〜（栗原舞優）
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260919
+LOCATION:豊洲PIT（〒135-0061 東京都江東区豊洲6-1-23）
+DESCRIPTION:会場: 豊洲PIT（〒135-0061 東京都江東区豊洲6-1-23）\n詳細URL: https://2zicon.tokyo/information/mayu_amu6th/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 爆音祭~ツアー決起会SP~
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+LOCATION:品川ステラボール
+DESCRIPTION:会場: 品川ステラボール\n時間: 10/12(月)OPEN 1800 START 1900\n詳細URL: https://2zicon.tokyo/information/bakuonsai/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] ミクチャ『@JAM THE WORLD』（川端）
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/mixch-14/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] FMFUJI『「GIRLS♥GIRLS♥GIRLS =FULL BOOST=」虹コンの征服ちゅうずでぃ』（的場・川端・一宮）
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/fmfuji-11-2/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 水曜日の一宮ゆい
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+LOCATION:秋葉原ディアステージ
+DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年10月14日(水)\n詳細URL: https://2zicon.tokyo/information/wed_ichimiya/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] LIVE配信「キミと虹コン【245mm】」（栗原・都月）
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/245mm-1014/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 前編
+DTSTART;VALUE=DATE:20260914
+DTEND;VALUE=DATE:20260915
+LOCATION:アニメイトシアター
+DESCRIPTION:会場: アニメイトシアター\n時間: 10/15(木)開場1800/開演1830\n詳細URL: https://2zicon.tokyo/information/screen-2026-10-15/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 長月明日香 BIRTHDAY EVENT 2026「つき誕2026」(隈本茉莉奈)
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+LOCATION:Route Theater
+DESCRIPTION:会場: Route Theater\n時間: 2026年10月17日(土)1700 開演 / 1800 開場\n詳細URL: https://2zicon.tokyo/information/tsukitan2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 10/18(日)「＆横アリ 其の一」
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+LOCATION:Zepp Haneda
+DESCRIPTION:会場: Zepp Haneda\n時間: 2026/10/18(日)開場1600 / 開演1700\n詳細URL: https://2zicon.tokyo/information/ap261018/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 尾林結花生誕イベント「おばやしのおまつり2026〜キミにあげちゃう誕生日♡〜」
+DTSTART;VALUE=DATE:20260903
+DTEND;VALUE=DATE:20260904
+LOCATION:SPACE ODDhttps//spaceodd.jp/
+DESCRIPTION:会場: SPACE ODDhttps//spaceodd.jp/\n時間: 2026/10/19(月)1830開場 / 1900開演\n詳細URL: https://2zicon.tokyo/information/obayashibd_2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 10/20(火)「火曜日の石浜芽衣」開催
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+LOCATION:秋葉原ディアステージ
+DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年10月20日(火)\n詳細URL: https://2zicon.tokyo/information/tue_ishihama/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 後編
+DTSTART;VALUE=DATE:20260914
+DTEND;VALUE=DATE:20260915
+LOCATION:アニメイトシアター
+DESCRIPTION:会場: アニメイトシアター\n時間: 10/21(水)開場1800/開演1830\n詳細URL: https://2zicon.tokyo/information/screen-2026-10-21/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] DEARSTAGE SHOWCASE 2026 AUTUMN supported by JAタウン
+DTSTART;VALUE=DATE:20260822
+DTEND;VALUE=DATE:20260823
+LOCATION:渋⾕・Spotify O-EAST
+DESCRIPTION:会場: 渋⾕・Spotify O-EAST\n時間: 2026年10⽉22⽇(⽊) Open 1700 / Start 1800\n詳細URL: https://2zicon.tokyo/information/dsshowcase-2026-aw/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 金曜日の隈本茉莉奈
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261008
+LOCATION:秋葉原ディアステージ
+DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年10月23日(金)\n詳細URL: https://2zicon.tokyo/information/fri_kumamoto/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 虹のコンキスタドールフリーライブ in ヴィレッジヴァンガード渋谷本店
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+LOCATION:ヴィレッジヴァンガード渋谷本店
+DESCRIPTION:会場: ヴィレッジヴァンガード渋谷本店\n時間: 2026年10月25日(日) 1300〜\n詳細URL: https://2zicon.tokyo/information/261025shibuya/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 雨模様のソラリス presents「Festival in the Rain 2026」
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+LOCATION:下北沢シャングリラ / 下北沢MOSAiC / Flowers Loft / ADRIFT / WAVER
+DESCRIPTION:会場: 下北沢シャングリラ / 下北沢MOSAiC / Flowers Loft / ADRIFT / WAVER\n時間: 2026年10月25日(日)リストバンド交換1030〜MOSAiCにて整列順に開始 / START 1100\n詳細URL: https://2zicon.tokyo/information/festivalintherain-2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 火曜日の虹コン予科生
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+LOCATION:秋葉原ディアステージ
+DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年10月27日(火)\n詳細URL: https://2zicon.tokyo/information/tue_yokasei/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 🎃Trick or MAYU🎀 〜まゆちゃんと秘密のナイトメアin静岡〜
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+LOCATION:静岡ディアステージ〒420-0032静岡県静岡市葵区両替町２丁目４−９https//shizuoka.dearstage.com/
+DESCRIPTION:会場: 静岡ディアステージ〒420-0032静岡県静岡市葵区両替町２丁目４−９https//shizuoka.dearstage.com/\n詳細URL: https://2zicon.tokyo/information/mayu_shizuoka/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 10/31(土)開催「IDOL HALLOWEEN JAPAN 2026 Supported by Malymoon」出演
+DTSTART;VALUE=DATE:20260928
+DTEND;VALUE=DATE:20260929
+LOCATION:埼⽟スタジアム2002 野外特設会場
+DESCRIPTION:会場: 埼⽟スタジアム2002 野外特設会場\n時間: 10/31(土)開場時間TBA\n詳細URL: https://2zicon.tokyo/information/ihj2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] ガラフェス ～渋谷 文化的衝撃センセーション 秋の新作発表会～
+DTSTART;VALUE=DATE:20260507
+DTEND;VALUE=DATE:20260508
+LOCATION:Shibuya LOVEZ
+DESCRIPTION:会場: Shibuya LOVEZ\n詳細URL: https://2zicon.tokyo/information/garafes20261103/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] LIVE配信「キミと虹コン【245mm】」（一宮・伊藤）
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/245mm-1104/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 渋谷クロスFM『虹コンのコレってラジオだったよね？』（石浜・尾林・青山）
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/%e6%b8%8b%e8%b0%b7%e3%82%af%e3%83%ad%e3%82%b9fm%e3%80%8e%e8%99%b9%e3%82%b3%e3%83%b3%e3%81%ae%e3%82%b3%e3%83%ac%e3%81%a3%e3%81%a6%e3%83%a9%e3%82%b8%e3%82%aa%e3%81%a0%e3%81%a3%e3%81%9f%e3%82%88%e3%81%ad/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 11/5(木)「きゅるにじすたんだーど」
+DTSTART;VALUE=DATE:20260916
+DTEND;VALUE=DATE:20260917
+LOCATION:Zepp DiverCity(TOKYO)
+DESCRIPTION:会場: Zepp DiverCity(TOKYO)\n時間: 2026/11/5(木)開場1800 / 開演1900\n詳細URL: https://2zicon.tokyo/information/kyuru2zistandard/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 映画「つりこまち」公開(石浜芽衣)
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n時間: 2026年11月6日（金）ロケ地和歌山先行公開/11月27日（金）より、池袋HUMAXシネマズ、kino cinema 新宿ほか全国公開\n詳細URL: https://2zicon.tokyo/information/tsurikomachi/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 11/8(日)虹のコンキスタドールフリーライブ in 横浜ワールドポーターズ開催
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+LOCATION:横浜ワールドポーターズRoof Top World（7F屋上）
+DESCRIPTION:会場: 横浜ワールドポーターズRoof Top World（7F屋上）\n時間: 2026年11月8日(日) ①1330〜②1630〜\n詳細URL: https://2zicon.tokyo/information/261108ywp/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 文化放送 QloveR『虹のコンキスタドール やればできる子育成計画 ！』
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/qlover-6/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 11/21(土)虹のコンキスタドールフリーライブ in アリオ橋本店開催
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+LOCATION:アリオ橋本
+DESCRIPTION:会場: アリオ橋本\n時間: 2026年11月21日(土) ①1330〜②1630〜\n詳細URL: https://2zicon.tokyo/information/261121hashimoto/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] にゃんぽこらフェス！vol.3
+DTSTART;VALUE=DATE:20260922
+DTEND;VALUE=DATE:20260923
+LOCATION:品川ステラボール開場1000開演1030※変更の可能性あり
+DESCRIPTION:会場: 品川ステラボール開場1000開演1030※変更の可能性あり\n時間: 11/22(日)\n詳細URL: https://2zicon.tokyo/information/nyanpokora_03/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+LOCATION:大阪・南港ATC 海辺のステージ
+DESCRIPTION:会場: 大阪・南港ATC 海辺のステージ\n時間: 2026年11月28日(土) 1400〜\n詳細URL: https://2zicon.tokyo/information/261128osaka/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+LOCATION:汐留シオサイト地下歩道
+DESCRIPTION:会場: 汐留シオサイト地下歩道\n時間: 2026年12月6日(日) 1500〜\n詳細URL: https://2zicon.tokyo/information/261206shiodome/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 【発売】石浜芽衣2nd写真集
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/hmmi_2ndsyashinsyu/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] まとフェス2026
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+LOCATION:浅草花劇場https//www.hanayashiki-kagekijo.com/access/
+DESCRIPTION:会場: 浅草花劇場https//www.hanayashiki-kagekijo.com/access/\n時間: 12/8(火)1745 開場 / 1830 開演\n詳細URL: https://2zicon.tokyo/information/matobabd_2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 虹のコンキスタドール ONE-MAN LIVE
+DTSTART;VALUE=DATE:20260714
+DTEND;VALUE=DATE:20260715
+LOCATION:Zepp DiverCity(TOKYO)
+DESCRIPTION:会場: Zepp DiverCity(TOKYO)\n時間: 2026/12/10(木)OPEN 1800 / START 1900\n詳細URL: https://2zicon.tokyo/information/261210_zepp/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 11/13(日)虹のコンキスタドールフリーライブ in タワーレコード錦糸町パルコ店開催
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+LOCATION:タワーレコード錦糸町パルコ店
+DESCRIPTION:会場: タワーレコード錦糸町パルコ店\n時間: 2026年12月13日(日) 1800〜\n詳細URL: https://2zicon.tokyo/information/261113kinshicho/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] FUN-FARE！ Vol.3
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+LOCATION:時藝劇場
+DESCRIPTION:会場: 時藝劇場\n時間: 12/19(土)OPEN 1100 START 1130\n詳細URL: https://2zicon.tokyo/information/fun-farevol-3/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 12/24(木)「Idol Xmas Fes 2026」
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+LOCATION:横浜アリーナ
+DESCRIPTION:会場: 横浜アリーナ\n時間: 2026/12/24(木)開場1330 / 開演1500\n詳細URL: https://2zicon.tokyo/information/xmas-2026-12-24/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] リトルアーモリー THE STAGE ―火花は、雨空に咲く―
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/littlearmoryst2/
+END:VEVENT
+END:VCALENDAR
