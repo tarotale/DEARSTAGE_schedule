@@ -57,7 +57,7 @@ SUMMARY:[虹コン] ミクチャ『@JAM THE WORLD』（川端）
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 LOCATION:詳細を確認
-DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/mixch-14/
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/mixch-13/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] FMFUJI『「GIRLS♥GIRLS♥GIRLS =FULL BOOST=」虹コンの征服ちゅうずでぃ』（的場・川端・一宮）
@@ -170,6 +170,13 @@ DTSTART;VALUE=DATE:20260928
 DTEND;VALUE=DATE:20260929
 LOCATION:埼⽟スタジアム2002 野外特設会場
 DESCRIPTION:会場: 埼⽟スタジアム2002 野外特設会場\n時間: 10/31(土)開場時間TBA\n詳細URL: https://2zicon.tokyo/information/ihj2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 虹のコンキスタドール×東京女子プロレス にじいろプリンセスパーティー！
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+LOCATION:前売 3,000円／当日 3,500円※飲食代別・要1ドリンク会場チケットURLhttps//livepocket.jp/e/pl0_b
+DESCRIPTION:会場: 前売 3,000円／当日 3,500円※飲食代別・要1ドリンク会場チケットURLhttps//livepocket.jp/e/pl0_b\n時間: 2026年11月2日（月）1800開場／1900開演\n詳細URL: https://2zicon.tokyo/information/nijpri/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] ガラフェス ～渋谷 文化的衝撃センセーション 秋の新作発表会～
