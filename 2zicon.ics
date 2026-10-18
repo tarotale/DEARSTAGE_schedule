@@ -238,8 +238,8 @@ BEGIN:VEVENT
 SUMMARY:[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
-LOCATION:大阪・南港ATC 海辺のステージ
-DESCRIPTION:会場: 大阪・南港ATC 海辺のステージ\n時間: 2026年11月28日(土) 1400〜\n詳細URL: https://2zicon.tokyo/information/261128osaka/
+LOCATION:大阪・ATC 海辺のステージ
+DESCRIPTION:会場: 大阪・ATC 海辺のステージ\n時間: 2026年11月28日(土) 1400〜\n詳細URL: https://2zicon.tokyo/information/261128osaka/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催

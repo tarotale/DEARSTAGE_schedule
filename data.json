@@ -801,7 +801,7 @@
       "date": "2026-10-13",
       "start": "2026-10-13",
       "title": "[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催",
-      "venue": "大阪・南港ATC 海辺のステージ",
+      "venue": "大阪・ATC 海辺のステージ",
       "time": "2026年11月28日(土) 1400〜",
       "url": "https://2zicon.tokyo/information/261128osaka/",
       "allDay": true,
@@ -1076,22 +1076,13 @@
       "added_at": "2026-10-13T20:40:49.700238"
     },
     {
-      "title": "[さよステ] ライブ予定",
+      "title": "[さよステ] 『WEEKEND INFNITY 2026』",
       "start": "2026-11-08",
       "url": "https://sayostay.dspm.jp/schedules/125094?r=to50c0",
-      "venue": "詳細を確認",
-      "time": "2026/11/08(Sun)",
+      "venue": "シャングリラ / CLUB251 / MOSAiC",
+      "time": "OPEN 11:00/START 11:30",
       "allDay": true,
-      "added_at": "2026-10-01T20:14:06.917451"
-    },
-    {
-      "title": "[さよステ] ライブ予定",
-      "start": "2026-11-15",
-      "url": "https://sayostay.dspm.jp/schedules/125088?r=tohz00",
-      "venue": "詳細を確認",
-      "time": "2026/11/15(Sun)",
-      "allDay": true,
-      "added_at": "2026-10-01T20:14:06.917451"
+      "added_at": "2026-10-18T07:56:22.405808"
     },
     {
       "title": "[さよステ] ライブ予定",
