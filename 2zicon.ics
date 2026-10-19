@@ -116,6 +116,13 @@ LOCATION:秋葉原ディアステージ
 DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年10月20日(火)\n詳細URL: https://2zicon.tokyo/information/tue_ishihama/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] JAタウン×虹コン YouTube番組「レインボーソングプロジェクト」 振り返り配信（青山・都月）
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261020
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/jatown_13/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] みんなで観よっ♡12th Anniversary LIVE「ニューレジェンドインサマー！」 後編
 DTSTART;VALUE=DATE:20260914
 DTEND;VALUE=DATE:20260915
