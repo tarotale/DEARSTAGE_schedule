@@ -143,4 +143,18 @@ DTEND;VALUE=DATE:20261209
 LOCATION:浅草花劇場
 DESCRIPTION:会場: 浅草花劇場\n時間: 開場17:45 / 開演18:30\n詳細URL: https://chumtoto.jp/event/2434/
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ開催】ChumToto クリスマスライブ「メリー・トイボックス」@浅草花劇場
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+LOCATION:浅草花劇場
+DESCRIPTION:会場: 浅草花劇場\n時間: 開場18:15 / 開演19:00\n詳細URL: https://chumtoto.jp/event/2497/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ開催】ChumToto 2nd Anniversary Live 「DOODLË」@品川ステラボール
+DTSTART;VALUE=DATE:20270418
+DTEND;VALUE=DATE:20270419
+LOCATION:品川・ステラボール
+DESCRIPTION:会場: 品川・ステラボール\n時間: 開場16:00 / 開演17:00\n詳細URL: https://chumtoto.jp/event/2493/
+END:VEVENT
 END:VCALENDAR
