@@ -243,6 +243,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-11-25",
+      "start": "2026-11-25",
+      "title": "[ChumToto] 【イベント開催】宮原梓ソロイベント＠秋葉原ディアステージ",
+      "clean_title": "【イベント開催】宮原梓ソロイベント＠秋葉原ディアステージ",
+      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
+      "time": "OPEN 18:00 CLOSE 22:00",
+      "url": "https://chumtoto.jp/event/2517/",
+      "allDay": true,
+      "added_at": "2026-10-29T20:15:12.206075"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-11-29",
       "start": "2026-11-29",
       "title": "[ChumToto] 【イベント開催】宮原梓「1日店長イベント」@星箱Works原宿店",
@@ -860,6 +872,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-10-29",
+      "start": "2026-10-29",
+      "title": "[虹コン] 映画『つりこまち』公開記念舞台挨拶in和歌山",
+      "venue": "ジストシネマ田辺／御坊／和歌山イオンシネマ和歌山",
+      "time": "2026年11月7日（土）",
+      "url": "https://2zicon.tokyo/information/tsurikomachi_wakayama/",
+      "allDay": true,
+      "added_at": "2026-10-29T20:15:12.206075"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-10-13",
       "start": "2026-10-13",
       "title": "[虹コン] 11/8(日)虹のコンキスタドールフリーライブ in 横浜ワールドポーターズ開催",
@@ -899,17 +922,6 @@
       "venue": "品川ステラボール開場1000開演1030※変更の可能性あり",
       "time": "11/22(日)",
       "url": "https://2zicon.tokyo/information/nyanpokora_03/",
-      "allDay": true,
-      "added_at": "2026-10-22T08:30:27.420920"
-    },
-    {
-      "group": "虹コン",
-      "date": "2026-10-13",
-      "start": "2026-10-13",
-      "title": "[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催",
-      "venue": "大阪・ATC 海辺のステージ",
-      "time": "2026年11月28日(土) 1400〜",
-      "url": "https://2zicon.tokyo/information/261128osaka/",
       "allDay": true,
       "added_at": "2026-10-22T08:30:27.420920"
     },
@@ -1166,6 +1178,15 @@
       "added_at": "2026-10-01T20:14:06.917451"
     },
     {
+      "title": "[さよステ] 城谷美温1on1トーク",
+      "start": "2026-10-30",
+      "url": "https://sayostay.dspm.jp/schedules/129423?r=tnpvw1",
+      "venue": "詳細を確認",
+      "time": "2026/10/30(Fri) 20:00 -",
+      "allDay": true,
+      "added_at": "2026-10-29T20:15:12.206075"
+    },
+    {
       "title": "[さよステ] GAME ON！SHIZUOKA #3",
       "start": "2026-10-31",
       "url": "https://sayostay.dspm.jp/schedules/125087?r=tnr2y1",
@@ -1220,13 +1241,13 @@
       "added_at": "2026-10-18T13:09:12.024628"
     },
     {
-      "title": "[さよステ] ライブ予定",
+      "title": "[さよステ] Gran☆Ciel金曜主催公演 「Ciel×Ring session.34」",
       "start": "2026-11-20",
       "url": "https://sayostay.dspm.jp/schedules/125093?r=tor8c0",
-      "venue": "詳細を確認",
-      "time": "2026/11/20(Fri)",
+      "venue": "GOTANDA G7",
+      "time": "OPEN 18:30 / START 19:00",
       "allDay": true,
-      "added_at": "2026-10-01T20:14:06.917451"
+      "added_at": "2026-10-29T20:15:12.206075"
     },
     {
       "title": "[さよステ] ともだちフェス2026",

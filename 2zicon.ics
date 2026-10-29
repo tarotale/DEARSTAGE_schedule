@@ -221,6 +221,13 @@ LOCATION:詳細を確認
 DESCRIPTION:会場: 詳細を確認\n時間: 2026年11月6日（金）ロケ地和歌山先行公開/11月27日（金）より、池袋HUMAXシネマズ、kino cinema 新宿ほか全国公開\n詳細URL: https://2zicon.tokyo/information/tsurikomachi/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 映画『つりこまち』公開記念舞台挨拶in和歌山
+DTSTART;VALUE=DATE:20261029
+DTEND;VALUE=DATE:20261030
+LOCATION:ジストシネマ田辺／御坊／和歌山イオンシネマ和歌山
+DESCRIPTION:会場: ジストシネマ田辺／御坊／和歌山イオンシネマ和歌山\n時間: 2026年11月7日（土）\n詳細URL: https://2zicon.tokyo/information/tsurikomachi_wakayama/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 11/8(日)虹のコンキスタドールフリーライブ in 横浜ワールドポーターズ開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
@@ -247,13 +254,6 @@ DTSTART;VALUE=DATE:20260922
 DTEND;VALUE=DATE:20260923
 LOCATION:品川ステラボール開場1000開演1030※変更の可能性あり
 DESCRIPTION:会場: 品川ステラボール開場1000開演1030※変更の可能性あり\n時間: 11/22(日)\n詳細URL: https://2zicon.tokyo/information/nyanpokora_03/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-LOCATION:大阪・ATC 海辺のステージ
-DESCRIPTION:会場: 大阪・ATC 海辺のステージ\n時間: 2026年11月28日(土) 1400〜\n詳細URL: https://2zicon.tokyo/information/261128osaka/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催
