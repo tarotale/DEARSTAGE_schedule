@@ -207,6 +207,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-11-15",
+      "start": "2026-11-15",
+      "title": "[ChumToto] 【ライブ出演】女性限定LIVE「Girls place to be. vol.4」シティホール&ギャラリー五反田",
+      "clean_title": "【ライブ出演】女性限定LIVE「Girls place to be. vol.4」シティホール&ギャラリー五反田",
+      "venue": "シティホール&ギャラリー五反田",
+      "time": "開場15:00 / 開演15:50",
+      "url": "https://chumtoto.jp/event/2508/",
+      "allDay": true,
+      "added_at": "2026-10-29T09:31:06.056344"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-11-20",
       "start": "2026-11-20",
       "title": "[ChumToto] 【イベント開催】『BUBKA』×『ChumToto』　特別コラボイベント＠高田馬場BSホール",
@@ -977,6 +989,17 @@
       "url": "https://2zicon.tokyo/information/xmas-2026-12-24/",
       "allDay": true,
       "added_at": "2026-10-22T08:30:27.420920"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-29",
+      "start": "2026-10-29",
+      "title": "[虹コン] SPARK 2026 年末SPECIAL",
+      "venue": "Kanadevia Hall",
+      "time": "2026/12/28 (月)",
+      "url": "https://2zicon.tokyo/information/1228_spark/",
+      "allDay": true,
+      "added_at": "2026-10-29T09:31:06.056344"
     },
     {
       "group": "虹コン",

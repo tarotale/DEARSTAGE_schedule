@@ -123,6 +123,13 @@ LOCATION:アニメイトシアター
 DESCRIPTION:会場: アニメイトシアター\n時間: 開場18:15 / 開演19:00\n詳細URL: https://chumtoto.jp/event/2412/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ出演】女性限定LIVE「Girls place to be. vol.4」シティホール&ギャラリー五反田
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+LOCATION:シティホール&ギャラリー五反田
+DESCRIPTION:会場: シティホール&ギャラリー五反田\n時間: 開場15:00 / 開演15:50\n詳細URL: https://chumtoto.jp/event/2508/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【イベント開催】『BUBKA』×『ChumToto』　特別コラボイベント＠高田馬場BSホール
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
