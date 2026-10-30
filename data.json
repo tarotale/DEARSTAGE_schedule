@@ -1004,17 +1004,6 @@
     },
     {
       "group": "虹コン",
-      "date": "2026-10-29",
-      "start": "2026-10-29",
-      "title": "[虹コン] SPARK 2026 年末SPECIAL",
-      "venue": "Kanadevia Hall",
-      "time": "2026/12/28 (月)",
-      "url": "https://2zicon.tokyo/information/1228_spark/",
-      "allDay": true,
-      "added_at": "2026-10-29T09:31:06.056344"
-    },
-    {
-      "group": "虹コン",
       "date": "2026-09-06",
       "start": "2026-09-06",
       "title": "[虹コン] リトルアーモリー THE STAGE ―火花は、雨空に咲く―",
@@ -1221,6 +1210,15 @@
       "time": "2026/11/05(Thu)",
       "allDay": true,
       "added_at": "2026-10-28T09:30:01.053328"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-06",
+      "url": "https://sayostay.dspm.jp/schedules/129478?r=to1b00",
+      "venue": "詳細を確認",
+      "time": "2026/11/06(Fri)",
+      "allDay": true,
+      "added_at": "2026-10-30T09:47:52.636731"
     },
     {
       "title": "[さよステ] 『WEEKEND INFNITY 2026』",
