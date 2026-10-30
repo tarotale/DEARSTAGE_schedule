@@ -158,6 +158,13 @@ LOCATION:星箱Works原宿店
 DESCRIPTION:会場: 星箱Works原宿店\n時間: 開催時間：15:00〜19:00\n詳細URL: https://chumtoto.jp/event/2499/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ出演】「BEEEEM FES Vol.12」@Veats Shibuya
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+LOCATION:Veats Shibuya
+DESCRIPTION:会場: Veats Shibuya\n時間: 開場14:00 / 開演14:30\n詳細URL: https://chumtoto.jp/event/2523/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【ライブ出演】「まとフェス2026」@浅草花劇場
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209

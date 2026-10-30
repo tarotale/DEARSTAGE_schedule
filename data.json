@@ -267,6 +267,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-12-01",
+      "start": "2026-12-01",
+      "title": "[ChumToto] 【ライブ出演】「BEEEEM FES Vol.12」@Veats Shibuya",
+      "clean_title": "【ライブ出演】「BEEEEM FES Vol.12」@Veats Shibuya",
+      "venue": "Veats Shibuya",
+      "time": "開場14:00 / 開演14:30",
+      "url": "https://chumtoto.jp/event/2523/",
+      "allDay": true,
+      "added_at": "2026-10-30T20:02:39.975861"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-12-08",
       "start": "2026-12-08",
       "title": "[ChumToto] 【ライブ出演】「まとフェス2026」@浅草花劇場",
@@ -1001,6 +1013,17 @@
       "url": "https://2zicon.tokyo/information/xmas-2026-12-24/",
       "allDay": true,
       "added_at": "2026-10-22T08:30:27.420920"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-10-30",
+      "start": "2026-10-30",
+      "title": "[虹コン] SPARK 2026 年末SPECIAL",
+      "venue": "Kanadevia Hall",
+      "time": "2026/12/28 (月)",
+      "url": "https://2zicon.tokyo/information/1228_spark/",
+      "allDay": true,
+      "added_at": "2026-10-30T20:02:39.975861"
     },
     {
       "group": "虹コン",
