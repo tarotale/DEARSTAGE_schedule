@@ -151,6 +151,13 @@ LOCATION:秋葉原ディアステージ (〒101-0021 東京都千代田区外神
 DESCRIPTION:会場: 秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)\n時間: OPEN 18:00 CLOSE 22:00\n詳細URL: https://chumtoto.jp/event/2517/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] 【イベント開催】詩之宮かこ＆瀬﨑くるみイベント＠秋葉原ディアステージ
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+LOCATION:秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)
+DESCRIPTION:会場: 秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)\n時間: OPEN 17:00 CLOSE 21:00\n詳細URL: https://chumtoto.jp/event/2531/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【イベント開催】宮原梓「1日店長イベント」@星箱Works原宿店
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130

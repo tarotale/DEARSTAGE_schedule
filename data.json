@@ -255,6 +255,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-11-28",
+      "start": "2026-11-28",
+      "title": "[ChumToto] 【イベント開催】詩之宮かこ＆瀬﨑くるみイベント＠秋葉原ディアステージ",
+      "clean_title": "【イベント開催】詩之宮かこ＆瀬﨑くるみイベント＠秋葉原ディアステージ",
+      "venue": "秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)",
+      "time": "OPEN 17:00 CLOSE 21:00",
+      "url": "https://chumtoto.jp/event/2531/",
+      "allDay": true,
+      "added_at": "2026-10-31T09:27:30.225957"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-11-29",
       "start": "2026-11-29",
       "title": "[ChumToto] 【イベント開催】宮原梓「1日店長イベント」@星箱Works原宿店",
@@ -1339,6 +1351,15 @@
       "time": "■時間",
       "allDay": true,
       "added_at": "2026-10-08T20:39:03.748529"
+    },
+    {
+      "title": "[meme] 12/20(日)「GEKIROCK CLOTHING Presents\"WEAR THE MUSIC!\"」出演決定！",
+      "start": "2026-12-20",
+      "url": "https://www.memetokyo.com/contents/1123652",
+      "venue": "渋谷WOMB",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-10-31T09:27:30.225957"
     },
     {
       "title": "[meme] 12/27(日) ミームトーキョー ONE-MAN LIVE TOUR『非公式メモリー「予期せぬ記憶が発生しました**」』大阪公演 開催！",
