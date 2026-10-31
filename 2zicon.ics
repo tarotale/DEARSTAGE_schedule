@@ -57,14 +57,14 @@ SUMMARY:[虹コン] ミクチャ『@JAM THE WORLD』（川端）
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 LOCATION:詳細を確認
-DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/mixch-13/
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/mixch-9/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] FMFUJI『「GIRLS♥GIRLS♥GIRLS =FULL BOOST=」虹コンの征服ちゅうずでぃ』（的場・川端・一宮）
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 LOCATION:詳細を確認
-DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/fmfuji-11-2/
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/fmfuji-7/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] 水曜日の一宮ゆい
@@ -179,81 +179,11 @@ LOCATION:埼⽟スタジアム2002 野外特設会場
 DESCRIPTION:会場: 埼⽟スタジアム2002 野外特設会場\n時間: 10/31(土)開場時間TBA\n詳細URL: https://2zicon.tokyo/information/ihj2026/
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[虹コン] 虹のコンキスタドール×東京女子プロレス にじいろプリンセスパーティー！
-DTSTART;VALUE=DATE:20261018
-DTEND;VALUE=DATE:20261019
-LOCATION:前売 3,000円／当日 3,500円※飲食代別・要1ドリンク会場チケットURLhttps//livepocket.jp/e/pl0_b
-DESCRIPTION:会場: 前売 3,000円／当日 3,500円※飲食代別・要1ドリンク会場チケットURLhttps//livepocket.jp/e/pl0_b\n時間: 2026年11月2日（月）1800開場／1900開演\n詳細URL: https://2zicon.tokyo/information/nijpri/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] ガラフェス ～渋谷 文化的衝撃センセーション 秋の新作発表会～
-DTSTART;VALUE=DATE:20260507
-DTEND;VALUE=DATE:20260508
-LOCATION:Shibuya LOVEZ
-DESCRIPTION:会場: Shibuya LOVEZ\n詳細URL: https://2zicon.tokyo/information/garafes20261103/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] LIVE配信「キミと虹コン【245mm】」（一宮・伊藤）
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261010
-LOCATION:詳細を確認
-DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/245mm-1104/
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:[虹コン] 渋谷クロスFM『虹コンのコレってラジオだったよね？』（石浜・尾林・青山）
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
 LOCATION:詳細を確認
 DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/%e6%b8%8b%e8%b0%b7%e3%82%af%e3%83%ad%e3%82%b9fm%e3%80%8e%e8%99%b9%e3%82%b3%e3%83%b3%e3%81%ae%e3%82%b3%e3%83%ac%e3%81%a3%e3%81%a6%e3%83%a9%e3%82%b8%e3%82%aa%e3%81%a0%e3%81%a3%e3%81%9f%e3%82%88%e3%81%ad/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 11/5(木)「きゅるにじすたんだーど」
-DTSTART;VALUE=DATE:20260916
-DTEND;VALUE=DATE:20260917
-LOCATION:Zepp DiverCity(TOKYO)
-DESCRIPTION:会場: Zepp DiverCity(TOKYO)\n時間: 2026/11/5(木)開場1800 / 開演1900\n詳細URL: https://2zicon.tokyo/information/kyuru2zistandard/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 映画「つりこまち」公開(石浜芽衣)
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-LOCATION:詳細を確認
-DESCRIPTION:会場: 詳細を確認\n時間: 2026年11月6日（金）ロケ地和歌山先行公開/11月27日（金）より、池袋HUMAXシネマズ、kino cinema 新宿ほか全国公開\n詳細URL: https://2zicon.tokyo/information/tsurikomachi/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 映画『つりこまち』公開記念舞台挨拶in和歌山
-DTSTART;VALUE=DATE:20261029
-DTEND;VALUE=DATE:20261030
-LOCATION:ジストシネマ田辺／御坊／和歌山イオンシネマ和歌山
-DESCRIPTION:会場: ジストシネマ田辺／御坊／和歌山イオンシネマ和歌山\n時間: 2026年11月7日（土）\n詳細URL: https://2zicon.tokyo/information/tsurikomachi_wakayama/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 11/8(日)虹のコンキスタドールフリーライブ in 横浜ワールドポーターズ開催
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-LOCATION:横浜ワールドポーターズRoof Top World（7F屋上）
-DESCRIPTION:会場: 横浜ワールドポーターズRoof Top World（7F屋上）\n時間: 2026年11月8日(日) ①1330〜②1630〜\n詳細URL: https://2zicon.tokyo/information/261108ywp/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 文化放送 QloveR『虹のコンキスタドール やればできる子育成計画 ！』
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261010
-LOCATION:詳細を確認
-DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/qlover-6/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] 11/21(土)虹のコンキスタドールフリーライブ in アリオ橋本店開催
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-LOCATION:アリオ橋本
-DESCRIPTION:会場: アリオ橋本\n時間: 2026年11月21日(土) ①1330〜②1630〜\n詳細URL: https://2zicon.tokyo/information/261121hashimoto/
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[虹コン] にゃんぽこらフェス！vol.3
-DTSTART;VALUE=DATE:20260922
-DTEND;VALUE=DATE:20260923
-LOCATION:品川ステラボール開場1000開演1030※変更の可能性あり
-DESCRIPTION:会場: 品川ステラボール開場1000開演1030※変更の可能性あり\n時間: 11/22(日)\n詳細URL: https://2zicon.tokyo/information/nyanpokora_03/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催
