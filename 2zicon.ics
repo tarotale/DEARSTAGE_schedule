@@ -102,6 +102,13 @@ LOCATION:品川ステラボール開場1000開演1030※変更の可能性あり
 DESCRIPTION:会場: 品川ステラボール開場1000開演1030※変更の可能性あり\n時間: 11/22(日)\n詳細URL: https://2zicon.tokyo/information/nyanpokora_03/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 尾林結花が設楽警察署の一日警察署長に就任決定！
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+LOCATION:花祭会館北設楽郡東栄町大字本郷字大森１駐車場100台あり
+DESCRIPTION:会場: 花祭会館北設楽郡東栄町大字本郷字大森１駐車場100台あり\n詳細URL: https://2zicon.tokyo/information/1123_shitara/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014

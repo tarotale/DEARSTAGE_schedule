@@ -469,6 +469,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-11-04",
+      "start": "2026-11-04",
+      "title": "[虹コン] 尾林結花が設楽警察署の一日警察署長に就任決定！",
+      "venue": "花祭会館北設楽郡東栄町大字本郷字大森１駐車場100台あり",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/1123_shitara/",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-10-13",
       "start": "2026-10-13",
       "title": "[虹コン] 11/28(土)虹のコンキスタドールフリーライブ in 大阪南港開催",
@@ -607,13 +618,13 @@
       "added_at": "2026-10-28T09:30:01.053328"
     },
     {
-      "title": "[さよステ] ライブ予定",
+      "title": "[さよステ] アイクル  ＋ WEEKEND  INFINITY  前夜祭 無銭",
       "start": "2026-11-06",
       "url": "https://sayostay.dspm.jp/schedules/129478?r=to1b00",
-      "venue": "詳細を確認",
-      "time": "2026/11/06(Fri)",
+      "venue": "下北沢シャングリラ",
+      "time": "OPEN 17:30 / START 18:00",
       "allDay": true,
-      "added_at": "2026-10-30T09:47:52.636731"
+      "added_at": "2026-11-04T21:11:43.083826"
     },
     {
       "title": "[さよステ] 『WEEKEND INFNITY 2026』",
@@ -634,6 +645,15 @@
       "added_at": "2026-10-18T13:09:12.024628"
     },
     {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-18",
+      "url": "https://sayostay.dspm.jp/schedules/130115?r=tonj00",
+      "venue": "詳細を確認",
+      "time": "2026/11/18(Wed)",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
+    },
+    {
       "title": "[さよステ] Gran☆Ciel金曜主催公演 「Ciel×Ring session.34」",
       "start": "2026-11-20",
       "url": "https://sayostay.dspm.jp/schedules/125093?r=tor8c0",
@@ -650,6 +670,15 @@
       "time": "OPEN 9:00/START 9:30(予定)",
       "allDay": true,
       "added_at": "2026-10-28T09:30:01.053328"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-11-23",
+      "url": "https://sayostay.dspm.jp/schedules/130117?r=towsc0",
+      "venue": "詳細を確認",
+      "time": "2026/11/23(Mon)",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
     },
     {
       "title": "[さよステ] ライブ予定＠沖縄",
@@ -670,6 +699,24 @@
       "added_at": "2026-10-14T08:33:14.577240"
     },
     {
+      "title": "[さよステ] イベント予定",
+      "start": "2026-12-08",
+      "url": "https://sayostay.dspm.jp/schedules/130119?r=tpokc0",
+      "venue": "詳細を確認",
+      "time": "2026/12/08(Tue)",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2026-12-14",
+      "url": "https://sayostay.dspm.jp/schedules/130113?r=tpzoc0",
+      "venue": "詳細を確認",
+      "time": "2026/12/14(Mon)",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
+    },
+    {
       "title": "[meme] 11/1(日)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in ヴィレッジヴァンガード渋谷本店開催決定！",
       "start": "2026-11-01",
       "url": "https://www.memetokyo.com/contents/1114942",
@@ -686,6 +733,15 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-11-01T00:08:13.197318"
+    },
+    {
+      "title": "[meme] 11/15(日)『非公式メモリー「予期せぬ決起集会が発生しました**」』開催決定！",
+      "start": "2026-11-15",
+      "url": "https://www.memetokyo.com/contents/1124854",
+      "venue": "秋葉原ディアステージ",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
     },
     {
       "title": "[meme] 11/23(月・祝) MINORI生誕イベント「MINORI vol.1  －WELCOME TO MII WORLD－」 開催決定！",
@@ -740,6 +796,15 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-10-31T09:27:30.225957"
+    },
+    {
+      "title": "[meme] 12/26(土)こぐまカリー主催「大忘年会Mash UP！わが街編」出演決定！",
+      "start": "2026-12-26",
+      "url": "https://www.memetokyo.com/contents/1124855",
+      "venue": "心斎橋SUNHALL",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-04T21:11:43.083826"
     },
     {
       "title": "[meme] 12/27(日) ミームトーキョー ONE-MAN LIVE TOUR『非公式メモリー「予期せぬ記憶が発生しました**」』大阪公演 開催！",
