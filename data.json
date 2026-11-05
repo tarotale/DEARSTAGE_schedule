@@ -159,6 +159,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-12-19",
+      "start": "2026-12-19",
+      "title": "[ChumToto] 【ライブ出演】「RISE with SHOBI」＠YOANI Live Station",
+      "clean_title": "【ライブ出演】「RISE with SHOBI」＠YOANI Live Station",
+      "venue": "YOANI Live Station",
+      "time": "＜2部＞開場 17:10",
+      "url": "https://chumtoto.jp/event/2537/",
+      "allDay": true,
+      "added_at": "2026-11-05T10:28:21.072287"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-12-25",
       "start": "2026-12-25",
       "title": "[ChumToto] 【ライブ開催】ChumToto クリスマスライブ「メリー・トイボックス」@浅草花劇場",
@@ -787,6 +799,15 @@
       "time": "■時間",
       "allDay": true,
       "added_at": "2026-10-08T20:39:03.748529"
+    },
+    {
+      "title": "[meme] 12/19(土)「RISE with SHOBI」出演決定！",
+      "start": "2026-12-19",
+      "url": "https://www.memetokyo.com/contents/1124363",
+      "venue": "YOANI Live Station",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-05T10:28:21.072287"
     },
     {
       "title": "[meme] 12/20(日)「GEKIROCK CLOTHING Presents\"WEAR THE MUSIC!\"」出演決定！",

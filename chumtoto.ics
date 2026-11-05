@@ -95,6 +95,13 @@ LOCATION:浅草花劇場
 DESCRIPTION:会場: 浅草花劇場\n時間: 開場17:45 / 開演18:30\n詳細URL: https://chumtoto.jp/event/2434/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ出演】「RISE with SHOBI」＠YOANI Live Station
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+LOCATION:YOANI Live Station
+DESCRIPTION:会場: YOANI Live Station\n時間: ＜2部＞開場 17:10\n詳細URL: https://chumtoto.jp/event/2537/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【ライブ開催】ChumToto クリスマスライブ「メリー・トイボックス」@浅草花劇場
 DTSTART;VALUE=DATE:20261225
 DTEND;VALUE=DATE:20261226
