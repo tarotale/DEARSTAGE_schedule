@@ -684,13 +684,31 @@
       "added_at": "2026-11-04T21:11:43.083826"
     },
     {
-      "title": "[さよステ] ライブ予定＠沖縄",
+      "title": "[さよステ] 【沖縄遠征】さよならステイチューン×さとりモンスター 『さよモン学園』 ⁡",
       "start": "2026-11-28",
       "url": "https://sayostay.dspm.jp/schedules/125089?r=tp61o0",
-      "venue": "詳細を確認",
-      "time": "2026/11/28(Sat) - 2026/11/29(Sun)",
+      "venue": "沖縄OUTPUT",
+      "time": "OPEN 16:00 / START 16:20",
       "allDay": true,
-      "added_at": "2026-10-01T20:14:06.917451"
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
+      "title": "[さよステ] 【沖縄遠征】にゅーえいじはいさい",
+      "start": "2026-11-28",
+      "url": "https://sayostay.dspm.jp/schedules/130530?r=tp61o0",
+      "venue": "沖縄OUTPUT",
+      "time": "OPEN 19:10 / START 19:30",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
+      "title": "[さよステ] イベント予定＠沖縄",
+      "start": "2026-11-29",
+      "url": "https://sayostay.dspm.jp/schedules/130531?r=tp7wc0",
+      "venue": "詳細を確認",
+      "time": "2026/11/29(Sun)",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
     },
     {
       "title": "[さよステ] 『CYNHN＆さよならステイチューンと行く！ 「南の宝箱」鹿児島魅力発見ツアー Supported by ANAあきんど』",
@@ -720,6 +738,15 @@
       "added_at": "2026-11-04T21:11:43.083826"
     },
     {
+      "title": "[さよステ] ARCANA SESSION：THE SUNLIGHT JAM 2026",
+      "start": "2026-12-24",
+      "url": "https://sayostay.dspm.jp/schedules/130532?r=tqi700",
+      "venue": "浅草花劇場",
+      "time": "OPEN 18:00 / START 18:30",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
       "title": "[meme] 11/1(日)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in ヴィレッジヴァンガード渋谷本店開催決定！",
       "start": "2026-11-01",
       "url": "https://www.memetokyo.com/contents/1114942",
@@ -747,11 +774,29 @@
       "added_at": "2026-11-04T21:11:43.083826"
     },
     {
+      "title": "[meme] 11/20(金)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in イオンモール幕張新都心 グランドコート開催決定！",
+      "start": "2026-11-20",
+      "url": "https://www.memetokyo.com/contents/1125574",
+      "venue": "詳細を確認",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
+      "title": "[meme] 11/22(日)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in タワーレコード錦糸町パルコ店 開催決定！",
+      "start": "2026-11-22",
+      "url": "https://www.memetokyo.com/contents/1125580",
+      "venue": "詳細を確認",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
       "title": "[meme] 11/23(月・祝) MINORI生誕イベント「MINORI vol.1  －WELCOME TO MII WORLD－」 開催決定！",
       "start": "2026-11-23",
-      "url": "https://www.memetokyo.com/contents/1119469",
-      "venue": "GARRET udagawa",
-      "time": "開場 18:30 開演 19:00",
+      "url": "https://www.memetokyo.com/contents/1125581",
+      "venue": "詳細を確認",
+      "time": "",
       "allDay": true,
       "added_at": "2026-11-01T00:08:13.197318"
     },
@@ -763,6 +808,33 @@
       "time": "開場 18:00 開演 18:30",
       "allDay": true,
       "added_at": "2026-11-01T00:08:13.197318"
+    },
+    {
+      "title": "[meme] 11/25(水)ミームトーキョーNew EP『非公式メモリー「予期せぬ記憶が発生しました**」』リリース決定！",
+      "start": "2026-11-25",
+      "url": "https://www.memetokyo.com/contents/1125584",
+      "venue": "詳細を確認",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
+      "title": "[meme] 11/27(金)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in ヴィレッジヴァンガード渋谷本店 開催決定！",
+      "start": "2026-11-27",
+      "url": "https://www.memetokyo.com/contents/1125586",
+      "venue": "詳細を確認",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
+    },
+    {
+      "title": "[meme] 11/28(土)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in タワーレコード錦糸町パルコ店 開催決定！",
+      "start": "2026-11-28",
+      "url": "https://www.memetokyo.com/contents/1125587",
+      "venue": "詳細を確認",
+      "time": "",
+      "allDay": true,
+      "added_at": "2026-11-06T20:50:03.325497"
     },
     {
       "title": "[meme] 11/29(日) ミームトーキョー ONE-MAN LIVE TOUR『非公式メモリー「予期せぬ記憶が発生しました**」』名古屋公演 開催！",
