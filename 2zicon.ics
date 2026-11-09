@@ -123,6 +123,13 @@ LOCATION:表参道GROUNDhttps//omotesando-ground.jp/#access
 DESCRIPTION:会場: 表参道GROUNDhttps//omotesando-ground.jp/#access\n時間: 2026/11/29(日)1730開場 / 1800開演\n詳細URL: https://2zicon.tokyo/information/kumamotobd_2026/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] XR Kaigi 2026
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+LOCATION:東京ポートシティ竹芝ポートホール1F東京都立産業貿易センター浜松町館 展示室3F,4F※キヤノンセッション「180°VR生配信でつくる、新しい推し活体験」は4F第3会議室となります。
+DESCRIPTION:会場: 東京ポートシティ竹芝ポートホール1F東京都立産業貿易センター浜松町館 展示室3F,4F※キヤノンセッション「180°VR生配信でつくる、新しい推し活体験」は4F第3会議室となります。\n時間: 12/2 (水)1000 開場 / 1100 開始※キヤノンセッション「180°VR生配信でつくる、新しい推し活体験」は1300〜1345となります。\n詳細URL: https://2zicon.tokyo/information/xr-kaigi-2026/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
