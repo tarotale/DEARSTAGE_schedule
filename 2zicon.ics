@@ -165,6 +165,13 @@ LOCATION:タワーレコード錦糸町パルコ店
 DESCRIPTION:会場: タワーレコード錦糸町パルコ店\n時間: 2026年12月13日(日) 1800〜\n詳細URL: https://2zicon.tokyo/information/261113kinshicho/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 川端優生誕イベント「19才も#ゆうが優勝 〜ラストティーンはなまこど卒業♡〜」
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+LOCATION:WALL&WALL〒107-0062東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1http//wallwall.tokyo/access/
+DESCRIPTION:会場: WALL&WALL〒107-0062東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1http//wallwall.tokyo/access/\n時間: 2026/12/16(水)1830開場 / 1900開演\n詳細URL: https://2zicon.tokyo/information/kawabatabd_2026/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] FUN-FARE！ Vol.3
 DTSTART;VALUE=DATE:20261008
 DTEND;VALUE=DATE:20261009
