@@ -88,6 +88,13 @@ LOCATION:秋葉原ディアステージ
 DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年11月17日(火)\n詳細URL: https://2zicon.tokyo/information/tue_obayashi/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] リミスタインターネットサイン会
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/limista_1119/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 11/21(土)虹のコンキスタドールフリーライブ in アリオ橋本店開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
