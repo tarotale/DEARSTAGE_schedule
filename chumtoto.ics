@@ -95,6 +95,13 @@ LOCATION:浅草花劇場
 DESCRIPTION:会場: 浅草花劇場\n時間: 開場17:45 / 開演18:30\n詳細URL: https://chumtoto.jp/event/2434/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] ChumToto特典会イベント「ちゃむちゃむ大特典会」@ベルサール新宿南口
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+LOCATION:ベルサール新宿南口
+DESCRIPTION:会場: ベルサール新宿南口\n時間: 撮影時間：16:35〜17:15\n詳細URL: https://chumtoto.jp/event/2560/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【ライブ出演】「RISE with SHOBI」＠YOANI Live Station
 DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
