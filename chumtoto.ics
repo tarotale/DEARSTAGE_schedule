@@ -60,14 +60,14 @@ LOCATION:J-SQUARE品川
 DESCRIPTION:会場: J-SQUARE品川\n時間: OPEN/ START　12:00/12:30\n詳細URL: https://chumtoto.jp/event/2283/
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[ChumToto] 【イベント開催】宮原梓ソロイベント＠秋葉原ディアステージ
+SUMMARY:[ChumToto] 【イベント開催】宮原梓ソロイベント「がむしゃらチャムタイムツアー！vol.1〜チャムちゃん強化計画〜」＠秋葉原ディアステージ
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 LOCATION:秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)
 DESCRIPTION:会場: 秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)\n時間: OPEN 18:00 CLOSE 22:00\n詳細URL: https://chumtoto.jp/event/2517/
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[ChumToto] 【イベント開催】詩之宮かこ＆瀬﨑くるみイベント＠秋葉原ディアステージ
+SUMMARY:[ChumToto] 【イベント開催】詩之宮かこ＆瀬﨑くるみイベント「がむしゃらチャムタイムツアー！vol.2〜チャムちゃん強化計画〜」＠秋葉原ディアステージ
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 LOCATION:秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)
@@ -86,6 +86,13 @@ DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 LOCATION:Veats Shibuya
 DESCRIPTION:会場: Veats Shibuya\n時間: 開場14:00 / 開演14:30\n詳細URL: https://chumtoto.jp/event/2523/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[ChumToto] 【イベント開催】ChumTotoライブ&特典会イベント「がむしゃらチャムタイムツアー！vol.3〜チャムちゃん強化計画〜」＠秋葉原ディアステージ
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+LOCATION:秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)
+DESCRIPTION:会場: 秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)\n時間: ＜1部＞OPEN 16:30 ＜2部＞OPEN 19:00\n詳細URL: https://chumtoto.jp/event/2566/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[ChumToto] 【ライブ出演】「まとフェス2026」@浅草花劇場
