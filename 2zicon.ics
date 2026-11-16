@@ -130,6 +130,13 @@ LOCATION:表参道GROUNDhttps//omotesando-ground.jp/#access
 DESCRIPTION:会場: 表参道GROUNDhttps//omotesando-ground.jp/#access\n時間: 2026/11/29(日)1730開場 / 1800開演\n詳細URL: https://2zicon.tokyo/information/kumamotobd_2026/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] ゆいち沼ってなんやねん！〜いっしょに探しにいくんやで♡〜
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+LOCATION:心斎橋ディアステージ
+DESCRIPTION:会場: 心斎橋ディアステージ\n時間: 11/29(日)1部　開場1330/開演14002部　開場1630/開演1700ミニライブ＆特典会あり\n詳細URL: https://2zicon.tokyo/information/yuichi_shinsaibashi/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] XR Kaigi 2026
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
