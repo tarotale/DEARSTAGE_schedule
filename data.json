@@ -694,6 +694,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-11-16",
+      "start": "2026-11-16",
+      "title": "[虹コン] 山手線ほぼ一周ツアーおかわり編 「Staytune On The Rainbow!!!」",
+      "venue": "アニメイトシアター〒170-0013東京都豊島区東池袋１丁目２０−７ B2Fhttps//www.animate.co.jp/shop/ikebukuro/access/",
+      "time": "2026/12/27(日)1130 開場 / 1200 開演",
+      "url": "https://2zicon.tokyo/information/staytune-on-the-rainbow/",
+      "allDay": true,
+      "added_at": "2026-11-16T23:49:13.482529"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-10-30",
       "start": "2026-10-30",
       "title": "[虹コン] SPARK 2026 年末SPECIAL",
@@ -920,6 +931,15 @@
       "time": "2026/12/27(Sun)",
       "allDay": true,
       "added_at": "2026-11-10T10:55:14.436672"
+    },
+    {
+      "title": "[さよステ] 山手線ほぼ一周ツアーおかわり編 「Staytune On The Rainbow!!!」",
+      "start": "2026-12-27",
+      "url": "https://sayostay.dspm.jp/schedules/131476?r=tqnr00",
+      "venue": "アニメイトシアター",
+      "time": "OPEN 11:30/START 12:00",
+      "allDay": true,
+      "added_at": "2026-11-16T23:49:13.482529"
     },
     {
       "title": "[さよステ] ライブ予定",

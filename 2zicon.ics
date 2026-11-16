@@ -207,6 +207,13 @@ LOCATION:横浜アリーナ
 DESCRIPTION:会場: 横浜アリーナ\n時間: 2026/12/24(木)開場1330 / 開演1500\n詳細URL: https://2zicon.tokyo/information/xmas-2026-12-24/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 山手線ほぼ一周ツアーおかわり編 「Staytune On The Rainbow!!!」
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+LOCATION:アニメイトシアター〒170-0013東京都豊島区東池袋１丁目２０−７ B2Fhttps//www.animate.co.jp/shop/ikebukuro/access/
+DESCRIPTION:会場: アニメイトシアター〒170-0013東京都豊島区東池袋１丁目２０−７ B2Fhttps//www.animate.co.jp/shop/ikebukuro/access/\n時間: 2026/12/27(日)1130 開場 / 1200 開演\n詳細URL: https://2zicon.tokyo/information/staytune-on-the-rainbow/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] SPARK 2026 年末SPECIAL
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
