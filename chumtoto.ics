@@ -95,6 +95,13 @@ LOCATION:秋葉原ディアステージ (〒101-0021 東京都千代田区外神
 DESCRIPTION:会場: 秋葉原ディアステージ (〒101-0021 東京都千代田区外神田3-10-9 DEMPAビル)\n時間: ＜1部＞OPEN 16:30 ＜2部＞OPEN 19:00\n詳細URL: https://chumtoto.jp/event/2566/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[ChumToto] 【ライブ出演】「らぶちゃんと！vol.4 第二部」＠浅草花劇場
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+LOCATION:浅草花劇場
+DESCRIPTION:会場: 浅草花劇場\n時間: OPEN/ START　17:00/17:30\n詳細URL: https://chumtoto.jp/event/2580/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[ChumToto] 【ライブ出演】「まとフェス2026」@浅草花劇場
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209

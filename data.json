@@ -159,6 +159,18 @@
     },
     {
       "group": "ChumToto",
+      "date": "2026-12-06",
+      "start": "2026-12-06",
+      "title": "[ChumToto] 【ライブ出演】「らぶちゃんと！vol.4 第二部」＠浅草花劇場",
+      "clean_title": "【ライブ出演】「らぶちゃんと！vol.4 第二部」＠浅草花劇場",
+      "venue": "浅草花劇場",
+      "time": "OPEN/ START　17:00/17:30",
+      "url": "https://chumtoto.jp/event/2580/",
+      "allDay": true,
+      "added_at": "2026-11-17T11:39:12.133809"
+    },
+    {
+      "group": "ChumToto",
       "date": "2026-12-08",
       "start": "2026-12-08",
       "title": "[ChumToto] 【ライブ出演】「まとフェス2026」@浅草花劇場",
@@ -802,9 +814,18 @@
       "start": "2026-11-18",
       "url": "https://sayostay.dspm.jp/schedules/131130?r=tonj00",
       "venue": "ステラボール",
-      "time": "OPEN 11:30 / START 11:45",
+      "time": "OPEN 11:00 / START 11:15",
       "allDay": true,
       "added_at": "2026-11-12T10:48:11.365705"
+    },
+    {
+      "title": "[さよステ] 萌波あかり 1on1トーク",
+      "start": "2026-11-19",
+      "url": "https://sayostay.dspm.jp/schedules/131581?r=tor001",
+      "venue": "詳細を確認",
+      "time": "2026/11/19(Thu) 21:00 - 23:00",
+      "allDay": true,
+      "added_at": "2026-11-17T11:39:12.133809"
     },
     {
       "title": "[さよステ] Gran☆Ciel金曜主催公演 「Ciel×Ring session.34」",
@@ -888,6 +909,24 @@
       "added_at": "2026-11-12T10:48:11.365705"
     },
     {
+      "title": "[さよステ] さよならステイチューン沖縄オフ会 2026",
+      "start": "2026-11-29",
+      "url": "https://sayostay.dspm.jp/schedules/131607?r=tp7wc0",
+      "venue": "沖縄国際通り付近　※参加者に後日会場はご案内いたします",
+      "time": "2026/11/29(Sun)",
+      "allDay": true,
+      "added_at": "2026-11-17T11:39:12.133809"
+    },
+    {
+      "title": "[さよステ] もこもこフェス ファイナル高橋さん",
+      "start": "2026-12-03",
+      "url": "https://sayostay.dspm.jp/schedules/131584?r=tpfb00",
+      "venue": "白金高輪SELENE b2",
+      "time": "OEEN 15:00 / START 15:30",
+      "allDay": true,
+      "added_at": "2026-11-17T11:39:12.133809"
+    },
+    {
       "title": "[さよステ] 『CYNHN＆さよならステイチューンと行く！ 「南の宝箱」鹿児島魅力発見ツアー Supported by ANAあきんど』",
       "start": "2026-12-05",
       "url": "https://sayostay.dspm.jp/schedules/125035?r=tpj0c0",
@@ -924,15 +963,6 @@
       "added_at": "2026-11-06T20:50:03.325497"
     },
     {
-      "title": "[さよステ] ライブ予定",
-      "start": "2026-12-27",
-      "url": "https://sayostay.dspm.jp/schedules/130867?r=tqnr00",
-      "venue": "詳細を確認",
-      "time": "2026/12/27(Sun)",
-      "allDay": true,
-      "added_at": "2026-11-10T10:55:14.436672"
-    },
-    {
       "title": "[さよステ] 山手線ほぼ一周ツアーおかわり編 「Staytune On The Rainbow!!!」",
       "start": "2026-12-27",
       "url": "https://sayostay.dspm.jp/schedules/131476?r=tqnr00",
@@ -940,15 +970,6 @@
       "time": "OPEN 11:30/START 12:00",
       "allDay": true,
       "added_at": "2026-11-16T23:49:13.482529"
-    },
-    {
-      "title": "[さよステ] ライブ予定",
-      "start": "2026-12-29",
-      "url": "https://sayostay.dspm.jp/schedules/130866?r=tqrgc0",
-      "venue": "詳細を確認",
-      "time": "2026/12/29(Tue)",
-      "allDay": true,
-      "added_at": "2026-11-10T10:55:14.436672"
     },
     {
       "title": "[さよステ] 良イ音シヲ！LEGEND SONGS 2026",
