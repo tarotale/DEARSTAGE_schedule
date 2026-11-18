@@ -88,6 +88,13 @@ LOCATION:秋葉原ディアステージ
 DESCRIPTION:会場: 秋葉原ディアステージ\n時間: 2026年11月17日(火)\n詳細URL: https://2zicon.tokyo/information/tue_obayashi/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] LIVE配信「キミと虹コン【245mm】」（的場・前嶋）
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/vr245mm_1118/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] リミスタインターネットサイン会
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
@@ -144,6 +151,13 @@ LOCATION:東京ポートシティ竹芝ポートホール1F東京都立産業貿
 DESCRIPTION:会場: 東京ポートシティ竹芝ポートホール1F東京都立産業貿易センター浜松町館 展示室3F,4F※キヤノンセッション「180°VR生配信でつくる、新しい推し活体験」は4F第3会議室となります。\n時間: 12/2 (水)1000 開場 / 1100 開始※キヤノンセッション「180°VR生配信でつくる、新しい推し活体験」は1300〜1345となります。\n詳細URL: https://2zicon.tokyo/information/xr-kaigi-2026/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] LIVE配信「キミと虹コン【245mm】」（石浜・尾林）
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/245mm_1202/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
@@ -184,6 +198,13 @@ DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 LOCATION:WALL&WALL〒107-0062東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1http//wallwall.tokyo/access/
 DESCRIPTION:会場: WALL&WALL〒107-0062東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1http//wallwall.tokyo/access/\n時間: 2026/12/16(水)1830開場 / 1900開演\n詳細URL: https://2zicon.tokyo/information/kawabatabd_2026/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] LIVE配信「キミと虹コン【245mm】」（一宮・都月）
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+LOCATION:詳細を確認
+DESCRIPTION:会場: 詳細を確認\n詳細URL: https://2zicon.tokyo/information/245mm_1216/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] FUN-FARE！ Vol.3

@@ -519,6 +519,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-11-18",
+      "start": "2026-11-18",
+      "title": "[虹コン] LIVE配信「キミと虹コン【245mm】」（的場・前嶋）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/vr245mm_1118/",
+      "allDay": true,
+      "added_at": "2026-11-18T11:17:28.494628"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-11-12",
       "start": "2026-11-12",
       "title": "[虹コン] リミスタインターネットサイン会",
@@ -607,6 +618,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-11-18",
+      "start": "2026-11-18",
+      "title": "[虹コン] LIVE配信「キミと虹コン【245mm】」（石浜・尾林）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/245mm_1202/",
+      "allDay": true,
+      "added_at": "2026-11-18T11:17:28.494628"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-10-13",
       "start": "2026-10-13",
       "title": "[虹コン] 12/6(日)虹のコンキスタドールフリーライブ in 汐留シオサイト開催",
@@ -670,6 +692,17 @@
       "url": "https://2zicon.tokyo/information/kawabatabd_2026/",
       "allDay": true,
       "added_at": "2026-11-11T10:28:42.692625"
+    },
+    {
+      "group": "虹コン",
+      "date": "2026-11-18",
+      "start": "2026-11-18",
+      "title": "[虹コン] LIVE配信「キミと虹コン【245mm】」（一宮・都月）",
+      "venue": "詳細を確認",
+      "time": "",
+      "url": "https://2zicon.tokyo/information/245mm_1216/",
+      "allDay": true,
+      "added_at": "2026-11-18T11:17:28.494628"
     },
     {
       "group": "虹コン",
@@ -1053,29 +1086,11 @@
       "added_at": "2026-11-12T10:48:11.365705"
     },
     {
-      "title": "[meme] 11/20(金)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in イオンモール幕張新都心 グランドコート開催決定！",
-      "start": "2026-11-20",
-      "url": "https://www.memetokyo.com/contents/1125574",
-      "venue": "詳細を確認",
-      "time": "",
-      "allDay": true,
-      "added_at": "2026-11-06T20:50:03.325497"
-    },
-    {
-      "title": "[meme] 11/22(日)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in タワーレコード錦糸町パルコ店 開催決定！",
-      "start": "2026-11-22",
-      "url": "https://www.memetokyo.com/contents/1125580",
-      "venue": "詳細を確認",
-      "time": "",
-      "allDay": true,
-      "added_at": "2026-11-06T20:50:03.325497"
-    },
-    {
       "title": "[meme] 11/23(月・祝) MINORI生誕イベント「MINORI vol.1  －WELCOME TO MII WORLD－」 開催決定！",
       "start": "2026-11-23",
-      "url": "https://www.memetokyo.com/contents/1125581",
-      "venue": "詳細を確認",
-      "time": "",
+      "url": "https://www.memetokyo.com/contents/1119469",
+      "venue": "GARRET udagawa",
+      "time": "開場 18:30 開演 19:00",
       "allDay": true,
       "added_at": "2026-11-01T00:08:13.197318"
     },
@@ -1089,15 +1104,6 @@
       "added_at": "2026-11-01T00:08:13.197318"
     },
     {
-      "title": "[meme] 11/25(水)ミームトーキョーNew EP『非公式メモリー「予期せぬ記憶が発生しました**」』リリース決定！",
-      "start": "2026-11-25",
-      "url": "https://www.memetokyo.com/contents/1125584",
-      "venue": "詳細を確認",
-      "time": "",
-      "allDay": true,
-      "added_at": "2026-11-06T20:50:03.325497"
-    },
-    {
       "title": "[meme] 11/26(木)New EP『⾮公式メモリー「予期せぬ記憶が発⽣しました**」』リリース記念インターネットサイン会 開催決定！",
       "start": "2026-11-26",
       "url": "https://www.memetokyo.com/contents/1127135",
@@ -1105,24 +1111,6 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-11-12T10:48:11.365705"
-    },
-    {
-      "title": "[meme] 11/27(金)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in ヴィレッジヴァンガード渋谷本店 開催決定！",
-      "start": "2026-11-27",
-      "url": "https://www.memetokyo.com/contents/1125586",
-      "venue": "詳細を確認",
-      "time": "",
-      "allDay": true,
-      "added_at": "2026-11-06T20:50:03.325497"
-    },
-    {
-      "title": "[meme] 11/28(土)New EP『非公式メモリー「予期せぬ記憶が発生しました**」』発売記念イベント in タワーレコード錦糸町パルコ店 開催決定！",
-      "start": "2026-11-28",
-      "url": "https://www.memetokyo.com/contents/1125587",
-      "venue": "詳細を確認",
-      "time": "",
-      "allDay": true,
-      "added_at": "2026-11-06T20:50:03.325497"
     },
     {
       "title": "[meme] 11/29(日) ミームトーキョー ONE-MAN LIVE TOUR『非公式メモリー「予期せぬ記憶が発生しました**」』名古屋公演 開催！",
