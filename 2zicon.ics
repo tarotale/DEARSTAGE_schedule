@@ -235,6 +235,13 @@ LOCATION:アニメイトシアター〒170-0013東京都豊島区東池袋１丁
 DESCRIPTION:会場: アニメイトシアター〒170-0013東京都豊島区東池袋１丁目２０−７ B2Fhttps//www.animate.co.jp/shop/ikebukuro/access/\n時間: 2026/12/27(日)1130 開場 / 1200 開演\n詳細URL: https://2zicon.tokyo/information/staytune-on-the-rainbow/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 虹コンおねがいリクエスト2026♡年末SP
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+LOCATION:アニメイトシアター
+DESCRIPTION:会場: アニメイトシアター\n詳細URL: https://2zicon.tokyo/information/request2026/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] SPARK 2026 年末SPECIAL
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
