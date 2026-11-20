@@ -772,6 +772,17 @@
     },
     {
       "group": "虹コン",
+      "date": "2026-11-20",
+      "start": "2026-11-20",
+      "title": "[虹コン] BABY,THE STARS SHINE BRIGHT ALICE and the PIRATES BRAND-NEW COLLECTION in TOKYO",
+      "venue": "渋谷ヒカリエ ホールA",
+      "time": "2026年2月7日(日)",
+      "url": "https://2zicon.tokyo/information/baby_the_stars_2027/",
+      "allDay": true,
+      "added_at": "2026-11-20T11:05:13.553876"
+    },
+    {
+      "group": "虹コン",
       "date": "2026-09-06",
       "start": "2026-09-06",
       "title": "[虹コン] リトルアーモリー THE STAGE ―火花は、雨空に咲く―",
@@ -996,6 +1007,15 @@
       "time": "OPEN 18:00/START 18:30",
       "allDay": true,
       "added_at": "2026-11-13T10:40:25.817088"
+    },
+    {
+      "title": "[さよステ] 日永陽咲生誕ライブ 『はる期2026~ひつじの森のひみつきち~』",
+      "start": "2026-12-17",
+      "url": "https://sayostay.dspm.jp/schedules/132009?r=tq58c0",
+      "venue": "GARRET udagawa",
+      "time": "OPEN 18:00 / START 18:30",
+      "allDay": true,
+      "added_at": "2026-11-20T11:05:13.553876"
     },
     {
       "title": "[さよステ] ARCANA SESSION：THE SUNLIGHT JAM 2026",
