@@ -193,6 +193,13 @@ LOCATION:Zepp DiverCity(TOKYO)
 DESCRIPTION:会場: Zepp DiverCity(TOKYO)\n時間: 2026/12/10(木)OPEN 1800 / START 1900\n詳細URL: https://2zicon.tokyo/information/261210_zepp/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 石浜芽衣2nd写真集「夢いっぱい」発売記念イベント＠SHIBUYA TSUTAYA
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+LOCATION:ジュンク堂書店池袋本店
+DESCRIPTION:会場: ジュンク堂書店池袋本店\n詳細URL: https://2zicon.tokyo/information/yumeippai_event/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 11/13(日)虹のコンキスタドールフリーライブ in タワーレコード錦糸町パルコ店開催
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
@@ -228,6 +235,20 @@ LOCATION:恵比寿CreAto〒150-0011東京都渋谷区東３丁目１４−１９
 DESCRIPTION:会場: 恵比寿CreAto〒150-0011東京都渋谷区東３丁目１４−１９ オークヒルズhttps//creato.bz/mobile/access.html\n時間: 2026年12月19日（土）開場1700/開演1730\n詳細URL: https://2zicon.tokyo/information/kanakana-2026/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:[虹コン] 石浜芽衣2nd写真集「夢いっぱい」発売記念イベント＠ジュンク堂書店池袋本店
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+LOCATION:ジュンク堂書店池袋本店
+DESCRIPTION:会場: ジュンク堂書店池袋本店\n詳細URL: https://2zicon.tokyo/information/yumeippai_event2/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 12/20(土)虹のコンキスタドール個別撮影会＆個別握手会
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+LOCATION:ベルサール芝公園　Room4・5東京都港区芝二丁目7番17号　住友芝公園ビル　5F・6F※入場無料
+DESCRIPTION:会場: ベルサール芝公園　Room4・5東京都港区芝二丁目7番17号　住友芝公園ビル　5F・6F※入場無料\n時間: 当日分追加販売時間：19:30~19:45\n詳細URL: https://2zicon.tokyo/information/kobetsu_1220/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:[虹コン] 12/24(木)「Idol Xmas Fes 2026」
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
@@ -254,6 +275,13 @@ DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 LOCATION:Kanadevia Hall
 DESCRIPTION:会場: Kanadevia Hall\n時間: 2026/12/28 (月)\n詳細URL: https://2zicon.tokyo/information/1228_spark/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[虹コン] 第3回モルックアジア大会in愛媛今治 虹のコンスタドール大会アンバサダー就任決定＆出演決定
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+LOCATION:今治市営スポーツパーク愛媛県今治市高橋ふれあいの丘１−２
+DESCRIPTION:会場: 今治市営スポーツパーク愛媛県今治市高橋ふれあいの丘１−２\n時間: 2027年1月16日（土）〜　1月17日（日）\n詳細URL: https://2zicon.tokyo/information/3rd_molkky_asia_tournament/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[虹コン] BABY\,THE STARS SHINE BRIGHT ALICE and the PIRATES BRAND-NEW COLLECTION in TOKYO
