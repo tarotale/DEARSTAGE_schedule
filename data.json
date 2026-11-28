@@ -827,17 +827,6 @@
     },
     {
       "group": "虹コン",
-      "date": "2026-11-20",
-      "start": "2026-11-20",
-      "title": "[虹コン] BABY,THE STARS SHINE BRIGHT ALICE and the PIRATES BRAND-NEW COLLECTION in TOKYO",
-      "venue": "渋谷ヒカリエ ホールA",
-      "time": "2026年2月7日(日)",
-      "url": "https://2zicon.tokyo/information/baby_the_stars_2027/",
-      "allDay": true,
-      "added_at": "2026-11-20T11:05:13.553876"
-    },
-    {
-      "group": "虹コン",
       "date": "2026-09-06",
       "start": "2026-09-06",
       "title": "[虹コン] リトルアーモリー THE STAGE ―火花は、雨空に咲く―",
@@ -1046,13 +1035,13 @@
       "added_at": "2026-10-14T08:33:14.577240"
     },
     {
-      "title": "[さよステ] イベント予定",
+      "title": "[さよステ] AICE×さよならステイチューン コラボレーションアイテム受注会イベント",
       "start": "2026-12-08",
       "url": "https://sayostay.dspm.jp/schedules/130119?r=tpokc0",
-      "venue": "詳細を確認",
-      "time": "2026/12/08(Tue)",
+      "venue": "J-SQUARE SHINAGAWA",
+      "time": "START 18:00（予定）",
       "allDay": true,
-      "added_at": "2026-11-04T21:11:43.083826"
+      "added_at": "2026-11-28T11:32:24.086860"
     },
     {
       "title": "[さよステ] さよならステイチューン年末スペシャル まだまだ終われない！！ 〜2026年も最後まで一緒に楽しもう！〜",
@@ -1098,6 +1087,24 @@
       "time": "OPEN 14:00 / START 15:00",
       "allDay": true,
       "added_at": "2026-11-13T10:40:25.817088"
+    },
+    {
+      "title": "[さよステ] ライブ予定",
+      "start": "2027-01-10",
+      "url": "https://sayostay.dspm.jp/schedules/132794?r=trdoc0",
+      "venue": "詳細を確認",
+      "time": "2027/01/10(Sun)",
+      "allDay": true,
+      "added_at": "2026-11-28T11:32:24.086860"
+    },
+    {
+      "title": "[さよステ] 「BABY，THE STARS SHINE BRIGHT and ALICE and the PIRATES BRAND-NEW COLLECTION in TOKYO」ファッションショーに出演！",
+      "start": "2027-02-07",
+      "url": "https://sayostay.dspm.jp/schedules/132797?r=tstj00",
+      "venue": "SHIBUYA Hikarie ホールA",
+      "time": "OPEN 16:00 / START 17:30",
+      "allDay": true,
+      "added_at": "2026-11-28T11:32:24.086860"
     },
     {
       "title": "[さよステ] さよならステイチューン東名阪ツアー 「TUNE UP♡TRAVEL」初日東京公演",
@@ -1359,15 +1366,6 @@
       "time": "",
       "allDay": true,
       "added_at": "2026-09-30T19:58:22.133395"
-    },
-    {
-      "title": "[meme] 2027/2/27(土)「MIX TOKYO DJ PARTY \"NEO”」出演決定！",
-      "start": "2027-02-27",
-      "url": "https://www.memetokyo.com/contents/1099568",
-      "venue": "新宿歌舞伎町タワー3F namco TOKYO/ZEROTOKYO",
-      "time": "OPEN 18:00/ START 19:00",
-      "allDay": true,
-      "added_at": "2026-10-31T00:32:36.741482"
     }
   ]
 }
